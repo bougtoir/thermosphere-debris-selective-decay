@@ -59,7 +59,14 @@ def init_elements(a, e, inc, raan, argp, M0):
 
 
 def orbit_mean_density(elements, rho_fn, t0_s, n_samples=K_ORBIT):
-    """Mean background density along one full orbit starting at t0_s."""
+    """Mean background density along one full orbit starting at t0_s.
+
+    Fast path: for near-circular orbits (e < 0.02) the radius is essentially
+    constant, so a single evaluation at the mean radius is representative.
+    """
+    if elements["e"] < 0.02:
+        r, _ = position_at(elements, t0_s)
+        return rho_fn(r, t0_s)
     T = orbital_period(elements["a"])
     rho_sum = 0.0
     el = dict(elements)

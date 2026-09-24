@@ -132,8 +132,39 @@ class MovingPerturbation(Perturbation):
         d_h = ground_distance_km(lat, lon, self.g.lat0_t, self.g.lon0_t)
         alt_km = np.linalg.norm(r_eci_m) / 1000.0 - R_EARTH / 1000.0
         sh = np.exp(-d_h**2 / (2.0 * self.g.sigma_h_km**2))
-        sv = np.exp(-(alt_km - self.g.h0) ** 2 / (2.0 * self.g.sigma_v_km**2))
+        sv = np.exp(-(alt_km - self.g.h0_km) ** 2 / (2.0 * self.g.sigma_v_km**2))
         return self.g.delta_max * sh * sv
+
+
+class TrackingPerturbation(Perturbation):
+    """Idealized upper bound: a Gaussian density enhancement that stays
+    centered on a designated target object's instantaneous position for the
+    full duration. Not physically realizable as a stationary atmospheric
+    patch; represents the best-case selectivity of perfect localization and
+    is used only as a bound, not a proposed mechanism.
+    """
+
+    def __init__(self, target_elements, delta_max, sigma_h_km, sigma_v_km,
+                 t0_s, duration_s):
+        self.el = dict(target_elements)
+        self.delta_max = delta_max
+        self.sigma_h_km = sigma_h_km
+        self.sigma_v_km = sigma_v_km
+        self.t0 = t0_s
+        self.dur = duration_s
+
+    def delta(self, r_eci_m, t_s):
+        if t_s < self.t0 or t_s > self.t0 + self.dur:
+            return 0.0
+        from ..orbits.fastprop import position_at
+        r_t, _ = position_at(self.el, t_s)
+        lat, lon = ecef_approx(r_eci_m, t_s)
+        lat_t, lon_t = ecef_approx(r_t, t_s)
+        d_h = ground_distance_km(lat, lon, lat_t, lon_t)
+        dv_km = (np.linalg.norm(r_eci_m) - np.linalg.norm(r_t)) / 1000.0
+        sh = np.exp(-d_h**2 / (2.0 * self.sigma_h_km**2))
+        sv = np.exp(-dv_km**2 / (2.0 * self.sigma_v_km**2))
+        return self.delta_max * sh * sv
 
 
 class CombinedPerturbation(Perturbation):

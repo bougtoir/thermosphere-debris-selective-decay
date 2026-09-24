@@ -1,0 +1,8 @@
+model,expected,got,passed
+gaussian_peak,0.00038076210902182606,0.0003807579907406201,True
+gaussian_vertical,3.032653298563167,3.032620497717737,True
+tophat_inside,2.0,2.0,True
+tophat_outside,0.0,0.0,True
+moving_static_equiv,1.5,True,True
+encounter_detected,mean_rho_delta>0,5.322502856680907e-17,True
+encounter_count,>=1,1,True
