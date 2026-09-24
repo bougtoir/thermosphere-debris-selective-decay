@@ -1,0 +1,9 @@
+scenario,case,obj_type,extra_deltav_ms,a_drop_km,encounter_count
+baseline,A_target_highAm_400,target,0.0,0.10556252942024003,0
+fixed_pulse,A_target_highAm_400,target,4.34688005593213e-06,0.10557022864668397,1
+tracking,A_target_highAm_400,target,0.007455174701170875,0.11876694099646556,4
+uniform,A_target_highAm_400,target,0.0074552367207263,0.11876705084796413,4
+baseline,A_protected_400,protected,0.0,0.006593371453163854,0
+fixed_pulse,A_protected_400,protected,3.169244616791247e-07,0.006593931772840733,1
+tracking,A_protected_400,protected,4.990334734946557e-09,0.006593380276171956,4
+uniform,A_protected_400,protected,0.0004657414198342079,0.007416795607241511,4

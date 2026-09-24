@@ -205,3 +205,143 @@ M1_diffusion_strong     5.622756e-17        4.660969e-17           3.216931     
         M2_relax_1h     2.307705e-17        4.112172e-17           1.496503           1              1      0.022222            0.346870
        M2_relax_10m     1.403240e-18        3.922841e-18           0.953894           1              1      0.020833            0.021092
 python3 scripts/phase06_outcomes.py
+   scenario                 case  obj_type  delta_lifetime_d   delta_a_km  encounter_count  extra_deltav_ms
+fixed_pulse  A_target_highAm_400    target          0.000000 8.376109e-06                1     4.318139e-06
+   tracking  A_target_highAm_400    target          0.000000 1.444831e-02                2     7.454938e-03
+fixed_pulse      A_protected_400 protected          0.000000 5.693664e-07                1     3.204656e-07
+   tracking      A_protected_400 protected          0.000000 8.848474e-09                2     4.990554e-09
+fixed_pulse B_target_compact_500    target          0.000000 6.163737e-08                1     3.407488e-08
+   tracking B_target_compact_500    target          0.000000 1.042690e-04                2     5.766582e-05
+fixed_pulse      B_protected_500 protected          0.000000 1.400531e-08                1     7.740027e-09
+   tracking      B_protected_500 protected          0.000000 0.000000e+00                0    4.738263e-220
+fixed_pulse            C_frag_00    target          0.000000 1.858644e-06                1     1.016968e-06
+   tracking            C_frag_00    target          0.000000 3.584304e-03                2     1.962249e-03
+fixed_pulse            C_frag_01    target          0.000000 1.892454e-06                1     1.042833e-06
+   tracking            C_frag_01    target          0.000000 0.000000e+00                0     3.550878e-13
+fixed_pulse            C_frag_02    target          0.000000 1.393654e-06                1     7.699667e-07
+   tracking            C_frag_02    target          0.000000 0.000000e+00                0     1.190709e-38
+fixed_pulse            C_frag_03    target          0.000000 7.095323e-07                1     3.927166e-07
+   tracking            C_frag_03    target          0.000000 0.000000e+00                0     2.632580e-80
+fixed_pulse            C_frag_04    target          0.000000 2.434726e-07                1     1.348585e-07
+   tracking            C_frag_04    target          0.000000 0.000000e+00                0    2.187179e-138
+fixed_pulse            C_frag_05    target          0.000000 9.751329e-08                1     5.414403e-08
+   tracking            C_frag_05    target          0.000000 0.000000e+00                0     0.000000e+00
+fixed_pulse            C_frag_06    target          0.000000 1.627086e-08                1     9.047313e-09
+   tracking            C_frag_06    target          0.000000 0.000000e+00                0     0.000000e+00
+fixed_pulse            C_frag_07    target          0.000000 1.741682e-09                1     9.771495e-10
+   tracking            C_frag_07    target          0.000000 0.000000e+00                0     0.000000e+00
+fixed_pulse            C_frag_08    target          0.000000 1.255103e-10                2     6.802096e-11
+   tracking            C_frag_08    target          0.000000 0.000000e+00                0     0.000000e+00
+fixed_pulse            C_frag_09    target          0.000000 3.092282e-11                2     1.549518e-11
+   tracking            C_frag_09    target          0.000000 0.000000e+00                0     0.000000e+00
+fixed_pulse      C_protected_450 protected          0.000000 2.013803e-08                1     1.124103e-08
+   tracking      C_protected_450 protected          0.000000 0.000000e+00                0     0.000000e+00
+fixed_pulse         D_target_550    target          0.000000 7.052768e-08                1     3.854618e-08
+   tracking         D_target_550    target          0.000000 2.923120e-04                2     1.597715e-04
+fixed_pulse      D_protected_550 protected          0.000000 5.963830e-08                1     3.264332e-08
+   tracking      D_protected_550 protected          0.000000 0.000000e+00                0     1.287036e-84
+fixed_pulse     E_target_400_i28    target          0.000000 3.001667e-06                1     1.653422e-06
+   tracking     E_target_400_i28    target          0.000000 4.507973e-03                2     2.482002e-03
+fixed_pulse  E_protected_400_i51 protected          0.000000 1.935496e-08                1     1.087554e-08
+   tracking  E_protected_400_i51 protected          0.000000 1.187657e-05               29     6.678953e-06
+fixed_pulse         F_target_750    target          0.000000 6.008122e-09                1     3.152324e-09
+   tracking         F_target_750    target          0.000000 1.802635e-05                2     9.454826e-06
+fixed_pulse      F_protected_750 protected          0.000000 2.671186e-09                1     1.402357e-09
+   tracking      F_protected_750 protected          0.000000 0.000000e+00                0    7.261503e-227
+fixed_pulse         G_target_250    target          0.000000 0.000000e+00                1     3.339503e-05
+   tracking         G_target_250    target          5.948604 0.000000e+00                2     8.253384e-02
+fixed_pulse      G_protected_250 protected          0.000000 1.890057e-05                1     9.179636e-06
+   tracking      G_protected_250 protected          0.000000 0.000000e+00                0     3.419434e-82
+python3 scripts/phase07_controls.py
+           scenario pair  target_dv_ms  protected_dv_ms  selectivity_ratio
+            uniform    A      0.007455     4.657404e-04       1.600671e+01
+            uniform    D      0.000160     3.758638e-05       4.250781e+00
+            uniform    E      0.002482     5.318802e-04       4.666471e+00
+            uniform    G      0.082583     1.030873e-02       8.010943e+00
+ localized_tracking    A      0.007455     4.990554e-09       1.493810e+06
+ localized_tracking    D      0.000160     1.287036e-84       1.241391e+80
+ localized_tracking    E      0.002482     6.678953e-06       3.716155e+02
+ localized_tracking    G      0.082534     3.419434e-82       2.413670e+80
+optimized_localized    A      0.007444     4.986500e-09       1.492833e+06
+python3 scripts/phase08_timing.py
+                                min       max      mean       std  spread_ratio
+experiment                                                                     
+fixed_pulse_bestcase_site  0.000002  0.000006  0.000004  0.000001      1.526551
+tracking_4h_window         0.001225  0.001260  0.001241  0.000013      1.014979
+python3 scripts/phase09_pareto.py
+ delta_max  sigma_h_km  duration_s  target_dv_ms  protected_dv_ms  selectivity
+       1.0        50.0     14400.0      0.000248     5.461345e-85 4.533761e+80
+       2.0        50.0     14400.0      0.000495     1.092269e-84 4.533761e+80
+       1.0        50.0     43200.0      0.000744     1.614574e-84 4.607813e+80
+       5.0        50.0     14400.0      0.001238     2.730672e-84 4.533761e+80
+       1.0        50.0     86400.0      0.001491     3.195178e-84 4.666153e+80
+      10.0        50.0     14400.0      0.002476     5.461345e-84 4.533761e+80
+       2.0        50.0     86400.0      0.002982     6.390356e-84 4.666149e+80
+       5.0        50.0     43200.0      0.003720     8.072868e-84 4.607903e+80
+      20.0        50.0     14400.0      0.004952     1.092269e-83 4.533761e+80
+       5.0        50.0     86400.0      0.007454     1.597589e-83 4.665936e+80
+      10.0        50.0     86400.0      0.014905     3.195178e-83 4.664914e+80
+      20.0        50.0     86400.0      0.029781     6.390356e-83 4.660376e+80
+      20.0       100.0     86400.0      0.029817     2.473169e-23 1.205617e+21
+      20.0       200.0     86400.0      0.029826     1.996134e-08 1.494181e+06
+      20.0       400.0     86400.0      0.029828     1.065483e-04 2.799490e+02
+python3 scripts/phase10_uncertainty.py
+/home/ubuntu/repos/thermosphere-debris-selective-decay/scripts/phase10_uncertainty.py:103: DeprecationWarning: `salib.sample.saltelli` will be removed in SALib 1.5.1 Please use `salib.sample.sobol`
+  X = saltelli.sample(PROBLEM, N, calc_second_order=False)
+     param            S1           ST      S1_conf      ST_conf
+ delta_max  8.297428e-01 5.475046e-01 3.843512e-01 3.121505e-01
+sigma_h_km  3.046831e-07 2.305659e-10 5.266105e-06 2.434598e-10
+sigma_v_km -2.325766e-09 3.265299e-15 1.742200e-08 3.463669e-15
+ rho_scale  2.802540e-02 2.938196e-02 9.281464e-02 1.509318e-02
+   B_scale -1.520233e-02 1.454534e-02 5.393040e-02 6.904260e-03
+duration_h  5.089365e-01 5.906214e-01 2.644242e-01 2.720150e-01
+                  control                case  extra_deltav_ms  a_drop_km  encounter_count
+      high_altitude_750km        F_target_750         0.000009   0.000162                4
+      high_altitude_750km     F_protected_750         0.000002   0.000041                4
+               high_B_200           neg_highB         0.000186   0.002966                4
+near_identical_trajectory            neg_twin         0.000460   0.007405                4
+           diffuse_3000km A_target_highAm_400         0.007455   0.118767                4
+           diffuse_3000km     A_protected_400         0.000443   0.007376                4
+                short_60s A_target_highAm_400         0.000006   0.105573                1
+  poor_timing_fixed_pulse A_target_highAm_400         0.000000   0.105563                0
+python3 scripts/phase11_scaling.py
+              mean       std  count
+regime                             
+high      1.015003  0.016876    120
+low       1.025388  0.032722    120
+moderate  1.020585  0.024057    120
+storm     1.014033  0.015833    120
+slope=1.000 R2=0.9999
+python3 scripts/phase12_classification.py
+sigma_h_km         50.0      200.0     1000.0
+regime   alt_km                              
+high     250     0.222222  0.333333  0.666667
+         300     0.222222  0.333333  0.666667
+         400     0.222222  0.333333  0.666667
+         500     0.222222  0.333333  0.666667
+         600     0.222222  0.333333  0.666667
+         750     0.222222  0.333333  0.666667
+low      250     0.222222  0.333333  0.666667
+         300     0.222222  0.333333  0.666667
+         400     0.222222  0.333333  0.666667
+         500     0.222222  0.333333  0.666667
+         600     0.222222  0.333333  0.666667
+         750     0.222222  0.333333  0.666667
+moderate 250     0.222222  0.333333  0.666667
+         300     0.222222  0.333333  0.666667
+         400     0.222222  0.333333  0.666667
+         500     0.222222  0.333333  0.666667
+         600     0.222222  0.333333  0.666667
+         750     0.222222  0.333333  0.666667
+storm    250     0.222222  0.333333  0.666667
+         300     0.222222  0.333333  0.666667
+         400     0.222222  0.333333  0.666667
+         500     0.222222  0.333333  0.666667
+         600     0.222222  0.333333  0.666667
+         750     0.222222  0.333333  0.666667
+python3 scripts/phase13_results.py
+master_results rows: 3448; figures written.
+python3 scripts/build_manuscript.py
+manuscript + supplement written
+python3 scripts/qc_traceability.py
+QC: all audits pass

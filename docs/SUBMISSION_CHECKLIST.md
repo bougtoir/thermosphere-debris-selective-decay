@@ -17,5 +17,6 @@
 - [x] Gate records: GATE 1 (phase 1), GATE 2 (phase 2 validation)
 - [x] Cover letter, highlights, journal audit, decision log,
       limitations (manuscript §5), reviewer-risk assessment
-- [ ] Final clean-environment rebuild: `make clean && make all && make quick`
-      (verification in progress — see results/full_rebuild.log)
+- [x] Final clean-environment rebuild verified: `make clean && make all
+      && make quick` completed end-to-end, QC all pass
+      (results/full_rebuild.log)
