@@ -1,0 +1,28 @@
+# Traceability audit
+
+- PASS results/tables/phase1_density_table.csv
+- PASS results/tables/phase1_scale_calculations.csv
+- PASS results/tables/phase1_energy_bounds.csv
+- PASS results/tables/phase2_validation.csv
+- PASS results/tables/phase3_intervention_checks.csv
+- PASS results/tables/phase5_spreading.csv
+- PASS results/tables/phase6_outcomes.csv
+- PASS results/tables/phase7_controls.csv
+- PASS results/tables/phase7_selectivity.csv
+- PASS results/tables/phase8_timing.csv
+- PASS results/tables/phase9_pareto.csv
+- PASS results/tables/phase10_montecarlo.csv
+- PASS results/tables/phase10_sobol.csv
+- PASS results/tables/phase10_negative_controls.csv
+- PASS results/tables/phase11_scaling.csv
+- PASS results/tables/phase12_classification.csv
+- PASS results/tables/master_results.csv
+- PASS results/figures/fig1_density_profiles.png
+- PASS results/figures/fig2_lifetime_map.png
+- PASS results/figures/fig3_collateral.png
+- PASS results/figures/fig4_timing.png
+- PASS results/figures/fig5_pareto.png
+- PASS results/figures/fig6_scaling_collapse.png
+- PASS manuscript/manuscript.docx
+- PASS supplement/supplement.docx
+- PASS all 15 references verified

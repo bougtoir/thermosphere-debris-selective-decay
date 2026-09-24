@@ -45,13 +45,12 @@ phase11:
 	$(PY) scripts/phase11_scaling.py
 
 phase12:
-	$(PY) scripts/phase12_energy.py
+	$(PY) scripts/phase12_classification.py
 
 figures:
-	$(PY) scripts/make_figures.py
+	$(PY) scripts/phase13_results.py
 
-tables:
-	$(PY) scripts/make_tables.py
+tables: figures
 
 manuscript:
 	$(PY) scripts/build_manuscript.py

@@ -1,0 +1,207 @@
+rm -rf results/figures/* results/tables/* results/logs/* data/processed/* manuscript/output 2>/dev/null || true
+python3 scripts/phase01_feasibility_audit.py
+dnet log error -7.339138e-13 -8.511859e-13 2.800000e+01
+dnet log error -8.126246e-19 -nan 4.000000e+00
+dnet log error -2.162587e-14 -2.767827e-14 1.600000e+01
+dnet log error -6.647729e-13 -6.272398e-13 3.200000e+01
+dnet log error -7.620045e-14 -nan 4.000000e+01
+dnet log error -8.415359e-21 -nan 1.000000e+00
+dnet log error -7.809355e-16 -1.038320e-15 1.400000e+01
+dnet log error -1.608649e-12 -1.863371e-12 2.800000e+01
+dnet log error -2.150833e-18 -nan 4.000000e+00
+dnet log error -5.767958e-14 -7.328939e-14 1.600000e+01
+dnet log error -1.429329e-12 -1.350932e-12 3.200000e+01
+dnet log error -1.335765e-13 -nan 4.000000e+01
+dnet log error -2.262442e-20 -nan 1.000000e+00
+dnet log error -2.147896e-15 -2.832025e-15 1.400000e+01
+dnet log error -8.209374e-13 -9.528655e-13 2.800000e+01
+dnet log error -1.864455e-18 -nan 4.000000e+00
+dnet log error -4.663628e-14 -5.967442e-14 1.600000e+01
+dnet log error -7.252677e-13 -6.843565e-13 3.200000e+01
+dnet log error -3.341310e-14 -nan 4.000000e+01
+dnet log error -6.285716e-21 -nan 1.000000e+00
+dnet log error -5.932527e-16 -7.885678e-16 1.400000e+01
+dnet log error -7.377276e-13 -8.555788e-13 2.800000e+01
+dnet log error -8.400099e-19 -nan 4.000000e+00
+dnet log error -2.626124e-14 -3.361093e-14 1.600000e+01
+dnet log error -7.478577e-13 -7.056336e-13 3.200000e+01
+dnet log error -3.139176e-14 -nan 4.000000e+01
+dnet log error -5.192575e-21 -nan 1.000000e+00
+dnet log error -1.484436e-15 -1.973684e-15 1.400000e+01
+dnet log error -1.695815e-12 -1.964296e-12 2.800000e+01
+dnet log error -1.800517e-18 -nan 4.000000e+00
+dnet log error -6.719907e-14 -8.536561e-14 1.600000e+01
+dnet log error -1.683263e-12 -1.591024e-12 3.200000e+01
+dnet log error -6.564808e-14 -nan 4.000000e+01
+dnet log error -1.702288e-20 -nan 1.000000e+00
+dnet log error -4.661510e-15 -6.144629e-15 1.400000e+01
+dnet log error -8.242844e-13 -9.567209e-13 2.800000e+01
+dnet log error -9.272014e-19 -nan 4.000000e+00
+dnet log error -2.804562e-14 -3.588635e-14 1.600000e+01
+dnet log error -8.150083e-13 -7.690350e-13 3.200000e+01
+dnet log error -3.275866e-14 -nan 4.000000e+01
+dnet log error -1.090083e-20 -nan 1.000000e+00
+dnet log error -1.667979e-16 -2.217123e-16 1.400000e+01
+dnet log error -1.698031e-12 -1.966807e-12 2.800000e+01
+dnet log error -3.390083e-18 -nan 4.000000e+00
+dnet log error -1.129596e-13 -1.434970e-13 1.600000e+01
+dnet log error -1.487457e-12 -1.405948e-12 3.200000e+01
+dnet log error -4.424965e-14 -nan 4.000000e+01
+dnet log error -1.679470e-20 -nan 1.000000e+00
+dnet log error -1.729714e-14 -2.280044e-14 1.400000e+01
+dnet log error -9.080565e-13 -1.053926e-12 2.800000e+01
+dnet log error -1.424626e-18 -nan 4.000000e+00
+dnet log error -4.588860e-14 -5.870407e-14 1.600000e+01
+dnet log error -7.909090e-13 -7.463360e-13 3.200000e+01
+dnet log error -2.871596e-14 -nan 4.000000e+01
+dnet log error -1.376019e-20 -nan 1.000000e+00
+dnet log error -7.414903e-16 -9.853449e-16 1.400000e+01
+dnet log error -6.582277e-13 -7.633567e-13 2.800000e+01
+dnet log error -8.780301e-19 -nan 4.000000e+00
+dnet log error -2.122897e-14 -2.717660e-14 1.600000e+01
+dnet log error -5.899595e-13 -5.566199e-13 3.200000e+01
+dnet log error -4.152015e-14 -nan 4.000000e+01
+dnet log error -1.104477e-20 -nan 1.000000e+00
+dnet log error -6.677257e-16 -8.880357e-16 1.400000e+01
+dnet log error -9.042405e-13 -1.049534e-12 2.800000e+01
+dnet log error -2.864457e-18 -nan 4.000000e+00
+dnet log error -7.629675e-14 -9.760443e-14 1.600000e+01
+dnet log error -7.037250e-13 -6.640654e-13 3.200000e+01
+dnet log error -2.927373e-14 -nan 4.000000e+01
+dnet log error -7.933175e-21 -nan 1.000000e+00
+dnet log error -2.636899e-15 -3.504100e-15 1.400000e+01
+dnet log error -6.548822e-13 -7.595004e-13 2.800000e+01
+dnet log error -8.495028e-19 -nan 4.000000e+00
+dnet log error -1.748318e-14 -2.238137e-14 1.600000e+01
+dnet log error -5.244604e-13 -4.948222e-13 3.200000e+01
+dnet log error -1.008355e-13 -nan 4.000000e+01
+dnet log error -1.790175e-20 -nan 1.000000e+00
+dnet log error -3.513068e-16 -4.672174e-16 1.400000e+01
+dnet log error -1.610404e-12 -1.865357e-12 2.800000e+01
+dnet log error -4.048771e-18 -nan 4.000000e+00
+dnet log error -9.693949e-14 -1.231742e-13 1.600000e+01
+dnet log error -1.262794e-12 -1.193531e-12 3.200000e+01
+dnet log error -9.006184e-14 -nan 4.000000e+01
+dnet log error -2.231573e-20 -nan 1.000000e+00
+dnet log error -7.968346e-15 -1.050635e-14 1.400000e+01
+dnet log error -9.167770e-13 -1.063269e-12 2.800000e+01
+dnet log error -1.015100e-18 -nan 4.000000e+00
+dnet log error -2.701420e-14 -3.457463e-14 1.600000e+01
+dnet log error -8.304088e-13 -7.835238e-13 3.200000e+01
+dnet log error -9.518668e-14 -nan 4.000000e+01
+dnet log error -1.051214e-20 -nan 1.000000e+00
+dnet log error -9.755146e-16 -1.297029e-15 1.400000e+01
+dnet log error -1.584454e-12 -1.835344e-12 2.800000e+01
+dnet log error -2.118483e-18 -nan 4.000000e+00
+dnet log error -5.681203e-14 -7.218706e-14 1.600000e+01
+dnet log error -1.407831e-12 -1.330613e-12 3.200000e+01
+dnet log error -1.315674e-13 -nan 4.000000e+01
+dnet log error -2.228413e-20 -nan 1.000000e+00
+dnet log error -2.115590e-15 -2.789429e-15 1.400000e+01
+dnet log error -9.982401e-13 -1.158662e-12 2.800000e+01
+dnet log error -2.267133e-18 -nan 4.000000e+00
+dnet log error -5.670860e-14 -7.256267e-14 1.600000e+01
+dnet log error -8.819081e-13 -8.321611e-13 3.200000e+01
+dnet log error -4.062953e-14 -nan 4.000000e+01
+dnet log error -7.643280e-21 -nan 1.000000e+00
+dnet log error -7.213810e-16 -9.588795e-16 1.400000e+01
+dnet log error -9.215386e-13 -1.068754e-12 2.800000e+01
+dnet log error -1.049305e-18 -nan 4.000000e+00
+dnet log error -3.280445e-14 -4.198537e-14 1.600000e+01
+dnet log error -9.341927e-13 -8.814481e-13 3.200000e+01
+dnet log error -3.921328e-14 -nan 4.000000e+01
+dnet log error -6.486349e-21 -nan 1.000000e+00
+dnet log error -1.854296e-15 -2.465443e-15 1.400000e+01
+dnet log error -1.677228e-12 -1.942767e-12 2.800000e+01
+dnet log error -1.780783e-18 -nan 4.000000e+00
+dnet log error -6.646256e-14 -8.442999e-14 1.600000e+01
+dnet log error -1.664814e-12 -1.573586e-12 3.200000e+01
+dnet log error -6.492856e-14 -nan 4.000000e+01
+dnet log error -1.683631e-20 -nan 1.000000e+00
+dnet log error -4.610418e-15 -6.077282e-15 1.400000e+01
+dnet log error -1.002418e-12 -1.163475e-12 2.800000e+01
+dnet log error -1.127576e-18 -nan 4.000000e+00
+dnet log error -3.410648e-14 -4.364165e-14 1.600000e+01
+dnet log error -9.911375e-13 -9.352291e-13 3.200000e+01
+dnet log error -3.983804e-14 -nan 4.000000e+01
+dnet log error -1.325658e-20 -nan 1.000000e+00
+dnet log error -2.028441e-16 -2.696259e-16 1.400000e+01
+dnet log error -1.679983e-12 -1.945902e-12 2.800000e+01
+dnet log error -3.354049e-18 -nan 4.000000e+00
+dnet log error -1.117590e-13 -1.419718e-13 1.600000e+01
+dnet log error -1.471647e-12 -1.391004e-12 3.200000e+01
+dnet log error -4.377932e-14 -nan 4.000000e+01
+dnet log error -1.661619e-20 -nan 1.000000e+00
+dnet log error -1.711328e-14 -2.255809e-14 1.400000e+01
+dnet log error -1.091605e-12 -1.266959e-12 2.800000e+01
+dnet log error -1.712590e-18 -nan 4.000000e+00
+dnet log error -5.516420e-14 -7.057010e-14 1.600000e+01
+dnet log error -9.507779e-13 -8.971951e-13 3.200000e+01
+dnet log error -3.452040e-14 -nan 4.000000e+01
+dnet log error -1.654158e-20 -nan 1.000000e+00
+dnet log error -8.913699e-16 -1.184516e-15 1.400000e+01
+dnet log error -8.376038e-13 -9.713819e-13 2.800000e+01
+dnet log error -1.117305e-18 -nan 4.000000e+00
+dnet log error -2.701416e-14 -3.458260e-14 1.600000e+01
+dnet log error -7.507315e-13 -7.083065e-13 3.200000e+01
+dnet log error -5.283496e-14 -nan 4.000000e+01
+dnet log error -1.405462e-20 -nan 1.000000e+00
+dnet log error -8.496902e-16 -1.130038e-15 1.400000e+01
+dnet log error -1.086842e-12 -1.261476e-12 2.800000e+01
+dnet log error -3.442902e-18 -nan 4.000000e+00
+dnet log error -9.170402e-14 -1.173145e-13 1.600000e+01
+dnet log error -8.458344e-13 -7.981659e-13 3.200000e+01
+dnet log error -3.518523e-14 -nan 4.000000e+01
+dnet log error -9.535191e-21 -nan 1.000000e+00
+dnet log error -3.169392e-15 -4.211714e-15 1.400000e+01
+dnet log error -8.334263e-13 -9.665671e-13 2.800000e+01
+dnet log error -1.081107e-18 -nan 4.000000e+00
+dnet log error -2.224972e-14 -2.848333e-14 1.600000e+01
+dnedensity lookup: 3204 rows
+phase1 done; gate: worth simulation (restricted regime: low altitude, low B)
+t log error -6.674469e-13 -6.297283e-13 3.200000e+01
+dnet log error -1.283268e-13 -nan 4.000000e+01
+dnet log error -2.278240e-20 -nan 1.000000e+00
+dnet log error -4.470855e-16 -5.945974e-16 1.400000e+01
+dnet log error -1.586640e-12 -1.837830e-12 2.800000e+01
+dnet log error -3.989023e-18 -nan 4.000000e+00
+dnet log error -9.550896e-14 -1.213565e-13 1.600000e+01
+dnet log error -1.244159e-12 -1.175918e-12 3.200000e+01
+dnet log error -8.873280e-14 -nan 4.000000e+01
+dnet log error -2.198642e-20 -nan 1.000000e+00
+dnet log error -7.850758e-15 -1.035131e-14 1.400000e+01
+python3 scripts/phase02_baseline_validation.py
+                              check                                                      metric         value          tol  passed
+     energy_conservation_j2_5orbits                                                  max |dE/E|  4.050375e-15 1.000000e-07    True
+angmom_conservation_twobody_5orbits                                                  max |dh/h|  2.009865e-15 1.000000e-09    True
+             convergence_rtol_1e-07                                           endpoint |dr| [m]  6.619417e-08          NaN    True
+             convergence_rtol_1e-09                                           endpoint |dr| [m]  3.486373e-08          NaN    True
+             convergence_rtol_1e-11                                           endpoint |dr| [m]  1.099013e-07          NaN    True
+             circular_orbit_closure                            closure error [m] after 1 period  1.396477e-05 1.000000e-02    True
+           j2_raan_rate_consistency                                         RAAN rate [deg/day] -5.002333e+00          NaN    True
+           fastprop_vs_cowell_250km relative 10-day altitude-drop difference (drag-only, no J2)  8.083581e-02 1.000000e-01    True
+             decay_scales_inverse_B                 drop(B=60)/drop(B=30) at 250 km storm, 30 d  5.000000e-01          NaN    True
+GATE 2: PASS
+python3 scripts/phase03_intervention_check.py
+              model         expected       got  passed
+      gaussian_peak         0.000381  0.000381    True
+  gaussian_vertical         3.032653   3.03262    True
+      tophat_inside              2.0       2.0    True
+     tophat_outside              0.0       0.0    True
+moving_static_equiv              1.5      True    True
+ encounter_detected mean_rho_delta>0       0.0    True
+    encounter_count              >=1         1    True
+phase3: PASS
+python3 scripts/phase04_populations.py
+population: 2000, cases: 23
+python3 scripts/phase05_spreading.py
+              model  target_exposure  protected_exposure  selectivity_ratio  target_enc  protected_enc  target_tfrac  exposure_retention
+          M0_static     6.652939e-17        5.013722e-17           3.538523           1              1      0.022222            1.000000
+  M1_diffusion_weak     6.651609e-17        5.013361e-17           3.538070           1              1      0.022222            0.999800
+   M1_diffusion_mod     6.523743e-17        4.977581e-17           3.495000           1              1      0.022222            0.980581
+M1_diffusion_strong     5.622756e-17        4.660969e-17           3.216931           1              1      0.025000            0.845154
+        M2_adv_diff     4.040285e-17        6.579417e-17           1.637545           1              1      0.022222            0.607293
+      M2_adv_strong     6.088657e-19        1.363556e-17           0.119074           1              1      0.019444            0.009152
+        M2_relax_1h     2.307705e-17        4.112172e-17           1.496503           1              1      0.022222            0.346870
+       M2_relax_10m     1.403240e-18        3.922841e-18           0.953894           1              1      0.020833            0.021092
+python3 scripts/phase06_outcomes.py
