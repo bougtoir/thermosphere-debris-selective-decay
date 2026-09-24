@@ -1,5 +1,9 @@
 PY ?= python3
 
+# The pipeline is strictly sequential: each phase consumes the previous
+# phases' outputs, so parallel execution is disabled.
+.NOTPARALLEL:
+
 .PHONY: all quick clean test manuscript qc figures tables submission
 .PHONY: phase1 phase2 phase3 phase4 phase5 phase6 phase7 phase8 phase9 phase10 phase11 phase12
 

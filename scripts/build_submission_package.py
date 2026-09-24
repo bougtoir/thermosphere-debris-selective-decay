@@ -69,18 +69,19 @@ def sha256(path):
 
 def main():
     root = repo_root()
+    missing = [src for src, _ in ITEMS
+               if not os.path.exists(os.path.join(root, src))]
+    if missing:
+        raise SystemExit(
+            "submission package incomplete — required files missing:\n  "
+            + "\n  ".join(missing)
+            + "\nRun `make all` to regenerate them.")
+    pairs = [(os.path.join(root, src), dst) for src, dst in ITEMS]
+
     out = os.path.join(root, "submission")
     if os.path.exists(out):
         shutil.rmtree(out)
     os.makedirs(out)
-
-    pairs = []
-    for src, dst in ITEMS:
-        sp = os.path.join(root, src)
-        if not os.path.exists(sp):
-            print(f"WARNING: missing {src}")
-            continue
-        pairs.append((sp, dst))
 
     for fn in sorted(os.listdir(os.path.join(root, FIG_DIR))):
         if fn.endswith(".png") and not fn.startswith("quick_"):

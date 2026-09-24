@@ -154,7 +154,8 @@ def main():
     # ---------------- main-text tables (from CSVs) ----------------
     t1 = sm[sm.B_kgm2.isin([5.0, 30.0, 80.0])][
         ["altitude_km", "B_kgm2", "lifetime0_days",
-         "mult_for_10pct_reduction", "mult_for_50pct_reduction",
+         "mult_for_1pct_reduction", "mult_for_10pct_reduction",
+         "mult_for_50pct_reduction",
          "mult_for_90pct_reduction"]].reset_index(drop=True)
     t2 = p6[["scenario", "case", "obj_type", "alt_km", "B", "lifetime_d",
              "delta_lifetime_d", "delta_a_km",
