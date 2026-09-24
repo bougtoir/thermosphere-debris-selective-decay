@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "Localized Thermospheric Density Enhancement for Selective Orbital Debris Decay: a Feasibility and Boundary Study"
+authors:
+  - family-names: Onishi
+    given-names: Tatsuki
+date-released: 2026-09-24
+license: MIT
+repository-code: https://github.com/bougtoir/thermosphere-debris-selective-decay

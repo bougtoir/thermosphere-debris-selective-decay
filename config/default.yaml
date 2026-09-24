@@ -1,0 +1,69 @@
+# Global configuration for the thermospheric debris-decay feasibility study.
+# All parameters are SI unless noted. Reproducibility: seeds are fixed; every
+# phase script reads this file and writes machine-readable outputs only.
+
+seed: 20260924
+
+earth:
+  mu: 3.986004418e14        # m^3/s^2
+  radius: 6378136.3         # m
+  j2: 1.08262668e-3
+  omega: 7.2921150e-5       # rad/s
+
+drag:
+  cd_default: 2.2
+  # ballistic coefficient B = m/(Cd*A) ranges [kg/m^2]
+  # derived from published A/m and Cd ~2.0-2.4 literature values
+  b_range: [1.0, 300.0]
+  b_cases:
+    high_am_debris: 5.0      # light debris, e.g. MLI fragment
+    typical_debris: 30.0
+    compact_debris: 120.0    # dense object
+    protected_sc: 80.0       # typical compact LEO satellite
+
+atmosphere:
+  model: nrlmsise00
+  regimes:
+    low:    {f107: 70.0,  f107a: 70.0,  ap: 4.0}
+    moderate: {f107: 140.0, f107a: 140.0, ap: 15.0}
+    high:   {f107: 230.0, f107a: 230.0, ap: 80.0}
+    storm:  {f107: 200.0, f107a: 200.0, ap: 300.0}
+  background_uncertainty: 0.15   # 1-sigma log-normal-ish factor for MSIS density
+
+orbits:
+  altitudes_km: [200, 250, 300, 350, 400, 450, 500, 550, 600, 700, 800]
+  propagation:
+    rtol: 1.0e-9
+    atol: 1.0e-12
+    max_step_days: 0.25
+  lifetime_criterion:
+    reentry_altitude_km: 120.0
+    max_years: 200.0
+
+intervention:
+  delta_max_grid: [1.0, 1.01, 1.1, 1.5, 2.0, 3.0, 5.0, 10.0, 30.0, 100.0]
+  sigma_h_km_grid: [10.0, 30.0, 100.0, 300.0, 1000.0, 3000.0]
+  sigma_v_km_grid: [5.0, 10.0, 20.0, 50.0, 100.0, 200.0]
+  durations_s: [60.0, 600.0, 1800.0, 3600.0, 21600.0, 86400.0]
+
+spreading:
+  # prescribed diffusion surrogate; kappa range spans optimistic to pessimistic
+  # horizontal eddy/molecular diffusion effective values (m^2/s)
+  kappa_h: [1.0e3, 1.0e5, 1.0e6]
+  kappa_v: [1.0e2, 1.0e4]
+  advection_speed_ms: [0.0, 100.0, 300.0]   # thermospheric wind range
+  # empirical e-folding timescale for a heated patch to relax (s)
+  tau_relax_s: [600.0, 3600.0]
+
+energy:
+  cp_air: 1004.0      # J/kg/K (used for optimistic lower bound)
+  delta_T_assumed: 100.0  # K, optimistic uniform heating of the perturbed mass
+
+montecarlo:
+  n_samples: 256          # quick profile; phase10 raises via config override
+  n_samples_full: 1024
+
+optimization:
+  method: scipy_differential_evolution
+  maxiter: 40
+  popsize: 10
