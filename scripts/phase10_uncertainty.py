@@ -4,8 +4,10 @@ Part 1: Monte Carlo over intervention and environment parameters for the
 tracking-bound scenario on the case-A pair (40-day horizon, extra delta-v
 as response). n from config montecarlo.n_samples.
 
-Part 2: Sobol' first/total-order indices via SALib (same response), with
-a small Saltelli base justified by the semi-analytic propagator's cost.
+Part 2: Sobol' first/total-order indices via SALib (same response) on a
+converged Saltelli base (src.uq.sobol_response.N_BASE); the convergence
+ladder and the audit of the earlier under-sampled design are in
+docs/SOBOL_AUDIT.md.
 
 Part 3: mandatory negative controls — cases where selective decay should
 NOT work; each is simulated, not just asserted:
@@ -24,10 +26,7 @@ from __future__ import annotations
 import os
 import sys
 
-import numpy as np
 import pandas as pd
-from SALib.sample import saltelli
-from SALib.analyze import sobol
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 from src.intervention.models import (  # noqa: E402
@@ -36,6 +35,7 @@ from src.orbits import fastprop  # noqa: E402
 from src.orbits.elements import ecef_approx  # noqa: E402
 from src.experiment import make_object, simulate  # noqa: E402
 from src.atmosphere.lookup import build_lookup, rho_fn_from_lookup  # noqa: E402
+from src.uq import sobol_response as sr  # noqa: E402
 from src.utils import load_config, rng, repo_root  # noqa: E402
 
 HORIZON_S = 40 * 86400.0
@@ -97,17 +97,12 @@ def main():
     mc.to_csv(os.path.join(root, "results/tables/phase10_montecarlo.csv"),
               index=False)
 
-    # ---- part 2: Sobol' (small Saltelli base; semi-analytic keeps it
-    # affordable, and phase-11 scaling already shows near-linear response)
-    N = 32
-    X = saltelli.sample(PROBLEM, N, calc_second_order=False)
-    Y = np.empty(len(X))
-    for i, x in enumerate(X):
-        out = eval_design(x, objs, tgt_el, rho_fn, x[3])
-        Y[i] = out[tgt_key]
-    si = sobol.analyze(PROBLEM, Y, calc_second_order=False)
-    sob = pd.DataFrame(dict(param=PROBLEM["names"], S1=si["S1"], ST=si["ST"],
-                            S1_conf=si["S1_conf"], ST_conf=si["ST_conf"]))
+    # ---- part 2: Sobol' on the converged base ----
+    with sr.make_pool() as pool:
+        _, y_sob, si = sr.run(sr.N_BASE, pool=pool, seed=cfg["seed"])
+    sob = sr.indices_frame(si)
+    sob["n_base"] = sr.N_BASE
+    sob["n_model_evals"] = len(y_sob)
     sob.to_csv(os.path.join(root, "results/tables/phase10_sobol.csv"),
                index=False)
 

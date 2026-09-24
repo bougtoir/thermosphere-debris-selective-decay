@@ -24,7 +24,8 @@ def make_object(name, alt_km, inc_deg, B, e=0.001, raan=0.0, argp=0.0,
 
 
 def simulate(obj, rho_fn, t_max_s, delta_windows=None, delta_fn=None,
-             reentry_alt_m=120e3, dt_day=0.25, rho_scale=1.0):
+             reentry_alt_m=120e3, dt_day=0.25, rho_scale=1.0,
+             fine_dt_s=10.0):
     """Return outcome dict for one object. rho_scale multiplies the
     background density (uncertainty propagation)."""
     if rho_scale != 1.0:
@@ -33,7 +34,8 @@ def simulate(obj, rho_fn, t_max_s, delta_windows=None, delta_fn=None,
     L, hist = fastprop.decay_lifetime(
         obj["el"], rho_fn, obj["B"], t_max_s,
         reentry_alt_m=reentry_alt_m, dt_day=dt_day,
-        delta_windows=delta_windows, delta_fn=delta_fn)
+        delta_windows=delta_windows, delta_fn=delta_fn,
+        fine_dt_s=fine_dt_s)
     out = dict(
         name=obj["name"], obj_type=obj["obj_type"], alt_km=obj["alt_km"],
         inc_deg=obj["inc_deg"], B=obj["B"], e=obj["e"], raan=obj["raan"],

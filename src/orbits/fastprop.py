@@ -5,8 +5,9 @@ Two-level scheme:
     (valid for near-circular LEO; e < 0.1 regime covered by sampling the
     instantaneous radius rather than assuming a constant one).
   * Decay: semi-major axis integrated with the orbit-averaged drag
-    da/dt = -(a * v_circ / B) * <rho>, where <rho> is the mean density
-    experienced along one orbit, evaluated by sampling K points.
+    da/dt = -(a * v_circ / B) * <rho> * f_rel^2, where <rho> is the mean
+    density experienced along one orbit (K sample points) and f_rel is the
+    corotating-atmosphere velocity factor (see corotation_factor).
 
 Intervention density fields delta(r, t) are sampled finely (fine_dt_s) while
 active and contribute extra orbit-averaged density for their duration.
@@ -21,6 +22,19 @@ from .elements import (
 
 K_ORBIT = 72          # samples per orbit for mean-density evaluation
 DAY = 86400.0
+
+
+def corotation_factor(a, inc):
+    """|v_rel| / |v| for a circular orbit in a rigidly corotating atmosphere.
+
+    The atmospheric velocity omega x r projects onto the along-track
+    direction as omega * a * cos(inc), essentially constant around a
+    circular orbit, so v_rel = v - omega a cos(inc). Prograde low-inclination
+    orbits see up to ~12% less dynamic pressure than the inertial-velocity
+    approximation; retrograde orbits see ~2% more.
+    """
+    v = np.sqrt(MU / a)
+    return 1.0 - OMEGA_E * a * np.cos(inc) / v
 
 
 def j2_secular_rates(a, e, inc):
@@ -122,7 +136,7 @@ def exposure_metrics(elements, rho_fn, delta_fn, t_start, t_end,
 
 def decay_lifetime(el0, rho_fn, B, t_max_s, reentry_alt_m=120e3,
                    dt_day=0.25, n_samples=K_ORBIT,
-                   delta_windows=None, delta_fn=None):
+                   delta_windows=None, delta_fn=None, fine_dt_s=10.0):
     """Integrate semi-major-axis decay until reentry or t_max.
 
     delta_windows: list of (t_start, t_end) during which delta_fn is active;
@@ -136,6 +150,8 @@ def decay_lifetime(el0, rho_fn, B, t_max_s, reentry_alt_m=120e3,
     hist_t = [0.0]
     total_enc = 0
     total_extra_impulse = 0.0  # integral of extra drag deceleration (m/s)
+
+    f_rel = corotation_factor(a, el0["inc"])
 
     while t < t_max_s:
         alt = a - R_EARTH
@@ -154,16 +170,18 @@ def decay_lifetime(el0, rho_fn, B, t_max_s, reentry_alt_m=120e3,
                 if ovl > 0:
                     m = exposure_metrics(el, rho_fn, delta_fn,
                                          max(ts, t), min(te, t + dt_day * DAY),
-                                         fine_dt_s=10.0)
+                                         fine_dt_s=fine_dt_s)
                     # extra mean density applied only for the overlapping
                     # fraction of this step
                     rho_eff += m["mean_rho_delta"] * (ovl / (dt_day * DAY))
                     total_enc += m["encounter_count"]
                     v_circ = np.sqrt(MU / a)
-                    total_extra_impulse += m["mean_rho_delta"] * v_circ**2 / (2.0 * B) * ovl
+                    v_rel = v_circ * f_rel
+                    total_extra_impulse += (m["mean_rho_delta"] * v_rel**2
+                                            / (2.0 * B) * ovl)
 
         v_circ = np.sqrt(MU / a)
-        da_dt = -(a * v_circ / B) * rho_eff   # m/s (circular approximation)
+        da_dt = -(a * v_circ / B) * rho_eff * f_rel**2
         if da_dt >= 0:
             da_dt = 0.0
         new_a = a + da_dt * dt_day * DAY

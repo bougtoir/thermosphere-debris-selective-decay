@@ -138,8 +138,8 @@ def run_checks():
     rows.append(dict(check="fastprop_vs_cowell_250km",
                      metric="relative 10-day altitude-drop difference "
                            "(drag-only, no J2)",
-                     value=float(rel), tol=0.10,
-                     passed=bool(rel < 0.10)))
+                     value=float(rel), tol=0.01,
+                     passed=bool(rel < 0.01)))
 
     # 6. King-Hele sanity: 30-day altitude drop scales ~ inversely with B
     #    (weak-drag regime where lifetime >> horizon -> ratio ~ 0.5)

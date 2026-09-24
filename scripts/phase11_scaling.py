@@ -3,12 +3,13 @@
 For the tracking-bound scenario the theory predicts, for a near-circular
 orbit held inside a constant enhancement delta for time T:
 
-    extra_dv = (rho * delta * v^2 / (2 B)) * T_eff
+    extra_dv = (rho * delta * v_rel^2 / (2 B)) * T_eff
 
-where T_eff is the in-patch residence time. Define the dimensionless
-groups
+where T_eff is the in-patch residence time and v_rel = v - omega a cos(i)
+is the speed relative to the corotating atmosphere. Define the
+dimensionless groups
 
-    Pi_benefit = extra_dv * B / (rho * delta * v^2 * T)
+    Pi_benefit = 2 * extra_dv * B / (rho * delta * v_rel^2 * T)
     Pi_collateral = protected_dv / target_dv
 
 and test collapse over a synthetic population sample: simulated extra_dv
@@ -29,6 +30,7 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 from src.experiment import make_object, simulate  # noqa: E402
 from src.atmosphere.lookup import build_lookup, rho_fn_from_lookup  # noqa: E402
 from src.orbits.elements import MU, R_EARTH  # noqa: E402
+from src.orbits.fastprop import corotation_factor  # noqa: E402
 from src.utils import load_config, rng, repo_root  # noqa: E402
 
 HORIZON_S = 40 * 86400.0
@@ -62,11 +64,12 @@ def main():
                            delta_fn=uniform_delta(d, T_ENH))
             a0 = R_EARTH + p["alt_km"] * 1000.0
             v = np.sqrt(MU / a0)
+            v_rel = v * corotation_factor(a0, np.radians(p["inc_deg"]))
             rho = rho_fn(np.array([a0, 0.0, 0.0]), 0.0)
-            pred = rho * d * v**2 * T_ENH / (2.0 * p["B"])
+            pred = rho * d * v_rel**2 * T_ENH / (2.0 * p["B"])
             rows.append(dict(regime=regime, obj_id=p["obj_id"],
                              alt_km=p["alt_km"], B=p["B"], delta=d,
-                             rho=rho, v_ms=v, T_s=T_ENH,
+                             rho=rho, v_ms=v, v_rel_ms=v_rel, T_s=T_ENH,
                              extra_dv_sim=res["extra_deltav_ms"],
                              extra_dv_pred=pred,
                              Pi_benefit=(res["extra_deltav_ms"] / pred
@@ -88,8 +91,10 @@ def main():
     with open(os.path.join(root, "docs/PHASE_11_HANDOFF.md"), "w") as f:
         f.write("# Phase 11 handoff\n\n")
         f.write("Dimensionless collapse of simulated extra delta-v onto "
-                "Pi_benefit = dv*B/(rho*delta*v*T) = 1 (uniform "
-                "enhancement, T_eff = T).\n\n")
+                "Pi_benefit = 2*dv*B/(rho*delta*v_rel^2*T) = 1 (uniform "
+                "enhancement, T_eff = T). See docs/SCALING_LAW_AUDIT.md: "
+                "the collapse is an internal-consistency check, not an "
+                "independent physical validation.\n\n")
         f.write(grp.to_markdown())
         f.write(f"\n\nlog-log fit: slope={slope:.3f}, "
                 f"intercept={intercept:.3f}, R2={r2:.4f}\n")

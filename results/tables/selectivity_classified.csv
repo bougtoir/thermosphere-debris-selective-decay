@@ -1,0 +1,9 @@
+scenario,pair,target_dv_ms,protected_dv_ms,protected_class,protected_n_sigma,protected_encounters,selectivity_ratio,ratio_status,ratio_meaningful
+uniform,A,0.007454435052247028,0.0004657382877335187,physical_exposure,-0.0,1,16.00563073421232,physical,True
+uniform,D,0.0001597712633324705,3.758636745145457e-05,physical_exposure,-0.0,1,4.250776921681147,physical,True
+uniform,E,0.002481943999989994,0.0005318774249360891,physical_exposure,-0.0,1,4.666383425256725,physical,True
+uniform,G,0.0824937298361344,0.010307360873153391,physical_exposure,-0.0,1,8.003380385273791,physical,True
+localized_tracking,A,0.007454435052246865,4.9911213430240025e-09,gaussian_tail,4.774055887398435,1,1493539.1347809627,tail_limited,False
+localized_tracking,D,0.00015977126333246752,1.287075561286355e-84,no_encounter,19.096756504715916,0,1.2413510763329677e+80,undefined_no_encounter,False
+localized_tracking,E,0.002481943999989941,6.678949167453941e-06,physical_exposure,0.16585834767413113,29,371.60696058060796,physical,True
+localized_tracking,G,0.08249372983613285,3.4542387817681975e-82,no_encounter,19.096756505074055,0,2.388188398310581e+80,undefined_no_encounter,False
