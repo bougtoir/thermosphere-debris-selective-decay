@@ -4,3 +4,4 @@ __pycache__/
 results/logs/*.tmp
 .DS_Store
 manuscript/output/
+submission/

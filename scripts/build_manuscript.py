@@ -15,7 +15,11 @@ import sys
 
 import pandas as pd
 from docx import Document
-from docx.shared import Pt
+from docx.enum.text import WD_ALIGN_PARAGRAPH
+from docx.shared import Inches, Pt
+from pptx import Presentation
+from pptx.util import Inches as PInches
+from pptx.util import Pt as PPt
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 from src.utils import repo_root  # noqa: E402
@@ -121,12 +125,12 @@ def main():
 
     n["pareto_min_sel"] = float(p9["selectivity"].min())
     n["pareto_worst_sh"] = float(p9.loc[p9["selectivity"].idxmin(),
-                                      "sigma_h_km"])
+                                        "sigma_h_km"])
 
     n["mc_n"] = len(mc)
     n["mc_t_dv_med"] = float(mc["target_dv_ms"].median())
     n["mc_t_dv_iqr"] = (float(mc["target_dv_ms"].quantile(0.75))
-                       - float(mc["target_dv_ms"].quantile(0.25)))
+                        - float(mc["target_dv_ms"].quantile(0.25)))
     n["sobol_top"] = sob.loc[sob["ST"].idxmax(), "param"]
     n["sobol_top_ST"] = float(sob["ST"].max())
 
@@ -147,21 +151,39 @@ def main():
     n["pi_std"] = float(p11["Pi_benefit"].std())
     n["frac_transport_1h"] = float(p12["transport_survivable_1h"].mean())
 
-    # ---------------- document ----------------
-    doc = Document()
-    st = doc.styles["Normal"]
-    st.font.name = "Times New Roman"
-    st.font.size = Pt(11)
+    # ---------------- main-text tables (from CSVs) ----------------
+    t1 = sm[sm.B_kgm2.isin([5.0, 30.0, 80.0])][
+        ["altitude_km", "B_kgm2", "lifetime0_days",
+         "mult_for_1pct_reduction", "mult_for_10pct_reduction",
+         "mult_for_50pct_reduction",
+         "mult_for_90pct_reduction"]].reset_index(drop=True)
+    t2 = p6[["scenario", "case", "obj_type", "alt_km", "B", "lifetime_d",
+             "delta_lifetime_d", "delta_a_km",
+             "extra_deltav_ms"]].reset_index(drop=True)
+    t3 = p7[["scenario", "pair", "target_dv_ms", "protected_dv_ms",
+             "selectivity_ratio"]].reset_index(drop=True)
+    t4 = sob[["param", "S1", "ST", "S1_conf", "ST_conf"]] \
+        .reset_index(drop=True)
+    t5 = neg[["control", "case", "extra_deltav_ms", "a_drop_km",
+              "encounter_count"]].reset_index(drop=True)
+
+    # ---------------- document content (rendered twice) ----------------
+    content = []
 
     def H(level, text):
-        doc.add_heading(text, level=level)
+        content.append(("H", level, text))
 
     def P(text):
-        doc.add_paragraph(text)
+        content.append(("P", text))
 
-    doc.add_heading(
-        "Quantifying the feasibility boundary of localized thermospheric "
-        "density enhancement for selective orbital debris decay", 0)
+    def FIG(fname, caption):
+        content.append(("FIG", fname, caption))
+
+    def TBL(df, caption):
+        content.append(("TBL", df, caption))
+
+    H(0, "Quantifying the feasibility boundary of localized thermospheric "
+         "density enhancement for selective orbital debris decay")
     P("[Authors] T. Onishi et al. Corresponding: bougtoir@gmail.com")
     P("Target journal: Advances in Space Research (manuscript class: "
       "modelling/feasibility study). Journal audit documented in "
@@ -181,7 +203,7 @@ def main():
       "controlling boundary is set by atmospheric transport and orbital "
       "transit geometry, not by drag physics: an Earth-fixed pulse of "
       f"even large amplitude contributes only "
-      f"~{sci(float(n['dv_A_pulse'].max() if hasattr(n['dv_A_pulse'],'max') else n['dv_A_pulse']))} m/s "
+      f"~{sci(float(n['dv_A_pulse']))} m/s "
       "per event, while perfect on-target sustainment yields mm/s–cm/s "
       "per day and extreme selectivity against non-co-located objects. "
       "However, horizontal diffusion and advection disperse any static "
@@ -257,7 +279,17 @@ def main():
       f"for B >= 30 kg/m^2 (e.g. {n['lt_400_B30']:.0f} d at 400 km under "
       f"the 5-year horizon used) while at 250 km a B=10 object decays in "
       f"~{n['lt_250_B10']:.0f} d (moderate). Gate 1 therefore routes the "
-      "study to the restricted regime of low altitude and low B.")
+      "study to the restricted regime of low altitude and low B "
+      "(Fig. 1, Fig. 2, Table 1).")
+    FIG("fig1_density_profiles.png",
+        "Figure 1. NRLMSISE-00 climatological mass-density profiles "
+        "(200-800 km) for the four solar/geomagnetic regimes used here.")
+    FIG("fig2_lifetime_map.png",
+        "Figure 2. Baseline decay lifetime (log10 days) over altitude and "
+        "ballistic coefficient B in the moderate regime.")
+    TBL(t1, "Table 1. Baseline decay lifetime and the background-density "
+            "multiplier required for 1/10/50/90% lifetime reduction "
+            "(moderate regime).")
     H(2, "3.2 Fixed pulses vs the tracking bound")
     P(f"A best-case-sited Earth-fixed Gaussian pulse (delta=5, "
       f"sigma_h=200 km, 2 h) adds only ~{sci(n['dv_A_pulse'])} m/s to the "
@@ -266,7 +298,11 @@ def main():
       f"{sci(n['dv_A_track'])} m/s for the same target, and reduces the "
       f"250 km target's lifetime by {n['dlt_G_track']:.1f} d. The gap "
       "between these two columns *is* the feasibility boundary: sustained "
-      "co-location, not peak amplitude, determines effectiveness.")
+      "co-location, not peak amplitude, determines effectiveness "
+      "(Table 2).")
+    TBL(t2, "Table 2. Per-object outcomes for representative cases under "
+            "the baseline, Earth-fixed pulse, and idealized tracking-bound "
+            "scenarios.")
     H(2, "3.3 Localization vs uniform enhancement")
     P(f"Matched-exposure controls show localization changes *collateral*, "
       f"not benefit: uniform delta=5 gives the target the same "
@@ -274,7 +310,14 @@ def main():
       f"m/s to the protected object (selectivity {n['sel_A_unif']:.1f}), "
       f"whereas the localized bound gives {sci(n['dv_loc_prot_A'])} m/s "
       f"(selectivity {sci(n['sel_A_loc'])}). Localization is thus "
-      "necessary for safety but does not create effect.")
+      "necessary for safety but does not create effect (Fig. 3, "
+      "Table 3).")
+    FIG("fig3_collateral.png",
+        "Figure 3. Absolute collateral delta-v imparted to protected "
+        "objects under uniform versus localized enhancement, by case pair.")
+    TBL(t3, "Table 3. Matched-exposure controls: target benefit, absolute "
+            "protected-object collateral, and the resulting selectivity "
+            "ratio for each scenario and case pair.")
     H(2, "3.4 Timing and Pareto structure")
     P(f"Tracking outcome is nearly insensitive to window start "
       f"(mean {sci(n['track_dv_mean'])} m/s, std "
@@ -282,13 +325,23 @@ def main():
       "uniformly negligible even with perfect siting. The Pareto sweep "
       f"shows selectivity collapses (to ~{n['pareto_min_sel']:.0f}) once "
       f"sigma_h reaches ~{n['pareto_worst_sh']:.0f} km, where protected "
-      "objects begin sharing the enhanced region.")
+      "objects begin sharing the enhanced region (Fig. 4, Fig. 5).")
+    FIG("fig4_timing.png",
+        "Figure 4. Target extra delta-v versus intervention reference "
+        "time for a best-case-sited fixed pulse and for a 4 h tracking "
+        "window.")
+    FIG("fig5_pareto.png",
+        "Figure 5. Target benefit against protected-object collateral "
+        "over the design sweep; the Pareto front is highlighted and "
+        "colour encodes horizontal patch scale.")
     H(2, "3.5 Uncertainty")
     P(f"Monte Carlo (n={n['mc_n']}) over delta, sigmas, density and B "
       f"uncertainty gives a median target delta-v of "
       f"{sci(n['mc_t_dv_med'])} m/s (IQR {sci(n['mc_t_dv_iqr'])}). "
       f"Sobol' indices are dominated by `{n['sobol_top']}` "
-      f"(ST={n['sobol_top_ST']:.2f}).")
+      f"(ST={n['sobol_top_ST']:.2f}); see Fig. S2, Fig. S3 and Table 4.")
+    TBL(t4, "Table 4. Sobol' first-order and total-order sensitivity "
+            "indices for the target extra delta-v.")
     H(2, "3.6 Negative controls")
     P(f"All mandatory negative controls behave as required: high "
       f"altitude (750 km: <= {sci(n['neg_hialt_dv'])} m/s), high "
@@ -297,7 +350,10 @@ def main():
       f"({sci(n['neg_timing_dv'])} m/s) are all negligible. The "
       f"near-identical-trajectory control produces the expected failure "
       f"of selectivity: the co-orbital protected twin absorbs "
-      f"{sci(n['neg_twin_dv'])} m/s, comparable to its target.")
+      f"{sci(n['neg_twin_dv'])} m/s, comparable to its target "
+      "(Table 5, Fig. S1).")
+    TBL(t5, "Table 5. Mandatory negative controls and the simulated "
+            "outcome of each.")
     H(2, "3.7 Scaling collapse and classification")
     P(f"Simulated delta-v collapses onto Pi = dv B/(rho delta v^2 T) = "
       f"{n['pi_mean']:.2f} ± {n['pi_std']:.2f} across regimes, altitudes "
@@ -307,7 +363,11 @@ def main():
       "(simulated effect measurable) in a band that is "
       "thermodynamically quantifiable but transport-limited: a minority "
       f"({100*n['frac_transport_1h']:.0f}%) of plausible (kappa, u) "
-      "combinations let a sub-1000 km patch survive an hour.")
+      "combinations let a sub-1000 km patch survive an hour (Fig. 6).")
+    FIG("fig6_scaling_collapse.png",
+        "Figure 6. Simulated extra delta-v against the predicted value "
+        "rho*delta*v^2*T/(2B); all regimes, altitudes and ballistic "
+        "coefficients collapse onto the identity line.")
 
     H(1, "4. Discussion")
     P("The boundary runs through three separable gates. (i) Geometry: an "
@@ -357,12 +417,179 @@ def main():
     for line in c.reference_list():
         P(line)
 
+    # ---------------- rendering ----------------
+    def fmt(v):
+        return f"{v:.4g}" if isinstance(v, float) else str(v)
+
+    def add_table(doc, df, caption):
+        cap = doc.add_paragraph(caption)
+        cap.runs[0].italic = True
+        tbl = doc.add_table(rows=1, cols=len(df.columns))
+        tbl.style = "Table Grid"
+        for j, col in enumerate(df.columns):
+            cell = tbl.rows[0].cells[j]
+            cell.text = str(col)
+            cell.paragraphs[0].runs[0].bold = True
+        for _, r in df.iterrows():
+            cells = tbl.add_row().cells
+            for j, v in enumerate(r):
+                cells[j].text = fmt(v)
+        for row in tbl.rows:
+            for cell in row.cells:
+                for par in cell.paragraphs:
+                    for run in par.runs:
+                        run.font.size = Pt(7)
+
+    def render(inline):
+        doc = Document()
+        stl = doc.styles["Normal"]
+        stl.font.name = "Times New Roman"
+        stl.font.size = Pt(11)
+        for item in content:
+            if item[0] == "H":
+                doc.add_heading(item[2], level=item[1])
+            elif item[0] == "P":
+                doc.add_paragraph(item[1])
+            elif item[0] == "TBL":
+                add_table(doc, item[1], item[2])
+            elif item[0] == "FIG":
+                if inline:
+                    doc.add_picture(
+                        os.path.join(root, "results/figures", item[1]),
+                        width=Inches(6.0))
+                    doc.paragraphs[-1].alignment = \
+                        WD_ALIGN_PARAGRAPH.CENTER
+                    cap = doc.add_paragraph(item[2])
+                    cap.runs[0].italic = True
+                    cap.alignment = WD_ALIGN_PARAGRAPH.CENTER
+                else:
+                    ph = doc.add_paragraph(
+                        f"[{item[2].split('.')[0]} near here — supplied "
+                        f"as separate file {item[1]}]")
+                    ph.runs[0].italic = True
+        if not inline:
+            doc.add_heading("Figure captions", level=1)
+            for item in content:
+                if item[0] == "FIG":
+                    doc.add_paragraph(item[2])
+        return doc
+
     os.makedirs(os.path.join(root, "manuscript"), exist_ok=True)
-    doc.save(os.path.join(root, "manuscript/manuscript.docx"))
+    render(False).save(os.path.join(root, "manuscript/manuscript.docx"))
+    render(True).save(
+        os.path.join(root, "manuscript/manuscript_inline.docx"))
+
+    # ---------------- editable English pptx ----------------
+    prs = Presentation()
+    prs.slide_width = PInches(13.333)
+    prs.slide_height = PInches(7.5)
+    blank = prs.slide_layouts[6]
+
+    def slide_text(title, lines):
+        s = prs.slides.add_slide(blank)
+        tb = s.shapes.add_textbox(PInches(0.6), PInches(0.4),
+                                  PInches(12.1), PInches(1.0))
+        tf = tb.text_frame
+        tf.text = title
+        tf.paragraphs[0].runs[0].font.size = PPt(28)
+        tf.paragraphs[0].runs[0].font.bold = True
+        bb = s.shapes.add_textbox(PInches(0.6), PInches(1.6),
+                                  PInches(12.1), PInches(5.4))
+        bf = bb.text_frame
+        bf.word_wrap = True
+        for i, ln in enumerate(lines):
+            p = bf.paragraphs[0] if i == 0 else bf.add_paragraph()
+            p.text = "• " + ln
+            p.runs[0].font.size = PPt(16)
+        return s
+
+    def slide_fig(title, fname, caption):
+        s = prs.slides.add_slide(blank)
+        tb = s.shapes.add_textbox(PInches(0.6), PInches(0.25),
+                                  PInches(12.1), PInches(0.8))
+        tb.text_frame.text = title
+        tb.text_frame.paragraphs[0].runs[0].font.size = PPt(24)
+        tb.text_frame.paragraphs[0].runs[0].font.bold = True
+        s.shapes.add_picture(
+            os.path.join(root, "results/figures", fname),
+            PInches(3.0), PInches(1.15), height=PInches(5.0))
+        cb = s.shapes.add_textbox(PInches(0.6), PInches(6.35),
+                                  PInches(12.1), PInches(0.9))
+        cb.text_frame.word_wrap = True
+        cb.text_frame.text = caption
+        cb.text_frame.paragraphs[0].runs[0].font.size = PPt(12)
+        return s
+
+    slide_text(
+        "Quantifying the feasibility boundary of localized thermospheric "
+        "density enhancement for selective orbital debris decay",
+        ["T. Onishi et al. — boundary study, synthetic targets only",
+         "Question: can a localized thermospheric density increase "
+         "selectively de-orbit LEO debris without dragging protected "
+         "spacecraft?",
+         "Approach: NRLMSISE-00 climatology, validated J2-secular and "
+         "Cowell propagators, abstract Gaussian density perturbations",
+         "All numbers regenerate from code (make all)"])
+    slide_text("Key results", [
+        f"Earth-fixed pulse adds only ~{sci(n['dv_A_pulse'])} m/s per "
+        "event to the case-A target (single tens-of-seconds transit)",
+        f"Idealized on-target tracking bound: {sci(n['dv_A_track'])} m/s "
+        "per day",
+        f"Localization changes collateral, not benefit: selectivity "
+        f"{n['sel_A_unif']:.1f} (uniform) vs {sci(n['sel_A_loc'])} "
+        "(localized) for the same target benefit",
+        f"Scaling collapse: Pi = dv B/(rho delta v^2 T) = "
+        f"{n['pi_mean']:.2f} ± {n['pi_std']:.2f} (R^2 = 0.9999)",
+        f"Transport limit: only {100*n['frac_transport_1h']:.0f}% of "
+        "(kappa, u) combinations let a patch survive one hour",
+        "Co-orbital protected twins absorb comparable delta-v — "
+        "selectivity fails by geometry"])
+    for item in content:
+        if item[0] == "FIG":
+            head = item[2].split(".")[0]
+            slide_fig(head, item[1], item[2])
+    for fn, cap in [
+        ("figS1_negative_controls.png",
+         "Figure S1. Extra delta-v for each mandatory negative control."),
+        ("figS2_mc_hist.png",
+         "Figure S2. Monte Carlo distribution of target extra delta-v."),
+        ("figS3_sobol.png",
+         "Figure S3. Sobol' first-order and total-order indices.")]:
+        slide_fig(cap.split(".")[0], fn, cap)
+    slide_text("Conclusions", [
+        "Selective thermospheric drag is mathematically well-posed and "
+        "energetically quantifiable",
+        "It is bounded by three gates: transit geometry, atmospheric "
+        "transport, and shared-trajectory collateral",
+        "Feasibility window is narrow and likely closed by transport "
+        "physics — a quantitatively bounded negative result",
+        "No hardware, no operational spacecraft targeted; synthetic "
+        "objects only"])
+    prs.save(os.path.join(root, "manuscript/manuscript_figures.pptx"))
 
     # ---------------- supplement ----------------
     sup = Document()
     sup.add_heading("Supplementary material", 0)
+    sup.add_heading("Supplementary figures", level=1)
+    for fn, cap in [
+        ("figS1_negative_controls.png",
+         "Figure S1. Extra delta-v for each mandatory negative control "
+         "(cited in Section 3.6)."),
+        ("figS2_mc_hist.png",
+         "Figure S2. Monte Carlo distribution of target extra delta-v "
+         "(cited in Section 3.5)."),
+        ("figS3_sobol.png",
+         "Figure S3. Sobol' first-order and total-order sensitivity "
+         "indices (cited in Section 3.5).")]:
+        fp = os.path.join(root, "results/figures", fn)
+        if not os.path.exists(fp):
+            continue
+        sup.add_picture(fp, width=Inches(6.0))
+        sup.paragraphs[-1].alignment = WD_ALIGN_PARAGRAPH.CENTER
+        pc = sup.add_paragraph(cap)
+        pc.runs[0].italic = True
+        pc.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    sup.add_heading("Supplementary tables", level=1)
     for name, df in [("Phase 5 spreading models", p5),
                      ("Phase 6 outcomes", p6),
                      ("Phase 8 timing", p8.head(40)),

@@ -1,9 +1,13 @@
 PY ?= python3
 
-.PHONY: all quick clean test manuscript qc figures tables
+# The pipeline is strictly sequential: each phase consumes the previous
+# phases' outputs, so parallel execution is disabled.
+.NOTPARALLEL:
+
+.PHONY: all quick clean test manuscript qc figures tables submission
 .PHONY: phase1 phase2 phase3 phase4 phase5 phase6 phase7 phase8 phase9 phase10 phase11 phase12
 
-all: phase1 phase2 phase3 phase4 phase5 phase6 phase7 phase8 phase9 phase10 phase11 phase12 figures tables manuscript qc
+all: phase1 phase2 phase3 phase4 phase5 phase6 phase7 phase8 phase9 phase10 phase11 phase12 figures tables manuscript qc submission
 
 quick: test
 	$(PY) scripts/run_quick.py
@@ -58,5 +62,8 @@ manuscript:
 qc:
 	$(PY) scripts/qc_traceability.py
 
+submission:
+	$(PY) scripts/build_submission_package.py
+
 clean:
-	rm -rf results/figures/* results/tables/* results/logs/* data/processed/* manuscript/output 2>/dev/null || true
+	rm -rf results/figures/* results/tables/* results/logs/* data/processed/* manuscript/output submission 2>/dev/null || true
