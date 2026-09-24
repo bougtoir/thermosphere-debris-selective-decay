@@ -11,7 +11,7 @@ Gate 2: PASS
 | convergence_rtol_1e-11              | endpoint |dr| [m]                                           |  1.09901e-07 | nan     | True     |
 | circular_orbit_closure              | closure error [m] after 1 period                            |  1.39648e-05 |   0.01  | True     |
 | j2_raan_rate_consistency            | RAAN rate [deg/day]                                         | -5.00233     | nan     | True     |
-| fastprop_vs_cowell_250km            | relative 10-day altitude-drop difference (drag-only, no J2) |  0.0012307   |   0.1   | True     |
+| fastprop_vs_cowell_250km            | relative 10-day altitude-drop difference (drag-only, no J2) |  0.00138538  |   0.01  | True     |
 | decay_scales_inverse_B              | drop(B=60)/drop(B=30) at 250 km storm, 30 d                 |  0.5         | nan     | True     |
 
 Notes: RAAN rate compared via the SGP4-standard secular formula; semi-analytic decay cross-checked against the Cowell propagator (DOP853) for a strong-decay case.

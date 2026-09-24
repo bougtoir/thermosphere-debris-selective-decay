@@ -60,6 +60,7 @@ audits:
 	$(PY) scripts/audit_gap_decomposition.py
 	$(PY) scripts/audit_matched_exposure.py
 	$(PY) scripts/audit_energy.py
+	$(PY) scripts/audit_sobol.py
 
 audit-sobol:
 	$(PY) scripts/audit_sobol.py

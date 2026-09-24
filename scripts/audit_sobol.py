@@ -2,10 +2,21 @@
 
 Three steps, in order:
 
-1. EXACT REPRODUCTION of the frozen `results/tables/phase10_sobol.csv`,
-   re-running the original code path (legacy `SALib.sample.saltelli`,
-   Saltelli base N=32, 40-day horizon, 10 s fine exposure step) and
-   comparing index-by-index against the frozen file.
+1. LEGACY CODE-PATH REPRODUCTION: re-run the original Phase-10 code path
+   (legacy `SALib.sample.saltelli`, Saltelli base N=32, 40-day horizon,
+   10 s fine exposure step) and compare index-by-index against the
+   current `results/tables/phase10_sobol.csv`.
+
+   Note on scope: before the NRLMSISE-00 density-unit correction this
+   step reproduced the frozen pre-revision indices to 8e-17 (recorded in
+   docs/SOBOL_AUDIT.md at commit 6c4a442). After the correction the
+   pre-revision numbers are, by construction, not reproducible: every
+   density-dependent result changed. What this step now verifies is that
+   the legacy sampler/horizon/step code path and the production path
+   agree on the *same* corrected physics; the residual index difference
+   is the sampler-plus-sample-size difference between legacy N=32 and
+   the production base size, and is bounded by the N=32 rung of the
+   ladder in step 3.
 
 2. RESPONSE-EQUIVALENCE CHECK of the cost-reduced response used for the
    convergence ladder (window-length horizon, 60 s fine step) against the
@@ -58,7 +69,7 @@ def legacy_response(x, obj, rho_fn):
     return res["extra_deltav_ms"]
 
 
-def main():
+def main(repro_only=False):
     cfg = load_config()
     root = repo_root()
     lu = build_lookup(cfg["atmosphere"]["regimes"])
@@ -70,7 +81,7 @@ def main():
                       e=c["e"], raan=c["raan"], argp=c["argp"],
                       M0=c["M0"], obj_type="target")
 
-    # ---- step 1: exact reproduction of the frozen indices ----
+    # ---- step 1: legacy code-path reproduction ----
     with warnings.catch_warnings():
         warnings.simplefilter("ignore")
         from SALib.sample import saltelli
@@ -98,6 +109,9 @@ def main():
     print(f"legacy reproduction: {time.time() - t0:.0f}s, "
           f"max |S1 diff| = {rep['S1_abs_diff'].max():.2e}, "
           f"max response rel diff = {rel.max():.2e}", flush=True)
+
+    if repro_only:
+        return
 
     # ---- step 3: convergence ladder ----
     rows = []
@@ -129,4 +143,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    main(repro_only="--repro-only" in sys.argv)

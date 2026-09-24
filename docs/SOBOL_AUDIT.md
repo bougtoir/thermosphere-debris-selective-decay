@@ -8,7 +8,19 @@ Artefacts: `results/tables/sobol_reproduction_check.csv`,
 `results/tables/sobol_convergence.csv`, driver
 `scripts/audit_sobol.py`, shared response `src/uq/sobol_response.py`.
 
-## 1. Exact reproduction of the frozen result
+> **Scope note after the NRLMSISE-00 unit correction.** Sections 1-3 were
+> executed *before* the density-unit defect was found (commit `6c4a442`)
+> and document the bit-exact reproduction of the frozen pre-revision
+> indices. After the correction every density-dependent number changed, so
+> those frozen indices are by construction no longer reproducible: the
+> legacy code path now reproduces the *corrected* production run to within
+> the sampler/sample-size difference between legacy N = 32 and production
+> N = 1024 (`max |S1 diff| = 1.9e-1`, bounded by the N = 32 rung of the
+> ladder in section 4), while the response-equivalence check of the cost
+> reductions is unaffected (`max rel diff = 2.3e-4`). Sections 4-6 below
+> report the corrected physics.
+
+## 1. Exact reproduction of the frozen result (pre-correction, historical)
 
 | item | value |
 |---|---|
@@ -68,55 +80,70 @@ modern `SALib.sample.sobol` API. (The deprecated `saltelli` shim is retained
 *only* for the bit-exact reproduction in section 1; the two generate
 different point sets and must not be interchanged silently.)
 
+Corrected-physics ladder (`results/tables/sobol_convergence.csv`):
+
 | N base | evaluations | max(S1 - ST) | sum S1 | max S1 CI | wall (s) |
 |---:|---:|---:|---:|---:|---:|
-| 32 | 256 | +0.202 | 1.258 | 0.304 | 12 |
-| 256 | 2048 | +0.0002 | 0.929 | 0.116 | 103 |
-| 512 | 4096 | -0.0000 | 0.952 | 0.092 | 203 |
-| 1024 | 8192 | +0.0000 | 0.921 | 0.055 | 391 |
-| 2048 | 16384 | -0.0000 | 0.919 | 0.043 | 760 |
+| 32 | 256 | +0.225 | 1.266 | 0.329 | 11 |
+| 256 | 2048 | +0.006 | 0.957 | 0.128 | 84 |
+| 512 | 4096 | -0.000 | 0.960 | 0.082 | 164 |
+| 1024 | 8192 | -0.000 | 0.929 | 0.054 | 329 |
+| 2048 | 16384 | -0.000 | 0.939 | 0.043 | 679 |
+
+(Wall times are from the clean rebuild on a 2-core machine and are the only
+non-deterministic entries in the table.)
 
 Stopping rule (declared before the run): stop when (i) no ordering violation
 persists outside its confidence interval, (ii) `sum(S1)` is stable, and
 (iii) every S1 confidence interval is below 0.06, i.e. small compared with
 the separation between the two dominant parameters and the rest. N = 1024
-satisfies all three and N = 2048 changes no index by more than 0.003, so
+satisfies all three and N = 2048 changes no index by more than 0.006, so
 **N = 1024 (8192 evaluations) is adopted for production**
 (`src/uq/sobol_response.N_BASE`), and `scripts/phase10_uncertainty.py` now
 uses this pathway instead of the N = 32 design.
 
-## 5. Converged indices (N = 1024)
+## 5. Converged indices (N = 1024, corrected physics)
 
 | parameter | S1 | S1 CI | ST | ST CI |
 |---|---:|---:|---:|---:|
-| delta_max | 0.414 | 0.055 | 0.488 | 0.053 |
-| duration_h | 0.478 | 0.054 | 0.553 | 0.055 |
-| rho_scale | 0.020 | 0.014 | 0.028 | 0.003 |
-| B_scale | 0.008 | 0.010 | 0.013 | 0.002 |
-| sigma_h_km | ~0 (-8e-7) | 2e-6 | ~0 (3e-10) | 1e-10 |
-| sigma_v_km | ~0 (1e-9) | 6e-9 | ~0 (8e-15) | 4e-15 |
+| delta_max | 0.564 | 0.054 | 0.598 | 0.050 |
+| duration_h | 0.224 | 0.045 | 0.270 | 0.038 |
+| sigma_h_km | 0.107 | 0.028 | 0.160 | 0.019 |
+| rho_scale | 0.024 | 0.014 | 0.025 | 0.002 |
+| B_scale | 0.010 | 0.010 | 0.011 | 0.001 |
+| sigma_v_km | -0.000 | 0.001 | 0.000 | 0.000 |
 
-Interpretation, which is *unchanged in direction but corrected in
-magnitude*: the response is controlled almost equally by enhancement
-amplitude and by the duration over which the enhancement stays on the
-target (S1 ~ 0.41 and ~0.48; `sum S1 = 0.92`, so interactions account for
-~8%). Environmental density scaling and ballistic coefficient contribute a
-few percent each within their stated ranges. Patch dimensions have
-*identically zero* influence in this configuration - not because size does
-not matter physically, but because the tracking bound keeps the object at
-the patch centre by construction, where the Gaussian value is `delta_max`
-regardless of sigma. This is a direct diagnostic of the idealization, and is
-now stated as such in the manuscript rather than as a physical insensitivity
-to patch size. The transit-limited fixed-patch results (Phase 6) show the
-opposite: there, geometry dominates.
+Interpretation. Amplitude dominates (`ST = 0.60`), followed by the duration
+over which the enhancement is sustained (`0.27`); `sum S1 = 0.93`, so
+interactions account for ~7%. Density scaling and ballistic coefficient
+contribute a few percent each within their stated ranges.
+
+The horizontal patch scale is **no longer inert**, and this is a direct
+consequence of the density-unit correction rather than a sampling artefact.
+With the correct (1000x larger) density the induced drag is large enough
+that the target drifts along-track relative to the unperturbed ephemeris
+the tracking patch centre follows, so a small patch loses the object within
+the window. A direct scan at `delta = 10`, 24 h confirms the mechanism:
+the response rises monotonically from 3.47 m/s at `sigma_h = 100 km` to
+4.35 m/s at 200 km and 6.17 m/s at 400 km. Perfect co-location therefore
+requires continuous re-targeting or a patch large enough to absorb the
+drift - the same size/selectivity conflict transport imposes. This is now
+stated in the manuscript (Section 3.6). The vertical scale remains inert
+because the orbit is circular and stays at the patch mid-plane.
 
 ## 6. Effect of the corotation fix
 
 The corotation correction added to `fastprop` (see
 `docs/SCALING_LAW_AUDIT.md`) multiplies this response by a constant factor
 `(v_rel/v)^2 = 0.9215` (case-A target, 400 km, 51.6 deg): the orbit and
-inclination are fixed across the Sobol design, so the factor is the same for
+inclination
+are fixed across the Sobol design, so the factor is the same for
 every design point. Sobol' indices are invariant under a constant positive
-scaling of the response, so the converged indices above are unaffected; only
-the response mean and standard deviation scale (`y_mean` 5.24e-3 ->
-4.83e-3 m/s). The production rerun in the Phase-18 rebuild confirms this.
+scaling of the response, so the corotation fix alone leaves the indices
+unchanged and only rescales the response.
+
+The density-unit correction is *not* of this form. It is also a constant
+multiplicative factor on rho, but the response is not linear in rho once
+the induced decay is large enough to move the object relative to the
+tracked patch centre; this is exactly why `sigma_h_km` acquires a non-zero
+index above while the response mean rises to `y_mean = 3.04 m/s`.

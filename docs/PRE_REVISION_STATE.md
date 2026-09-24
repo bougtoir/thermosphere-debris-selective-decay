@@ -9,7 +9,7 @@ the reference point against which every revision-phase change is judged.
 | item | value |
 |---|---|
 | public repository | https://github.com/bougtoir/thermosphere-debris-selective-decay |
-| canonical working tree | `/home/ubuntu/repos/thermosphere-debris-selective-decay` (single clone; no other candidate trees) |
+| canonical working tree | the single clone of `bougtoir/thermosphere-debris-selective-decay` on the revision machine (no other candidate trees) |
 | base commit (merge of PR #1) | `67f6a72` |
 | checkpoint tag | `pre-revision-checkpoint` -> `67f6a72` |
 | revision branch | `devin/1790260692-asr-final-revision` |
