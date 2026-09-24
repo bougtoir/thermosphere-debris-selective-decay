@@ -32,6 +32,20 @@ def orbital_energy_rate(a_m, da_dt_ms, m_kg, mu=MU):
     return m_kg * mu * abs(da_dt_ms) / (2.0 * a_m**2)
 
 
+def expansion_temperature_fraction(delta, z_m, z_base_m, H_m):
+    """Fractional temperature rise of the column below z needed to raise the
+    density at z by a factor (1+delta) through hydrostatic expansion.
+
+    For an isothermal hydrostatic layer rho(z) = rho(z_base)
+    exp(-(z - z_base)/H); scaling T (and hence H) by (1 + eps) multiplies
+    the density at z by exp[(z - z_base) eps / (H (1 + eps))]. Solving for
+    eps to first order gives eps = ln(1+delta) H / (z - z_base). This is
+    the mechanism by which real thermospheric storms raise density at a
+    fixed altitude; heating the air *at* z in situ lowers its density.
+    """
+    return float(np.log1p(delta) * H_m / (z_m - z_base_m))
+
+
 def required_heating_fraction(delta, cp=CP_AIR):
     """Fractional density increase delta related to a uniform temperature
     increase of the same air mass at fixed pressure: rho' / rho = T / T'.

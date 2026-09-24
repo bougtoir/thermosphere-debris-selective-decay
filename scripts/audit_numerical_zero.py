@@ -33,10 +33,11 @@ import numpy as np
 import pandas as pd
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
+from src.analysis.exposure_class import (  # noqa: E402
+    classify, instrument, ratio_status)
 from src.atmosphere.lookup import build_lookup, rho_fn_from_lookup  # noqa: E402
 from src.experiment import make_object  # noqa: E402
 from src.intervention.models import TrackingPerturbation  # noqa: E402
-from src.orbits import fastprop  # noqa: E402
 from src.utils import load_config, repo_root  # noqa: E402
 
 WIN = 86400.0
@@ -44,11 +45,6 @@ DELTA_MAX = 5.0
 SIG_H = 200.0
 SIG_V = 30.0
 PAIRS = ["A", "D", "E", "G"]
-
-# classification thresholds (documented in docs/NUMERICAL_ZERO_AUDIT.md)
-N_SIGMA_NO_ENCOUNTER = 6.0
-REL_NUMERICAL_FLOOR = 1e-12
-REL_PHYSICAL = 1e-3
 
 
 def build_obj(c):
@@ -61,48 +57,6 @@ def uniform_delta(delta_max):
     def fn(r, t):
         return delta_max
     return fn
-
-
-def instrument(obj, rho_fn, delta_fn, delta_max, t0, t1, fine_dt_s=10.0):
-    """Exposure metrics plus the diagnostic geometry of the encounter."""
-    peak = 0.0
-    n = max(int((t1 - t0) / fine_dt_s), 1)
-
-    def probe(r, t):
-        nonlocal peak
-        d = delta_fn(r, t)
-        if d > peak:
-            peak = d
-        return d
-
-    m = fastprop.exposure_metrics(obj["el"], rho_fn, probe, t0, t1,
-                                  fine_dt_s=fine_dt_s)
-    # peak delta -> closest approach expressed in Gaussian sigmas
-    if peak <= 0.0:
-        n_sigma = np.inf
-    else:
-        ratio = min(peak / delta_max, 1.0)
-        n_sigma = float(np.sqrt(max(-2.0 * np.log(ratio), 0.0)))
-    v = np.sqrt(3.986004418e14 / obj["el"]["a"])
-    dv_extra = m["mean_rho_delta"] * v ** 2 / (2.0 * obj["B"]) * (t1 - t0)
-    dv_natural = m["mean_rho"] * v ** 2 / (2.0 * obj["B"]) * (t1 - t0)
-    return dict(peak_delta=peak, n_sigma_closest=n_sigma,
-                encounter_count=m["encounter_count"],
-                time_fraction_in_patch=m["time_fraction_in_patch"],
-                extra_dv_ms=dv_extra, natural_dv_ms=dv_natural,
-                rel_to_natural=dv_extra / dv_natural if dv_natural > 0
-                else np.nan, n_fine_steps=n)
-
-
-def classify(d):
-    if d["n_sigma_closest"] > N_SIGMA_NO_ENCOUNTER or d["peak_delta"] <= 1e-6:
-        return "no_encounter"
-    r = d["rel_to_natural"]
-    if not np.isfinite(r) or r < REL_NUMERICAL_FLOOR:
-        return "below_numerical_resolution"
-    if r < REL_PHYSICAL:
-        return "gaussian_tail"
-    return "physical_exposure"
 
 
 def main():
@@ -150,12 +104,7 @@ def main():
             tdv = float(t["extra_dv_ms"].sum())
             pdv = float(pr["extra_dv_ms"].sum())
             cls = pr["exposure_class"].iloc[0] if len(pr) else "none"
-            status = {
-                "physical_exposure": "physical",
-                "gaussian_tail": "tail_limited",
-                "below_numerical_resolution": "below_resolution",
-                "no_encounter": "undefined_no_encounter",
-            }.get(cls, "unknown")
+            status = ratio_status(cls)
             meaningful = status == "physical"
             summ.append(dict(
                 scenario=scen, pair=p, target_dv_ms=tdv,
