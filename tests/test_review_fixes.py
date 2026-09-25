@@ -65,3 +65,42 @@ def test_active_step_refinement_converges():
 
     coarse, prod, fine = run(0.1), run(0.01), run(0.005)
     assert abs(prod - fine) < 0.1 * abs(coarse - prod)
+
+
+def test_integration_stops_at_requested_horizon():
+    """A surviving object's lifetime is the requested horizon exactly, not
+    the horizon rounded up to the next whole step."""
+    obj = _case_a_target()
+    rho_fn = lambda r, t: 1e-15  # noqa: E731
+    t_max = 1826.5 * 86400.0
+    life, hist = fastprop.decay_lifetime(obj["el"], rho_fn, obj["B"], t_max,
+                                         dt_day=0.5)
+    assert abs(life - t_max / 86400.0) < 1e-9
+    assert hist["t_days"][-1] <= t_max + 1e-6
+
+
+def test_reentry_truncates_exposure_and_impulse():
+    """Drag accrued after reentry must not enter the exposure totals."""
+    el = fastprop.init_elements(R_EARTH + 130e3, 0.0, np.radians(51.6),
+                                0.0, 0.0, 0.0)
+    rho_fn = lambda r, t: 1e-8  # noqa: E731
+    win = 1000.0
+    life, hist = fastprop.decay_lifetime(
+        el, rho_fn, 5.0, win, dt_day=0.01,
+        delta_windows=[(0.0, win)], delta_fn=lambda r, t: 5.0,
+        fine_dt_s=1.0, dt_day_active=0.01)
+    life_s = life * 86400.0
+    assert 0.0 < life_s < win
+    assert hist["exposure_window_s"] <= life_s + 1e-6
+
+
+def test_disjoint_windows_count_separate_encounters():
+    """Encounters are stitched across step boundaries, not across a gap
+    between two intervention windows."""
+    obj = _case_a_target()
+    rho_fn = lambda r, t: 1e-12  # noqa: E731
+    _, hist = fastprop.decay_lifetime(
+        obj["el"], rho_fn, obj["B"], 1800.0, dt_day=0.01,
+        delta_windows=[(0.0, 800.0), (1000.0, 1800.0)],
+        delta_fn=lambda r, t: 5.0, fine_dt_s=1.0, dt_day_active=0.01)
+    assert hist["encounter_count"] == 2

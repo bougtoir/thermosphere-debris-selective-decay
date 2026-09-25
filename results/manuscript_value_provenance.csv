@@ -17,14 +17,14 @@ mc_n,256,phase10_montecarlo.csv,scripts/build_manuscript.py
 mc_t_dv_med,3.519908311856806,phase10_montecarlo.csv,scripts/build_manuscript.py
 mc_t_dv_iqr,2.2217271373054954,phase10_montecarlo.csv,scripts/build_manuscript.py
 sobol_top,delta_max,phase10_sobol.csv,scripts/build_manuscript.py
-sobol_top_ST,0.5448044684477334,phase10_sobol.csv,scripts/build_manuscript.py
+sobol_top_ST,0.5448017982858615,phase10_sobol.csv,scripts/build_manuscript.py
 neg_hialt_dv,0.0096397358185081,phase10_negative_controls.csv,scripts/build_manuscript.py
 neg_highB_dv,0.1720216292619005,phase10_negative_controls.csv,scripts/build_manuscript.py
 neg_twin_dv,0.4163534466527785,phase10_negative_controls.csv,scripts/build_manuscript.py
 neg_short_dv,0.0053652686041164,phase10_negative_controls.csv,scripts/build_manuscript.py
 neg_timing_dv,0.0,phase10_negative_controls.csv,scripts/build_manuscript.py
-pi_mean,1.136283284380082,phase11_scaling.csv,scripts/build_manuscript.py
-pi_std,1.5847205941081324,phase11_scaling.csv,scripts/build_manuscript.py
+pi_mean,1.060171181352193,phase11_scaling.csv,scripts/build_manuscript.py
+pi_std,0.23875658179481624,phase11_scaling.csv,scripts/build_manuscript.py
 n_censored,21,phase1_scale_calculations.csv,scripts/build_manuscript.py
 n_scale_rows,396,phase1_scale_calculations.csv,scripts/build_manuscript.py
 gap_pulse_frac,0.0444444444444444,gap_decomposition.csv / gap_decomposition_factors.csv,scripts/build_manuscript.py
@@ -66,10 +66,10 @@ frac_transport_lo,0.0833333333333333,transport_boundary_sensitivity.csv,scripts/
 frac_transport_hi,0.5555555555555556,transport_boundary_sensitivity.csv,scripts/build_manuscript.py
 frac_transport_windy,0.0,transport_boundary_sensitivity.csv,scripts/build_manuscript.py
 sobol_n,1024,phase10_sobol.csv,scripts/build_manuscript.py
-sobol_ST_sigma_h,0.1483041017017149,phase10_sobol.csv,scripts/build_manuscript.py
+sobol_ST_sigma_h,0.148303379817847,phase10_sobol.csv,scripts/build_manuscript.py
 sobol_ladder,"32, 256, 512, 1024, 2048",sobol_convergence.csv,scripts/build_manuscript.py
 sobol_ladder_top,2048,sobol_convergence.csv,scripts/build_manuscript.py
 sobol_ladder_prev,1024,sobol_convergence.csv,scripts/build_manuscript.py
-sobol_dST_top,0.0021250118764908066,sobol_convergence.csv,scripts/build_manuscript.py
+sobol_dST_top,0.002125043433666013,sobol_convergence.csv,scripts/build_manuscript.py
 sobol_violations_top,0,sobol_convergence.csv,scripts/build_manuscript.py
 frac_class_transport,0.4074074074074074,phase12_classification.csv,scripts/build_manuscript.py

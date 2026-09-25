@@ -201,75 +201,88 @@ def decay_lifetime(el0, rho_fn, B, t_max_s, reentry_alt_m=120e3,
     m_phase, raan_phase, argp_phase = el0["M0"], el0["raan"], el0["argp"]
     da_prev = None
     was_inside = False
+    last_exp_end = -np.inf
+    a_reentry = R_EARTH + reentry_alt_m
 
     while t < t_max_s:
         alt = a - R_EARTH
         if alt <= reentry_alt_m:
             break
-        step_s = dt_day * DAY
+        step_s = min(dt_day * DAY, t_max_s - t)
         if delta_windows and delta_fn is not None and any(
                 min(te, t + step_s) - max(ts, t) > 0 for ts, te in
                 delta_windows):
             step_s = min(step_s, dt_day_active * DAY)
+        if step_s <= 0.0:
+            break
         if da_prev is None:
             el_p = _rebased(el0, a, m_phase, raan_phase, argp_phase, t)
             rho_p = orbit_mean_density(el_p, rho_fn, t, n_samples)
             f_p = corotation_factor(a, el0["inc"])
             da_prev = -(a * np.sqrt(MU / a) / B) * rho_p * f_p**2
-        a_mid = max(a + 0.5 * da_prev * step_s, R_EARTH + reentry_alt_m)
-        el = _rebased(el0, a_mid, m_phase, raan_phase, argp_phase, t)
-        rd, ad, md = el["raan_dot"], el["argp_dot"], el["M_dot"]
-        f_rel = corotation_factor(a_mid, el0["inc"])
 
-        rho_bg = orbit_mean_density(el, rho_fn, t, n_samples)
-        rho_eff = rho_bg
-        if delta_windows and delta_fn is not None:
-            for (ts, te) in delta_windows:
-                ovl = min(te, t + step_s) - max(ts, t)
-                if ovl > 0:
-                    m = exposure_metrics(el, rho_fn, delta_fn,
-                                         max(ts, t), min(te, t + step_s),
-                                         fine_dt_s=fine_dt_s)
-                    # extra mean density applied only for the overlapping
-                    # fraction of this step
-                    rho_eff += m["mean_rho_delta"] * (ovl / step_s)
-                    # a crossing spanning a step boundary is one encounter
-                    total_enc += m["encounter_count"] - int(
-                        was_inside and m["starts_inside"])
-                    was_inside = m["ends_inside"]
-                    v_rel = np.sqrt(MU / a_mid) * f_rel
-                    total_extra_impulse += (m["mean_rho_delta"] * v_rel**2
-                                            / (2.0 * B) * ovl)
-                    exp_window += ovl
-                    exp_rho += m["mean_rho"] * ovl
-                    exp_rho_delta += m["mean_rho_delta"] * ovl
-                    exp_in_t += m["time_fraction_in_patch"] * ovl
+        # A step that reaches reentry is retaken over the shorter interval
+        # that ends at reentry, so the exposure and the extra drag are
+        # integrated over the time the object is actually in orbit.
+        reentry = False
+        for attempt in (0, 1):
+            a_mid = max(a + 0.5 * da_prev * step_s, a_reentry)
+            el = _rebased(el0, a_mid, m_phase, raan_phase, argp_phase, t)
+            rd, ad, md = el["raan_dot"], el["argp_dot"], el["M_dot"]
+            f_rel = corotation_factor(a_mid, el0["inc"])
 
-        da_dt = -(a_mid * np.sqrt(MU / a_mid) / B) * rho_eff * f_rel**2
-        if da_dt >= 0:
-            da_dt = 0.0
+            rho_bg = orbit_mean_density(el, rho_fn, t, n_samples)
+            rho_eff = rho_bg
+            recs = []
+            if delta_windows and delta_fn is not None:
+                for (ts, te) in delta_windows:
+                    w0, w1 = max(ts, t), min(te, t + step_s)
+                    if w1 - w0 > 0:
+                        m = exposure_metrics(el, rho_fn, delta_fn, w0, w1,
+                                             fine_dt_s=fine_dt_s)
+                        # extra mean density applied only for the
+                        # overlapping fraction of this step
+                        rho_eff += m["mean_rho_delta"] * ((w1 - w0) / step_s)
+                        recs.append((m, w0, w1))
+
+            da_dt = -(a_mid * np.sqrt(MU / a_mid) / B) * rho_eff * f_rel**2
+            if not (da_dt < 0):
+                da_dt = 0.0
+            new_a = a + da_dt * step_s
+            if new_a >= a_reentry:
+                break
+            reentry = True
+            frac = (a - a_reentry) / max(a - new_a, 1e-12)
+            if attempt == 1 or not (0.0 < frac < 1.0):
+                break
+            step_s *= frac
+
+        for m, w0, w1 in recs:
+            ovl = w1 - w0
+            # a crossing spanning a step boundary is one encounter, but
+            # only when the two exposure intervals are contiguous
+            contiguous = w0 <= last_exp_end + 1e-9 * max(ovl, 1.0)
+            total_enc += m["encounter_count"] - int(
+                was_inside and m["starts_inside"] and contiguous)
+            was_inside = m["ends_inside"]
+            last_exp_end = w1
+            v_rel = np.sqrt(MU / a_mid) * f_rel
+            total_extra_impulse += (m["mean_rho_delta"] * v_rel**2
+                                    / (2.0 * B) * ovl)
+            exp_window += ovl
+            exp_rho += m["mean_rho"] * ovl
+            exp_rho_delta += m["mean_rho_delta"] * ovl
+            exp_in_t += m["time_fraction_in_patch"] * ovl
+
         da_prev = da_dt
-        new_a = a + da_dt * step_s
-        # sub-step if large decrement
-        if new_a < R_EARTH + reentry_alt_m:
-            # solve fraction of step to reach reentry
-            frac = (a - (R_EARTH + reentry_alt_m)) / max(a - new_a, 1e-12)
-            t += frac * step_s
-            m_phase += md * frac * step_s
-            raan_phase += rd * frac * step_s
-            argp_phase += ad * frac * step_s
-            a = R_EARTH + reentry_alt_m
-            hist_a.append(a)
-            hist_t.append(t)
-            break
-        a = new_a
+        a = a_reentry if reentry else a + da_dt * step_s
         t += step_s
         m_phase += md * step_s
         raan_phase += rd * step_s
         argp_phase += ad * step_s
         hist_a.append(a)
         hist_t.append(t)
-        if np.isnan(a):
+        if reentry or np.isnan(a):
             break
 
     return t / DAY, {

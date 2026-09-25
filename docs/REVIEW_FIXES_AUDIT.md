@@ -102,3 +102,34 @@ of the old 1e80-scale "selectivity". `phase7_selectivity.csv` already carried
 * Absolute target and protected delta-v and the exposure classes are reported
   unchanged, so the collateral suppression is still quantified — as an
   absolute number rather than as a ratio against a tail.
+
+## 4. Integrator bookkeeping at the horizon, at reentry, and across windows
+
+Three further review findings on `fastprop.decay_lifetime()`, all bookkeeping
+rather than physics, but all able to leak into reported numbers:
+
+* **Horizon overrun.** Steps were always `dt_day` long, so an object that did
+  not reenter was integrated past `t_max_s` by up to one step and its
+  right-censored lifetime was reported at that later time. The step is now
+  `min(dt_day * DAY, t_max_s - t)`, so a surviving object's lifetime is the
+  requested horizon exactly (`test_integration_stops_at_requested_horizon`).
+* **Drag accrued after reentry.** When reentry happened inside a step, the
+  exposure and the extra impulse had already been integrated over the whole
+  step while only the time was truncated at the reentry instant, so
+  `extra_drag_impulse_ms` and `exposure_window_s` could describe a longer
+  interval than the returned lifetime. A step that reaches reentry is now
+  retaken over the shortened interval that ends at reentry, and only that
+  interval is committed to the exposure aggregates
+  (`test_reentry_truncates_exposure_and_impulse`).
+* **Encounters merged across a gap between windows.** The `was_inside` flag
+  that stitches a patch crossing spanning a step boundary into one encounter
+  was also carried across the inactive time between two disjoint intervention
+  windows, merging one encounter per window into one. Stitching now applies
+  only when the two exposure intervals are contiguous
+  (`test_disjoint_windows_count_separate_encounters`).
+
+The production results are insensitive to the first two (no run reaches
+reentry inside its horizon at the reported grid, and the gap-decomposition and
+matched-exposure values are unchanged to all printed digits); the third
+affects campaign runs with repeated windows, whose encounter counts are
+regenerated here.
