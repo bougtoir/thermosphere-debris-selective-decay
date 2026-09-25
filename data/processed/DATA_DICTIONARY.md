@@ -82,7 +82,13 @@ Auto-generated column descriptions for results/tables CSVs.
 - `pair`: (phase-specific column)
 - `target_dv_ms`: (phase-specific column)
 - `protected_dv_ms`: (phase-specific column)
+- `protected_class`: (phase-specific column)
+- `protected_n_sigma`: (phase-specific column)
+- `protected_encounters`: (phase-specific column)
+- `protected_rel_to_natural`: (phase-specific column)
 - `selectivity_ratio`: target extra dv / protected extra dv
+- `ratio_status`: (phase-specific column)
+- `ratio_meaningful`: (phase-specific column)
 
 ## phase8_timing
 
@@ -124,6 +130,8 @@ Auto-generated column descriptions for results/tables CSVs.
 - `ST`: (phase-specific column)
 - `S1_conf`: (phase-specific column)
 - `ST_conf`: (phase-specific column)
+- `n_base`: (phase-specific column)
+- `n_model_evals`: (phase-specific column)
 
 ## phase10_negative
 
@@ -142,6 +150,7 @@ Auto-generated column descriptions for results/tables CSVs.
 - `delta`: (phase-specific column)
 - `rho`: (phase-specific column)
 - `v_ms`: (phase-specific column)
+- `v_rel_ms`: (phase-specific column)
 - `T_s`: (phase-specific column)
 - `extra_dv_sim`: (phase-specific column)
 - `extra_dv_pred`: (phase-specific column)
@@ -163,3 +172,87 @@ Auto-generated column descriptions for results/tables CSVs.
 - `tau_adv_s`: sigma_h/u advection flushing time
 - `transport_survivable_1h`: (phase-specific column)
 - `classification`: (phase-specific column)
+
+## audit_exposure_class
+
+- `scenario`: (phase-specific column)
+- `pair`: (phase-specific column)
+- `case`: (phase-specific column)
+- `obj_type`: (phase-specific column)
+- `alt_km`: (phase-specific column)
+- `inc_deg`: (phase-specific column)
+- `B_kgm2`: (phase-specific column)
+- `peak_delta`: (phase-specific column)
+- `n_sigma_closest`: (phase-specific column)
+- `encounter_count`: number of contiguous in-patch crossings
+- `time_fraction_in_patch`: (phase-specific column)
+- `extra_dv_ms`: (phase-specific column)
+- `natural_dv_ms`: (phase-specific column)
+- `rel_to_natural`: (phase-specific column)
+- `exposure_class`: (phase-specific column)
+
+## audit_transport
+
+- `sigma_set`: (phase-specific column)
+- `kappa_set`: (phase-specific column)
+- `wind_set`: (phase-specific column)
+- `criterion_h`: (phase-specific column)
+- `n_combinations`: (phase-specific column)
+- `frac_surviving`: (phase-specific column)
+- `n_selective`: (phase-specific column)
+- `frac_surviving_selective_sigma`: (phase-specific column)
+- `n_selective_windy`: (phase-specific column)
+- `frac_surviving_selective_windy`: (phase-specific column)
+- `n_selective_wind100`: (phase-specific column)
+- `frac_surviving_selective_wind100`: (phase-specific column)
+
+## audit_gap
+
+- `scenario`: (phase-specific column)
+- `window_s`: (phase-specific column)
+- `time_fraction_in_patch`: (phase-specific column)
+- `time_in_patch_s`: (phase-specific column)
+- `peak_delta`: (phase-specific column)
+- `delta_eff_in_patch`: (phase-specific column)
+- `encounter_count`: number of contiguous in-patch crossings
+- `extra_dv_ms`: (phase-specific column)
+- `natural_dv_ms`: (phase-specific column)
+
+## audit_gap_factors
+
+- `factor`: (phase-specific column)
+- `ratio`: (phase-specific column)
+
+## audit_matched_exposure
+
+- `pair`: (phase-specific column)
+- `matching`: (phase-specific column)
+- `case`: (phase-specific column)
+- `obj_type`: (phase-specific column)
+- `alt_km`: (phase-specific column)
+- `volume_ratio`: (phase-specific column)
+- `delta_uniform`: (phase-specific column)
+- `extra_dv_ms`: (phase-specific column)
+- `natural_dv_ms`: (phase-specific column)
+- `rel_to_natural`: (phase-specific column)
+- `exposure_class`: (phase-specific column)
+
+## audit_energy
+
+- `altitude_km`: (phase-specific column)
+- `sigma_h_km`: (phase-specific column)
+- `sigma_v_km`: (phase-specific column)
+- `delta`: (phase-specific column)
+- `rho_top_kgm3`: (phase-specific column)
+- `T_top_K`: (phase-specific column)
+- `H_km`: (phase-specific column)
+- `patch_air_mass_kg`: (phase-specific column)
+- `column_mass_kg`: (phase-specific column)
+- `dT_insitu_K`: (phase-specific column)
+- `E_insitu_J`: (phase-specific column)
+- `eps_column`: (phase-specific column)
+- `dT_column_at_top_K`: (phase-specific column)
+- `E_column_expansion_J`: (phase-specific column)
+- `ratio_column_to_insitu`: (phase-specific column)
+- `E_column_per_day_W`: (phase-specific column)
+- `orbital_removal_W_per_kg`: (phase-specific column)

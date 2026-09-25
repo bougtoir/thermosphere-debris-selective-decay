@@ -6,8 +6,9 @@ PY ?= python3
 
 .PHONY: all quick clean test manuscript qc figures tables submission
 .PHONY: phase1 phase2 phase3 phase4 phase5 phase6 phase7 phase8 phase9 phase10 phase11 phase12
+.PHONY: audits audit-sobol
 
-all: phase1 phase2 phase3 phase4 phase5 phase6 phase7 phase8 phase9 phase10 phase11 phase12 figures tables manuscript qc submission
+all: phase1 phase2 phase3 phase4 phase5 phase6 phase7 phase8 phase9 phase10 phase11 phase12 audits figures tables manuscript qc submission
 
 quick: test
 	$(PY) scripts/run_quick.py
@@ -50,6 +51,19 @@ phase11:
 
 phase12:
 	$(PY) scripts/phase12_classification.py
+
+# revision audits consumed by the manuscript (cheap; the Sobol convergence
+# ladder is separate because it costs ~25 min)
+audits:
+	$(PY) scripts/audit_numerical_zero.py
+	$(PY) scripts/audit_transport_boundary.py
+	$(PY) scripts/audit_gap_decomposition.py
+	$(PY) scripts/audit_matched_exposure.py
+	$(PY) scripts/audit_energy.py
+	$(PY) scripts/audit_sobol.py
+
+audit-sobol:
+	$(PY) scripts/audit_sobol.py
 
 figures:
 	$(PY) scripts/phase13_results.py

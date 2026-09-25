@@ -17,12 +17,30 @@
 - PASS results/tables/phase11_scaling.csv
 - PASS results/tables/phase12_classification.csv
 - PASS results/tables/master_results.csv
+- PASS results/tables/numerical_zero_audit.csv
+- PASS results/tables/transport_boundary_sensitivity.csv
+- PASS results/tables/gap_decomposition.csv
+- PASS results/tables/gap_decomposition_factors.csv
+- PASS results/tables/matched_exposure.csv
+- PASS results/tables/energy_bounds_audit.csv
+- PASS results/tables/sobol_convergence.csv
+- PASS results/tables/sobol_reproduction_check.csv
 - PASS results/figures/fig1_density_profiles.png
 - PASS results/figures/fig2_lifetime_map.png
 - PASS results/figures/fig3_collateral.png
 - PASS results/figures/fig4_timing.png
 - PASS results/figures/fig5_pareto.png
 - PASS results/figures/fig6_scaling_collapse.png
+- PASS results/figures/fig7_matched_exposure.png
+- PASS results/figures/fig8_energy_bounds.png
+- PASS results/figures/figS1_negative_controls.png
+- PASS results/figures/figS2_mc_hist.png
+- PASS results/figures/figS3_sobol.png
+- PASS results/figures/figS4_transport_grid_sensitivity.png
 - PASS manuscript/manuscript.docx
+- PASS manuscript/manuscript_inline.docx
+- PASS manuscript/manuscript_figures.pptx
 - PASS supplement/supplement.docx
-- PASS all 15 references verified
+- PASS all 18 references verified
+- PASS 17 citations resolve to the verified ledger and are numbered in order of first appearance
+- PASS all 68 injected manuscript values map to a generated results CSV

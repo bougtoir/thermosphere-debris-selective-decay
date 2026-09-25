@@ -10,9 +10,10 @@ from functools import lru_cache
 
 import nrlmsise00
 
-# gtd7 output index of total mass density (kg/m^3)
+# gtd7 output index of total mass density, returned in g/cm^3
 _RHO_INDEX = 5
 _T_EXOSPHERIC = 0
+G_CM3_TO_KG_M3 = 1.0e3
 
 
 def density_kgm3(
@@ -33,7 +34,7 @@ def density_kgm3(
         time, alt_km, float(lat_deg), float(lon_deg),
         float(f107a), float(f107), float(ap), lst=lst,
     )
-    return float(out[0][_RHO_INDEX])
+    return float(out[0][_RHO_INDEX]) * G_CM3_TO_KG_M3
 
 
 def exospheric_temperature_k(
@@ -79,7 +80,7 @@ def density_profile(
     else:
         mw = 16.0
     return {
-        "rho_kgm3": float(d[_RHO_INDEX]),
+        "rho_kgm3": float(d[_RHO_INDEX]) * G_CM3_TO_KG_M3,
         "t_exo_K": float(out[1][0]),
         "t_local_K": float(out[1][1]),
         "mean_molecular_mass_u": float(mw),

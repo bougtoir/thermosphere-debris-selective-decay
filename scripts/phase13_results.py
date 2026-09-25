@@ -48,6 +48,13 @@ def main():
         "phase10_negative": load(root, "phase10_negative_controls.csv"),
         "phase11_scaling": load(root, "phase11_scaling.csv"),
         "phase12_classification": load(root, "phase12_classification.csv"),
+        "audit_exposure_class": load(root, "numerical_zero_audit.csv"),
+        "audit_transport": load(root,
+                                "transport_boundary_sensitivity.csv"),
+        "audit_gap": load(root, "gap_decomposition.csv"),
+        "audit_gap_factors": load(root, "gap_decomposition_factors.csv"),
+        "audit_matched_exposure": load(root, "matched_exposure.csv"),
+        "audit_energy": load(root, "energy_bounds_audit.csv"),
     }
 
     # ---- master results (long format) ----
@@ -169,6 +176,32 @@ def main():
                     dpi=200)
         plt.close(fig)
 
+    # ---- Figure 7: budget-matched exposure ----
+    me = tables["audit_matched_exposure"]
+    if me is not None:
+        conv = ["localized_tracking", "matched_target_exposure",
+                "matched_spacetime", "matched_thermal_energy"]
+        pairs = sorted(me["pair"].unique())
+        fig, axes = plt.subplots(1, 2, figsize=(9, 4), sharey=True)
+        x = np.arange(len(pairs))
+        w = 0.2
+        for ax, kind in zip(axes, ["target", "protected"]):
+            for i, cv in enumerate(conv):
+                s = me[(me.matching == cv) & (me.obj_type == kind)]
+                s = s.set_index("pair").reindex(pairs)
+                ax.bar(x + (i - 1.5) * w,
+                       s["extra_dv_ms"].clip(lower=1e-20), w, label=cv)
+            ax.set_yscale("log")
+            ax.set_xticks(x, pairs)
+            ax.set_xlabel("case pair")
+            ax.set_title(kind)
+        axes[0].set_ylabel("extra $\\Delta v$ [m/s]")
+        axes[1].legend(fontsize=7)
+        fig.tight_layout()
+        fig.savefig(os.path.join(root, FIG, "fig7_matched_exposure.png"),
+                    dpi=200)
+        plt.close(fig)
+
     # ---- Supplement figures ----
     p10n = tables["phase10_negative"]
     if p10n is not None:
@@ -202,6 +235,43 @@ def main():
         ax.legend()
         fig.tight_layout()
         fig.savefig(os.path.join(root, FIG, "figS3_sobol.png"), dpi=200)
+        plt.close(fig)
+
+    en = tables["audit_energy"]
+    if en is not None:
+        fig, ax = plt.subplots(figsize=(5.5, 4))
+        for dl, s in en.groupby("delta"):
+            ax.semilogy(s["altitude_km"], s["E_column_per_day_W"], "o-",
+                        label=f"$\\delta$={dl:g} (column expansion)")
+        for dl, s in en.groupby("delta"):
+            ax.semilogy(s["altitude_km"], s["E_insitu_J"] / 86400.0, "s--",
+                        label=f"$\\delta$={dl:g} (in-situ bound)")
+        ax.set_xlabel("Altitude [km]")
+        ax.set_ylabel("Sustained power [W] for a 1-day intervention")
+        ax.legend(fontsize=7)
+        fig.tight_layout()
+        fig.savefig(os.path.join(root, FIG, "fig8_energy_bounds.png"),
+                    dpi=200)
+        plt.close(fig)
+
+    tb = tables["audit_transport"]
+    if tb is not None:
+        fr = tb[tb.criterion_h == 1.0]
+        fig, ax = plt.subplots(figsize=(6, 4))
+        ax.hist(fr["frac_surviving"], bins=12)
+        ax.axvline(float(fr[(fr.sigma_set == "frozen")
+                            & (fr.kappa_set == "frozen")
+                            & (fr.wind_set == "frozen")]
+                         ["frac_surviving"].iloc[0]),
+                   color="r", lw=1.5, label="reported grid")
+        ax.set_xlabel("fraction of surveyed (kappa, u, sigma_h) "
+                      "combinations surviving 1 h")
+        ax.set_ylabel("count of grid variants")
+        ax.legend()
+        fig.tight_layout()
+        fig.savefig(os.path.join(root, FIG,
+                                 "figS4_transport_grid_sensitivity.png"),
+                    dpi=200)
         plt.close(fig)
 
     # ---- data dictionary ----

@@ -13,7 +13,11 @@ target/protected pairs (A, D, E, G) compare, over the same 1-day window:
                  collateral penalty (case A pair only — the expensive case)
 
 Output: results/tables/phase7_controls.csv, docs/PHASE_7_HANDOFF.md.
-Selectivity ratios are always reported next to absolute collateral delta-v.
+Absolute target benefit and absolute collateral are the primary metrics.
+Selectivity ratios carry the exposure classification of the protected object
+(src.analysis.exposure_class) and are only labelled measurements where that
+object actually encounters the enhanced volume; see
+docs/NUMERICAL_ZERO_AUDIT.md.
 """
 from __future__ import annotations
 
@@ -25,6 +29,8 @@ import pandas as pd
 from scipy.optimize import differential_evolution
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
+from src.analysis.exposure_class import (  # noqa: E402
+    classify, instrument, ratio_status)
 from src.intervention.models import TrackingPerturbation  # noqa: E402
 from src.experiment import make_object, simulate  # noqa: E402
 from src.atmosphere.lookup import build_lookup, rho_fn_from_lookup  # noqa: E402
@@ -133,17 +139,44 @@ def main():
     df.to_csv(os.path.join(root, "results/tables/phase7_controls.csv"),
               index=False)
 
-    # selectivity summary: ratio next to absolute collateral
+    # selectivity summary: ratio next to absolute collateral, classified by
+    # whether the protected object encounters the enhanced volume at all
     summ = []
-    for scen in ["uniform", "localized_tracking", "optimized_localized"]:
+    scen_defs = [
+        ("uniform", lambda tgt: uniform_delta(DELTA_MAX, 0.0, WIN),
+         0.0, WIN),
+        ("localized_tracking",
+         lambda tgt: TrackingPerturbation(tgt["el"], DELTA_MAX, SIG_H,
+                                          SIG_V, 0.0, WIN).delta,
+         0.0, WIN),
+        ("optimized_localized", lambda tgt: trk_o.delta,
+         t0_o, t0_o + dur_o),
+    ]
+    for scen, fn_for, w0, w1 in scen_defs:
         sub = df[df.scenario == scen]
         for prefix in sub["pair"].unique():
             p = sub[sub.pair == prefix]
             t = p[p.obj_type == "target"]["extra_deltav_ms"].sum()
             pr = p[p.obj_type == "protected"]["extra_deltav_ms"].sum()
+            prot_row = cases[(cases["case"].str.startswith(prefix))
+                             & (cases["obj_type"] == "protected")].iloc[0]
+            tgt_row = cases[(cases["case"].str.startswith(prefix))
+                            & (cases["obj_type"] == "target")].iloc[0]
+            diag = instrument(build_obj(prot_row), rho_fn,
+                              fn_for(build_obj(tgt_row)), DELTA_MAX,
+                              w0, w1)
+            cls = classify(diag)
             summ.append(dict(scenario=scen, pair=prefix,
                              target_dv_ms=t, protected_dv_ms=pr,
-                             selectivity_ratio=t / pr if pr > 0 else np.inf))
+                             protected_class=cls,
+                             protected_n_sigma=diag["n_sigma_closest"],
+                             protected_encounters=diag["encounter_count"],
+                             protected_rel_to_natural=diag[
+                                 "rel_to_natural"],
+                             selectivity_ratio=t / pr if pr > 0 else np.nan,
+                             ratio_status=ratio_status(cls),
+                             ratio_meaningful=ratio_status(cls)
+                             == "physical"))
     sdf = pd.DataFrame(summ)
     sdf.to_csv(os.path.join(root, "results/tables/phase7_selectivity.csv"),
                index=False)

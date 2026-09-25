@@ -1,4 +1,4 @@
-rm -rf results/figures/* results/tables/* results/logs/* data/processed/* manuscript/output 2>/dev/null || true
+rm -rf results/figures/* results/tables/* results/logs/* data/processed/* manuscript/output submission 2>/dev/null || true
 python3 scripts/phase01_feasibility_audit.py
 dnet log error -7.339138e-13 -8.511859e-13 2.800000e+01
 dnet log error -8.126246e-19 -nan 4.000000e+00
@@ -179,7 +179,7 @@ angmom_conservation_twobody_5orbits                                             
              convergence_rtol_1e-11                                           endpoint |dr| [m]  1.099013e-07          NaN    True
              circular_orbit_closure                            closure error [m] after 1 period  1.396477e-05 1.000000e-02    True
            j2_raan_rate_consistency                                         RAAN rate [deg/day] -5.002333e+00          NaN    True
-           fastprop_vs_cowell_250km relative 10-day altitude-drop difference (drag-only, no J2)  8.083581e-02 1.000000e-01    True
+           fastprop_vs_cowell_250km relative 10-day altitude-drop difference (drag-only, no J2)  1.385380e-03 1.000000e-02    True
              decay_scales_inverse_B                 drop(B=60)/drop(B=30) at 250 km storm, 30 d  5.000000e-01          NaN    True
 GATE 2: PASS
 python3 scripts/phase03_intervention_check.py
@@ -196,122 +196,120 @@ python3 scripts/phase04_populations.py
 population: 2000, cases: 23
 python3 scripts/phase05_spreading.py
               model  target_exposure  protected_exposure  selectivity_ratio  target_enc  protected_enc  target_tfrac  exposure_retention
-          M0_static     6.652939e-17        5.013722e-17           3.538523           1              1      0.022222            1.000000
-  M1_diffusion_weak     6.651609e-17        5.013361e-17           3.538070           1              1      0.022222            0.999800
-   M1_diffusion_mod     6.523743e-17        4.977581e-17           3.495000           1              1      0.022222            0.980581
-M1_diffusion_strong     5.622756e-17        4.660969e-17           3.216931           1              1      0.025000            0.845154
-        M2_adv_diff     4.040285e-17        6.579417e-17           1.637545           1              1      0.022222            0.607293
-      M2_adv_strong     6.088657e-19        1.363556e-17           0.119074           1              1      0.019444            0.009152
-        M2_relax_1h     2.307705e-17        4.112172e-17           1.496503           1              1      0.022222            0.346870
-       M2_relax_10m     1.403240e-18        3.922841e-18           0.953894           1              1      0.020833            0.021092
+          M0_static     6.652939e-14        5.013722e-14           3.538523           1              1      0.022222            1.000000
+  M1_diffusion_weak     6.651609e-14        5.013361e-14           3.538070           1              1      0.022222            0.999800
+   M1_diffusion_mod     6.523743e-14        4.977581e-14           3.495000           1              1      0.022222            0.980581
+M1_diffusion_strong     5.622756e-14        4.660969e-14           3.216931           1              1      0.025000            0.845154
+        M2_adv_diff     4.040285e-14        6.579417e-14           1.637545           1              1      0.022222            0.607293
+      M2_adv_strong     6.088657e-16        1.363556e-14           0.119074           1              1      0.019444            0.009152
+        M2_relax_1h     2.307705e-14        4.112172e-14           1.496503           1              1      0.022222            0.346870
+       M2_relax_10m     1.403240e-15        3.922841e-15           0.953894           1              1      0.020833            0.021092
 python3 scripts/phase06_outcomes.py
-   scenario                 case  obj_type  delta_lifetime_d   delta_a_km  encounter_count  extra_deltav_ms
-fixed_pulse  A_target_highAm_400    target          0.000000 8.376109e-06                1     4.318139e-06
-   tracking  A_target_highAm_400    target          0.000000 1.444831e-02                2     7.454938e-03
-fixed_pulse      A_protected_400 protected          0.000000 5.693664e-07                1     3.204656e-07
-   tracking      A_protected_400 protected          0.000000 8.848474e-09                2     4.990554e-09
-fixed_pulse B_target_compact_500    target          0.000000 6.163737e-08                1     3.407488e-08
-   tracking B_target_compact_500    target          0.000000 1.042690e-04                2     5.766582e-05
-fixed_pulse      B_protected_500 protected          0.000000 1.400531e-08                1     7.740027e-09
-   tracking      B_protected_500 protected          0.000000 0.000000e+00                0    4.738263e-220
-fixed_pulse            C_frag_00    target          0.000000 1.858644e-06                1     1.016968e-06
-   tracking            C_frag_00    target          0.000000 3.584304e-03                2     1.962249e-03
-fixed_pulse            C_frag_01    target          0.000000 1.892454e-06                1     1.042833e-06
-   tracking            C_frag_01    target          0.000000 0.000000e+00                0     3.550878e-13
-fixed_pulse            C_frag_02    target          0.000000 1.393654e-06                1     7.699667e-07
-   tracking            C_frag_02    target          0.000000 0.000000e+00                0     1.190709e-38
-fixed_pulse            C_frag_03    target          0.000000 7.095323e-07                1     3.927166e-07
-   tracking            C_frag_03    target          0.000000 0.000000e+00                0     2.632580e-80
-fixed_pulse            C_frag_04    target          0.000000 2.434726e-07                1     1.348585e-07
-   tracking            C_frag_04    target          0.000000 0.000000e+00                0    2.187179e-138
-fixed_pulse            C_frag_05    target          0.000000 9.751329e-08                1     5.414403e-08
-   tracking            C_frag_05    target          0.000000 0.000000e+00                0     0.000000e+00
-fixed_pulse            C_frag_06    target          0.000000 1.627086e-08                1     9.047313e-09
-   tracking            C_frag_06    target          0.000000 0.000000e+00                0     0.000000e+00
-fixed_pulse            C_frag_07    target          0.000000 1.741682e-09                1     9.771495e-10
-   tracking            C_frag_07    target          0.000000 0.000000e+00                0     0.000000e+00
-fixed_pulse            C_frag_08    target          0.000000 1.255103e-10                2     6.802096e-11
-   tracking            C_frag_08    target          0.000000 0.000000e+00                0     0.000000e+00
-fixed_pulse            C_frag_09    target          0.000000 3.092282e-11                2     1.549518e-11
-   tracking            C_frag_09    target          0.000000 0.000000e+00                0     0.000000e+00
-fixed_pulse      C_protected_450 protected          0.000000 2.013803e-08                1     1.124103e-08
-   tracking      C_protected_450 protected          0.000000 0.000000e+00                0     0.000000e+00
-fixed_pulse         D_target_550    target          0.000000 7.052768e-08                1     3.854618e-08
-   tracking         D_target_550    target          0.000000 2.923120e-04                2     1.597715e-04
-fixed_pulse      D_protected_550 protected          0.000000 5.963830e-08                1     3.264332e-08
-   tracking      D_protected_550 protected          0.000000 0.000000e+00                0     1.287036e-84
-fixed_pulse     E_target_400_i28    target          0.000000 3.001667e-06                1     1.653422e-06
-   tracking     E_target_400_i28    target          0.000000 4.507973e-03                2     2.482002e-03
-fixed_pulse  E_protected_400_i51 protected          0.000000 1.935496e-08                1     1.087554e-08
-   tracking  E_protected_400_i51 protected          0.000000 1.187657e-05               29     6.678953e-06
-fixed_pulse         F_target_750    target          0.000000 6.008122e-09                1     3.152324e-09
-   tracking         F_target_750    target          0.000000 1.802635e-05                2     9.454826e-06
-fixed_pulse      F_protected_750 protected          0.000000 2.671186e-09                1     1.402357e-09
-   tracking      F_protected_750 protected          0.000000 0.000000e+00                0    7.261503e-227
-fixed_pulse         G_target_250    target          0.000000 0.000000e+00                1     3.339503e-05
-   tracking         G_target_250    target          5.948604 0.000000e+00                2     8.253384e-02
-fixed_pulse      G_protected_250 protected          0.000000 1.890057e-05                1     9.179636e-06
-   tracking      G_protected_250 protected          0.000000 0.000000e+00                0     3.419434e-82
+   scenario                 case  obj_type  delta_lifetime_d  delta_a_km  encounter_count  extra_deltav_ms
+fixed_pulse  A_target_highAm_400    target          0.000420    0.000000                1     3.979303e-03
+   tracking  A_target_highAm_400    target          3.163245    0.000000                2     3.447320e+00
+fixed_pulse      A_protected_400 protected          0.000000    0.000000                1     2.953193e-04
+   tracking      A_protected_400 protected          0.000000    0.000000                2     4.164100e-06
+fixed_pulse B_target_compact_500    target          0.000000    0.000190                1     3.465564e-05
+   tracking B_target_compact_500    target          0.000000    0.285834                2     5.866294e-02
+fixed_pulse      B_protected_500 protected          0.000000    0.000000                1     7.871945e-06
+   tracking      B_protected_500 protected          0.000000    0.000000                0    4.428973e-217
+fixed_pulse            C_frag_00    target          0.004341    0.000000                1     1.034112e-03
+   tracking            C_frag_00    target          2.789955    0.000000                2     1.561055e+00
+fixed_pulse            C_frag_01    target         -0.006462    0.000000                1     1.060432e-03
+   tracking            C_frag_01    target          0.000000    0.000000                0     1.224151e-10
+fixed_pulse            C_frag_02    target         -0.000010    0.000000                1     7.829749e-04
+   tracking            C_frag_02    target          0.000000    0.000000                0     2.552955e-36
+fixed_pulse            C_frag_03    target         -0.000524    0.000000                1     3.993586e-04
+   tracking            C_frag_03    target          0.000000    0.000000                0     4.756361e-78
+fixed_pulse            C_frag_04    target          0.000000    0.000000                1     1.371419e-04
+   tracking            C_frag_04    target          0.000000    0.000000                0    3.865972e-136
+fixed_pulse            C_frag_05    target         -0.000665    0.000000                1     5.505675e-05
+   tracking            C_frag_05    target          0.000000    0.000000                0     0.000000e+00
+fixed_pulse            C_frag_06    target         -0.000004    0.000000                1     9.199995e-06
+   tracking            C_frag_06    target          0.000000    0.000000                0     0.000000e+00
+fixed_pulse            C_frag_07    target          0.000000    0.000000                1     9.936579e-07
+   tracking            C_frag_07    target          0.000000    0.000000                0     0.000000e+00
+fixed_pulse            C_frag_08    target          0.000000    0.000000                2     6.917141e-08
+   tracking            C_frag_08    target          0.000000    0.000000                0     0.000000e+00
+fixed_pulse            C_frag_09    target          0.000000    0.000000                2     1.575754e-08
+   tracking            C_frag_09    target          0.000000    0.000000                0     0.000000e+00
+fixed_pulse      C_protected_450 protected          0.000000    0.000000                1     1.143052e-05
+   tracking      C_protected_450 protected          0.000000    0.000000                0     0.000000e+00
+fixed_pulse         D_target_550    target          0.000000    0.000000                1     3.922828e-05
+   tracking         D_target_550    target          4.572974    0.000000                2     1.624932e-01
+fixed_pulse      D_protected_550 protected          0.000000    0.000098                1     3.322096e-05
+   tracking      D_protected_550 protected          0.000000    0.000000                0     1.269841e-81
+fixed_pulse     E_target_400_i28    target         -0.011115    0.000000                1     1.471416e-03
+   tracking     E_target_400_i28    target          3.903978    0.000000                2     1.645517e+00
+fixed_pulse  E_protected_400_i51 protected          0.000000    0.000000                1     1.002216e-05
+   tracking  E_protected_400_i51 protected          0.521289    0.000000               29     6.158166e-03
+fixed_pulse         F_target_750    target          0.000000    0.000007                1     3.213610e-06
+   tracking         F_target_750    target          0.000000    0.019799                2     9.639151e-03
+fixed_pulse      F_protected_750 protected          0.000000    0.000003                1     1.429621e-06
+   tracking      F_protected_750 protected          0.000000    0.000000                0    7.378028e-224
+fixed_pulse         G_target_250    target          0.002905    0.000000                1     3.085938e-02
+   tracking         G_target_250    target          1.201052    0.000000                1     3.811771e+01
+fixed_pulse      G_protected_250 protected          0.021512    0.000000                1     8.482635e-03
+   tracking      G_protected_250 protected          0.000000    0.000000                0     1.595707e-79
 python3 scripts/phase07_controls.py
-           scenario pair  target_dv_ms  protected_dv_ms  selectivity_ratio
-            uniform    A      0.007455     4.657404e-04       1.600671e+01
-            uniform    D      0.000160     3.758638e-05       4.250781e+00
-            uniform    E      0.002482     5.318802e-04       4.666471e+00
-            uniform    G      0.082583     1.030873e-02       8.010943e+00
- localized_tracking    A      0.007455     4.990554e-09       1.493810e+06
- localized_tracking    D      0.000160     1.287036e-84       1.241391e+80
- localized_tracking    E      0.002482     6.678953e-06       3.716155e+02
- localized_tracking    G      0.082534     3.419434e-82       2.413670e+80
-optimized_localized    A      0.007444     4.986500e-09       1.492833e+06
+           scenario pair  target_dv_ms  protected_dv_ms   protected_class  protected_n_sigma  protected_encounters  protected_rel_to_natural  selectivity_ratio           ratio_status  ratio_meaningful
+            uniform    A      7.359603     4.309789e-01 physical_exposure          -0.000000                     1              5.000000e+00       1.707648e+01               physical              True
+            uniform    D      0.162819     3.826354e-02 physical_exposure          -0.000000                     1              5.000000e+00       4.255210e+00               physical              True
+            uniform    E      2.256834     4.924677e-01 physical_exposure          -0.000000                     1              5.000000e+00       4.582705e+00               physical              True
+            uniform    G    471.651689     1.088140e+01 physical_exposure          -0.000000                     1              5.000000e+00       4.334475e+01               physical              True
+ localized_tracking    A      3.447320     4.164100e-06     gaussian_tail           4.774056                     1              5.358290e-05       8.278668e+05           tail_limited             False
+ localized_tracking    D      0.162493     1.269841e-81      no_encounter          19.096757                     0              1.712157e-79       1.279634e+80 undefined_no_encounter             False
+ localized_tracking    E      1.645517     6.158166e-03 physical_exposure           0.165858                    29              6.278654e-02       2.672089e+02               physical              True
+ localized_tracking    G     38.117706     1.595707e-79      no_encounter          19.096757                     0              1.675617e-79       2.388765e+80 undefined_no_encounter             False
+optimized_localized    A      3.429204     3.683622e-06     gaussian_tail           4.774056                     1              5.358081e-05       9.309327e+05           tail_limited             False
 python3 scripts/phase08_timing.py
                                 min       max      mean       std  spread_ratio
 experiment                                                                     
-fixed_pulse_bestcase_site  0.000002  0.000006  0.000004  0.000001      1.526551
-tracking_4h_window         0.001225  0.001260  0.001241  0.000013      1.014979
+fixed_pulse_bestcase_site  0.001987  0.005740  0.003838  0.001224      1.495491
+tracking_4h_window         0.301281  1.151041  0.895195  0.291590      1.285799
 python3 scripts/phase09_pareto.py
  delta_max  sigma_h_km  duration_s  target_dv_ms  protected_dv_ms  selectivity
-       1.0        50.0     14400.0      0.000248     5.461345e-85 4.533761e+80
-       2.0        50.0     14400.0      0.000495     1.092269e-84 4.533761e+80
-       1.0        50.0     43200.0      0.000744     1.614574e-84 4.607813e+80
-       5.0        50.0     14400.0      0.001238     2.730672e-84 4.533761e+80
-       1.0        50.0     86400.0      0.001491     3.195178e-84 4.666153e+80
-      10.0        50.0     14400.0      0.002476     5.461345e-84 4.533761e+80
-       2.0        50.0     86400.0      0.002982     6.390356e-84 4.666149e+80
-       5.0        50.0     43200.0      0.003720     8.072868e-84 4.607903e+80
-      20.0        50.0     14400.0      0.004952     1.092269e-83 4.533761e+80
-       5.0        50.0     86400.0      0.007454     1.597589e-83 4.665936e+80
-      10.0        50.0     86400.0      0.014905     3.195178e-83 4.664914e+80
-      20.0        50.0     86400.0      0.029781     6.390356e-83 4.660376e+80
-      20.0       100.0     86400.0      0.029817     2.473169e-23 1.205617e+21
-      20.0       200.0     86400.0      0.029826     1.996134e-08 1.494181e+06
-      20.0       400.0     86400.0      0.029828     1.065483e-04 2.799490e+02
+       1.0        50.0     14400.0      0.228175     5.032803e-82 4.533761e+80
+       2.0        50.0     14400.0      0.456350     1.006561e-81 4.533761e+80
+       1.0        50.0     43200.0      0.490710     1.066372e-81 4.601679e+80
+       1.0        50.0     86400.0      0.491323     1.114812e-81 4.407228e+80
+       2.0        50.0     43200.0      0.809745     2.132745e-81 3.796728e+80
+       2.0        50.0     86400.0      0.809797     2.229624e-81 3.631991e+80
+       5.0        50.0     14400.0      1.140876     2.516402e-81 4.533761e+80
+      10.0        50.0     14400.0      2.281752     5.032803e-81 4.533761e+80
+      20.0        50.0     14400.0      4.563505     1.006561e-80 4.533761e+80
+      20.0        50.0     43200.0      6.850379     2.132745e-80 3.212002e+80
+      20.0       100.0     43200.0      6.850402     1.033408e-20 6.628943e+20
+      20.0       200.0     43200.0      6.973220     8.955450e-06 7.786566e+05
+      20.0       200.0     86400.0      6.973227     1.604516e-05 4.346001e+05
+      20.0       400.0     43200.0      9.024885     4.840499e-02 1.864453e+02
+      20.0       400.0     86400.0      9.041667     9.155721e-02 9.875429e+01
 python3 scripts/phase10_uncertainty.py
-/home/ubuntu/repos/thermosphere-debris-selective-decay/scripts/phase10_uncertainty.py:103: DeprecationWarning: `salib.sample.saltelli` will be removed in SALib 1.5.1 Please use `salib.sample.sobol`
-  X = saltelli.sample(PROBLEM, N, calc_second_order=False)
-     param            S1           ST      S1_conf      ST_conf
- delta_max  8.297428e-01 5.475046e-01 3.843512e-01 3.121505e-01
-sigma_h_km  3.046831e-07 2.305659e-10 5.266105e-06 2.434598e-10
-sigma_v_km -2.325766e-09 3.265299e-15 1.742200e-08 3.463669e-15
- rho_scale  2.802540e-02 2.938196e-02 9.281464e-02 1.509318e-02
-   B_scale -1.520233e-02 1.454534e-02 5.393040e-02 6.904260e-03
-duration_h  5.089365e-01 5.906214e-01 2.644242e-01 2.720150e-01
+     param        S1       ST  S1_conf  ST_conf  n_base  n_model_evals
+ delta_max  0.564393 0.598317 0.054504 0.054060    1024           8192
+sigma_h_km  0.107041 0.159955 0.033305 0.019981    1024           8192
+sigma_v_km -0.000232 0.000199 0.001061 0.000050    1024           8192
+ rho_scale  0.023536 0.024971 0.011996 0.002680    1024           8192
+   B_scale  0.009841 0.011176 0.009649 0.001289    1024           8192
+duration_h  0.224465 0.270069 0.042713 0.037105    1024           8192
                   control                case  extra_deltav_ms  a_drop_km  encounter_count
-      high_altitude_750km        F_target_750         0.000009   0.000162                4
-      high_altitude_750km     F_protected_750         0.000002   0.000041                4
-               high_B_200           neg_highB         0.000186   0.002966                4
-near_identical_trajectory            neg_twin         0.000460   0.007405                4
-           diffuse_3000km A_target_highAm_400         0.007455   0.118767                4
-           diffuse_3000km     A_protected_400         0.000443   0.007376                4
-                short_60s A_target_highAm_400         0.000006   0.105573                1
-  poor_timing_fixed_pulse A_target_highAm_400         0.000000   0.105563                0
+      high_altitude_750km        F_target_750         0.009639   0.165671                4
+      high_altitude_750km     F_protected_750         0.002408   0.041374                4
+               high_B_200           neg_highB         0.171406   2.803571                4
+near_identical_trajectory            neg_twin         0.405110   7.225946                4
+           diffuse_3000km A_target_highAm_400         7.153734 280.000000                4
+           diffuse_3000km     A_protected_400         0.408719   7.235218                4
+                short_60s A_target_highAm_400         0.005364 280.000000                1
+  poor_timing_fixed_pulse A_target_highAm_400         0.000000 280.000000                0
 python3 scripts/phase11_scaling.py
               mean       std  count
 regime                             
-high      1.015003  0.016876    120
-low       1.025388  0.032722    120
-moderate  1.020585  0.024057    120
-storm     1.014033  0.015833    120
-slope=1.000 R2=0.9999
+high      1.048321  0.119773    120
+low       1.028342  0.034888    120
+moderate  1.036806  0.106251    120
+storm     1.052057  0.121321    120
+slope=1.010 R2=0.9995
 python3 scripts/phase12_classification.py
 sigma_h_km         50.0      200.0     1000.0
 regime   alt_km                              
@@ -339,9 +337,151 @@ storm    250     0.222222  0.333333  0.666667
          500     0.222222  0.333333  0.666667
          600     0.222222  0.333333  0.666667
          750     0.222222  0.333333  0.666667
+python3 scripts/audit_numerical_zero.py
+          scenario pair                case  obj_type  alt_km  inc_deg  B_kgm2   peak_delta  n_sigma_closest  encounter_count  time_fraction_in_patch  extra_dv_ms  natural_dv_ms  rel_to_natural    exposure_class
+           uniform    A A_target_highAm_400    target     400     51.6     5.0 5.000000e+00        -0.000000                1                 1.00000 6.869500e+00       1.373900    5.000000e+00 physical_exposure
+localized_tracking    A A_target_highAm_400    target     400     51.6     5.0 5.000000e+00        -0.000000                1                 1.00000 6.869500e+00       1.373900    5.000000e+00 physical_exposure
+           uniform    A     A_protected_400 protected     400     51.6    80.0 5.000000e+00        -0.000000                1                 1.00000 4.291927e-01       0.085839    5.000000e+00 physical_exposure
+localized_tracking    A     A_protected_400 protected     400     51.6    80.0 5.621275e-05         4.774056                1                 1.00000 4.599477e-06       0.085839    5.358290e-05     gaussian_tail
+           uniform    D        D_target_550    target     550     97.6    20.0 5.000000e+00        -0.000000                1                 1.00000 1.625985e-01       0.032520    5.000000e+00 physical_exposure
+localized_tracking    D        D_target_550    target     550     97.6    20.0 5.000000e+00        -0.000000                1                 1.00000 1.625985e-01       0.032520    5.000000e+00 physical_exposure
+           uniform    D     D_protected_550 protected     550     97.6    85.0 5.000000e+00        -0.000000                1                 1.00000 3.825148e-02       0.007650    5.000000e+00 physical_exposure
+localized_tracking    D     D_protected_550 protected     550     97.6    85.0 3.223945e-79        19.096757                0                 0.00000 1.309851e-81       0.007650    1.712157e-79      no_encounter
+           uniform    E    E_target_400_i28    target     400     28.5    15.0 5.000000e+00        -0.000000                1                 1.00000 2.208736e+00       0.441747    5.000000e+00 physical_exposure
+localized_tracking    E    E_target_400_i28    target     400     28.5    15.0 5.000000e+00        -0.000000                1                 1.00000 2.208736e+00       0.441747    5.000000e+00 physical_exposure
+           uniform    E E_protected_400_i51 protected     400     51.6    70.0 5.000000e+00        -0.000000                1                 1.00000 4.901420e-01       0.098028    5.000000e+00 physical_exposure
+localized_tracking    E E_protected_400_i51 protected     400     51.6    70.0 4.931698e+00         0.165858               29                 0.20625 6.154865e-03       0.098028    6.278654e-02 physical_exposure
+           uniform    G        G_target_250    target     250     51.6    10.0 5.000000e+00        -0.000000                1                 1.00000 7.623006e+01      15.246013    5.000000e+00 physical_exposure
+localized_tracking    G        G_target_250    target     250     51.6    10.0 5.000000e+00        -0.000000                1                 1.00000 7.623006e+01      15.246013    5.000000e+00 physical_exposure
+           uniform    G     G_protected_250 protected     250     51.6    80.0 5.000000e+00        -0.000000                1                 1.00000 9.524733e+00       1.904947    5.000000e+00 physical_exposure
+localized_tracking    G     G_protected_250 protected     250     51.6    80.0 3.223945e-79        19.096757                0                 0.00000 3.191962e-79       1.904947    1.675617e-79      no_encounter
+
+          scenario pair  target_dv_ms  protected_dv_ms   protected_class  protected_n_sigma  protected_encounters  selectivity_ratio           ratio_status  ratio_meaningful
+           uniform    A      6.869500     4.291927e-01 physical_exposure          -0.000000                     1       1.600563e+01               physical              True
+           uniform    D      0.162599     3.825148e-02 physical_exposure          -0.000000                     1       4.250777e+00               physical              True
+           uniform    E      2.208736     4.901420e-01 physical_exposure          -0.000000                     1       4.506319e+00               physical              True
+           uniform    G     76.230064     9.524733e+00 physical_exposure          -0.000000                     1       8.003380e+00               physical              True
+localized_tracking    A      6.869500     4.599477e-06     gaussian_tail           4.774056                     1       1.493539e+06           tail_limited             False
+localized_tracking    D      0.162599     1.309851e-81      no_encounter          19.096757                     0       1.241351e+80 undefined_no_encounter             False
+localized_tracking    E      2.208736     6.154865e-03 physical_exposure           0.165858                    29       3.588602e+02               physical              True
+localized_tracking    G     76.230064     3.191962e-79      no_encounter          19.096757                     0       2.388188e+80 undefined_no_encounter             False
+python3 scripts/audit_transport_boundary.py
+frozen grid, 1 h criterion:
+sigma_set kappa_set wind_set  criterion_h  n_combinations  frac_surviving  n_selective  frac_surviving_selective_sigma  n_selective_windy  frac_surviving_selective_windy  n_selective_wind100  frac_surviving_selective_wind100
+   frozen    frozen   frozen          1.0              27        0.407407           18                        0.277778                 12                             0.0                   12                               0.0
+
+range of frac_surviving over all grid variants at 1 h: 0.083 - 0.556
+selective (sigma_h<=200 km) AND wind>=50 m/s, 1 h: max over variants = 0.250
+selective (sigma_h<=200 km) AND wind>=100 m/s, 1 h: max over variants = 0.000
+python3 scripts/audit_gap_decomposition.py
+      scenario  window_s  time_fraction_in_patch  time_in_patch_s  peak_delta  delta_eff_in_patch  encounter_count  extra_dv_ms  natural_dv_ms
+   fixed_pulse    7200.0                0.044444            320.0    3.152374            0.794087                1     0.003979       0.112751
+tracking_bound   86400.0                1.000000          86400.0    5.000000            5.000000                1     6.869500       1.373900
+
+                                 factor       ratio
+                        window duration   12.000000
+        fraction of window inside patch   22.500000
+          mean enhancement while inside    6.296536
+product of factors (predicted dv ratio) 1700.064787
+                      observed dv ratio 1726.307271
+                          closure error   -0.015202
+python3 scripts/audit_matched_exposure.py
+obj_type                         protected     target
+pair matching                                        
+A    localized_tracking       4.599477e-06   6.869500
+     matched_spacetime        1.868365e-04   0.002990
+     matched_target_exposure  4.291927e-01   6.869500
+     matched_thermal_energy   3.115072e-05   0.000499
+D    localized_tracking       1.309851e-81   0.162599
+     matched_spacetime        1.593842e-05   0.000068
+     matched_target_exposure  3.825148e-02   0.162599
+     matched_thermal_energy   2.657327e-06   0.000011
+E    localized_tracking       6.154865e-03   2.208736
+     matched_spacetime        2.133690e-04   0.000962
+     matched_target_exposure  4.901420e-01   2.208736
+     matched_thermal_energy   3.557441e-05   0.000160
+G    localized_tracking       3.191962e-79  76.230064
+     matched_spacetime        4.336107e-03   0.034704
+     matched_target_exposure  9.524733e+00  76.230064
+     matched_thermal_energy   7.229587e-04   0.005786
+python3 scripts/audit_energy.py
+ altitude_km  sigma_h_km  delta  eps_column   E_insitu_J  E_column_expansion_J  ratio_column_to_insitu  E_column_per_day_W
+       300.0       200.0    1.0    0.193245 2.550795e+11          6.081605e+12               23.841995        7.038894e+07
+       300.0       200.0    5.0    0.499531 4.251326e+11          1.572072e+13               36.978397        1.819528e+08
+       300.0       200.0   20.0    0.848793 4.858658e+11          2.671234e+13               54.978844        3.091706e+08
+       400.0       200.0    1.0    0.149692 4.393636e+10          4.757678e+12              108.285652        5.506571e+07
+       400.0       200.0    5.0    0.386947 7.322727e+10          1.229842e+13              167.948610        1.423428e+08
+       400.0       200.0   20.0    0.657493 8.368831e+10          2.089723e+13              249.703102        2.418661e+08
+       500.0       200.0    1.0    0.121466 9.263578e+09          3.867693e+12              417.516072        4.476496e+07
+       500.0       200.0    5.0    0.313985 1.543930e+10          9.997840e+12              647.558034        1.157157e+08
+       500.0       200.0   20.0    0.533517 1.764491e+10          1.698813e+13              962.778137        1.966219e+08
+       600.0       200.0    1.0    0.103322 2.192691e+09          3.291297e+12             1501.030921        3.809371e+07
+       600.0       200.0    5.0    0.267083 3.654485e+09          8.507879e+12             2328.065185        9.847082e+07
+       600.0       200.0   20.0    0.453823 4.176554e+09          1.445642e+13             3461.327239        1.673197e+08
+python3 scripts/audit_sobol.py
+     param  S1_frozen  ST_frozen  S1_conf_frozen  ST_conf_frozen  n_base  n_model_evals  S1_rerun  ST_rerun  S1_conf_rerun  ST_conf_rerun  S1_abs_diff  ST_abs_diff  max_response_rel_diff
+ delta_max   0.564393   0.598317        0.054504        0.054060    1024           8192  0.757044  0.539205       0.365103       0.247774     0.192651     0.059113                0.00023
+sigma_h_km   0.107041   0.159955        0.033305        0.019981    1024           8192  0.095044  0.206992       0.119976       0.157553     0.011997     0.047037                0.00023
+sigma_v_km  -0.000232   0.000199        0.001061        0.000050    1024           8192  0.002169  0.000127       0.004108       0.000131     0.002400     0.000072                0.00023
+ rho_scale   0.023536   0.024971        0.011996        0.002680    1024           8192  0.089598  0.024829       0.092533       0.015682     0.066062     0.000143                0.00023
+   B_scale   0.009841   0.011176        0.009649        0.001289    1024           8192 -0.002022  0.011718       0.067645       0.007127     0.011863     0.000542                0.00023
+duration_h   0.224465   0.270069        0.042713        0.037105    1024           8192  0.317716  0.302165       0.256211       0.202026     0.093251     0.032096                0.00023
+legacy reproduction: 139s, max |S1 diff| = 1.93e-01, max response rel diff = 2.30e-04
+N=32 evals=256 11s max(S1-ST)=+0.225 sumS1=1.266
+N=256 evals=2048 84s max(S1-ST)=+0.006 sumS1=0.957
+N=512 evals=4096 164s max(S1-ST)=-0.000 sumS1=0.960
+N=1024 evals=8192 329s max(S1-ST)=-0.000 sumS1=0.929
+N=2048 evals=16384 679s max(S1-ST)=-0.000 sumS1=0.939
+ N_base  n_model_evals      param        S1  S1_conf       ST  ST_conf  S1_minus_ST  ordering_violation   sum_S1   y_mean    y_std     wall_s
+     32            256  delta_max  0.833367 0.328616 0.608107 0.232900     0.225259               False 1.266218 3.033141 1.202890  10.914842
+     32            256 sigma_h_km  0.075461 0.108466 0.087643 0.072177    -0.012181               False 1.266218 3.033141 1.202890  10.914842
+     32            256 sigma_v_km  0.003336 0.003918 0.000153 0.000150     0.003182               False 1.266218 3.033141 1.202890  10.914842
+     32            256  rho_scale  0.055191 0.071938 0.023695 0.014616     0.031496               False 1.266218 3.033141 1.202890  10.914842
+     32            256    B_scale  0.008025 0.054288 0.006857 0.003419     0.001167               False 1.266218 3.033141 1.202890  10.914842
+     32            256 duration_h  0.290839 0.289428 0.346062 0.190277    -0.055223               False 1.266218 3.033141 1.202890  10.914842
+    256           2048  delta_max  0.567761 0.128284 0.614735 0.105361    -0.046974               False 0.956509 3.037578 1.199774  84.368506
+    256           2048 sigma_h_km  0.109645 0.058586 0.164140 0.037920    -0.054495               False 0.956509 3.037578 1.199774  84.368506
+    256           2048 sigma_v_km  0.001315 0.001501 0.000171 0.000101     0.001144               False 0.956509 3.037578 1.199774  84.368506
+    256           2048  rho_scale  0.031164 0.026065 0.025555 0.005533     0.005608               False 0.956509 3.037578 1.199774  84.368506
+    256           2048    B_scale  0.009682 0.019652 0.011560 0.002248    -0.001879               False 0.956509 3.037578 1.199774  84.368506
+    256           2048 duration_h  0.236942 0.105960 0.296610 0.072887    -0.059668               False 0.956509 3.037578 1.199774  84.368506
+    512           4096  delta_max  0.569690 0.081518 0.613815 0.075271    -0.044125               False 0.959673 3.038241 1.196857 164.327957
+    512           4096 sigma_h_km  0.117166 0.049088 0.164177 0.031893    -0.047011               False 0.959673 3.038241 1.196857 164.327957
+    512           4096 sigma_v_km -0.000090 0.001484 0.000199 0.000069    -0.000289               False 0.959673 3.038241 1.196857 164.327957
+    512           4096  rho_scale  0.024361 0.019461 0.026465 0.004157    -0.002105               False 0.959673 3.038241 1.196857 164.327957
+    512           4096    B_scale  0.008911 0.010538 0.011217 0.001783    -0.002306               False 0.959673 3.038241 1.196857 164.327957
+    512           4096 duration_h  0.239635 0.069309 0.287458 0.052397    -0.047823               False 0.959673 3.038241 1.196857 164.327957
+   1024           8192  delta_max  0.564393 0.054354 0.598317 0.049943    -0.033924               False 0.929044 3.039491 1.199466 329.386834
+   1024           8192 sigma_h_km  0.107041 0.027888 0.159955 0.018633    -0.052914               False 0.929044 3.039491 1.199466 329.386834
+   1024           8192 sigma_v_km -0.000232 0.001000 0.000199 0.000051    -0.000430               False 0.929044 3.039491 1.199466 329.386834
+   1024           8192  rho_scale  0.023536 0.013588 0.024971 0.002463    -0.001435               False 0.929044 3.039491 1.199466 329.386834
+   1024           8192    B_scale  0.009841 0.009939 0.011176 0.001252    -0.001335               False 0.929044 3.039491 1.199466 329.386834
+   1024           8192 duration_h  0.224465 0.044650 0.270069 0.038358    -0.045604               False 0.929044 3.039491 1.199466 329.386834
+   2048          16384  delta_max  0.567177 0.042676 0.597252 0.036420    -0.030075               False 0.938751 3.039424 1.198305 679.266505
+   2048          16384 sigma_h_km  0.112505 0.023483 0.164913 0.014820    -0.052408               False 0.938751 3.039424 1.198305 679.266505
+   2048          16384 sigma_v_km -0.000049 0.000816 0.000180 0.000033    -0.000228               False 0.938751 3.039424 1.198305 679.266505
+   2048          16384  rho_scale  0.022978 0.009364 0.025172 0.001853    -0.002194               False 0.938751 3.039424 1.198305 679.266505
+   2048          16384    B_scale  0.009770 0.005871 0.011245 0.000727    -0.001475               False 0.938751 3.039424 1.198305 679.266505
+   2048          16384 duration_h  0.226370 0.034342 0.269486 0.024576    -0.043116               False 0.938751 3.039424 1.198305 679.266505
 python3 scripts/phase13_results.py
-master_results rows: 3448; figures written.
+master_results rows: 3684; figures written.
 python3 scripts/build_manuscript.py
 manuscript + supplement written
 python3 scripts/qc_traceability.py
 QC: all audits pass
+python3 scripts/build_submission_package.py
+submission package: 123 files -> /home/ubuntu/repos/thermosphere-debris-selective-decay/submission/ASR_final_submission.zip (2.72 MB)
+python3 -m pytest tests/ -x -q
+............                                                             [100%]
+12 passed in 0.22s
+python3 scripts/run_quick.py
+   scenario                case  obj_type  extra_deltav_ms  a_drop_km  encounter_count
+   baseline A_target_highAm_400    target         0.000000 280.000000                0
+fixed_pulse A_target_highAm_400    target         0.004006 280.000000                1
+   tracking A_target_highAm_400    target         2.914271 280.000000                4
+    uniform A_target_highAm_400    target         7.649881 280.000000                4
+   baseline     A_protected_400 protected         0.000000   6.422110                0
+fixed_pulse     A_protected_400 protected         0.000292   6.422690                1
+   tracking     A_protected_400 protected         0.000004   6.422118                4
+    uniform     A_protected_400 protected         0.431873   7.281394                4
+quick run complete -> /home/ubuntu/repos/thermosphere-debris-selective-decay/results/tables/quick_summary.csv

@@ -33,11 +33,19 @@ EXPECTED_TABLES = [
     "phase10_montecarlo.csv", "phase10_sobol.csv",
     "phase10_negative_controls.csv", "phase11_scaling.csv",
     "phase12_classification.csv", "master_results.csv",
+    # revision audits
+    "numerical_zero_audit.csv", "transport_boundary_sensitivity.csv",
+    "gap_decomposition.csv", "gap_decomposition_factors.csv",
+    "matched_exposure.csv", "energy_bounds_audit.csv",
+    "sobol_convergence.csv", "sobol_reproduction_check.csv",
 ]
 EXPECTED_FIGS = [
     "fig1_density_profiles.png", "fig2_lifetime_map.png",
     "fig3_collateral.png", "fig4_timing.png", "fig5_pareto.png",
-    "fig6_scaling_collapse.png",
+    "fig6_scaling_collapse.png", "fig7_matched_exposure.png",
+    "fig8_energy_bounds.png", "figS1_negative_controls.png",
+    "figS2_mc_hist.png", "figS3_sobol.png",
+    "figS4_transport_grid_sensitivity.png",
 ]
 
 SECRET_PAT = re.compile(r"(api[_-]?key|secret|token|password)\s*[:=]",
@@ -64,6 +72,8 @@ def main():
         if not ok:
             fails.append(f"missing figure {f_}")
     for doc in ["manuscript/manuscript.docx",
+                "manuscript/manuscript_inline.docx",
+                "manuscript/manuscript_figures.pptx",
                 "supplement/supplement.docx"]:
         p = os.path.join(root, doc)
         ok = os.path.exists(p)
@@ -78,6 +88,28 @@ def main():
                  f"all {len(refs)} references verified")
     if len(bad_refs):
         fails.append("unverified references present")
+
+    # every citation used in the manuscript must exist in the ledger and
+    # be numbered in order of first appearance
+    cit = pd.read_csv(os.path.join(root,
+                                   "results/manuscript_citations.csv"))
+    unknown = sorted(set(cit.citation_key) - set(refs.citation_key))
+    ok = not unknown and list(cit.number) == list(range(1, len(cit) + 1))
+    lines.append(f"- {'PASS' if ok else 'FAIL'} {len(cit)} citations "
+                 "resolve to the verified ledger and are numbered in "
+                 "order of first appearance")
+    if unknown:
+        fails.append(f"unknown citation keys {unknown}")
+
+    # every manuscript number must be traceable to a generated CSV
+    prov = pd.read_csv(os.path.join(
+        root, "results/manuscript_value_provenance.csv"))
+    unmapped = prov[prov.source_csv == "unmapped"]
+    lines.append(f"- {'PASS' if len(unmapped) == 0 else 'FAIL'} all "
+                 f"{len(prov)} injected manuscript values map to a "
+                 "generated results CSV")
+    if len(unmapped):
+        fails.append("unmapped manuscript values")
     open(os.path.join(root, "docs/TRACEABILITY_AUDIT.md"), "w") \
         .write("\n".join(lines))
 
@@ -111,8 +143,8 @@ def main():
     if "seed" not in cfg:
         bad.append(("missing seed", "config/default.yaml"))
     reqs = open(os.path.join(root, "requirements.txt")).read()
-    unpinned = [l for l in reqs.splitlines()
-                if l.strip() and not l.startswith("#") and "==" not in l]
+    unpinned = [ln for ln in reqs.splitlines()
+                if ln.strip() and not ln.startswith("#") and "==" not in ln]
     for u in unpinned:
         bad.append(("unpinned requirement", u))
     lines.append(f"- scanned {len(src_files)} source/doc files")
@@ -140,6 +172,14 @@ def main():
                  "recompute from dv columns")
     if not ok:
         fails.append("selectivity ratio inconsistency")
+    ok = (sel["ratio_meaningful"]
+          == (sel["ratio_status"] == "physical")).all()
+    lines.append(f"- {'PASS' if ok else 'FAIL'} every selectivity ratio "
+                 "carries an exposure classification and is flagged "
+                 "meaningful only for physically exposed protected "
+                 "objects")
+    if not ok:
+        fails.append("ratio_meaningful inconsistent with exposure class")
     mc = pd.read_csv(os.path.join(root,
                                   "results/tables/phase10_montecarlo.csv"))
     nan_frac = mc["target_dv_ms"].isna().mean()

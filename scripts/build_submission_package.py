@@ -29,11 +29,32 @@ ITEMS = [
     ("docs/HIGHLIGHTS.md", "03_submission_docs/HIGHLIGHTS.md"),
     ("docs/SUBMISSION_CHECKLIST.md",
      "03_submission_docs/SUBMISSION_CHECKLIST.md"),
+    ("docs/FINAL_SUBMISSION_CHECKLIST.md",
+     "03_submission_docs/FINAL_SUBMISSION_CHECKLIST.md"),
+    ("docs/DECLARATIONS.md", "03_submission_docs/DECLARATIONS.md"),
+    ("docs/DATA_CODE_AVAILABILITY.md",
+     "03_submission_docs/DATA_CODE_AVAILABILITY.md"),
     ("docs/JOURNAL_AUDIT.md", "03_submission_docs/JOURNAL_AUDIT.md"),
     ("docs/ADVERSARIAL_REVIEW.md",
      "03_submission_docs/ADVERSARIAL_REVIEW.md"),
     ("docs/REVIEWER_RISK.md", "03_submission_docs/REVIEWER_RISK.md"),
     ("docs/DECISION_LOG.md", "03_submission_docs/DECISION_LOG.md"),
+    ("docs/FINAL_DECISION_LOG.md",
+     "03_submission_docs/FINAL_DECISION_LOG.md"),
+    ("docs/HOSTILE_REVIEW_PRE.md",
+     "03_submission_docs/HOSTILE_REVIEW_PRE.md"),
+    ("docs/HOSTILE_REVIEW_POST.md",
+     "03_submission_docs/HOSTILE_REVIEW_POST.md"),
+    ("docs/REANALYSIS_PLAN.md", "03_submission_docs/REANALYSIS_PLAN.md"),
+    ("docs/PRE_REVISION_STATE.md",
+     "03_submission_docs/PRE_REVISION_STATE.md"),
+    ("docs/SOBOL_AUDIT.md", "03_submission_docs/SOBOL_AUDIT.md"),
+    ("docs/NUMERICAL_ZERO_AUDIT.md",
+     "03_submission_docs/NUMERICAL_ZERO_AUDIT.md"),
+    ("docs/TRANSPORT_BOUNDARY_AUDIT.md",
+     "03_submission_docs/TRANSPORT_BOUNDARY_AUDIT.md"),
+    ("docs/SCALING_LAW_AUDIT.md",
+     "03_submission_docs/SCALING_LAW_AUDIT.md"),
     ("docs/TRACEABILITY_AUDIT.md",
      "03_submission_docs/TRACEABILITY_AUDIT.md"),
     ("docs/REPRODUCIBILITY_AUDIT.md",
@@ -45,6 +66,10 @@ ITEMS = [
     ("data/processed/DATA_DICTIONARY.md",
      "06_data/DATA_DICTIONARY.md"),
     ("data/processed/cases.csv", "06_data/cases.csv"),
+    ("results/manuscript_value_provenance.csv",
+     "06_data/manuscript_value_provenance.csv"),
+    ("results/manuscript_citations.csv",
+     "06_data/manuscript_citations.csv"),
     ("README.md", "README.md"),
     ("CITATION.cff", "CITATION.cff"),
     ("LICENSE", "LICENSE"),
@@ -123,12 +148,13 @@ def main():
         "- `01_manuscript/manuscript_figures_editable.pptx` — editable "
         "English slide deck of all figures and key results.",
         "- `02_supplement/` — supplementary figures and tables.",
-        "- `03_submission_docs/` — cover letter, highlights, checklist, "
-        "journal audit, adversarial review, QC audits.",
+        "- `03_submission_docs/` — cover letter, highlights, checklists, "
+        "declarations, data/code availability, journal audit, hostile "
+        "reviews, reanalysis plan and QC audits.",
         "- `04_figures/` — standalone figure files (PNG, 200 dpi).",
         "- `05_references/` — verified reference list with DOIs.",
         "- `06_data/` — data dictionary, case definitions, all result "
-        "tables (CSV).",
+        "tables (CSV), and value-level manuscript provenance.",
         "- `07_code/` — full analysis code, config and environment files; "
         "`make all` regenerates every number, figure and table.",
         "",
@@ -147,9 +173,7 @@ def main():
     with open(os.path.join(out, "MANIFEST.md"), "w") as f:
         f.write("\n".join(lines) + "\n")
 
-    zip_path = os.path.join(
-        root, "submission/thermosphere-debris-selective-decay_"
-              "submission.zip")
+    zip_path = os.path.join(root, "submission/ASR_final_submission.zip")
     with zipfile.ZipFile(zip_path, "w", zipfile.ZIP_DEFLATED) as z:
         for dirpath, _, files in os.walk(out):
             for fn in files:
