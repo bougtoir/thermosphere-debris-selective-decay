@@ -22,6 +22,12 @@ localization does buy target benefit:
 
 All three arms are run for the same 1-day window against the same
 target/protected pairs, and absolute delta-v is reported for both objects.
+Exposure is measured along the trajectory the drag itself produces (the
+semi-major axis is integrated while the intervention is active), so the
+localized arm is not credited with co-location it loses as the induced
+drag drifts the object along track; the uniform arms are insensitive to
+that drift by construction.
+
 Writes results/tables/matched_exposure.csv.
 """
 from __future__ import annotations
@@ -33,7 +39,8 @@ import numpy as np
 import pandas as pd
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
-from src.analysis.exposure_class import classify, instrument  # noqa: E402
+from src.analysis.exposure_class import (  # noqa: E402
+    classify, instrument_decaying)
 from src.atmosphere.lookup import build_lookup, rho_fn_from_lookup  # noqa: E402
 from src.experiment import make_object  # noqa: E402
 from src.intervention.models import TrackingPerturbation  # noqa: E402
@@ -98,11 +105,12 @@ def main():
         for _, c in grp.iterrows():
             obj = build_obj(c)
             for name, fn, d_used in arms:
-                d = instrument(obj, rho_fn, fn, max(d_used, 1e-300),
-                               0.0, WIN)
+                d = instrument_decaying(obj, rho_fn, fn,
+                                        max(d_used, 1e-300), 0.0, WIN)
                 rows.append(dict(
                     pair=prefix, matching=name, case=c["case"],
                     obj_type=c["obj_type"], alt_km=c["alt_km"],
+                    ephemeris=d["ephemeris"],
                     volume_ratio=fv, delta_uniform=d_used,
                     extra_dv_ms=d["extra_dv_ms"],
                     natural_dv_ms=d["natural_dv_ms"],

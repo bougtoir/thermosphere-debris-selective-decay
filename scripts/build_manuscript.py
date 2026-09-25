@@ -111,15 +111,25 @@ def main():
                                 ["extra_deltav_ms"].iloc[0])
 
     sel = p7.set_index(["scenario", "pair"])
-    n["sel_A_unif"] = float(sel.loc[("uniform", "A"), "selectivity_ratio"])
-    n["sel_A_loc"] = float(sel.loc[("localized_tracking", "A"),
-                                   "selectivity_ratio"])
+
+    def meaningful_ratio(scenario, pair):
+        """Selectivity ratio, only where the protected-object exposure is
+        physical; a ratio against a Gaussian-tail or no-encounter
+        denominator is not a measurement of selectivity."""
+        row = sel.loc[(scenario, pair)]
+        if not bool(row["ratio_meaningful"]):
+            raise SystemExit(
+                f"selectivity ratio for ({scenario}, {pair}) is "
+                f"{row['ratio_status']}, not a physical selectivity; it "
+                "must not be used as a manuscript value")
+        return float(row["selectivity_ratio"])
+
+    n["sel_A_unif"] = meaningful_ratio("uniform", "A")
     n["dv_unif_prot_A"] = float(sel.loc[("uniform", "A"),
                                         "protected_dv_ms"])
     n["dv_loc_prot_A"] = float(sel.loc[("localized_tracking", "A"),
                                        "protected_dv_ms"])
-    n["sel_E_loc"] = float(sel.loc[("localized_tracking", "E"),
-                                   "selectivity_ratio"])
+    n["sel_E_loc"] = meaningful_ratio("localized_tracking", "E")
 
     t8 = p8[p8.obj_type == "target"]
     n["pulse_dv_range"] = (t8[t8.experiment == "fixed_pulse_bestcase_site"]
@@ -170,9 +180,20 @@ def main():
     n["gap_pulse_eff"] = float(gp.loc["fixed_pulse", "delta_eff_in_patch"])
     n["gap_pulse_peak"] = float(gp.loc["fixed_pulse", "peak_delta"])
     n["gap_pulse_nat"] = float(gp.loc["fixed_pulse", "natural_dv_ms"])
-    n["gap_track_dv"] = float(gp.loc["tracking_bound", "extra_dv_ms"])
-    n["gap_track_nat"] = float(gp.loc["tracking_bound", "natural_dv_ms"])
+    n["gap_track_dv"] = float(gp.loc["tracking_bound_perfect",
+                                     "extra_dv_ms"])
+    n["gap_track_nat"] = float(gp.loc["tracking_bound_perfect",
+                                      "natural_dv_ms"])
+    n["gap_track_eff"] = float(gp.loc["tracking_bound_perfect",
+                                      "delta_eff_in_patch"])
+    n["gap_sim_dv"] = float(gp.loc["tracking_simulated", "extra_dv_ms"])
+    n["gap_sim_eff"] = float(gp.loc["tracking_simulated",
+                                    "delta_eff_in_patch"])
     gf = gapf.set_index("factor")["ratio"]
+    n["gap_f_ret"] = float(
+        gf.loc["co-location retention along the decaying orbit"])
+    n["gap_closure_ret"] = float(gf.loc["closure error including retention"])
+    n["gap_ratio_sim"] = float(gf.loc["observed simulated dv ratio"])
     n["gap_f_dur"] = float(gf.loc["window duration"])
     n["gap_f_occ"] = float(gf.loc["fraction of window inside patch"])
     n["gap_f_amp"] = float(gf.loc["mean enhancement while inside"])
@@ -183,6 +204,8 @@ def main():
     n["mex_loc_t"] = float(mx.loc[("A", "localized_tracking", "target")])
     n["mex_loc_p"] = float(mx.loc[("A", "localized_tracking",
                                    "protected")])
+    n["mex_exp_t"] = float(mx.loc[("A", "matched_target_exposure",
+                                   "target")])
     n["mex_exp_p"] = float(mx.loc[("A", "matched_target_exposure",
                                    "protected")])
     n["mex_vol_t"] = float(mx.loc[("A", "matched_spacetime", "target")])
@@ -302,18 +325,28 @@ def main():
              "extra_deltav_ms"]].reset_index(drop=True)
     t3 = p7[["scenario", "pair", "target_dv_ms", "protected_dv_ms",
              "protected_class", "protected_encounters",
-             "selectivity_ratio", "ratio_status"]].reset_index(drop=True)
+             "selectivity_ratio", "ratio_status",
+             "ratio_meaningful"]].reset_index(drop=True)
+    # a ratio taken against a Gaussian-tail, below-resolution or
+    # no-encounter denominator is not a selectivity measurement, so the
+    # number is withheld from the manuscript table rather than printed
+    t3["selectivity_ratio"] = [
+        f"{v:.6g}" if m else "undefined"
+        for v, m in zip(t3["selectivity_ratio"], t3["ratio_meaningful"])]
+    t3 = t3.drop(columns=["ratio_meaningful"])
     t4 = sob[["param", "S1", "ST", "S1_conf", "ST_conf"]] \
         .reset_index(drop=True)
     t5 = neg[["control", "case", "extra_deltav_ms", "a_drop_km",
               "encounter_count"]].reset_index(drop=True)
-    t6 = gap[["scenario", "window_s", "time_fraction_in_patch",
-              "peak_delta", "delta_eff_in_patch", "extra_dv_ms",
+    t6 = gap[["scenario", "ephemeris", "window_s",
+              "time_fraction_in_patch", "peak_delta",
+              "delta_eff_in_patch", "extra_dv_ms",
               "natural_dv_ms"]].reset_index(drop=True)
-    t7 = mex[["pair", "matching", "obj_type", "delta_uniform",
-              "extra_dv_ms", "rel_to_natural",
+    t7 = mex[["pair", "matching", "obj_type", "ephemeris",
+              "delta_uniform", "extra_dv_ms", "rel_to_natural",
               "exposure_class"]].reset_index(drop=True)
-    t8t = ene[["altitude_km", "delta", "E_insitu_J", "eps_column",
+    t8t = ene[["altitude_km", "delta", "E_insitu_J", "q_column",
+               "eps_column",
                "dT_column_at_top_K", "E_column_expansion_J",
                "E_column_per_day_W"]].reset_index(drop=True)
 
@@ -355,7 +388,14 @@ def main():
       "by the same factor, so the idealized bound of perfect co-location "
       f"delivers {n['gap_track_dv']:.2f} m/s in one day to a 400 km "
       f"high-area-to-mass target against {n['gap_track_nat']:.2f} m/s of "
-      "natural drag. The boundary is set instead by exposure, transport "
+      "natural drag. Even that bound is not reached by an intervention "
+      "aimed at the predicted orbit: integrating the orbit while the "
+      "enhancement acts leaves "
+      f"{n['gap_sim_dv']:.2f} m/s, a factor "
+      f"{1.0/n['gap_f_ret']:.2f} lower, because the induced drag itself "
+      "drifts the target along track out of a patch centred on the "
+      "unperturbed ephemeris. The boundary is set instead by exposure, "
+      "transport "
       "and geometry. An Earth-fixed pulse of the same peak amplitude is "
       f"sampled for only {n['gap_pulse_s']:.0f} s of a "
       f"{n['gap_pulse_frac']*100:.1f}% duty cycle and yields "
@@ -364,7 +404,10 @@ def main():
       f"multiplicatively into exposure duration ({n['gap_f_dur']:.0f}x), "
       f"in-patch occupancy ({n['gap_f_occ']:.1f}x) and mean enhancement "
       f"while inside ({n['gap_f_amp']:.1f}x) to within "
-      f"{abs(n['gap_closure'])*100:.1f}%. Horizontal diffusion and winds "
+      f"{abs(n['gap_closure'])*100:.1f}%, and adding the co-location "
+      f"retention factor {n['gap_f_ret']:.2f} reproduces the "
+      f"{n['gap_ratio_sim']:.0f}x gap of the simulated arm to within "
+      f"{abs(n['gap_closure_ret'])*100:.1f}%. Horizontal diffusion and winds "
       f"disperse a static patch on minutes-to-hours timescales: "
       f"{n['n_transport_surv']} of {n['n_transport_combos']} surveyed "
       "(sigma_h, kappa, u) design combinations allow one hour of "
@@ -524,6 +567,24 @@ def main():
       "not peak amplitude, controls the outcome. This bound is a "
       "mathematical limit on co-location strategies and not a claim that "
       "such co-location is achievable (Table 2, Table 6).")
+    P("The bound is stated in the perfect-co-location convention, in "
+      "which the exposure is evaluated on the unperturbed ephemeris so "
+      "that the enhancement follows the object however it moves. "
+      "Measuring the same intervention along the trajectory the drag "
+      "itself produces — the convention used by every simulated "
+      f"scenario here — gives {n['gap_sim_dv']:.2f} m/s, a retention of "
+      f"{n['gap_f_ret']:.2f} of the bound, because the induced decay "
+      "drifts the target along track relative to a patch centred on the "
+      "predicted orbit and the mean enhancement it then experiences "
+      f"falls from {n['gap_track_eff']:.2f} to "
+      f"{n['gap_sim_eff']:.2f}. The two values are different quantities "
+      "and are reported separately throughout (Table 6): the bound "
+      "limits what any co-location strategy could achieve, and the "
+      "drift-aware value is what the modelled intervention achieves. "
+      "Because the drift depends on the induced decay itself, the "
+      "drift-aware values are step-size sensitive; the integrator is "
+      "second-order in the step and the convergence ladder is reported "
+      "in orbit_step_convergence.csv.")
     TBL(t2, "Table 2. Per-object outcomes for representative cases under "
             "the baseline, Earth-fixed pulse, and idealized tracking-bound "
             "scenarios.")
@@ -532,10 +593,15 @@ def main():
             "occupancy and effective in-patch enhancement.")
     H(2, "3.4 Uniform versus localized enhancement under matched budgets")
     P(f"Under matched target exposure, localization changes collateral "
-      f"and not benefit: a uniform delta = 5 gives the case-A target the "
-      f"same {n['mex_loc_t']:.2f} m/s as the localized bound but "
-      f"delivers {sci(n['mex_exp_p'])} m/s to the protected object, "
-      f"whereas the localized bound leaves it at {sci(n['mex_loc_p'])} "
+      f"far more than benefit: a uniform delta = 5 gives the case-A "
+      f"target {n['mex_exp_t']:.2f} m/s and the on-target localized "
+      f"patch {n['mex_loc_t']:.2f} m/s — the same peak amplitude on the "
+      "target, the difference being the co-location the localized patch "
+      "loses as the induced drag drifts the target out of it, and a "
+      "uniform enhancement additionally keeps acting as the orbit decays "
+      "into denser air — while the uniform arm "
+      f"delivers {sci(n['mex_exp_p'])} m/s to the protected object and "
+      f"the localized arm leaves it at {sci(n['mex_loc_p'])} "
       "m/s — a Gaussian-tail value, classified as not physically "
       "meaningful, so the apparent selectivity ratio is reported as "
       "undefined rather than as five orders of magnitude of "
@@ -707,7 +773,14 @@ def main():
     P("Raising density at a fixed altitude cannot be done by heating the "
       "air there — in situ heating lowers the local density — so the "
       "relevant thermodynamic accounting is the expansion of the column "
-      f"below. Raising delta = 5 at 400 km requires warming that column "
+      "below. For an isothermal hydrostatic layer, scaling the column "
+      "temperature and scale height by (1+eps) multiplies the density at "
+      "altitude z by exp[L eps / (H (1+eps))] with L the column length, so "
+      "with q = ln(1+delta) H / L the requirement is eps = q/(1-q) "
+      "exactly; the commonly used first-order form eps = q understates "
+      "it, and q >= 1 means the density increase is unreachable by "
+      "uniform heating of that column at any temperature. "
+      f"Raising delta = 5 at 400 km requires warming the column "
       f"by a fractional {n['eps_column']*100:.0f}% "
       f"({n['dT_column']:.0f} K at the top of the column) and costs at "
       f"least {sci(n['E_column'])} J, i.e. ~{sci(n['E_column_W'])} W "

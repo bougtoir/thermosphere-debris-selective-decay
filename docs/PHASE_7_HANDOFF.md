@@ -1,15 +1,15 @@
 # Phase 7 handoff
 
-Optimized localized (case A): t0=211 s, dur=74729 s, objective=2.905
+Optimized localized (case A): t0=573 s, dur=73573 s, objective=3.519
 
 | scenario            | pair   |   target_dv_ms |   protected_dv_ms | protected_class   |   protected_n_sigma |   protected_encounters |   protected_rel_to_natural |   selectivity_ratio | ratio_status           | ratio_meaningful   |
 |:--------------------|:-------|---------------:|------------------:|:------------------|--------------------:|-----------------------:|---------------------------:|--------------------:|:-----------------------|:-------------------|
-| uniform             | A      |       7.3596   |       0.430979    | physical_exposure |           -0        |                      1 |                5           |        17.0765      | physical               | True               |
-| uniform             | D      |       0.162819 |       0.0382635   | physical_exposure |           -0        |                      1 |                5           |         4.25521     | physical               | True               |
-| uniform             | E      |       2.25683  |       0.492468    | physical_exposure |           -0        |                      1 |                5           |         4.5827      | physical               | True               |
-| uniform             | G      |     471.652    |      10.8814      | physical_exposure |           -0        |                      1 |                5           |        43.3448      | physical               | True               |
-| localized_tracking  | A      |       3.44732  |       4.1641e-06  | gaussian_tail     |            4.77406  |                      1 |                5.35829e-05 |    827867           | tail_limited           | False              |
-| localized_tracking  | D      |       0.162493 |       1.26984e-81 | no_encounter      |           19.0968   |                      0 |                1.71216e-79 |         1.27963e+80 | undefined_no_encounter | False              |
-| localized_tracking  | E      |       1.64552  |       0.00615817  | physical_exposure |            0.165858 |                     29 |                0.0627865   |       267.209       | physical               | True               |
-| localized_tracking  | G      |      38.1177   |       1.59571e-79 | no_encounter      |           19.0968   |                      0 |                1.67562e-79 |         2.38877e+80 | undefined_no_encounter | False              |
-| optimized_localized | A      |       3.4292   |       3.68362e-06 | gaussian_tail     |            4.77406  |                      1 |                5.35808e-05 |    930933           | tail_limited           | False              |
+| uniform             | A      |       7.9673   |       0.432726    | physical_exposure |           -0        |                      1 |                5           |        18.4119      | physical               | True               |
+| uniform             | D      |       0.163036 |       0.0382756   | physical_exposure |           -0        |                      1 |                5           |         4.25954     | physical               | True               |
+| uniform             | E      |       2.30707  |       0.494759    | physical_exposure |           -0        |                      1 |                5           |         4.66302     | physical               | True               |
+| uniform             | G      |      65.1427   |      13.1878      | physical_exposure |           -0        |                      1 |                5           |         4.93962     | physical               | True               |
+| localized_tracking  | A      |       3.53026  |       4.24627e-06 | gaussian_tail     |            4.77406  |                      1 |                5.35829e-05 |    831378           | tail_limited           | False              |
+| localized_tracking  | D      |       0.162812 |       1.27374e-81 | no_encounter      |           19.0968   |                      0 |                1.71216e-79 |         1.27822e+80 | undefined_no_encounter | False              |
+| localized_tracking  | E      |       1.85424  |       0.00617976  | physical_exposure |            0.165858 |                     29 |                0.0627865   |       300.05        | physical               | True               |
+| localized_tracking  | G      |      12.6229   |       6.04907e-80 | no_encounter      |           19.0968   |                      0 |                1.67562e-79 |         2.08675e+80 | undefined_no_encounter | False              |
+| optimized_localized | A      |       3.51923  |       3.69099e-06 | gaussian_tail     |            4.77406  |                      1 |                5.35692e-05 |    953465           | tail_limited           | False              |

@@ -5,3 +5,7 @@ mean enhancement while inside,6.296536248772015
 product of factors (predicted dv ratio),1700.0647871684441
 observed dv ratio,1726.307270960376
 closure error,-0.015201513793852373
+co-location retention along the decaying orbit,0.5139029350847636
+product including retention,873.6682839601174
+observed simulated dv ratio,887.1543734047056
+closure error including retention,-0.015201513793852484

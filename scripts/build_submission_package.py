@@ -55,6 +55,8 @@ ITEMS = [
      "03_submission_docs/TRANSPORT_BOUNDARY_AUDIT.md"),
     ("docs/SCALING_LAW_AUDIT.md",
      "03_submission_docs/SCALING_LAW_AUDIT.md"),
+    ("docs/REVIEW_FIXES_AUDIT.md",
+     "03_submission_docs/REVIEW_FIXES_AUDIT.md"),
     ("docs/TRACEABILITY_AUDIT.md",
      "03_submission_docs/TRACEABILITY_AUDIT.md"),
     ("docs/REPRODUCIBILITY_AUDIT.md",

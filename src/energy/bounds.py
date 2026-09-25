@@ -38,12 +38,19 @@ def expansion_temperature_fraction(delta, z_m, z_base_m, H_m):
 
     For an isothermal hydrostatic layer rho(z) = rho(z_base)
     exp(-(z - z_base)/H); scaling T (and hence H) by (1 + eps) multiplies
-    the density at z by exp[(z - z_base) eps / (H (1 + eps))]. Solving for
-    eps to first order gives eps = ln(1+delta) H / (z - z_base). This is
-    the mechanism by which real thermospheric storms raise density at a
-    fixed altitude; heating the air *at* z in situ lowers its density.
+    the density at z by exp[L eps / (H (1 + eps))] with L = z - z_base.
+    Writing q = ln(1+delta) H / L, the condition eps / (1 + eps) = q solves
+    exactly to eps = q / (1 - q); the first-order form eps ~ q understates
+    the required heating and is not used. q >= 1 means the density increase
+    cannot be reached by uniform heating of this column at all, and inf is
+    returned. This is the mechanism by which real thermospheric storms
+    raise density at a fixed altitude; heating the air *at* z in situ
+    lowers its density.
     """
-    return float(np.log1p(delta) * H_m / (z_m - z_base_m))
+    q = float(np.log1p(delta) * H_m / (z_m - z_base_m))
+    if q >= 1.0:
+        return float("inf")
+    return q / (1.0 - q)
 
 
 def required_heating_fraction(delta, cp=CP_AIR):

@@ -11,6 +11,13 @@ Two-level scheme:
 
 Intervention density fields delta(r, t) are sampled finely (fine_dt_s) while
 active and contribute extra orbit-averaged density for their duration.
+
+As a decays, the secular rates (mean motion above all) change, so the
+element set is re-based at every decay step: the secular phases are
+accumulated across steps and the epoch angles are shifted accordingly.
+Without that re-basing the sampled ephemeris jumps in along-track phase by
+delta_n * t whenever a changes, which overstates the drag-induced
+along-track drift by roughly a factor of two.
 """
 from __future__ import annotations
 
@@ -22,6 +29,11 @@ from .elements import (
 
 K_ORBIT = 72          # samples per orbit for mean-density evaluation
 DAY = 86400.0
+# step used while an intervention window is active: the drag-induced
+# along-track drift relative to the intervention centre needs a finer step
+# than the background decay. Costs almost nothing, because the number of
+# delta(r, t) evaluations is set by fine_dt_s, not by the step size.
+DT_DAY_ACTIVE = 0.01
 
 
 def corotation_factor(a, inc):
@@ -104,16 +116,21 @@ def exposure_metrics(elements, rho_fn, delta_fn, t_start, t_end,
     """Integrate density exposure of the object against an active perturbation
     over [t_start, t_end]. Returns dict with mean <rho>, <rho*delta>,
     encountered-time fraction, and number of encounters (contiguous in-patch
-    crossings)."""
-    n = max(int((t_end - t_start) / fine_dt_s), 1)
+    crossings). The window is covered exactly: the sample spacing is the
+    window length divided by the nearest integer number of fine_dt_s
+    samples, so no part of a short step is left unsampled."""
+    span = t_end - t_start
+    n = max(int(round(span / fine_dt_s)), 1)
+    dt = span / n
     rho_sum = 0.0
     rho_d_sum = 0.0
     in_t = 0.0
     n_enc = 0
     prev_in = False
+    first_in = False
     el = dict(elements)
     for k in range(n):
-        t = t_start + (k + 0.5) * fine_dt_s
+        t = t_start + (k + 0.5) * dt
         r, v = position_at(el, t)
         rho = rho_fn(r, t)
         d = delta_fn(r, t)
@@ -121,9 +138,11 @@ def exposure_metrics(elements, rho_fn, delta_fn, t_start, t_end,
         rho_d_sum += rho * d
         inside = d > 1e-6
         if inside:
-            in_t += fine_dt_s
+            in_t += dt
             if not prev_in:
                 n_enc += 1
+        if k == 0:
+            first_in = inside
         prev_in = inside
     n_ = n
     return {
@@ -131,16 +150,39 @@ def exposure_metrics(elements, rho_fn, delta_fn, t_start, t_end,
         "mean_rho_delta": rho_d_sum / n_,
         "time_fraction_in_patch": in_t / max(t_end - t_start, 1e-9),
         "encounter_count": n_enc,
+        "starts_inside": first_in,
+        "ends_inside": prev_in,
     }
+
+
+def _rebased(el0, a, m_phase, raan_phase, argp_phase, t):
+    """Element set with semi-major axis a whose secular phases equal the
+    accumulated (m_phase, raan_phase, argp_phase) at time t."""
+    el = dict(el0)
+    el["a"] = a
+    rd, ad, md = j2_secular_rates(a, el["e"], el["inc"])
+    el["raan_dot"], el["argp_dot"], el["M_dot"] = rd, ad, md
+    el["M0"] = m_phase - md * t
+    el["raan"] = raan_phase - rd * t
+    el["argp"] = argp_phase - ad * t
+    return el
 
 
 def decay_lifetime(el0, rho_fn, B, t_max_s, reentry_alt_m=120e3,
                    dt_day=0.25, n_samples=K_ORBIT,
-                   delta_windows=None, delta_fn=None, fine_dt_s=10.0):
+                   delta_windows=None, delta_fn=None, fine_dt_s=10.0,
+                   dt_day_active=DT_DAY_ACTIVE):
     """Integrate semi-major-axis decay until reentry or t_max.
 
     delta_windows: list of (t_start, t_end) during which delta_fn is active;
     the extra orbit-averaged density is added during those windows.
+
+    Each step is taken with the midpoint rule: the decay rate and the
+    ephemeris used to sample the intervention are evaluated at the
+    predicted mid-step semi-major axis, which makes the along-track drift
+    caused by the induced drag second-order rather than first-order in
+    the step size. Steps overlapping an intervention window are shortened
+    to dt_day_active (see docs/ORBIT_CONVERGENCE.md).
 
     Returns (lifetime_days, history_dict).
     """
@@ -150,52 +192,81 @@ def decay_lifetime(el0, rho_fn, B, t_max_s, reentry_alt_m=120e3,
     hist_t = [0.0]
     total_enc = 0
     total_extra_impulse = 0.0  # integral of extra drag deceleration (m/s)
+    exp_window = 0.0
+    exp_rho = 0.0
+    exp_rho_delta = 0.0
+    exp_in_t = 0.0
 
-    f_rel = corotation_factor(a, el0["inc"])
+    # secular phases accumulated along the decaying trajectory
+    m_phase, raan_phase, argp_phase = el0["M0"], el0["raan"], el0["argp"]
+    da_prev = None
+    was_inside = False
 
     while t < t_max_s:
         alt = a - R_EARTH
         if alt <= reentry_alt_m:
             break
-        el = dict(el0)
-        el["a"] = a
-        rd, ad, md = j2_secular_rates(a, el["e"], el["inc"])
-        el["raan_dot"], el["argp_dot"], el["M_dot"] = rd, ad, md
+        step_s = dt_day * DAY
+        if delta_windows and delta_fn is not None and any(
+                min(te, t + step_s) - max(ts, t) > 0 for ts, te in
+                delta_windows):
+            step_s = min(step_s, dt_day_active * DAY)
+        if da_prev is None:
+            el_p = _rebased(el0, a, m_phase, raan_phase, argp_phase, t)
+            rho_p = orbit_mean_density(el_p, rho_fn, t, n_samples)
+            f_p = corotation_factor(a, el0["inc"])
+            da_prev = -(a * np.sqrt(MU / a) / B) * rho_p * f_p**2
+        a_mid = max(a + 0.5 * da_prev * step_s, R_EARTH + reentry_alt_m)
+        el = _rebased(el0, a_mid, m_phase, raan_phase, argp_phase, t)
+        rd, ad, md = el["raan_dot"], el["argp_dot"], el["M_dot"]
+        f_rel = corotation_factor(a_mid, el0["inc"])
 
         rho_bg = orbit_mean_density(el, rho_fn, t, n_samples)
         rho_eff = rho_bg
         if delta_windows and delta_fn is not None:
             for (ts, te) in delta_windows:
-                ovl = min(te, t + dt_day * DAY) - max(ts, t)
+                ovl = min(te, t + step_s) - max(ts, t)
                 if ovl > 0:
                     m = exposure_metrics(el, rho_fn, delta_fn,
-                                         max(ts, t), min(te, t + dt_day * DAY),
+                                         max(ts, t), min(te, t + step_s),
                                          fine_dt_s=fine_dt_s)
                     # extra mean density applied only for the overlapping
                     # fraction of this step
-                    rho_eff += m["mean_rho_delta"] * (ovl / (dt_day * DAY))
-                    total_enc += m["encounter_count"]
-                    v_circ = np.sqrt(MU / a)
-                    v_rel = v_circ * f_rel
+                    rho_eff += m["mean_rho_delta"] * (ovl / step_s)
+                    # a crossing spanning a step boundary is one encounter
+                    total_enc += m["encounter_count"] - int(
+                        was_inside and m["starts_inside"])
+                    was_inside = m["ends_inside"]
+                    v_rel = np.sqrt(MU / a_mid) * f_rel
                     total_extra_impulse += (m["mean_rho_delta"] * v_rel**2
                                             / (2.0 * B) * ovl)
+                    exp_window += ovl
+                    exp_rho += m["mean_rho"] * ovl
+                    exp_rho_delta += m["mean_rho_delta"] * ovl
+                    exp_in_t += m["time_fraction_in_patch"] * ovl
 
-        v_circ = np.sqrt(MU / a)
-        da_dt = -(a * v_circ / B) * rho_eff * f_rel**2
+        da_dt = -(a_mid * np.sqrt(MU / a_mid) / B) * rho_eff * f_rel**2
         if da_dt >= 0:
             da_dt = 0.0
-        new_a = a + da_dt * dt_day * DAY
+        da_prev = da_dt
+        new_a = a + da_dt * step_s
         # sub-step if large decrement
         if new_a < R_EARTH + reentry_alt_m:
             # solve fraction of step to reach reentry
             frac = (a - (R_EARTH + reentry_alt_m)) / max(a - new_a, 1e-12)
-            t += frac * dt_day * DAY
+            t += frac * step_s
+            m_phase += md * frac * step_s
+            raan_phase += rd * frac * step_s
+            argp_phase += ad * frac * step_s
             a = R_EARTH + reentry_alt_m
             hist_a.append(a)
             hist_t.append(t)
             break
         a = new_a
-        t += dt_day * DAY
+        t += step_s
+        m_phase += md * step_s
+        raan_phase += rd * step_s
+        argp_phase += ad * step_s
         hist_a.append(a)
         hist_t.append(t)
         if np.isnan(a):
@@ -206,6 +277,13 @@ def decay_lifetime(el0, rho_fn, B, t_max_s, reentry_alt_m=120e3,
         "a_m": np.array(hist_a),
         "encounter_count": total_enc,
         "extra_drag_impulse_ms": total_extra_impulse,
+        # exposure aggregates along the decaying trajectory
+        "exposure_window_s": exp_window,
+        "mean_rho": exp_rho / exp_window if exp_window > 0 else 0.0,
+        "mean_rho_delta": (exp_rho_delta / exp_window
+                           if exp_window > 0 else 0.0),
+        "time_fraction_in_patch": (exp_in_t / exp_window
+                                   if exp_window > 0 else 0.0),
     }
 
 
