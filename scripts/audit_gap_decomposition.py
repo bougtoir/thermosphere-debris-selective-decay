@@ -13,7 +13,25 @@ of the exposure integral separately
 where f_in is the fraction of the window spent inside the enhancement and
 delta_eff the mean enhancement seen while inside, and checks that the
 product of the measured factor ratios reproduces the observed delta-v
-ratio. Writes results/tables/gap_decomposition.csv.
+ratio.
+
+The idealized arm is reported in both exposure conventions, because they
+are different quantities and differ by about a factor of two:
+
+  tracking_bound_perfect   exposure on the unperturbed ephemeris, i.e. the
+                           intervention stays centred on the object however
+                           the object moves - a mathematical upper bound
+  tracking_simulated       exposure along the trajectory the induced drag
+                           produces, for an intervention centred on the
+                           unperturbed ephemeris; this is the quantity the
+                           simulated scenarios report
+
+The three exposure factors are measured in the perfect-co-location
+convention for both arms (so the comparison is internally consistent) and a
+fourth factor, the co-location retention actually achieved, carries the
+product to the simulated value.
+
+Writes results/tables/gap_decomposition.csv.
 """
 from __future__ import annotations
 
@@ -24,7 +42,8 @@ import numpy as np
 import pandas as pd
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
-from src.analysis.exposure_class import instrument  # noqa: E402
+from src.analysis.exposure_class import (  # noqa: E402
+    instrument, instrument_decaying)
 from src.atmosphere.lookup import build_lookup, rho_fn_from_lookup  # noqa: E402
 from src.experiment import make_object  # noqa: E402
 from src.intervention.models import (  # noqa: E402
@@ -68,18 +87,22 @@ def main():
                                0.0, TRACK_DUR)
 
     scen = [("fixed_pulse", make_delta_fn([patch]), PULSE_T0,
-             PULSE_T0 + PULSE_DUR),
-            ("tracking_bound", trk.delta, 0.0, TRACK_DUR)]
+             PULSE_T0 + PULSE_DUR, instrument),
+            ("tracking_bound_perfect", trk.delta, 0.0, TRACK_DUR,
+             instrument),
+            ("tracking_simulated", trk.delta, 0.0, TRACK_DUR,
+             instrument_decaying)]
 
     rows = []
-    for name, fn, t0, t1 in scen:
-        d = instrument(tgt, rho_fn, fn, DELTA_MAX, t0, t1, fine_dt_s=1.0)
+    for name, fn, t0, t1, meas in scen:
+        d = meas(tgt, rho_fn, fn, DELTA_MAX, t0, t1, fine_dt_s=1.0)
         f_in = d["time_fraction_in_patch"]
         window = t1 - t0
         # mean enhancement while inside the patch
         delta_eff = ((d["extra_dv_ms"] / d["natural_dv_ms"] / f_in)
                      if f_in > 0 else np.nan)
-        rows.append(dict(scenario=name, window_s=window,
+        rows.append(dict(scenario=name, ephemeris=d["ephemeris"],
+                         window_s=window,
                          time_fraction_in_patch=f_in,
                          time_in_patch_s=f_in * window,
                          peak_delta=d["peak_delta"],
@@ -89,7 +112,8 @@ def main():
                          natural_dv_ms=d["natural_dv_ms"]))
 
     df = pd.DataFrame(rows).set_index("scenario")
-    p, t = df.loc["fixed_pulse"], df.loc["tracking_bound"]
+    p, t = df.loc["fixed_pulse"], df.loc["tracking_bound_perfect"]
+    s = df.loc["tracking_simulated"]
     factors = pd.DataFrame([
         dict(factor="window duration",
              ratio=t["window_s"] / p["window_s"]),
@@ -101,11 +125,20 @@ def main():
     ])
     predicted = float(factors["ratio"].prod())
     observed = float(t["extra_dv_ms"] / p["extra_dv_ms"])
+    retention = float(s["extra_dv_ms"] / t["extra_dv_ms"])
+    obs_sim = float(s["extra_dv_ms"] / p["extra_dv_ms"])
     factors = pd.concat([factors, pd.DataFrame([
         dict(factor="product of factors (predicted dv ratio)",
              ratio=predicted),
         dict(factor="observed dv ratio", ratio=observed),
         dict(factor="closure error", ratio=predicted / observed - 1.0),
+        dict(factor="co-location retention along the decaying orbit",
+             ratio=retention),
+        dict(factor="product including retention",
+             ratio=predicted * retention),
+        dict(factor="observed simulated dv ratio", ratio=obs_sim),
+        dict(factor="closure error including retention",
+             ratio=predicted * retention / obs_sim - 1.0),
     ])], ignore_index=True)
 
     out = df.reset_index()

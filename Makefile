@@ -57,6 +57,7 @@ phase12:
 audits:
 	$(PY) scripts/audit_numerical_zero.py
 	$(PY) scripts/audit_transport_boundary.py
+	$(PY) scripts/audit_orbit_convergence.py
 	$(PY) scripts/audit_gap_decomposition.py
 	$(PY) scripts/audit_matched_exposure.py
 	$(PY) scripts/audit_energy.py

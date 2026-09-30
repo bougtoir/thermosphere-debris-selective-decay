@@ -11,11 +11,17 @@ Thermospheric density at a fixed altitude rises when the column below is
 heated and expands (the storm mechanism). This script computes that
 alternative bound:
 
-    eps    = ln(1+delta) * H(z) / (z - z_base)        (required dT/T)
+    q      = ln(1+delta) * H(z) / (z - z_base)
+    eps    = q / (1 - q)                              (required dT/T)
     E_col  = A * cp * eps * int_{z_base}^{z} T(z') rho(z') dz'
 
 with z_base = 120 km, A = 2 pi sigma_h^2 the patch footprint and T, rho
-from NRLMSISE-00. Both bounds are thermodynamic lower bounds: they ignore
+from NRLMSISE-00. The exact isothermal-column solution eps = q/(1-q) is
+used rather than the first-order eps ~ q, which understates the required
+heating; q >= 1 means the density increase is unattainable by uniform
+heating of the column and is reported as an infinite requirement.
+
+Both bounds are thermodynamic lower bounds: they ignore
 radiative and conductive losses, deposition efficiency, and the work done
 against gravity in lifting the column, all of which increase the true
 cost. Neither is an engineering energy estimate.
@@ -92,6 +98,8 @@ def main():
                 dT_insitu = required_heating_fraction(delta) * t_top
                 e_insitu = min_thermal_energy(m_patch, dT_insitu)
 
+                col_len = alt * 1e3 - Z_BASE_KM * 1e3
+                q_col = float(np.log1p(delta) * H_m / col_len)
                 eps = expansion_temperature_fraction(
                     delta, alt * 1e3, Z_BASE_KM * 1e3, H_m)
                 e_col = area * CP_AIR * eps * col_cp_T_rho / 1.0
@@ -104,6 +112,8 @@ def main():
                     column_mass_kg=area * col_mass,
                     dT_insitu_K=dT_insitu,
                     E_insitu_J=e_insitu,
+                    q_column=q_col,
+                    column_attainable=bool(q_col < 1.0),
                     eps_column=eps,
                     dT_column_at_top_K=eps * t_top,
                     E_column_expansion_J=e_col,
@@ -116,7 +126,7 @@ def main():
     df.to_csv(os.path.join(root,
                            "results/tables/energy_bounds_audit.csv"),
               index=False)
-    cols = ["altitude_km", "sigma_h_km", "delta", "eps_column",
+    cols = ["altitude_km", "sigma_h_km", "delta", "q_column", "eps_column",
             "E_insitu_J", "E_column_expansion_J", "ratio_column_to_insitu",
             "E_column_per_day_W"]
     print(df[df.sigma_h_km == 200.0][cols].to_string(index=False))

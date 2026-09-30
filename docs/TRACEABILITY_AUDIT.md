@@ -25,6 +25,7 @@
 - PASS results/tables/energy_bounds_audit.csv
 - PASS results/tables/sobol_convergence.csv
 - PASS results/tables/sobol_reproduction_check.csv
+- PASS results/tables/orbit_step_convergence.csv
 - PASS results/figures/fig1_density_profiles.png
 - PASS results/figures/fig2_lifetime_map.png
 - PASS results/figures/fig3_collateral.png
@@ -43,4 +44,4 @@
 - PASS supplement/supplement.docx
 - PASS all 18 references verified
 - PASS 17 citations resolve to the verified ledger and are numbered in order of first appearance
-- PASS all 68 injected manuscript values map to a generated results CSV
+- PASS all 74 injected manuscript values map to a generated results CSV

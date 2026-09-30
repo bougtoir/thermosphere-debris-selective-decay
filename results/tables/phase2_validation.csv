@@ -6,5 +6,5 @@ convergence_rtol_1e-09,endpoint |dr| [m],3.4863728627553767e-08,,True
 convergence_rtol_1e-11,endpoint |dr| [m],1.0990132121339044e-07,,True
 circular_orbit_closure,closure error [m] after 1 period,1.3964765562086593e-05,0.01,True
 j2_raan_rate_consistency,RAAN rate [deg/day],-5.002333049190538,,True
-fastprop_vs_cowell_250km,"relative 10-day altitude-drop difference (drag-only, no J2)",0.0013853797770689564,0.01,True
-decay_scales_inverse_B,"drop(B=60)/drop(B=30) at 250 km storm, 30 d",0.49999999999957895,,True
+fastprop_vs_cowell_250km,"relative 10-day altitude-drop difference (drag-only, no J2)",0.0006228447321460587,0.01,True
+decay_scales_inverse_B,"drop(B=60)/drop(B=30) at 250 km storm, 30 d",0.49724035635710445,,True

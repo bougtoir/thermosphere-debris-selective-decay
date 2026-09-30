@@ -209,6 +209,7 @@ Auto-generated column descriptions for results/tables CSVs.
 ## audit_gap
 
 - `scenario`: (phase-specific column)
+- `ephemeris`: (phase-specific column)
 - `window_s`: (phase-specific column)
 - `time_fraction_in_patch`: (phase-specific column)
 - `time_in_patch_s`: (phase-specific column)
@@ -230,6 +231,7 @@ Auto-generated column descriptions for results/tables CSVs.
 - `case`: (phase-specific column)
 - `obj_type`: (phase-specific column)
 - `alt_km`: (phase-specific column)
+- `ephemeris`: (phase-specific column)
 - `volume_ratio`: (phase-specific column)
 - `delta_uniform`: (phase-specific column)
 - `extra_dv_ms`: (phase-specific column)
@@ -250,6 +252,8 @@ Auto-generated column descriptions for results/tables CSVs.
 - `column_mass_kg`: (phase-specific column)
 - `dT_insitu_K`: (phase-specific column)
 - `E_insitu_J`: (phase-specific column)
+- `q_column`: (phase-specific column)
+- `column_attainable`: (phase-specific column)
 - `eps_column`: (phase-specific column)
 - `dT_column_at_top_K`: (phase-specific column)
 - `E_column_expansion_J`: (phase-specific column)

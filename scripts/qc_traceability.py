@@ -38,6 +38,7 @@ EXPECTED_TABLES = [
     "gap_decomposition.csv", "gap_decomposition_factors.csv",
     "matched_exposure.csv", "energy_bounds_audit.csv",
     "sobol_convergence.csv", "sobol_reproduction_check.csv",
+    "orbit_step_convergence.csv",
 ]
 EXPECTED_FIGS = [
     "fig1_density_profiles.png", "fig2_lifetime_map.png",

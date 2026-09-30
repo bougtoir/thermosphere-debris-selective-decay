@@ -30,7 +30,14 @@ RATIO_STATUS = {
 
 
 def instrument(obj, rho_fn, delta_fn, delta_max, t0, t1, fine_dt_s=10.0):
-    """Exposure metrics plus the diagnostic geometry of the encounter."""
+    """Exposure metrics plus the diagnostic geometry of the encounter,
+    measured along the *unperturbed* ephemeris.
+
+    Holding the trajectory fixed while the intervention acts is the perfect
+    co-location convention: it is an upper bound, because the induced drag
+    itself moves the object relative to an intervention centred on the
+    unperturbed orbit. Use instrument_decaying() for the drift-aware value.
+    """
     peak = 0.0
 
     def probe(r, t):
@@ -57,7 +64,52 @@ def instrument(obj, rho_fn, delta_fn, delta_max, t0, t1, fine_dt_s=10.0):
                 time_fraction_in_patch=m["time_fraction_in_patch"],
                 extra_dv_ms=dv_extra, natural_dv_ms=dv_natural,
                 rel_to_natural=dv_extra / dv_natural if dv_natural > 0
-                else np.nan)
+                else np.nan,
+                ephemeris="unperturbed")
+
+
+def instrument_decaying(obj, rho_fn, delta_fn, delta_max, t0, t1,
+                        fine_dt_s=10.0, dt_day=0.25):
+    """As instrument(), but with the exposure measured along the trajectory
+    the drag itself produces.
+
+    instrument() samples the unperturbed ephemeris, which is the perfect
+    co-location limit: the intervention is assumed to stay centred on the
+    object no matter how the object moves. Here the semi-major axis is
+    integrated while the intervention is active, so an intervention whose
+    centre follows the unperturbed ephemeris loses the object as the
+    induced drag drifts it along track. Returns the same keys plus
+    'ephemeris' identifying the convention.
+    """
+    peak = 0.0
+
+    def probe(r, t):
+        nonlocal peak
+        d = delta_fn(r, t)
+        if d > peak:
+            peak = d
+        return d
+
+    _, hist = fastprop.decay_lifetime(
+        obj["el"], rho_fn, obj["B"], t1, dt_day=dt_day,
+        delta_windows=[(t0, t1)], delta_fn=probe, fine_dt_s=fine_dt_s)
+    if peak <= 0.0:
+        n_sigma = np.inf
+    else:
+        ratio = min(peak / delta_max, 1.0)
+        n_sigma = float(np.sqrt(max(-2.0 * np.log(ratio), 0.0)))
+    a = obj["el"]["a"]
+    v_rel = np.sqrt(MU / a) * fastprop.corotation_factor(a, obj["el"]["inc"])
+    k = v_rel ** 2 / (2.0 * obj["B"]) * (t1 - t0)
+    dv_extra = hist["extra_drag_impulse_ms"]
+    dv_natural = hist["mean_rho"] * k
+    return dict(peak_delta=peak, n_sigma_closest=n_sigma,
+                encounter_count=hist["encounter_count"],
+                time_fraction_in_patch=hist["time_fraction_in_patch"],
+                extra_dv_ms=dv_extra, natural_dv_ms=dv_natural,
+                rel_to_natural=dv_extra / dv_natural if dv_natural > 0
+                else np.nan,
+                ephemeris="drag_updated")
 
 
 def classify(d):

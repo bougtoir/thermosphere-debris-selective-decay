@@ -1,31 +1,30 @@
 key,value,source_csv,generator
 lt_400_B30,118.18415160096988,phase1_scale_calculations.csv,scripts/build_manuscript.py
 lt_250_B10,1.2416588912919562,phase1_scale_calculations.csv,scripts/build_manuscript.py
-dv_A_track,3.447320070158465,phase6_outcomes.csv,scripts/build_manuscript.py
-dv_A_pulse,0.0039793029537933,phase6_outcomes.csv,scripts/build_manuscript.py
-dlt_G_track,1.2010520194867471,phase6_outcomes.csv,scripts/build_manuscript.py
-collat_E_track,0.0061581655355066,phase6_outcomes.csv,scripts/build_manuscript.py
-sel_A_unif,17.076480845182147,phase7_selectivity.csv,scripts/build_manuscript.py
-sel_A_loc,827866.8423479132,phase7_selectivity.csv,scripts/build_manuscript.py
-dv_unif_prot_A,0.4309788804706629,phase7_selectivity.csv,scripts/build_manuscript.py
-dv_loc_prot_A,4.164099700359445e-06,phase7_selectivity.csv,scripts/build_manuscript.py
-sel_E_loc,267.2089215876887,phase7_selectivity.csv,scripts/build_manuscript.py
-track_dv_mean,0.8951948462229558,phase8_timing.csv,scripts/build_manuscript.py
-track_dv_std,0.29158992278160034,phase8_timing.csv,scripts/build_manuscript.py
-pareto_min_sel,98.75429266572158,phase9_pareto.csv,scripts/build_manuscript.py
+dv_A_track,3.530255998915804,phase6_outcomes.csv,scripts/build_manuscript.py
+dv_A_pulse,0.0039862754868248,phase6_outcomes.csv,scripts/build_manuscript.py
+dlt_G_track,0.7300145398029072,phase6_outcomes.csv,scripts/build_manuscript.py
+collat_E_track,0.0061797641105925,phase6_outcomes.csv,scripts/build_manuscript.py
+sel_A_unif,18.41188432138495,phase7_selectivity.csv,scripts/build_manuscript.py
+dv_unif_prot_A,0.432725679866959,phase7_selectivity.csv,scripts/build_manuscript.py
+dv_loc_prot_A,4.246269726294484e-06,phase7_selectivity.csv,scripts/build_manuscript.py
+sel_E_loc,300.04988588347686,phase7_selectivity.csv,scripts/build_manuscript.py
+track_dv_mean,1.0620805349174127,phase8_timing.csv,scripts/build_manuscript.py
+track_dv_std,0.13964458792530207,phase8_timing.csv,scripts/build_manuscript.py
+pareto_min_sel,116.97709270146338,phase9_pareto.csv,scripts/build_manuscript.py
 pareto_worst_sh,400.0,phase9_pareto.csv,scripts/build_manuscript.py
 mc_n,256,phase10_montecarlo.csv,scripts/build_manuscript.py
-mc_t_dv_med,3.0422258692222535,phase10_montecarlo.csv,scripts/build_manuscript.py
-mc_t_dv_iqr,1.7832155525100233,phase10_montecarlo.csv,scripts/build_manuscript.py
+mc_t_dv_med,3.519908311856806,phase10_montecarlo.csv,scripts/build_manuscript.py
+mc_t_dv_iqr,2.2217271373054954,phase10_montecarlo.csv,scripts/build_manuscript.py
 sobol_top,delta_max,phase10_sobol.csv,scripts/build_manuscript.py
-sobol_top_ST,0.5983171742728449,phase10_sobol.csv,scripts/build_manuscript.py
-neg_hialt_dv,0.0096393788964505,phase10_negative_controls.csv,scripts/build_manuscript.py
-neg_highB_dv,0.1714058586707465,phase10_negative_controls.csv,scripts/build_manuscript.py
-neg_twin_dv,0.4051099653617525,phase10_negative_controls.csv,scripts/build_manuscript.py
-neg_short_dv,0.0053639540563348,phase10_negative_controls.csv,scripts/build_manuscript.py
+sobol_top_ST,0.5448017982858615,phase10_sobol.csv,scripts/build_manuscript.py
+neg_hialt_dv,0.0096397358185081,phase10_negative_controls.csv,scripts/build_manuscript.py
+neg_highB_dv,0.1720216292619005,phase10_negative_controls.csv,scripts/build_manuscript.py
+neg_twin_dv,0.4163534466527785,phase10_negative_controls.csv,scripts/build_manuscript.py
+neg_short_dv,0.0053652686041164,phase10_negative_controls.csv,scripts/build_manuscript.py
 neg_timing_dv,0.0,phase10_negative_controls.csv,scripts/build_manuscript.py
-pi_mean,1.0413814926344953,phase11_scaling.csv,scripts/build_manuscript.py
-pi_std,0.10205882389790019,phase11_scaling.csv,scripts/build_manuscript.py
+pi_mean,1.060171181352193,phase11_scaling.csv,scripts/build_manuscript.py
+pi_std,0.23875658179481624,phase11_scaling.csv,scripts/build_manuscript.py
 n_censored,21,phase1_scale_calculations.csv,scripts/build_manuscript.py
 n_scale_rows,396,phase1_scale_calculations.csv,scripts/build_manuscript.py
 gap_pulse_frac,0.0444444444444444,gap_decomposition.csv / gap_decomposition_factors.csv,scripts/build_manuscript.py
@@ -36,23 +35,30 @@ gap_pulse_peak,3.152373845385395,gap_decomposition.csv / gap_decomposition_facto
 gap_pulse_nat,0.1127512134856975,gap_decomposition.csv / gap_decomposition_factors.csv,scripts/build_manuscript.py
 gap_track_dv,6.86949960209988,gap_decomposition.csv / gap_decomposition_factors.csv,scripts/build_manuscript.py
 gap_track_nat,1.373899920420008,gap_decomposition.csv / gap_decomposition_factors.csv,scripts/build_manuscript.py
+gap_track_eff,4.999999999999884,gap_decomposition.csv / gap_decomposition_factors.csv,scripts/build_manuscript.py
+gap_sim_dv,3.5302560080827443,gap_decomposition.csv / gap_decomposition_factors.csv,scripts/build_manuscript.py
+gap_sim_eff,2.3118586862456545,gap_decomposition.csv / gap_decomposition_factors.csv,scripts/build_manuscript.py
+gap_f_ret,0.5139029350847636,gap_decomposition.csv / gap_decomposition_factors.csv,scripts/build_manuscript.py
+gap_closure_ret,-0.0152015137938524,gap_decomposition.csv / gap_decomposition_factors.csv,scripts/build_manuscript.py
+gap_ratio_sim,887.1543734047056,gap_decomposition.csv / gap_decomposition_factors.csv,scripts/build_manuscript.py
 gap_f_dur,12.0,gap_decomposition.csv / gap_decomposition_factors.csv,scripts/build_manuscript.py
 gap_f_occ,22.5,gap_decomposition.csv / gap_decomposition_factors.csv,scripts/build_manuscript.py
 gap_f_amp,6.296536248772015,gap_decomposition.csv / gap_decomposition_factors.csv,scripts/build_manuscript.py
 gap_closure,-0.0152015137938523,gap_decomposition.csv / gap_decomposition_factors.csv,scripts/build_manuscript.py
-mex_loc_t,6.869499590932182,matched_exposure.csv,scripts/build_manuscript.py
-mex_loc_p,4.59947746326689e-06,matched_exposure.csv,scripts/build_manuscript.py
-mex_exp_p,0.4291926825631838,matched_exposure.csv,scripts/build_manuscript.py
-mex_vol_t,0.0029904359309168,matched_exposure.csv,scripts/build_manuscript.py
-mex_vol_p,0.0001868364940173,matched_exposure.csv,scripts/build_manuscript.py
-mex_ene_t,0.0004985868595039,matched_exposure.csv,scripts/build_manuscript.py
+mex_loc_t,3.530255998915804,matched_exposure.csv,scripts/build_manuscript.py
+mex_loc_p,4.246269726294484e-06,matched_exposure.csv,scripts/build_manuscript.py
+mex_exp_t,7.967295160603104,matched_exposure.csv,scripts/build_manuscript.py
+mex_exp_p,0.432725679866959,matched_exposure.csv,scripts/build_manuscript.py
+mex_vol_t,0.0030576016605609,matched_exposure.csv,scripts/build_manuscript.py
+mex_vol_p,0.0001870912375999,matched_exposure.csv,scripts/build_manuscript.py
+mex_ene_t,0.000509764339589,matched_exposure.csv,scripts/build_manuscript.py
 mex_volfrac,0.0004353207815696,matched_exposure.csv,scripts/build_manuscript.py
 E_insitu,18306817556.531178,energy_bounds_audit.csv,scripts/build_manuscript.py
-E_column,3074604565258.919,energy_bounds_audit.csv,scripts/build_manuscript.py
-E_column_W,35585700.98679304,energy_bounds_audit.csv,scripts/build_manuscript.py
-eps_column,0.3869471267653354,energy_bounds_audit.csv,scripts/build_manuscript.py
-dT_column,423.6764695307997,energy_bounds_audit.csv,scripts/build_manuscript.py
-E_column_over_insitu,167.94861017020497,energy_bounds_audit.csv,scripts/build_manuscript.py
+E_column,5015235552255.572,energy_bounds_audit.csv,scripts/build_manuscript.py
+E_column_W,58046707.78073579,energy_bounds_audit.csv,scripts/build_manuscript.py
+eps_column,0.6311806756955197,energy_bounds_audit.csv,scripts/build_manuscript.py
+dT_column,691.092869845542,energy_bounds_audit.csv,scripts/build_manuscript.py
+E_column_over_insitu,273.9545274195583,energy_bounds_audit.csv,scripts/build_manuscript.py
 frac_transport_1h,0.4074074074074074,transport_boundary_sensitivity.csv,scripts/build_manuscript.py
 n_transport_combos,27,transport_boundary_sensitivity.csv,scripts/build_manuscript.py
 n_transport_surv,11,transport_boundary_sensitivity.csv,scripts/build_manuscript.py
@@ -60,10 +66,10 @@ frac_transport_lo,0.0833333333333333,transport_boundary_sensitivity.csv,scripts/
 frac_transport_hi,0.5555555555555556,transport_boundary_sensitivity.csv,scripts/build_manuscript.py
 frac_transport_windy,0.0,transport_boundary_sensitivity.csv,scripts/build_manuscript.py
 sobol_n,1024,phase10_sobol.csv,scripts/build_manuscript.py
-sobol_ST_sigma_h,0.1599549416168111,phase10_sobol.csv,scripts/build_manuscript.py
+sobol_ST_sigma_h,0.148303379817847,phase10_sobol.csv,scripts/build_manuscript.py
 sobol_ladder,"32, 256, 512, 1024, 2048",sobol_convergence.csv,scripts/build_manuscript.py
 sobol_ladder_top,2048,sobol_convergence.csv,scripts/build_manuscript.py
 sobol_ladder_prev,1024,sobol_convergence.csv,scripts/build_manuscript.py
-sobol_dST_top,0.004958140586742016,sobol_convergence.csv,scripts/build_manuscript.py
+sobol_dST_top,0.002125043433666013,sobol_convergence.csv,scripts/build_manuscript.py
 sobol_violations_top,0,sobol_convergence.csv,scripts/build_manuscript.py
 frac_class_transport,0.4074074074074074,phase12_classification.csv,scripts/build_manuscript.py
