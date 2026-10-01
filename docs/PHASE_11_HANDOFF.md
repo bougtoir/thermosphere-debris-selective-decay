@@ -4,9 +4,9 @@ Dimensionless collapse of simulated extra delta-v onto Pi_benefit = 2*dv*B/(rho*
 
 | regime   |    mean |       std |   count |
 |:---------|--------:|----------:|--------:|
-| high     | 1.0887  | 0.360508  |     120 |
+| high     | 1.09302 | 0.393032  |     120 |
 | low      | 1.02931 | 0.0361013 |     120 |
-| moderate | 1.05099 | 0.235389  |     120 |
-| storm    | 1.07169 | 0.201937  |     120 |
+| moderate | 1.05337 | 0.261326  |     120 |
+| storm    | 1.07309 | 0.215563  |     120 |
 
-log-log fit: slope=1.016, intercept=0.041, R2=0.9985
+log-log fit: slope=1.016, intercept=0.041, R2=0.9984

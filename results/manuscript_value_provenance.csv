@@ -3,7 +3,7 @@ lt_400_B30,118.18415160096988,phase1_scale_calculations.csv,scripts/build_manusc
 lt_250_B10,1.2416588912919562,phase1_scale_calculations.csv,scripts/build_manuscript.py
 dv_A_track,3.530255998915804,phase6_outcomes.csv,scripts/build_manuscript.py
 dv_A_pulse,0.0039862754868248,phase6_outcomes.csv,scripts/build_manuscript.py
-dlt_G_track,0.7300145398029072,phase6_outcomes.csv,scripts/build_manuscript.py
+dlt_G_track,0.7303495029872497,phase6_outcomes.csv,scripts/build_manuscript.py
 collat_E_track,0.0061797641105925,phase6_outcomes.csv,scripts/build_manuscript.py
 sel_A_unif,18.41188432138495,phase7_selectivity.csv,scripts/build_manuscript.py
 dv_unif_prot_A,0.432725679866959,phase7_selectivity.csv,scripts/build_manuscript.py
@@ -23,8 +23,8 @@ neg_highB_dv,0.1720216292619005,phase10_negative_controls.csv,scripts/build_manu
 neg_twin_dv,0.4163534466527785,phase10_negative_controls.csv,scripts/build_manuscript.py
 neg_short_dv,0.0053652686041164,phase10_negative_controls.csv,scripts/build_manuscript.py
 neg_timing_dv,0.0,phase10_negative_controls.csv,scripts/build_manuscript.py
-pi_mean,1.060171181352193,phase11_scaling.csv,scripts/build_manuscript.py
-pi_std,0.23875658179481624,phase11_scaling.csv,scripts/build_manuscript.py
+pi_mean,1.0621984661981587,phase11_scaling.csv,scripts/build_manuscript.py
+pi_std,0.26032423068421023,phase11_scaling.csv,scripts/build_manuscript.py
 n_censored,21,phase1_scale_calculations.csv,scripts/build_manuscript.py
 n_scale_rows,396,phase1_scale_calculations.csv,scripts/build_manuscript.py
 gap_pulse_frac,0.0444444444444444,gap_decomposition.csv / gap_decomposition_factors.csv,scripts/build_manuscript.py
