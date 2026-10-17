@@ -22,7 +22,8 @@ from pptx.util import Inches as PInches
 from pptx.util import Pt as PPt
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
-from src.utils import repo_root  # noqa: E402
+from src.utils import load_config, repo_root  # noqa: E402
+from src.analysis.exposure_class import N_SIGMA_NO_ENCOUNTER  # noqa: E402
 
 TAB = "results/tables"
 
@@ -88,6 +89,21 @@ def main():
     ene = load(root, "energy_bounds_audit.csv")
     tbs = load(root, "transport_boundary_sensitivity.csv")
     sobc = load(root, "sobol_convergence.csv")
+    p2v = load(root, "phase2_validation.csv")
+    fit11 = load(root, "phase11_scaling_fit.csv")
+    cfg = load_config()
+    pop_path = os.path.join(root, "data/processed/population.csv")
+    if not os.path.exists(pop_path):
+        raise SystemExit(
+            "missing canonical input data/processed/population.csv")
+    n_pop = len(pd.read_csv(pop_path))
+    if p2v is None:
+        raise SystemExit(
+            "missing canonical result results/tables/phase2_validation.csv")
+    if fit11 is None:
+        raise SystemExit(
+            "missing canonical result results/tables/phase11_scaling_fit.csv "
+            "(rerun scripts/phase11_scaling.py)")
 
     # ---- extract headline numbers ----
     n = {}
@@ -263,6 +279,22 @@ def main():
     # classification grid (design-space fraction, not a probability)
     n["frac_class_transport"] = float(p12["transport_survivable_1h"].mean())
 
+    # propagator validation, scaling fit and model constants
+    # (injected, not typed)
+    n["cowell_pct"] = 100.0 * float(
+        p2v.loc[p2v.check == "fastprop_vs_cowell_250km", "value"].iloc[0])
+    n["fit_slope"] = float(fit11["slope"].iloc[0])
+    n["fit_r2"] = float(fit11["r2"].iloc[0])
+    n["pi_med"] = float(fit11["pi_median"].iloc[0])
+    n["pi_iqr"] = float(fit11["pi_iqr"].iloc[0])
+    n["n_pi_outlier"] = int(fit11["n_outlier_gt_1p5"].iloc[0])
+    n["rho_unc_pct"] = 100.0 * float(
+        cfg["atmosphere"]["background_uncertainty"])
+    n["n_pop"] = n_pop
+    n["n_sigma_noenc"] = N_SIGMA_NO_ENCOUNTER
+    n["collat_E_enc"] = int(
+        sel.loc[("localized_tracking", "E"), "protected_encounters"])
+
     # ---------------- value provenance ----------------
     # every manuscript number is injected from one of these CSVs
     provenance = {
@@ -295,6 +327,15 @@ def main():
         "dT_column": "energy_bounds_audit.csv",
         "frac_transport_": "transport_boundary_sensitivity.csv",
         "n_transport_": "transport_boundary_sensitivity.csv",
+        "cowell_": "phase2_validation.csv",
+        "fit_": "phase11_scaling_fit.csv",
+        "pi_med": "phase11_scaling_fit.csv",
+        "pi_iqr": "phase11_scaling_fit.csv",
+        "n_pi_outlier": "phase11_scaling_fit.csv",
+        "rho_unc_": "config/default.yaml",
+        "n_pop": "data/processed/population.csv",
+        "n_sigma": "src/analysis/exposure_class.py",
+        "collat_E_enc": "phase7_selectivity.csv",
     }
 
     def source_of(key):
@@ -367,7 +408,7 @@ def main():
 
     H(0, "Quantifying the feasibility boundary of localized thermospheric "
          "density enhancement for selective orbital debris decay")
-    P("[Authors] T. Onishi et al. Corresponding: bougtoir@gmail.com")
+    P("[Authors] T. Onishi. Corresponding: bougtoir@gmail.com")
     P("Target journal: Advances in Space Research (manuscript class: "
       "modelling/feasibility study). Journal audit documented in "
       "docs/JOURNAL_AUDIT.md.")
@@ -381,7 +422,7 @@ def main():
       "solar/geomagnetic regimes, a J2-secular semi-analytic propagator "
       "validated against a Cowell integrator, and abstract Gaussian "
       "density perturbations (static, advected, diffusing, relaxing, and "
-      "an idealized on-target tracking bound), we simulate synthetic "
+      "an idealized on-target tracking bound), I simulate synthetic "
       "target and protected objects between 200 and 800 km. Drag response "
       "itself is not the limiting factor: enhancing density by a factor "
       "(1+delta) along the target's own path multiplies its drag impulse "
@@ -440,7 +481,7 @@ def main():
       "conditions could a *localized* density perturbation produce "
       "useful differential decay between a synthetic target and "
       "protected spacecraft — and where does the concept fail "
-      "quantitatively? We study the boundary, not a deployment design; "
+      "quantitatively? I study the boundary, not a deployment design; "
       "no operational spacecraft are targeted and no hardware is "
       "specified. The contribution is a quantitative exclusion map that "
       "separates four independent gates — drag response, exposure "
@@ -458,7 +499,7 @@ def main():
       "wrapper converts to kg/m^3 and a regression test checks the "
       "resulting profile against published thermospheric magnitudes "
       f"[{c('emmert2015review')}] at 200, 400 and 500 km. Model-form and "
-      f"density uncertainty (~15%) follow "
+      f"density uncertainty (~{n['rho_unc_pct']:.0f}%) follow "
       f"[{c('emmert2015review','bowman2008jb2008')}] and are propagated "
       "by Monte Carlo in Phase 10.")
     H(2, "2.2 Orbit propagation and censoring")
@@ -469,7 +510,8 @@ def main():
       f"B = m/(C_d A) [{c('kinghele1987','moe2005gassurface')}]; the "
       "semi-analytic decay rate da/dt = -(a rho v / B)(v_rel/v)^2 uses "
       "the same corotation factor v_rel/v = 1 - Omega_E a cos(i)/v as "
-      "the Cowell reference, which brings the two propagators to 0.12% "
+      "the Cowell reference, which brings the two propagators to "
+      f"{n['cowell_pct']:.2f}% "
       "agreement over a ten-day drag-only decay. Baseline validation "
       "(Gate 2) required energy and angular-momentum conservation, "
       "convergence under tolerance tightening, J2 secular rates, "
@@ -502,7 +544,8 @@ def main():
       "modelled.")
     H(2, "2.4 Cases, metrics and exposure classification")
     P("Case pairs A–G place synthetic high-A/m targets near protected "
-      "objects with realistic ballistic coefficients; a 2000-object "
+      "objects with realistic ballistic coefficients; a "
+      f"{n['n_pop']}-object "
       "factorial population provides distributional context. Outcomes "
       "are lifetime change, semimajor-axis drop, extra drag impulse, "
       "equivalent delta-v, encounter statistics, and orbital energy "
@@ -511,7 +554,8 @@ def main():
       "reported only as a secondary descriptor, and only after each "
       "exposure is classified as physical exposure, Gaussian-tail "
       "limited, below numerical resolution, or no encounter (closest "
-      "approach beyond six patch sigmas). Ratios computed against a "
+      f"approach beyond {n['n_sigma_noenc']:.0f} patch sigmas). Ratios "
+      "computed against a "
       "tail-limited or no-encounter denominator are labelled as "
       "undefined rather than reported as large selectivities.")
 
@@ -548,7 +592,7 @@ def main():
       "is exposure, not amplitude: the object crosses the patch once per "
       "revolution at ~7.7 km/s, and the mean enhancement it experiences "
       f"while inside is only {n['gap_pulse_eff']:.2f} against a peak of "
-      f"{n['gap_pulse_peak']:.2f} (Table 2, Table 6).")
+      f"{n['gap_pulse_peak']:.2f} (Table 2, Table 3).")
     H(2, "3.3 Idealized co-location upper bound and the gap decomposition")
     P(f"The idealized tracking bound sustains the enhancement on the "
       f"target for a full day and yields {n['gap_track_dv']:.2f} m/s, "
@@ -566,7 +610,7 @@ def main():
       f"{n['gap_f_amp']:.1f}x — confirming that sustained co-location, "
       "not peak amplitude, controls the outcome. This bound is a "
       "mathematical limit on co-location strategies and not a claim that "
-      "such co-location is achievable (Table 2, Table 6).")
+      "such co-location is achievable (Table 2, Table 3).")
     P("The bound is stated in the perfect-co-location convention, in "
       "which the exposure is evaluated on the unperturbed ephemeris so "
       "that the enhancement follows the object however it moves. "
@@ -578,7 +622,7 @@ def main():
       "predicted orbit and the mean enhancement it then experiences "
       f"falls from {n['gap_track_eff']:.2f} to "
       f"{n['gap_sim_eff']:.2f}. The two values are different quantities "
-      "and are reported separately throughout (Table 6): the bound "
+      "and are reported separately throughout (Table 3): the bound "
       "limits what any co-location strategy could achieve, and the "
       "drift-aware value is what the modelled intervention achieves. "
       "Because the drift depends on the induced decay itself, the "
@@ -588,7 +632,7 @@ def main():
     TBL(t2, "Table 2. Per-object outcomes for representative cases under "
             "the baseline, Earth-fixed pulse, and idealized tracking-bound "
             "scenarios.")
-    TBL(t6, "Table 6. Decomposition of the fixed-pulse versus "
+    TBL(t6, "Table 3. Decomposition of the fixed-pulse versus "
             "idealized-tracking gap into exposure duration, in-patch "
             "occupancy and effective in-patch enhancement.")
     H(2, "3.4 Uniform versus localized enhancement under matched budgets")
@@ -616,19 +660,19 @@ def main():
       "for safety and is the only way to make a finite budget useful, "
       "but the conclusion about 'how much better' localization is "
       "depends explicitly on the matching convention, and none of these "
-      "conventions is privileged (Fig. 3, Fig. 7, Table 3, Table 7).")
+      "conventions is privileged (Fig. 3, Fig. 4, Table 4, Table 5).")
     FIG("fig3_collateral.png",
         "Figure 3. Absolute collateral delta-v imparted to protected "
         "objects under uniform versus localized enhancement, by case pair.")
     FIG("fig7_matched_exposure.png",
-        "Figure 7. Target benefit (left) and protected-object collateral "
+        "Figure 4. Target benefit (left) and protected-object collateral "
         "(right) under four matching conventions: the idealized localized "
         "bound, matched target exposure, matched enhanced spacetime "
         "volume, and matched lower-bound thermal energy.")
-    TBL(t3, "Table 3. Target benefit, absolute protected-object "
+    TBL(t3, "Table 4. Target benefit, absolute protected-object "
             "collateral, exposure classification of the protected object, "
             "and the resulting selectivity ratio where it is defined.")
-    TBL(t7, "Table 7. Budget-matched exposure controls for each case pair "
+    TBL(t7, "Table 5. Budget-matched exposure controls for each case pair "
             "and matching convention.")
     H(2, "3.5 Transport and spreading boundary")
     P(f"Persistence of a localized patch was surveyed over a factorial "
@@ -649,7 +693,7 @@ def main():
       "tested. Observed traveling atmospheric disturbances propagate at "
       f"460–730 m/s [{c('bruinsma2007tad')}], so a localized enhancement "
       "is expected to be transported and sheared rather than held in "
-      "place (Fig. S4).")
+      "place (Fig. S1).")
     H(2, "3.6 Uncertainty and global sensitivity")
     P(f"Monte Carlo (n={n['mc_n']}) over delta, sigmas, density and B "
       f"uncertainty gives a median target delta-v of "
@@ -664,7 +708,7 @@ def main():
       f"the response is dominated by `{n['sobol_top']}` "
       f"(ST = {n['sobol_top_ST']:.2f}), with the exposure geometry "
       "parameters second. Indices are reported as computed and are never "
-      "post-hoc constrained (Fig. S2, Fig. S3, Table 4). The horizontal "
+      "post-hoc constrained (Fig. S2, Fig. S3, Table 6). The horizontal "
       f"patch scale is not inert even in the tracking bound "
       f"(ST = {n['sobol_ST_sigma_h']:.2f}): the patch centre follows the "
       "unperturbed ephemeris, so the along-track drift caused by the "
@@ -673,7 +717,7 @@ def main():
       "either continuous re-targeting or a patch large enough to "
       "tolerate the drift — which is the same selectivity/size conflict "
       "that transport imposes.")
-    TBL(t4, "Table 4. Sobol' first-order and total-order sensitivity "
+    TBL(t4, "Table 6. Sobol' first-order and total-order sensitivity "
             "indices for the target extra delta-v at the converged "
             "sample size.")
     H(2, "3.7 Negative controls")
@@ -682,17 +726,21 @@ def main():
       f"B = 200 ({sci(n['neg_highB_dv'])} m/s), a 60 s burst "
       f"({sci(n['neg_short_dv'])} m/s) and a mis-timed pulse "
       f"({sci(n['neg_timing_dv'])} m/s, no encounter) are all small "
-      "compared with natural drag over the same window. The "
+      "in absolute terms. The "
       "near-identical-trajectory control produces the expected failure "
       f"of selectivity: the co-orbital protected twin absorbs "
       f"{sci(n['neg_twin_dv'])} m/s, comparable to its target, because "
-      "it shares the target's trajectory tube (Table 5, Fig. S1).")
-    TBL(t5, "Table 5. Mandatory negative controls and the simulated "
+      "it shares the target's trajectory tube (Table 7, Fig. S4).")
+    TBL(t5, "Table 7. Mandatory negative controls and the simulated "
             "outcome of each.")
     H(2, "3.8 Generalized scaling")
-    P(f"Simulated delta-v collapses onto Pi = dv B/(rho delta v_rel^2 T) "
-      f"= {n['pi_mean']:.2f} ± {n['pi_std']:.2f} across regimes, "
-      "altitudes and B, with a log-log slope of 1.01 and R^2 = 0.9995. "
+    P(f"Simulated delta-v collapses onto Pi = 2 dv B/(rho delta v_rel^2 "
+      f"T) = {n['pi_mean']:.2f} ± {n['pi_std']:.2f} (median "
+      f"{n['pi_med']:.2f}, IQR {n['pi_iqr']:.2f}) across regimes, "
+      f"altitudes and B, with a log-log slope of {n['fit_slope']:.2f} and "
+      f"R^2 = {n['fit_r2']:.4f}; the {n['n_pi_outlier']} of "
+      "{len(p11)} excursions above the collapse are confined to very low "
+      "ballistic coefficients where the induced drift is largest. "
       "The expected value is 1/2 from a = rho v_rel^2/(2B) and is "
       "recovered once the factor of two and the corotation correction "
       "are carried consistently; the collapse is therefore a dimensional "
@@ -700,9 +748,9 @@ def main():
       "validation, because the simulator and the predictor share the "
       "same drag equation. Its value is that it lets any other choice of "
       "delta, duration, density regime and ballistic coefficient be "
-      "evaluated without rerunning the simulation (Fig. 6).")
+      "evaluated without rerunning the simulation (Fig. 5).")
     FIG("fig6_scaling_collapse.png",
-        "Figure 6. Simulated extra delta-v against the predicted value "
+        "Figure 5. Simulated extra delta-v against the predicted value "
         "rho*delta*v_rel^2*T/(2B); all regimes, altitudes and ballistic "
         "coefficients collapse onto the identity line.")
     H(2, "3.9 Timing, Pareto structure and the feasibility map")
@@ -722,13 +770,13 @@ def main():
       "track-crossing protected objects, and by energetics at the scale "
       f"required; what remains mathematically open is the narrow corner "
       "in which an enhancement is sustained on the target for a large "
-      "fraction of its remaining lifetime (Fig. 4, Fig. 5).")
+      "fraction of its remaining lifetime (Fig. 6, Fig. 7).")
     FIG("fig4_timing.png",
-        "Figure 4. Target extra delta-v versus intervention reference "
+        "Figure 6. Target extra delta-v versus intervention reference "
         "time for a best-case-sited fixed pulse and for a 4 h tracking "
         "window.")
     FIG("fig5_pareto.png",
-        "Figure 5. Target benefit against protected-object collateral "
+        "Figure 7. Target benefit against protected-object collateral "
         "over the design sweep; the Pareto front is highlighted and "
         "colour encodes horizontal patch scale.")
 
@@ -760,7 +808,8 @@ def main():
       "magnitude, but only for objects that do not share the target's "
       "trajectory tube. Co-orbital twins receive comparable drag, "
       "track-crossing objects at similar altitude receive a physically "
-      "meaningful fraction (case pair E: 29 encounters and "
+      "meaningful fraction (case pair E: "
+      f"{n['collat_E_enc']} encounters and "
       f"{sci(n['collat_E_track'])} m/s), and a dispersed fragment cloud "
       "cannot be covered by a single localized enhancement at all. The "
       "very large selectivity ratios that appear in the tables for "
@@ -824,7 +873,8 @@ def main():
     P("This is a boundary study with synthetic targets. It uses a "
       "climatological density lookup rather than assimilated densities, "
       "a circular-approximation secular decay integrator (agreeing with "
-      "the Cowell reference to 0.12% on a ten-day drag-only test), and "
+      "the Cowell reference to "
+      f"{n['cowell_pct']:.2f}% on a ten-day drag-only test), and "
       "an idealized tracking bound used as an upper limit rather than a "
       "mechanism. No plasma/neutral coupling, self-consistent heating, "
       "deposition physics, or circulation response is modelled; the "
@@ -839,7 +889,7 @@ def main():
     H(1, "6. Conclusions")
     P("Within the modelled system, localized thermospheric density "
       "enhancement is excluded as a selective debris-removal mechanism "
-      "for every configuration we could construct that respects "
+      "for every configuration I could construct that respects "
       "exposure geometry, transport persistence and collateral "
       "constraints simultaneously: Earth-fixed patches are limited by "
       "transit time to sub-percent contributions relative to natural "
@@ -975,7 +1025,7 @@ def main():
     slide_text(
         "Quantifying the feasibility boundary of localized thermospheric "
         "density enhancement for selective orbital debris decay",
-        ["T. Onishi et al. — boundary study, synthetic targets only",
+        ["T. Onishi — boundary study, synthetic targets only",
          "Question: can a localized thermospheric density increase "
          "selectively de-orbit LEO debris without dragging protected "
          "spacecraft?",
@@ -1007,15 +1057,15 @@ def main():
             head = item[2].split(".")[0]
             slide_fig(head, item[1], item[2])
     for fn, cap in [
-        ("figS1_negative_controls.png",
-         "Figure S1. Extra delta-v for each mandatory negative control."),
+        ("figS4_transport_grid_sensitivity.png",
+         "Figure S1. Transport-grid sensitivity of the surviving "
+         "fraction."),
         ("figS2_mc_hist.png",
          "Figure S2. Monte Carlo distribution of target extra delta-v."),
         ("figS3_sobol.png",
          "Figure S3. Sobol' first-order and total-order indices."),
-        ("figS4_transport_grid_sensitivity.png",
-         "Figure S4. Transport-grid sensitivity of the surviving "
-         "fraction.")]:
+        ("figS1_negative_controls.png",
+         "Figure S4. Extra delta-v for each mandatory negative control.")]:
         slide_fig(cap.split(".")[0], fn, cap)
     slide_text("Conclusions", [
         "Selective thermospheric drag is mathematically well-posed and "
@@ -1033,19 +1083,19 @@ def main():
     sup.add_heading("Supplementary material", 0)
     sup.add_heading("Supplementary figures", level=1)
     for fn, cap in [
-        ("figS1_negative_controls.png",
-         "Figure S1. Extra delta-v for each mandatory negative control "
-         "(cited in Section 3.7)."),
+        ("figS4_transport_grid_sensitivity.png",
+         "Figure S1. Distribution of the surviving fraction over grid "
+         "variants of the transport design space (cited in Section "
+         "3.5)."),
         ("figS2_mc_hist.png",
          "Figure S2. Monte Carlo distribution of target extra delta-v "
          "(cited in Section 3.6)."),
         ("figS3_sobol.png",
          "Figure S3. Sobol' first-order and total-order sensitivity "
          "indices (cited in Section 3.6)."),
-        ("figS4_transport_grid_sensitivity.png",
-         "Figure S4. Distribution of the surviving fraction over grid "
-         "variants of the transport design space (cited in Section "
-         "3.5).")]:
+        ("figS1_negative_controls.png",
+         "Figure S4. Extra delta-v for each mandatory negative control "
+         "(cited in Section 3.7).")]:
         fp = os.path.join(root, "results/figures", fn)
         if not os.path.exists(fp):
             continue

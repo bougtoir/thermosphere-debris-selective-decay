@@ -73,3 +73,13 @@ sobol_ladder_prev,1024,sobol_convergence.csv,scripts/build_manuscript.py
 sobol_dST_top,0.002125043433666013,sobol_convergence.csv,scripts/build_manuscript.py
 sobol_violations_top,0,sobol_convergence.csv,scripts/build_manuscript.py
 frac_class_transport,0.4074074074074074,phase12_classification.csv,scripts/build_manuscript.py
+cowell_pct,0.0622844732146,phase2_validation.csv,scripts/build_manuscript.py
+fit_slope,1.0162686231448503,phase11_scaling_fit.csv,scripts/build_manuscript.py
+fit_r2,0.9983939453441296,phase11_scaling_fit.csv,scripts/build_manuscript.py
+pi_med,1.0221041707936922,phase11_scaling.csv,scripts/build_manuscript.py
+pi_iqr,0.0367808068673423,phase11_scaling.csv,scripts/build_manuscript.py
+n_pi_outlier,7,phase11_scaling_fit.csv,scripts/build_manuscript.py
+rho_unc_pct,15.0,config/default.yaml,scripts/build_manuscript.py
+n_pop,2000,data/processed/population.csv,scripts/build_manuscript.py
+n_sigma_noenc,6.0,src/analysis/exposure_class.py,scripts/build_manuscript.py
+collat_E_enc,29,phase6_outcomes.csv,scripts/build_manuscript.py

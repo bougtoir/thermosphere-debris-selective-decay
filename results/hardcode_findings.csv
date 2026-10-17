@@ -1,0 +1,17 @@
+id,location,literal_or_item,classification,evidence,resolution
+H01,scripts/build_manuscript.py 2.2/5,0.12%,COMPUTED_RESULT_STALE,phase2_validation.csv now 0.062%,injected n['cowell_pct']
+H02,scripts/build_manuscript.py 3.8,slope 1.01 / R2 0.9995,COMPUTED_RESULT_STALE,rerun gives 1.016/0.9984,phase11_scaling_fit.csv + injected
+H03,scripts/build_manuscript.py 4.3,29 encounters,COMPUTED_RESULT,matches phase7_selectivity.csv,injected n['collat_E_enc']
+H04,scripts/build_manuscript.py 2.1,~15%,CONFIGURATION,matches config background_uncertainty,injected n['rho_unc_pct']
+H05,scripts/build_manuscript.py 2.4,six patch sigmas,CONFIGURATION,matches N_SIGMA_NO_ENCOUNTER=6,injected n['n_sigma_noenc']
+H06,scripts/build_manuscript.py 2.4,2000-object,COMPUTED_RESULT,matches population.csv rows,injected n['n_pop']
+H07,scripts/build_manuscript.py 3.8,Pi = dv B/(rho delta v_rel^2 T),DISPLAY_FORMAT_ERROR,missing factor 2 vs code (Pi_benefit=2*dv*B/...),formula corrected to 2*dv*B/(...)
+H08,scripts/build_manuscript.py 4.4,464 GW / 95 GW,CITED_EXTERNAL_VALUE,knipp2004heating verified,kept (cited)
+H09,scripts/build_manuscript.py 3.5,460-730 m/s,CITED_EXTERNAL_VALUE,bruinsma2007tad verified,kept (cited)
+H10,scripts/build_manuscript.py 3.2,~7.7 km/s,PHYSICAL_CONSTANT (derived),v_circ at 400 km = 7.67 km/s,kept (order-of-magnitude prose)
+H11,scripts/build_manuscript.py title,T. Onishi et al.,DISPLAY_FORMAT,implies coauthors on a single-author paper,T. Onishi; we->I
+H12,scripts/build_manuscript.py captions,Table/Figure numbers,DISPLAY_FORMAT,not in citation order (Tbl 6 before 3-5; Fig 7 before 4-6; S4 before S1),renumbered to first-appearance
+H13,scripts/build_manuscript.py 3.7,small compared with natural drag,UNRESOLVED_CLAIM,false at 750 km (natural << 9.6e-3),reworded 'small in absolute terms'
+H14,src/atmosphere/msis.py,1.0e3 g/cm3->kg/m3,PHYSICAL_CONSTANT,"unit conversion, verified",kept
+H15,src/orbits/fastprop.py,"K_ORBIT=72, DT_DAY_ACTIVE=0.01",CONFIGURATION,sampling parameters,kept
+H16,scripts/audit_energy.py,"Z_BASE_KM=120, WINDOW_S=86400",CONFIGURATION,model bounds,kept
