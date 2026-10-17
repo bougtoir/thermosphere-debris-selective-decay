@@ -1,5 +1,5 @@
 key,value,source_csv,generator
-lt_400_B30,118.18415160096988,phase1_scale_calculations.csv,scripts/build_manuscript.py
+lt_400_B30,118.1841516009699,phase1_scale_calculations.csv,scripts/build_manuscript.py
 lt_250_B10,1.2416588912919562,phase1_scale_calculations.csv,scripts/build_manuscript.py
 dv_A_track,3.530255998915804,phase6_outcomes.csv,scripts/build_manuscript.py
 dv_A_pulse,0.0039862754868248,phase6_outcomes.csv,scripts/build_manuscript.py

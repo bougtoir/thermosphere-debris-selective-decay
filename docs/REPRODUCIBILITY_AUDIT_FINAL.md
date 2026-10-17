@@ -1,38 +1,47 @@
-# Reproducibility audit — final (Gate 6)
+# Reproducibility audit — FINAL with execution evidence (Gate 4)
 
-Date: 2026-10-17.
+Date: 2026-10-17. Command log: logs/final_qc_commands.log +
+logs/make_all.log.
 
-## Environment
+## Executed commands (all actually run, exit codes recorded)
 
-- Python 3.10 (venv), deps per requirements.txt.
-- Entry points: `make all` (full ~40 min), `make quick`, `pytest tests/ -x -q`.
+| Command | Cwd | Exit | Duration | Evidence |
+|---|---|---|---|---|
+| `make all` | repo root | 0 (initial manuscript step failed once, see below) | 39m09s | logs/make_all.log |
+| `python3 scripts/build_manuscript.py` | repo root | 0 | ~8s | rebuild after fix |
+| `python3 -m pytest tests/ -x -q` | repo root | 0 | 4s | 26/26 pass |
+| `python3 -m pytest tests/test_numeric_provenance.py -v` | repo root | 0 | 3.2s | 6/6 pass |
+| `make quick` | repo root | 0 | 7.1s | quick_summary.csv regenerated |
+| input-perturbation (B×2) | /tmp/perturb_repo | 0 | ~7s | expected-direction deltas |
+| `python3 scripts/build_submission_package.py` | repo root | 0 | ~20s | 130-file zip |
 
-## Results of final verification run
+## make all — what a full rerun revealed (real finding)
 
-- `make quick`: PASS, 7.1 s. quick_summary.csv values match canonical
-  numbers used in the text (tracking 3.530 m/s, fixed_pulse 4.0e-3 m/s,
-  protected-column drag 0.433 m/s).
-- `pytest tests/ -x -q`: 25 passed — original 20 QC/physics tests + 5 new
-  provenance/hardcode tests.
-- `scripts/build_manuscript.py`: rebuilds all four artifacts; aborts
-  loudly if any canonical CSV is missing; provenance coverage complete.
-- Fresh-checkout independence: results/ CSVs are committed; the build only
-  needs the repo + deps, no external data fetch. `make all` regenerates
-  from src/ + config/ and was validated in the baseline session.
-- No perturbation contamination: all perturbation tests run on disposable
-  copies (tests use tmp paths / in-memory string mutation only).
+- Phases 1–12 all regenerated from public inputs (NRLMSISE-00 via
+  nrlmsise00 package, committed processed data).
+- Regenerated CSV diffs are: (a) last-ulp FP noise in phase1
+  (~1e-16 relative — BLAS/version noise), (b) bootstrap confidence
+  intervals in phase10 Sobol tables (resample-level nondeterminism;
+  S1/ST point estimates byte-identical), (c) diagnostic columns in
+  sobol_reproduction_check. No substantive value drift.
+- One REAL defect surfaced: `phase11_scaling_fit.csv` schema drift —
+  the script writes `n_outlier`, the builder read `n_outlier_gt_1p5`,
+  so a fresh `make all` aborted at the manuscript step (fail-loud,
+  no substitution). Fixed by aligning the builder to the script schema;
+  rebuild then succeeded. This is exactly the failure mode the audit
+  exists to catch: the committed CSV masked the schema mismatch.
 
-## Known limitations
+## External dependencies
 
-- Long-horizon `make all` not rerun in this revision — only phase11 was
-  re-executed because only its prose values were stale; the PR #4 branch
-  already validated the rest end-to-end (BASELINE_FREEZE.md).
-- flake8 debt pre-existing, untouched.
+- `nrlmsise00` Python package (public PyPI) — required for MSIS calls;
+  already in requirements.txt. No other network/data fetch needed;
+  data/processed/ is committed.
+- Monte Carlo and Sobol use seeded sampling but bootstrap CI estimation
+  is resample-level nondeterministic between runs — documented, and only
+  CI columns (not injected text claims) vary.
 
-## Lock-pass verification (2026-10-17)
+## Verdict
 
-- `pytest tests/ -x -q`: 26 passed (added placeholder regression test).
-- `make quick`: PASS previously this session; quick_summary reproduced.
-- `python3 scripts/build_manuscript.py`: clean rebuild after F1/F2 fixes.
-- Render: manuscript 14p, inline 20p, supplement 34p (landscape).
-- `make all` still not rerun (no scientific change; see BASELINE_FREEZE).
+Public-input reproduction confirmed end-to-end. The only manuscript
+numbers that move under regeneration are Table 6 bootstrap CIs at the
+third significant figure — now regenerated and internally consistent.

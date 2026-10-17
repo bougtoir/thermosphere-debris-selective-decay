@@ -45,3 +45,10 @@ collapse, discretized timesteps.
 provenance/reproducibility tests pass (26/26 + make quick). The paper is
 a quantitatively bounded infeasibility result — a legitimate negative
 claim with declared limitations.
+
+## Evidence-pass addendum (third sweep, after full `make all`)
+
+- The 39-minute full rerun reproduced every phase; the only diffs are
+  ulp-level FP noise and bootstrap CI resampling — plus it exposed the
+  `n_outlier`/`n_outlier_gt_1p5` schema mismatch, which was fixed. No
+  new scientific objection. Verdict stands: **SUBMIT**.

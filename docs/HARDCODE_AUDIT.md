@@ -60,3 +60,14 @@ Commands/evidence added this pass:
   reference strings, or numeric table data — no residual stale claims.
 - finding H17 added to results/hardcode_findings.csv;
   claim C085 added to results/numeric_claim_traceability.csv.
+
+## Addendum 2 — evidence pass AST scan (2026-10-17)
+
+- AST scan of all scripts/*.py + src/**: zero `or <literal>` fallback
+  defaults; zero `except: return <literal>` paths.
+- AST extraction of every digit-bearing non-f-string passed to
+  P/TBL/FIG/H in build_manuscript.py: 49 items, all headings, captions
+  or figure filenames — no numeric results in static prose.
+- `make all` regeneration surfaced schema drift (n_outlier vs
+  n_outlier_gt_1p5): committed CSV had masked it; fixed by aligning the
+  builder to the script's emitted schema.

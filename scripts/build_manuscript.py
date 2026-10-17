@@ -288,7 +288,7 @@ def main():
     n["fit_r2"] = float(fit11["r2"].iloc[0])
     n["pi_med"] = float(fit11["pi_median"].iloc[0])
     n["pi_iqr"] = float(fit11["pi_iqr"].iloc[0])
-    n["n_pi_outlier"] = int(fit11["n_outlier_gt_1p5"].iloc[0])
+    n["n_pi_outlier"] = int(fit11["n_outlier"].iloc[0])
     n["n_pi_total"] = int(fit11["n"].iloc[0])
     n["rho_unc_pct"] = 100.0 * float(
         cfg["atmosphere"]["background_uncertainty"])

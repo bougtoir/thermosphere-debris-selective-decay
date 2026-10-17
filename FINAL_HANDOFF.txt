@@ -1,61 +1,49 @@
-FINAL HANDOFF — ASR SUBMISSION LOCK
+FINAL HANDOFF — ASR EVIDENCE-VERIFIED QC
 Date: 2026-10-17 UTC | Branch: devin/1792228606-asr-hostile-hardcode-revision | PR #5
 
 FINAL VERDICT: SUBMIT
-Quantitatively bounded infeasibility result; no unresolved
-CRITICAL/MAJOR defects; all provenance/reproducibility tests pass.
 
-LOCK-PASS SWEEP (evidence the review was independent, not a repackage):
-- New defect found and fixed: literal "{len(p11)}" placeholder rendered in
-  section 3.8 (non-f-string segment) -> injected n_pi_total=480; new
-  regression test scans all docx for "{...}" leftovers.
-- New defect fixed: supplement portrait tables wrapped mid-word ->
-  landscape orientation + 7pt font; re-rendered clean (34 pp).
-- All prior-pass literals re-traced; "0.12", "et al.", "2000-object",
-  "~15%" hits proven to be injected values / citation text / table data.
+FINAL SCIENTIFIC CONCLUSION: unchanged — localized density enhancement is
+excluded by exposure geometry/transport/energetics at all simulated
+amplitudes; mathematically open only in a narrow corner. Negative bound.
 
-NUMERIC LITERAL AUDIT TOTALS (hardcode_findings.csv, 17 items):
-- SUSPICIOUS found: 2 (H01 stale 0.12%, H02 stale fit stats — both fixed
-  earlier) + H17 placeholder (fixed this pass)
-- fixed: 3 | justified (constant/config/cited): 11 | reworded: 3 | unresolved: 0
-- claims traced: 85 (numeric_claim_traceability.csv)
+5-REVIEWER INDEPENDENT HOSTILE REVIEW (docs/HOSTILE_REVIEW_FINAL.md):
+- CRITICAL 0 | MAJOR 2 (placeholder {len(p11)} render defect; schema
+  drift caught by make all) — both fixed | MINOR 1 (supplement table
+  wrap — fixed) | remaining: declared irreducible limitations only.
 
-DYNAMIC PERTURBATION TESTS:
-- missing phase7_selectivity.csv -> build exits non-zero. PASS
-- missing phase11_scaling_fit.csv -> build aborts w/ explicit msg. PASS
-- phase6 x1.5 perturbation -> rendered docx text changes. PASS
-- provenance coverage complete, no "unmapped". PASS
-- placeholder scan across all 3 docx -> zero leftovers. PASS
+HARDCODE AUDIT: 17 findings — suspicious 3 (all fixed), justified
+constants/config/cited 11, reworded 3, unresolved 0. AST static scan:
+no fallback literals, no result numbers in static prose (49 digit strings
+= headings/captions only). 85 claims traced.
 
-DENSITY-UNIT VERIFICATION: g/cm3->kg/m3 applied exactly once at msis.py
-boundary; test_atmosphere_units.py anchors magnitudes; no double-fix.
+DYNAMIC PROVENANCE (executed, logs/final_qc_commands.log):
+- test_numeric_provenance.py 6/6 PASS; full suite 26/26.
+- Missing-CSV -> loud failure (2 cases). PASS
+- phase6 CSV x1.5 -> docx changes. PASS
+- input Bx2 in temp copy -> run_quick deltas halve as physics requires
+  (pulse 0.00402->0.00201, tracking 3.53->2.45). PASS
+- placeholder scan on all docx -> clean. PASS
 
-ANALYSES RERUN vs PRESERVED:
-- rerun: phase11_scaling.py (prior pass — only stale prose), build_manuscript
-- preserved: all other canonical CSVs byte-for-byte (validated state)
+make all / make quick EVIDENCE:
+- make all: ran 39m09s, phases 1-12 regenerated; diffs = ulp FP noise +
+  bootstrap CI resampling only. One real defect found+fixed (schema
+  drift). logs/make_all.log.
+- make quick: PASS (3.53 / 4.0e-3 / 0.43 reproduced).
 
-REPRODUCTION COMMANDS RUN:
-- pytest tests/ -x -q -> 26 passed
-- make quick -> PASS (7.1s; tracking 3.53, pulse 4.0e-3, prot 0.43)
-- build_submission_package.py -> 130 files
-- libreoffice renders: manuscript 14p / inline 20p / supplement 34p
-- make all NOT rerun (no scientific change)
+FILES CHANGED THIS PASS: build_manuscript.py (n_outlier schema, n_pi_total,
+supplement landscape/7pt), regenerated canonical CSVs (ulp + CI only),
+supplement/manuscript docx rebuilt, new audit docs + logs.
+FILES PRESERVED: all analysis code, config, data, science results.
 
-FINAL FILES (sha256, first 16):
-- ASR_SUBMISSION_FINAL_LOCK.zip   52a198d8f64bfc82
-- manuscript.docx                 e6db98af043f0f92
-- manuscript_inline.docx          2b46784b9f6fcbc9
-- supplement.docx                 249363fd1e2ea9f9
+DELIVERABLES:
+- ASR_SUBMISSION_EVIDENCE_VERIFIED.zip  sha256 a11fb518b0cdb0d5
+- FINAL_HANDOFF.txt, docs/{HOSTILE_REVIEW_FINAL, HARDCODE_AUDIT,
+  DATA_TEXT_FIGURE_CONSISTENCY, DYNAMIC_PROVENANCE_TEST,
+  REPRODUCIBILITY_AUDIT_FINAL, RENDER_AND_CONSISTENCY_FINAL,
+  FINAL_QC_BASELINE, FINAL_REMEDIATION_LOG, FINAL_SOURCE_LOCK}.md
+- results/{numeric_claim_traceability,hardcode_findings}.csv
+- logs/{final_qc_commands,make_all}.log
 
-GIT: branch devin/1792228606-asr-hostile-hardcode-revision (on PR #4
-branch), PR #5 open against it.
-
-TOP REMAINING REVIEWER RISKS (declared, not defects):
-- climatological MSIS (~15% declared uncertainty)
-- idealized co-location upper bound not a realizable concept
-- transport fractions are design-grid, not probabilities
-- scaling collapse is internal-consistency check (shared drag equation)
-
-USER ACTIONS: submit 01_manuscript/manuscript.docx + separate figure
-files + supplement.docx per ASR Editorial Manager flow; fill affiliation
-on the submission form (not invented here).
+REMAINING USER ACTION: submit via ASR Editorial Manager; add affiliation
+on the form (deliberately not invented).

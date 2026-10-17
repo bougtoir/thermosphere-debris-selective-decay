@@ -1,0 +1,31 @@
+=== Sat Oct 17 10:29:23 UTC 2026 pytest tests/test_numeric_provenance.py -v ===
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-9.1.1, pluggy-1.7.0 -- /usr/bin/python3
+cachedir: .pytest_cache
+rootdir: /home/ubuntu/repos/thermosphere-debris-selective-decay
+configfile: pytest.ini
+plugins: anyio-4.14.2
+collecting ... collected 6 items
+
+tests/test_numeric_provenance.py::test_provenance_table_covers_every_injected_key PASSED [ 16%]
+tests/test_numeric_provenance.py::test_build_fails_loudly_on_missing_canonical_csv PASSED [ 33%]
+tests/test_numeric_provenance.py::test_build_fails_loudly_on_missing_scaling_fit PASSED [ 50%]
+tests/test_numeric_provenance.py::test_perturbed_result_propagates_to_manuscript PASSED [ 66%]
+tests/test_numeric_provenance.py::test_display_formatting_does_not_change_values PASSED [ 83%]
+tests/test_numeric_provenance.py::test_no_unsubstituted_placeholders_in_rendered_docx PASSED [100%]
+
+============================== 6 passed in 3.18s ===============================
+exit=0
+=== Sat Oct 17 10:29:27 UTC 2026 pytest full ===
+..........................                                               [100%]
+26 passed in 4.10s
+exit=0
+=== Sat Oct 17 10:29:46 UTC 2026 dynamic input-perturbation test ===
+original B: [['A_target_highAm_400' 5.0]
+ ['A_protected_400' 80.0]]
+quick exit: 0 
+baseline     Bx2: 0  orig: 0
+fixed_pulse  Bx2: 0.002005  orig: 0.004015
+tracking     Bx2: 2.449  orig: 3.53
+uniform      Bx2: 3.681  orig: 7.967
+exit=0
