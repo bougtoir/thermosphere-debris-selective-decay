@@ -79,6 +79,7 @@ fit_r2,0.9983939453441296,phase11_scaling_fit.csv,scripts/build_manuscript.py
 pi_med,1.0221041707936922,phase11_scaling.csv,scripts/build_manuscript.py
 pi_iqr,0.0367808068673423,phase11_scaling.csv,scripts/build_manuscript.py
 n_pi_outlier,7,phase11_scaling_fit.csv,scripts/build_manuscript.py
+n_pi_total,480,phase11_scaling_fit.csv,scripts/build_manuscript.py
 rho_unc_pct,15.0,config/default.yaml,scripts/build_manuscript.py
 n_pop,2000,data/processed/population.csv,scripts/build_manuscript.py
 n_sigma_noenc,6.0,src/analysis/exposure_class.py,scripts/build_manuscript.py

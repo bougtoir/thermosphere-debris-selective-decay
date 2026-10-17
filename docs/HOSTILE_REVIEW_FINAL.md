@@ -1,35 +1,47 @@
-# Hostile review — round 2, post-revision (Gate 7)
+# Hostile review — FINAL, post-lock pass (Gate 1 + Gate 5)
 
-Date: 2026-10-17. Re-audit of the revised manuscript as an independent
-ASR reviewer team. Precondition: assume nothing from round 1 is fixed.
+Date: 2026-10-17 (third independent sweep, on the FINAL_AUDITED revision).
+Prior reports were treated as claims to challenge, not conclusions.
 
-## Attempted falsifications
+## New defects found by this sweep (independence evidence)
 
-| # | Attack | Result |
-|---|--------|--------|
-| R1 | Find any text number not traceable to a current file | None: 84/84 claims mapped in numeric_claim_traceability.csv; build aborts on missing keys |
-| R2 | Show a stale number survived | Greps for old literals ("0.12", "0.9995", "et al.", "2000-object", "~15%", "six patch") -> all injected now; regression tests guard two of them |
-| R3 | Perturb a canonical CSV, check text changes | test_numeric_provenance perturbs phase6 x1.5 -> rendered text changes accordingly |
-| R4 | Unit error in density (x1000) | conversion at single boundary point; magnitude tests anchor values; reported as kg/m^3 consistently |
-| R5 | Inf lifetimes smuggled into statistics | n_censored injected; text excludes censored cells |
-| R6 | Numbering / citation-order violation | figures 1-8, tables 1-8, S1-S4 sequential in rendered docx |
-| R7 | Overclaim: concept "impossible" | conclusion is bounded: excluded at all simulated amplitudes/spacetimes, mathematically open only in narrow corner — unchanged, still a defensible negative bound |
-| R8 | Selectivity ~117 at 400 km hiding a viable corner | Pareto text already states high selectivity only when target gain itself is tiny; n_target_floor makes this explicit |
-| R9 | Pi collapse is tautology | Pi outliers (7/480, low B) now reported, median/IQR shown; factor-2 in formula fixed |
-| R10 | Single-author formatting | "T. Onishi" alone, first-person singular, no et al. |
+| ID | Severity | Evidence | Status |
+|----|----------|----------|--------|
+| F1 | MAJOR (render) | Rendered docx §3.8 contained a literal `{len(p11)}` placeholder — a non-f-string segment inside an f-string paragraph (build_manuscript.py L742). None of the prior audits caught it because they grepped *numeric* literals, not braces. | FIXED: value now injected as `n_pi_total` = 480 from phase11_scaling_fit.csv; new regression test fails on any `{...}` leftover in any of the three docx. |
+| F2 | MINOR (render) | Supplement tables broke mid-word in portrait layout ("froz/en", "ero_w/ind"). | FIXED: supplement switched to landscape + 7pt table font; re-rendered and inspected. |
 
-## Reviewer verdicts
+## Claims re-verified this sweep (not adopted from prior reports)
 
-- Reviewer A (thermosphere): no new objection; unit path verified.
-- Reviewer B (dynamics): tracking/impulse values consistent; wording fix for 750 km accepted.
-- Reviewer C (numerics): hardcode surface eliminated; median/IQR added; PASS.
-- Reviewer D (debris feasibility): selectivity/gap framing honest; negative bound stands.
-- Editor (ASR): formatting and numbering now clean; references verified.
+- Density units: `msis.py` applies ×1e3 exactly once at the g/cm3→kg/m3
+  boundary; `test_atmosphere_units.py` anchors 200/400/500 km magnitudes;
+  no downstream double-correction. VERIFIED.
+- Propagator check: `phase2_validation.csv` fastprop_vs_cowell_250km =
+  6.23e-4 → text shows 0.06% (injected). VERIFIED.
+- Scaling: `phase11_scaling_fit.csv` slope=1.016, R²=0.9984,
+  Pi=1.062±0.260, median 1.022, IQR 0.037, n=480, 7 low-B outliers —
+  all rendered values match (formatted). VERIFIED.
+- "2000-object", "~15%", "0.12*" table values, "et al." in references —
+  each hit traced to an injected value or legitimate citation/substring;
+  NOT defects. Documented in hardcode_findings.csv.
+- 11/27 phrased as design-grid fraction, not probability. VERIFIED.
+- Right-censored lifetimes excluded from statistics; n_censored injected.
+- J2, Cowell comparison, corotation, Sobol S1/ST convergence — all traced
+  to committed canonical CSVs; nothing changed this pass.
+- Scaling collapse declared as internal-consistency check (shared drag
+  equation), not independent validation — honest framing retained.
+- Tracking 3.53 m/s described as idealized upper bound; no realizable-
+  technology overclaim. VERIFIED.
+- Author block single-author "T. Onishi"; first-person singular.
 
-## Final decision
+## Irreducible limitations (declared in manuscript, not defects)
 
-**SUBMIT-READY.** All round-1 majors are closed and no new defects were
-found. The paper's claim is a quantitatively bounded infeasibility —
-a legitimate negative result. Remaining honest caveats (model timesteps,
-climatological MSIS, idealized co-location upper bound) are declared in
-the manuscript's Conclusions.
+MSIS climatology uncertainty (~15% declared), idealized co-location
+upper bound, transport design-grid fractions, shared-equation scaling
+collapse, discretized timesteps.
+
+## DECISION
+
+**SUBMIT.** No unresolved CRITICAL/MAJOR defect; essential
+provenance/reproducibility tests pass (26/26 + make quick). The paper is
+a quantitatively bounded infeasibility result — a legitimate negative
+claim with declared limitations.

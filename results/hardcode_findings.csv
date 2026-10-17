@@ -15,3 +15,4 @@ H13,scripts/build_manuscript.py 3.7,small compared with natural drag,UNRESOLVED_
 H14,src/atmosphere/msis.py,1.0e3 g/cm3->kg/m3,PHYSICAL_CONSTANT,"unit conversion, verified",kept
 H15,src/orbits/fastprop.py,"K_ORBIT=72, DT_DAY_ACTIVE=0.01",CONFIGURATION,sampling parameters,kept
 H16,scripts/audit_energy.py,"Z_BASE_KM=120, WINDOW_S=86400",CONFIGURATION,model bounds,kept
+H17,3.8 Generalized scaling text,,SUSPICIOUS,non-f-string segment left a literal placeholder in rendered docx,injected as n_pi_total from phase11_scaling_fit.csv; placeholder regression test added

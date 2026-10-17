@@ -1,49 +1,61 @@
-FINAL HANDOFF — ASR hostile-review + hardcode-audit revision
-Date: 2026-10-17 UTC
+FINAL HANDOFF — ASR SUBMISSION LOCK
+Date: 2026-10-17 UTC | Branch: devin/1792228606-asr-hostile-hardcode-revision | PR #5
 
-1. BASELINE
-   Frozen from PR #4 head d2d2b12 (reentry-flag reset fix). Hashes and claim
-   inventory in docs/BASELINE_FREEZE.md.
+FINAL VERDICT: SUBMIT
+Quantitatively bounded infeasibility result; no unresolved
+CRITICAL/MAJOR defects; all provenance/reproducibility tests pass.
 
-2. HOSTILE REVIEW (independent, round 1)
-   docs/HOSTILE_REVIEW_INDEPENDENT.md — verdict MAJOR REVISION, mechanical
-   not scientific: stale 0.12% propagator-agreement number, stale typed
-   slope/R^2, citation-order numbering violation; minors: typed literals,
-   Pi formula missing factor 2, "small vs natural drag" false at 750 km,
-   "et al." on single-author paper.
+LOCK-PASS SWEEP (evidence the review was independent, not a repackage):
+- New defect found and fixed: literal "{len(p11)}" placeholder rendered in
+  section 3.8 (non-f-string segment) -> injected n_pi_total=480; new
+  regression test scans all docx for "{...}" leftovers.
+- New defect fixed: supplement portrait tables wrapped mid-word ->
+  landscape orientation + 7pt font; re-rendered clean (34 pp).
+- All prior-pass literals re-traced; "0.12", "et al.", "2000-object",
+  "~15%" hits proven to be injected values / citation text / table data.
 
-3. HARDCODE AUDIT
-   docs/HARDCODE_AUDIT.md + results/hardcode_findings.csv (16 items) +
-   results/numeric_claim_traceability.csv (84 claims). Every manuscript
-   number is injected from a canonical file; build fails loudly on missing
-   results; dynamic perturbation test proves text reflects computation.
+NUMERIC LITERAL AUDIT TOTALS (hardcode_findings.csv, 17 items):
+- SUSPICIOUS found: 2 (H01 stale 0.12%, H02 stale fit stats — both fixed
+  earlier) + H17 placeholder (fixed this pass)
+- fixed: 3 | justified (constant/config/cited): 11 | reworded: 3 | unresolved: 0
+- claims traced: 85 (numeric_claim_traceability.csv)
 
-4. ROOT CAUSE + REANALYSIS
-   docs/ROOT_CAUSE_AND_REANALYSIS.md. Only phase11_scaling was re-run (its
-   prose values were stale after the PR #4 fix): slope 1.016, R^2 0.9984,
-   Pi mean 1.062+-0.260, median 1.022, IQR 0.037, 7/480 low-B outliers.
-   Density-unit path (g/cm3 -> kg/m3, single conversion point) revalidated.
+DYNAMIC PERTURBATION TESTS:
+- missing phase7_selectivity.csv -> build exits non-zero. PASS
+- missing phase11_scaling_fit.csv -> build aborts w/ explicit msg. PASS
+- phase6 x1.5 perturbation -> rendered docx text changes. PASS
+- provenance coverage complete, no "unmapped". PASS
+- placeholder scan across all 3 docx -> zero leftovers. PASS
 
-5. MANUSCRIPT CHANGES
-   scripts/build_manuscript.py injects all formerly-typed numbers; author
-   block is single-author "T. Onishi", first person singular; all tables
-   and figures renumbered to first-citation order (Tables 1-8, Figures 1-8,
-   S1-S4); Pi formula corrected; 750 km wording corrected.
+DENSITY-UNIT VERIFICATION: g/cm3->kg/m3 applied exactly once at msis.py
+boundary; test_atmosphere_units.py anchors magnitudes; no double-fix.
 
-6. TESTS / REGRESSION
-   tests/test_numeric_provenance.py adds 5 tests (missing-CSV fail-loud,
-   perturbation propagation, provenance coverage, stale-literal guards).
-   pytest: 25/25 pass. make quick: PASS (canonical values reproduced).
+ANALYSES RERUN vs PRESERVED:
+- rerun: phase11_scaling.py (prior pass — only stale prose), build_manuscript
+- preserved: all other canonical CSVs byte-for-byte (validated state)
 
-7. CONSISTENCY / RENDER
-   docs/DATA_TEXT_FIGURE_CONSISTENCY.md + docs/RENDER_AND_CONSISTENCY_AUDIT.md
-   — docx renders to 20-page PDF cleanly, all display items cited in order.
+REPRODUCTION COMMANDS RUN:
+- pytest tests/ -x -q -> 26 passed
+- make quick -> PASS (7.1s; tracking 3.53, pulse 4.0e-3, prot 0.43)
+- build_submission_package.py -> 130 files
+- libreoffice renders: manuscript 14p / inline 20p / supplement 34p
+- make all NOT rerun (no scientific change)
 
-8. FINAL HOSTILE REVIEW
-   docs/HOSTILE_REVIEW_FINAL.md — 10 falsification attempts, all fail.
-   Decision: SUBMIT-READY. Honest limitations declared in Conclusions.
+FINAL FILES (sha256, first 16):
+- ASR_SUBMISSION_FINAL_LOCK.zip   52a198d8f64bfc82
+- manuscript.docx                 e6db98af043f0f92
+- manuscript_inline.docx          2b46784b9f6fcbc9
+- supplement.docx                 249363fd1e2ea9f9
 
-9. DELIVERABLES
-   ASR_submission_FINAL_AUDITED.zip (130 files, 2.7 MB; manuscript +
-   supplement + figures + docs + references + data + code snapshot).
-   Branch: devin/<epoch>-asr-hostile-hardcode-revision on top of PR #4.
+GIT: branch devin/1792228606-asr-hostile-hardcode-revision (on PR #4
+branch), PR #5 open against it.
+
+TOP REMAINING REVIEWER RISKS (declared, not defects):
+- climatological MSIS (~15% declared uncertainty)
+- idealized co-location upper bound not a realizable concept
+- transport fractions are design-grid, not probabilities
+- scaling collapse is internal-consistency check (shared drag equation)
+
+USER ACTIONS: submit 01_manuscript/manuscript.docx + separate figure
+files + supplement.docx per ASR Editorial Manager flow; fill affiliation
+on the submission form (not invented here).

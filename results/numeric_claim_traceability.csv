@@ -83,3 +83,4 @@ claim_81,rho_unc_pct,15.0,config/default.yaml,scripts/build_manuscript.py,result
 claim_82,n_pop,2000,data/processed/population.csv,scripts/build_manuscript.py,results/tables or config -> scripts/build_manuscript.py -> manuscript.docx/manuscript_inline.docx/pptx/supplement
 claim_83,n_sigma_noenc,6.0,src/analysis/exposure_class.py,scripts/build_manuscript.py,results/tables or config -> scripts/build_manuscript.py -> manuscript.docx/manuscript_inline.docx/pptx/supplement
 claim_84,collat_E_enc,29,phase6_outcomes.csv,scripts/build_manuscript.py,results/tables or config -> scripts/build_manuscript.py -> manuscript.docx/manuscript_inline.docx/pptx/supplement
+C085,n_pi_total,480,results/tables/phase11_scaling_fit.csv,phase11_scaling.py,n column -> n['n_pi_total'] -> 3.8 text

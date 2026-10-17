@@ -94,5 +94,16 @@ def test_display_formatting_does_not_change_values():
         "1. Introduction")[0]
 
 
+def test_no_unsubstituted_placeholders_in_rendered_docx():
+    import re
+    for f in ("manuscript/manuscript.docx",
+              "manuscript/manuscript_inline.docx",
+              "supplement/supplement.docx"):
+        txt = "\n".join(p.text for p in docx.Document(
+            os.path.join(ROOT, f)).paragraphs)
+        leftovers = re.findall(r"\{[a-zA-Z_][^}]{0,60}\}", txt)
+        assert leftovers == [], (f, leftovers)
+
+
 if __name__ == "__main__":
     sys.exit(pytest.main([__file__, "-x", "-q"]))

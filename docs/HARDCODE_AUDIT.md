@@ -45,3 +45,18 @@ Date: 2026-10-17. Base: PR #4 head `d2d2b12` + this revision's edits.
 Audit complete: every manuscript number is either injected from a current
 canonical file or an explicitly justified constant/cited value. Dynamic
 perturbation proves the text reflects the current computation.
+
+## Addendum — lock-pass sweep (2026-10-17)
+
+Commands/evidence added this pass:
+
+- Rendered-docx sweep for unsubstituted placeholders:
+  `re.findall(r"\{[a-zA-Z_][^}]*\}", docx_text)` -> found `{len(p11)}` in
+  both manuscript docx (root cause: non-f-string line inside f-string
+  paragraph). Fixed by injecting `n_pi_total`; new test
+  `test_no_unsubstituted_placeholders_in_rendered_docx`.
+- Full literal sweep of rendered docx incl. tables: all "0.12", "et al",
+  "2000-object", "~15%" hits classified as injected values, legitimate
+  reference strings, or numeric table data — no residual stale claims.
+- finding H17 added to results/hardcode_findings.csv;
+  claim C085 added to results/numeric_claim_traceability.csv.

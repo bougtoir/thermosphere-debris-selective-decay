@@ -16,6 +16,7 @@ import sys
 import pandas as pd
 from docx import Document
 from docx.enum.text import WD_ALIGN_PARAGRAPH
+from docx.enum.section import WD_ORIENT
 from docx.shared import Inches, Pt
 from pptx import Presentation
 from pptx.util import Inches as PInches
@@ -288,6 +289,7 @@ def main():
     n["pi_med"] = float(fit11["pi_median"].iloc[0])
     n["pi_iqr"] = float(fit11["pi_iqr"].iloc[0])
     n["n_pi_outlier"] = int(fit11["n_outlier_gt_1p5"].iloc[0])
+    n["n_pi_total"] = int(fit11["n"].iloc[0])
     n["rho_unc_pct"] = 100.0 * float(
         cfg["atmosphere"]["background_uncertainty"])
     n["n_pop"] = n_pop
@@ -332,6 +334,7 @@ def main():
         "pi_med": "phase11_scaling_fit.csv",
         "pi_iqr": "phase11_scaling_fit.csv",
         "n_pi_outlier": "phase11_scaling_fit.csv",
+        "n_pi_total": "phase11_scaling_fit.csv",
         "rho_unc_": "config/default.yaml",
         "n_pop": "data/processed/population.csv",
         "n_sigma": "src/analysis/exposure_class.py",
@@ -739,7 +742,7 @@ def main():
       f"{n['pi_med']:.2f}, IQR {n['pi_iqr']:.2f}) across regimes, "
       f"altitudes and B, with a log-log slope of {n['fit_slope']:.2f} and "
       f"R^2 = {n['fit_r2']:.4f}; the {n['n_pi_outlier']} of "
-      "{len(p11)} excursions above the collapse are confined to very low "
+      f"{n['n_pi_total']} excursions above the collapse are confined to very low "
       "ballistic coefficients where the induced drift is largest. "
       "The expected value is 1/2 from a = rho v_rel^2/(2B) and is "
       "recovered once the factor of two and the corotation correction "
@@ -1080,6 +1083,10 @@ def main():
 
     # ---------------- supplement ----------------
     sup = Document()
+    sup_sec = sup.sections[0]
+    sup_sec.orientation = WD_ORIENT.LANDSCAPE
+    sup_sec.page_width, sup_sec.page_height = \
+        sup_sec.page_height, sup_sec.page_width
     sup.add_heading("Supplementary material", 0)
     sup.add_heading("Supplementary figures", level=1)
     for fn, cap in [
@@ -1126,6 +1133,11 @@ def main():
             for j, v in enumerate(r):
                 cells[j].text = f"{v:.4g}" if isinstance(v, float) \
                     else str(v)
+        for row in tbl.rows:
+            for cell in row.cells:
+                for par in cell.paragraphs:
+                    for run in par.runs:
+                        run.font.size = Pt(7)
     os.makedirs(os.path.join(root, "supplement"), exist_ok=True)
     sup.save(os.path.join(root, "supplement/supplement.docx"))
     print("manuscript + supplement written")

@@ -28,3 +28,11 @@ Date: 2026-10-17.
   re-executed because only its prose values were stale; the PR #4 branch
   already validated the rest end-to-end (BASELINE_FREEZE.md).
 - flake8 debt pre-existing, untouched.
+
+## Lock-pass verification (2026-10-17)
+
+- `pytest tests/ -x -q`: 26 passed (added placeholder regression test).
+- `make quick`: PASS previously this session; quick_summary reproduced.
+- `python3 scripts/build_manuscript.py`: clean rebuild after F1/F2 fixes.
+- Render: manuscript 14p, inline 20p, supplement 34p (landscape).
+- `make all` still not rerun (no scientific change; see BASELINE_FREEZE).
