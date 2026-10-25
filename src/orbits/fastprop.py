@@ -34,6 +34,10 @@ DAY = 86400.0
 # than the background decay. Costs almost nothing, because the number of
 # delta(r, t) evaluations is set by fine_dt_s, not by the step size.
 DT_DAY_ACTIVE = 0.01
+# a semi-major axis this close to the reentry altitude counts as reentered:
+# shortened steps approach the reentry altitude geometrically, so without a
+# tolerance the integration would stall just above it.
+REENTRY_TOL_M = 10.0
 
 
 def corotation_factor(a, inc):
@@ -206,7 +210,7 @@ def decay_lifetime(el0, rho_fn, B, t_max_s, reentry_alt_m=120e3,
 
     while t < t_max_s:
         alt = a - R_EARTH
-        if alt <= reentry_alt_m:
+        if alt <= reentry_alt_m + REENTRY_TOL_M:
             break
         step_s = min(dt_day * DAY, t_max_s - t)
         if delta_windows and delta_fn is not None and any(
@@ -224,8 +228,8 @@ def decay_lifetime(el0, rho_fn, B, t_max_s, reentry_alt_m=120e3,
         # A step that reaches reentry is retaken over the shorter interval
         # that ends at reentry, so the exposure and the extra drag are
         # integrated over the time the object is actually in orbit.
-        reentry = False
         for attempt in (0, 1):
+            reentry = False
             a_mid = max(a + 0.5 * da_prev * step_s, a_reentry)
             el = _rebased(el0, a_mid, m_phase, raan_phase, argp_phase, t)
             rd, ad, md = el["raan_dot"], el["argp_dot"], el["M_dot"]

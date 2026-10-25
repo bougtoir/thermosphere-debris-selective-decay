@@ -1,0 +1,20 @@
+path,status,sha256_16,mtime_utc,commit,manuscript_version,exec_evidence,zip_status
+docs/HOSTILE_REVIEW_FINAL.md,FOUND_CURRENT,c0f0a89deffc9570,2026-10-17 11:09,a28aed3,manuscript lock-pass build (a28aed3),documents executed commands,MISSING_FROM_ZIP
+docs/HARDCODE_AUDIT.md,FOUND_CURRENT,53bb7b14d9dec86d,2026-10-17 11:09,a28aed3,manuscript lock-pass build (a28aed3),documents executed commands,MISSING_FROM_ZIP
+docs/DATA_TEXT_FIGURE_CONSISTENCY.md,FOUND_CURRENT,7f3f9c781e61ab66,2026-10-17 09:26,0ece949,manuscript lock-pass build (a28aed3),documents executed commands,MISSING_FROM_ZIP
+docs/DYNAMIC_PROVENANCE_TEST.md,FOUND_CURRENT,f99bb3e953e66c63,2026-10-17 10:30,a28aed3,manuscript lock-pass build (a28aed3),documents executed commands,MISSING_FROM_ZIP
+docs/REPRODUCIBILITY_AUDIT_FINAL.md,FOUND_CURRENT,61322cdec52eb578,2026-10-17 11:08,a28aed3,manuscript lock-pass build (a28aed3),documents executed commands,MISSING_FROM_ZIP
+docs/RENDER_AND_CONSISTENCY_FINAL.md,FOUND_CURRENT,f91372a88b74066b,2026-10-17 11:08,a28aed3,manuscript lock-pass build (a28aed3),documents executed commands,MISSING_FROM_ZIP
+results/numeric_claim_traceability.csv,FOUND_CURRENT,dad972882f861029,2026-10-17 10:09,ef02a98,manuscript lock-pass build (a28aed3),documents executed commands,MISSING_FROM_ZIP
+results/hardcode_findings.csv,FOUND_CURRENT,d3640578677f88ce,2026-10-17 10:09,ef02a98,manuscript lock-pass build (a28aed3),documents executed commands,MISSING_FROM_ZIP
+logs/final_qc_commands.log,FOUND_CURRENT,951636cd3b680926,2026-10-17 10:29,a28aed3,manuscript lock-pass build (a28aed3),execution logs inside,MISSING_FROM_ZIP
+logs/make_all.log,FOUND_CURRENT,831c62b31217f80b,2026-10-17 11:08,a28aed3,manuscript lock-pass build (a28aed3),execution logs inside,MISSING_FROM_ZIP
+FINAL_HANDOFF.txt,FOUND_CURRENT,438da3a6d7a73b3e,2026-10-17 11:09,a28aed3,manuscript lock-pass build (a28aed3),documents executed commands,MISSING_FROM_ZIP
+docs/FINAL_QC_BASELINE.md,FOUND_CURRENT,c3d908b9769eee2c,2026-10-17 10:30,a28aed3,manuscript lock-pass build (a28aed3),documents executed commands,MISSING_FROM_ZIP
+docs/FINAL_SOURCE_LOCK.md,FOUND_CURRENT,3cac2ecf44aa497d,2026-10-17 10:09,ef02a98,manuscript lock-pass build (a28aed3),documents executed commands,MISSING_FROM_ZIP
+docs/FINAL_REMEDIATION_LOG.md,FOUND_CURRENT,0bdf3686b8b887e9,2026-10-17 10:09,ef02a98,manuscript lock-pass build (a28aed3),documents executed commands,MISSING_FROM_ZIP
+docs/RENDER_FINAL.md,FOUND_CURRENT,e07ffbf156c9a28b,2026-10-17 10:10,ef02a98,manuscript lock-pass build (a28aed3),documents executed commands,MISSING_FROM_ZIP
+docs/BASELINE_FREEZE.md,FOUND_CURRENT,d3f1ac74cc33afd7,2026-10-17 09:17,0ece949,manuscript lock-pass build (a28aed3),documents executed commands,MISSING_FROM_ZIP
+docs/HOSTILE_REVIEW_INDEPENDENT.md,FOUND_CURRENT,a341a96bf8efbf68,2026-10-17 09:20,0ece949,manuscript lock-pass build (a28aed3),documents executed commands,MISSING_FROM_ZIP
+docs/ROOT_CAUSE_AND_REANALYSIS.md,FOUND_CURRENT,5ab4c127570dd242,2026-10-17 09:26,0ece949,manuscript lock-pass build (a28aed3),documents executed commands,MISSING_FROM_ZIP
+docs/RENDER_AND_CONSISTENCY_AUDIT.md,FOUND_CURRENT,b54662028ed8e995,2026-10-17 09:27,0ece949,manuscript lock-pass build (a28aed3),documents executed commands,MISSING_FROM_ZIP

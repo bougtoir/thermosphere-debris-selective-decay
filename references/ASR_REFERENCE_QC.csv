@@ -1,0 +1,18 @@
+ref_no,entry,doi,verification_source,in_text_count,first_appearance,status
+1,"Liou & Johnson 2006, Science 311:340-341",10.1126/science.1121337,"Crossref: FOUND (Science, 2006, Liou;Johnson)",1,para ~1 Introduction,PASS
+2,"IADC 2021, Space Debris Mitigation Guidelines Rev.3",(no DOI),institutional guideline document,1,para ~1 Introduction,PASS
+3,"Shan, Guo & Gill 2016, Prog. Aerospace Sci. 80:18-32",10.1016/j.paerosci.2015.11.001,"Crossref: FOUND (Prog. Aerospace Sci., 2016)",1,Introduction,PASS
+4,"Phipps et al. 2012, ASR 49(9):1283-1300",10.1016/j.asr.2012.02.003,"Crossref: FOUND (ASR, 2012, Phipps;Baker)",1,Introduction,PASS
+5,"Bruinsma et al. 2006, JGR 111 A06303",10.1029/2005JA011284,"Crossref: FOUND (JGR, 2006, Bruinsma)",1,Introduction,PASS
+6,"Parker & Linares 2024, J. Spacecraft Rockets 61(5)",10.2514/1.A36164,"Crossref: FOUND (JSR, 2024)",2,Introduction,PASS
+7,"Berger et al. 2023, Space Weather 21(3)",10.1029/2022SW003330,"Crossref: FOUND (Space Weather, 2023)",1,Introduction,PASS
+8,"Picone et al. 2002, JGR 107(A12) 1468",10.1029/2002JA009430,"Crossref: FOUND (JGR, 2002, Picone)",1,§2.1,PASS
+9,"NRL SSD 2024, NRLMSISE-00 code & docs",(no DOI),institutional code release,1,§2.1,PASS
+10,"Emmert 2015, ASR 56(5):773-824",10.1016/j.asr.2015.05.038,"Crossref: FOUND (ASR, 2015, Emmert)",2,§2.1,PASS
+11,"Bowman et al. 2008, AIAA-2008-6438 (JB2008)",10.2514/6.2008-6438,"Crossref: FOUND (AIAA conf., 2008, Bowman)",1,§2.1,PASS
+12,"King-Hele 1987, Satellite Orbits in an Atmosphere",(book),"OpenLibrary: FOUND (Desmond King-Hele, 1987, Blackie)",1,§2.2,PASS
+13,"Moe & Moe 2005, Planet. Space Sci. 53(8):793-801",10.1016/j.pss.2005.03.005,"Crossref: FOUND (PSS, 2005, Moe;Moe)",1,§2.2,PASS
+14,"Vallado & Crawford 2008, AIAA-2008-6770",10.2514/6.2008-6770,"Crossref: FOUND (AIAA conf., 2008)",1,§2.2,PASS
+15,"Drob et al. 2015, Earth & Space Sci. 2(7):301-319",10.1002/2014EA000089,"Crossref: FOUND (E&SS, 2015, Drob)",2,§3.5 / §4.2,PASS
+16,"Bruinsma & Forbes 2007, GRL 34(14) L14103",10.1029/2007GL030243,"Crossref: FOUND (GRL, 2007)",2,§3.5 / §4.2,PASS
+17,"Knipp et al. 2004, Solar Phys. 224:495-505",10.1007/s11207-005-6393-4,"Crossref: FOUND (Solar Phys., 2004)",1,§4.4,PASS

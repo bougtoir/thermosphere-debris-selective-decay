@@ -1,0 +1,33 @@
+ASR FORMAT/CITATION FINAL QC — HANDOFF
+======================================
+Verdict: SUBMIT (format/citation pass; no make-all rerun by scope).
+
+Scope: 12-item submission QC excluding pipeline rerun. Canonical tree =
+devin/1790845369-reentry-flag-reset @5c595d5 (merged PR #5 state).
+
+DEFECTS FOUND AND FIXED THIS PASS
+1. Supplementary tables unnumbered and uncited -> Table S1–S9, cited in
+   §3.2/§3.4/§3.5/§3.6/§3.7/§3.9 (first-appearance order).
+2. Markdown residues rendered literally: *localized*, *intervention*
+   -> real Word italics; `make all`, `make quick`, `delta_max` -> plain.
+3. 12 substantive equations were ASCII prose -> native OMML equation
+   objects (fractions, sub/superscripts, delimiters); editable in Word.
+4. Handoff: PR #5 merged into the PR #4 feature branch, not main. The
+   audited package exists on the default branch only after PR #4 merges.
+
+VERIFIED (no change): 17/17 references real (14 Crossref + 3
+institutional/book), all cited, numbered by first appearance; Figs 1–8 and
+Tables 1–8 cited in order; Figs S1–S4 cited; 47 frozen numeric literals
+match canonical CSVs; 26/26 tests pass; renders 14/20/34 pp clean; no
+char-grid spacing (default docGrid only); 0 '*'/'`' residues.
+
+Files changed: scripts/build_manuscript.py,
+scripts/build_submission_package.py, manuscript/*.docx (+pptx),
+supplement/supplement.docx, submission/** rebuilt,
+docs/ASR_*.md (10), references/ASR_REFERENCE_QC.csv,
+results/ASR_FINAL_NUMERIC_CLAIM_MAP.csv, logs/ASR_FINAL_TARGETED_QC.log,
+FINAL_HANDOFF_ASR_QC.txt.
+
+Deliverable zip: ASR_FORMAT_CITATION_QC_FINAL.zip (see git commit msg /
+PR for sha256). Residual: cosmetic wrap in one supp table column;
+reproducibility item #3 = prior-pass evidence only (scope).

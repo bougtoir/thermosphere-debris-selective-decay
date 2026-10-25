@@ -104,3 +104,22 @@ def test_disjoint_windows_count_separate_encounters():
         delta_windows=[(0.0, 800.0), (1000.0, 1800.0)],
         delta_fn=lambda r, t: 5.0, fine_dt_s=1.0, dt_day_active=0.01)
     assert hist["encounter_count"] == 2
+
+
+def test_shortened_step_without_crossing_is_not_a_reentry():
+    """A step whose full length predicts reentry but whose shortened retake
+    stays above the reentry altitude must keep integrating instead of being
+    clamped to the reentry altitude."""
+    def rho_fn(r, t):
+        alt = np.linalg.norm(r) - R_EARTH
+        return 1e-9 * np.exp(-(alt - 120e3) / 5e3)
+
+    el = fastprop.init_elements(R_EARTH + 130e3, 0.0, np.radians(51.6),
+                                0.0, 0.0, 0.0)
+    coarse, _ = fastprop.decay_lifetime(el, rho_fn, 5.0, 10 * 86400.0,
+                                        dt_day=0.2)
+    el = fastprop.init_elements(R_EARTH + 130e3, 0.0, np.radians(51.6),
+                                0.0, 0.0, 0.0)
+    fine, _ = fastprop.decay_lifetime(el, rho_fn, 5.0, 10 * 86400.0,
+                                      dt_day=0.002)
+    assert abs(coarse - fine) / fine < 0.2

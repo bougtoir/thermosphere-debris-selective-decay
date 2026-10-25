@@ -133,3 +133,31 @@ reentry inside its horizon at the reported grid, and the gap-decomposition and
 matched-exposure values are unchanged to all printed digits); the third
 affects campaign runs with repeated windows, whose encounter counts are
 regenerated here.
+
+## 5. Shortened reentry step that no longer reaches reentry
+
+The reentry retake of section 4 introduced a second defect. `reentry` was set
+before the retake, so if the shortened step — taken with a decay rate
+evaluated at a higher mid-step altitude, hence a slower rate — stayed above
+the reentry altitude, the object was still clamped to the reentry altitude and
+the integration stopped. A target still hundreds of metres to kilometres above
+120 km was reported as having reentered, truncating its lifetime and its decay
+history. The flag is now derived inside each attempt, so only an attempt that
+actually crosses the reentry altitude ends the integration; a shortened step
+that does not cross is committed as an ordinary step
+(`test_shortened_step_without_crossing_is_not_a_reentry` compares the coarse
+step against a 100x finer reference, which the clamped version missed by 69%).
+
+Because successive shortened steps approach the reentry altitude
+geometrically, accepting non-crossing retakes alone would stall the
+integration just above it. The reentry test therefore uses a tolerance,
+`REENTRY_TOL_M = 10 m`, which is negligible against both the 120 km reentry
+altitude and the per-step altitude change.
+
+Affected numbers: only the cases whose decay reaches the reentry altitude
+inside the integration horizon, i.e. the 250 km objects and the 350 km
+population member in the scaling collapse. Their lifetimes and delta-v lengthen
+slightly (for example `dlt_G_track` 0.73001 -> 0.73035 d, matched-target-exposure
+delta-v for G 64.165 -> 64.480 m/s, Pi mean 1.060 +/- 0.239 -> 1.062 +/- 0.260).
+No conclusion changes; all tables, figures, manuscript, supplement, deck and the
+submission package are regenerated from the corrected integrator.
