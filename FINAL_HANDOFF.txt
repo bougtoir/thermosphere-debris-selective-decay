@@ -1,49 +1,50 @@
-FINAL HANDOFF — ASR EVIDENCE-VERIFIED QC
+FINAL HANDOFF — ASR EVIDENCE-RECOVERY PASS
 Date: 2026-10-17 UTC | Branch: devin/1792228606-asr-hostile-hardcode-revision | PR #5
 
-FINAL VERDICT: SUBMIT
+1. FINAL VERDICT: SUBMIT
+   All required audits were genuinely performed in this session chain,
+   all execution evidence exists, no unresolved CRITICAL/MAJOR defect.
 
-FINAL SCIENTIFIC CONCLUSION: unchanged — localized density enhancement is
-excluded by exposure geometry/transport/energetics at all simulated
-amplitudes; mathematically open only in a narrow corner. Negative bound.
+2. ROOT CAUSE OF REPEATED ZIP EXCLUSION (Phase 5)
+   scripts/build_submission_package.py uses an explicit ITEMS allowlist
+   under 03_submission_docs/. The audit artifacts from the three
+   review/lock passes were never added to it, and the builder silently
+   skips files it doesn't know — no completeness check existed.
+   FIX: all required evidence now listed under 08_audit_evidence/;
+   a missing audit file now aborts the build (fail-loud), and zip
+   contents were programmatically verified post-build.
 
-5-REVIEWER INDEPENDENT HOSTILE REVIEW (docs/HOSTILE_REVIEW_FINAL.md):
-- CRITICAL 0 | MAJOR 2 (placeholder {len(p11)} render defect; schema
-  drift caught by make all) — both fixed | MINOR 1 (supplement table
-  wrap — fixed) | remaining: declared irreducible limitations only.
+3. RECOVERED vs NEWLY-EXECUTED
+   Recovered (FOUND_CURRENT, all 19, results/evidence_inventory.csv):
+   every required doc/CSV/log already existed and was current — nothing
+   had to be re-run. New work this pass: inventory docs, the ITEMS fix,
+   package rebuild, content verification.
 
-HARDCODE AUDIT: 17 findings — suspicious 3 (all fixed), justified
-constants/config/cited 11, reworded 3, unresolved 0. AST static scan:
-no fallback literals, no result numbers in static prose (49 digit strings
-= headings/captions only). 85 claims traced.
+4. COMMANDS / EXIT CODES / LOGS
+   - make all: exit 0, 39m09s — logs/make_all.log
+   - pytest tests/ -x -q: exit 0, 26/26 — logs/final_qc_commands.log
+   - pytest test_numeric_provenance -v: exit 0, 6/6 — same log
+   - make quick: exit 0, 7.1s — same log
+   - input perturbation Bx2: exit 0, expected-direction change — same log
+   - build_submission_package.py: exit 0, 130+21 files
 
-DYNAMIC PROVENANCE (executed, logs/final_qc_commands.log):
-- test_numeric_provenance.py 6/6 PASS; full suite 26/26.
-- Missing-CSV -> loud failure (2 cases). PASS
-- phase6 CSV x1.5 -> docx changes. PASS
-- input Bx2 in temp copy -> run_quick deltas halve as physics requires
-  (pulse 0.00402->0.00201, tracking 3.53->2.45). PASS
-- placeholder scan on all docx -> clean. PASS
+5. HOSTILE REVIEW COUNTS: CRITICAL 0; MAJOR 2 found across sweeps
+   (placeholder render defect, CSV schema drift) — both fixed;
+   MINOR 1 (supplement table wrap) fixed; residual = declared
+   irreducible limitations only.
 
-make all / make quick EVIDENCE:
-- make all: ran 39m09s, phases 1-12 regenerated; diffs = ulp FP noise +
-  bootstrap CI resampling only. One real defect found+fixed (schema
-  drift). logs/make_all.log.
-- make quick: PASS (3.53 / 4.0e-3 / 0.43 reproduced).
+6. HARDCODE: 17 findings — suspicious 3 fixed, justified 11,
+   reworded 3, unresolved 0; 85 claims traced; AST scan clean.
 
-FILES CHANGED THIS PASS: build_manuscript.py (n_outlier schema, n_pi_total,
-supplement landscape/7pt), regenerated canonical CSVs (ulp + CI only),
-supplement/manuscript docx rebuilt, new audit docs + logs.
-FILES PRESERVED: all analysis code, config, data, science results.
+7. REPRODUCIBILITY: full make all regenerated every phase; diffs were
+   ulp FP noise + bootstrap CI resampling only; one real schema defect
+   found and fixed during the run.
 
-DELIVERABLES:
-- ASR_SUBMISSION_EVIDENCE_VERIFIED.zip  sha256 a11fb518b0cdb0d5
-- FINAL_HANDOFF.txt, docs/{HOSTILE_REVIEW_FINAL, HARDCODE_AUDIT,
-  DATA_TEXT_FIGURE_CONSISTENCY, DYNAMIC_PROVENANCE_TEST,
-  REPRODUCIBILITY_AUDIT_FINAL, RENDER_AND_CONSISTENCY_FINAL,
-  FINAL_QC_BASELINE, FINAL_REMEDIATION_LOG, FINAL_SOURCE_LOCK}.md
-- results/{numeric_claim_traceability,hardcode_findings}.csv
-- logs/{final_qc_commands,make_all}.log
+8. MANUSCRIPT/SCIENCE CHANGED: none this pass (packaging only).
 
-REMAINING USER ACTION: submit via ASR Editorial Manager; add affiliation
-on the form (deliberately not invented).
+9. FINAL ZIP: ASR_SUBMISSION_EVIDENCE_VERIFIED_FINAL.zip at repo root
+   (SHA256 recorded in the git commit message and session report —
+   it cannot hash itself).
+
+10. GIT: branch devin/1792228606-asr-hostile-hardcode-revision;
+    commits ef02a98 -> a28aed3 -> (this commit); PR #5.
