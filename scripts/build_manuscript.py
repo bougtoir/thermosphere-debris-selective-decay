@@ -17,7 +17,9 @@ import pandas as pd
 from docx import Document
 from docx.enum.text import WD_ALIGN_PARAGRAPH
 from docx.enum.section import WD_ORIENT
+from docx.oxml import parse_xml
 from docx.shared import Inches, Pt
+from xml.sax.saxutils import escape
 from pptx import Presentation
 from pptx.util import Inches as PInches
 from pptx.util import Pt as PPt
@@ -595,7 +597,7 @@ def main():
       "is exposure, not amplitude: the object crosses the patch once per "
       "revolution at ~7.7 km/s, and the mean enhancement it experiences "
       f"while inside is only {n['gap_pulse_eff']:.2f} against a peak of "
-      f"{n['gap_pulse_peak']:.2f} (Table 2, Table 3).")
+      f"{n['gap_pulse_peak']:.2f} (Table 2, Table 3, Table S1).")
     H(2, "3.3 Idealized co-location upper bound and the gap decomposition")
     P(f"The idealized tracking bound sustains the enhancement on the "
       f"target for a full day and yields {n['gap_track_dv']:.2f} m/s, "
@@ -663,7 +665,8 @@ def main():
       "for safety and is the only way to make a finite budget useful, "
       "but the conclusion about 'how much better' localization is "
       "depends explicitly on the matching convention, and none of these "
-      "conventions is privileged (Fig. 3, Fig. 4, Table 4, Table 5).")
+      "conventions is privileged (Fig. 3, Fig. 4, Table 4, Table 5, "
+      "Table S2).")
     FIG("fig3_collateral.png",
         "Figure 3. Absolute collateral delta-v imparted to protected "
         "objects under uniform versus localized enhancement, by case pair.")
@@ -696,7 +699,7 @@ def main():
       "tested. Observed traveling atmospheric disturbances propagate at "
       f"460–730 m/s [{c('bruinsma2007tad')}], so a localized enhancement "
       "is expected to be transported and sheared rather than held in "
-      "place (Fig. S1).")
+      "place (Fig. S1, Tables S3 and S4).")
     H(2, "3.6 Uncertainty and global sensitivity")
     P(f"Monte Carlo (n={n['mc_n']}) over delta, sigmas, density and B "
       f"uncertainty gives a median target delta-v of "
@@ -711,7 +714,8 @@ def main():
       f"the response is dominated by `{n['sobol_top']}` "
       f"(ST = {n['sobol_top_ST']:.2f}), with the exposure geometry "
       "parameters second. Indices are reported as computed and are never "
-      "post-hoc constrained (Fig. S2, Fig. S3, Table 6). The horizontal "
+      "post-hoc constrained (Fig. S2, Fig. S3, Table 6, Table S5). "
+      "The horizontal "
       f"patch scale is not inert even in the tracking bound "
       f"(ST = {n['sobol_ST_sigma_h']:.2f}): the patch centre follows the "
       "unperturbed ephemeris, so the along-track drift caused by the "
@@ -733,7 +737,8 @@ def main():
       "near-identical-trajectory control produces the expected failure "
       f"of selectivity: the co-orbital protected twin absorbs "
       f"{sci(n['neg_twin_dv'])} m/s, comparable to its target, because "
-      "it shares the target's trajectory tube (Table 7, Fig. S4).")
+      "it shares the target's trajectory tube (Table 7, Fig. S4, "
+      "Table S6).")
     TBL(t5, "Table 7. Mandatory negative controls and the simulated "
             "outcome of each.")
     H(2, "3.8 Generalized scaling")
@@ -773,7 +778,8 @@ def main():
       "track-crossing protected objects, and by energetics at the scale "
       f"required; what remains mathematically open is the narrow corner "
       "in which an enhancement is sustained on the target for a large "
-      "fraction of its remaining lifetime (Fig. 6, Fig. 7).")
+      "fraction of its remaining lifetime (Fig. 6, Fig. 7, "
+      "Tables S7–S9).")
     FIG("fig4_timing.png",
         "Figure 6. Target extra delta-v versus intervention reference "
         "time for a best-case-sited fixed pulse and for a 4 h tracking "
@@ -922,13 +928,140 @@ def main():
                   for i, k in enumerate(c.order, 1)]).to_csv(
         os.path.join(root, "results/manuscript_citations.csv"), index=False)
 
+    # ---------------- OMML equations ----------------
+    # ASCII math in the source text is converted to native Word OMML
+    # equation objects at render time. Each entry maps the literal ASCII
+    # string to OMML inner content; text outside the formulas stays
+    # prose. Ordinary units, lone symbols and numeric results are not
+    # converted on purpose.
+    M_NS = ("http://schemas.openxmlformats.org/officeDocument/2006/math")
+
+    def _mt(t):
+        return (f"<m:r><m:t xml:space='preserve'>{escape(t)}"
+                "</m:t></m:r>")
+
+    def _msup(b, s):
+        return f"<m:sSup><m:e>{b}</m:e><m:sup>{s}</m:sup></m:sSup>"
+
+    def _msub(b, s):
+        return f"<m:sSub><m:e>{b}</m:e><m:sub>{s}</m:sub></m:sSub>"
+
+    def _mfrac(num, den):
+        return f"<m:f><m:num>{num}</m:num><m:den>{den}</m:den></m:f>"
+
+    def _mdel(inner):
+        return f"<m:d><m:e>{inner}</m:e></m:d>"
+
+    _VREL = _msub(_mt("v"), _mt("rel"))
+    _VREL2 = _msup(_VREL, _mt("2"))
+    _SH = _msub(_mt("σ"), _mt("h"))
+    _OE = _msub(_mt("Ω"), _mt("E"))
+
+    OMML_FORMULAS = [
+        ("da/dt = -(a rho v / B)(v_rel/v)^2",
+         _mfrac(_mt("da"), _mt("dt")) + _mt(" = −")
+         + _mfrac(_mt("a ρ v"), _mt("B"))
+         + _msup(_mdel(_mfrac(_VREL, _mt("v"))), _mt("2"))),
+        ("v_rel/v = 1 - Omega_E a cos(i)/v",
+         _mfrac(_VREL, _mt("v")) + _mt(" = 1 − ")
+         + _mfrac(_OE + _mt(" a cos") + _mdel(_mt("i")), _mt("v"))),
+        ("Pi = 2 dv B/(rho delta v_rel^2 T)",
+         _mt("Π = ")
+         + _mfrac(_mt("2 dv B"), _mt("ρ δ ") + _VREL2 + _mt(" T"))),
+        ("rho*delta*v_rel^2*T/(2B)",
+         _mfrac(_mt("ρ δ ") + _VREL2 + _mt(" T"), _mt("2B"))),
+        ("-rho v_rel^2/(2B)",
+         _mfrac(_mt("−ρ ") + _VREL2, _mt("2B"))),
+        ("a = rho v_rel^2/(2B)",
+         _mt("a = ") + _mfrac(_mt("ρ ") + _VREL2, _mt("2B"))),
+        ("B = m/(C_d A)",
+         _mt("B = ")
+         + _mfrac(_mt("m"), _msub(_mt("C"), _mt("d")) + _mt(" A"))),
+        ("rho' = rho(1+delta)",
+         _mt("ρ′ = ρ") + _mdel(_mt("1+δ"))),
+        ("sigma_h^2 += 2 kappa t",
+         _msup(_SH, _mt("2")) + _mt(" ← ") + _msup(_SH, _mt("2"))
+         + _mt(" + 2κt")),
+        ("exp[L eps / (H (1+eps))]",
+         _mt("exp[") + _mfrac(_mt("L ε"),
+                             _mt("H ") + _mdel(_mt("1+ε"))) + _mt("]")),
+        ("q = ln(1+delta) H / L",
+         _mt("q = ")
+         + _mfrac(_mt("ln") + _mdel(_mt("1+δ")) + _mt(" H"), _mt("L"))),
+        ("eps = q/(1-q)",
+         _mt("ε = ") + _mfrac(_mt("q"), _mt("1 − q"))),
+    ]
+    OMML_FORMULAS.sort(key=lambda kv: -len(kv[0]))
+
+    def _split_formulas(text):
+        """Split text into ('t', str) and ('m', omml_inner) segments."""
+        segs = [("t", text)]
+        for lit, omml in OMML_FORMULAS:
+            out = []
+            for kind, s in segs:
+                if kind != "t" or lit not in s:
+                    out.append((kind, s))
+                    continue
+                parts = s.split(lit)
+                for i, p in enumerate(parts):
+                    if p:
+                        out.append(("t", p))
+                    if i < len(parts) - 1:
+                        out.append(("m", omml))
+            segs = out
+        return segs
+
+    def _split_markup(text):
+        """Parse *italic* and `code` markers -> (text, italic) pieces."""
+        pieces = []
+        buf, italic, code = "", False, False
+        i = 0
+        while i < len(text):
+            ch = text[i]
+            if code and ch == "`":
+                code = False
+                i += 1
+                continue
+            if not code and ch == "`":
+                if buf:
+                    pieces.append((buf, italic))
+                    buf = ""
+                code = True
+                i += 1
+                continue
+            if not code and ch == "*":
+                if buf:
+                    pieces.append((buf, italic))
+                    buf = ""
+                italic = not italic
+                i += 1
+                continue
+            buf += ch
+            i += 1
+        if buf:
+            pieces.append((buf, italic))
+        return pieces
+
+    def add_rich_paragraph(doc, text, italic_all=False):
+        """Add a paragraph supporting *italic* and OMML formulas."""
+        p = doc.add_paragraph()
+        for kind, seg in _split_formulas(text):
+            if kind == "m":
+                p._p.append(parse_xml(
+                    f"<m:oMath xmlns:m='{M_NS}'>{seg}</m:oMath>"))
+                continue
+            for piece, italic in _split_markup(seg):
+                run = p.add_run(piece)
+                if italic or italic_all:
+                    run.italic = True
+        return p
+
     # ---------------- rendering ----------------
     def fmt(v):
         return f"{v:.4g}" if isinstance(v, float) else str(v)
 
     def add_table(doc, df, caption):
-        cap = doc.add_paragraph(caption)
-        cap.runs[0].italic = True
+        add_rich_paragraph(doc, caption, italic_all=True)
         tbl = doc.add_table(rows=1, cols=len(df.columns))
         tbl.style = "Table Grid"
         for j, col in enumerate(df.columns):
@@ -954,7 +1087,7 @@ def main():
             if item[0] == "H":
                 doc.add_heading(item[2], level=item[1])
             elif item[0] == "P":
-                doc.add_paragraph(item[1])
+                add_rich_paragraph(doc, item[1])
             elif item[0] == "TBL":
                 add_table(doc, item[1], item[2])
             elif item[0] == "FIG":
@@ -964,8 +1097,8 @@ def main():
                         width=Inches(6.0))
                     doc.paragraphs[-1].alignment = \
                         WD_ALIGN_PARAGRAPH.CENTER
-                    cap = doc.add_paragraph(item[2])
-                    cap.runs[0].italic = True
+                    cap = add_rich_paragraph(doc, item[2],
+                                             italic_all=True)
                     cap.alignment = WD_ALIGN_PARAGRAPH.CENTER
                 else:
                     ph = doc.add_paragraph(
@@ -976,7 +1109,7 @@ def main():
             doc.add_heading("Figure captions", level=1)
             for item in content:
                 if item[0] == "FIG":
-                    doc.add_paragraph(item[2])
+                    add_rich_paragraph(doc, item[2])
         return doc
 
     os.makedirs(os.path.join(root, "manuscript"), exist_ok=True)
@@ -1108,20 +1241,20 @@ def main():
             continue
         sup.add_picture(fp, width=Inches(6.0))
         sup.paragraphs[-1].alignment = WD_ALIGN_PARAGRAPH.CENTER
-        pc = sup.add_paragraph(cap)
-        pc.runs[0].italic = True
+        pc = add_rich_paragraph(sup, cap, italic_all=True)
         pc.alignment = WD_ALIGN_PARAGRAPH.CENTER
     sup.add_heading("Supplementary tables", level=1)
-    for name, df in [("Exposure classification audit",
+    for name, df in [("Table S1. Phase 6 outcomes.", p6),
+                     ("Table S2. Exposure classification audit.",
                       load(root, "numerical_zero_audit.csv")),
-                     ("Transport-grid sensitivity", tbs),
-                     ("Sobol convergence ladder", sobc),
-                     ("Phase 5 spreading models", p5),
-                     ("Phase 6 outcomes", p6),
-                     ("Phase 8 timing", p8.head(40)),
-                     ("Phase 9 Pareto", p9),
-                     ("Phase 10 negative controls", neg),
-                     ("Phase 12 classification", p12.head(60))]:
+                     ("Table S3. Phase 5 spreading models.", p5),
+                     ("Table S4. Transport-grid sensitivity.", tbs),
+                     ("Table S5. Sobol convergence ladder.", sobc),
+                     ("Table S6. Phase 10 negative controls.", neg),
+                     ("Table S7. Phase 8 timing.", p8.head(40)),
+                     ("Table S8. Phase 9 Pareto.", p9),
+                     ("Table S9. Phase 12 classification.",
+                      p12.head(60))]:
         if df is None:
             continue
         sup.add_heading(name, level=1)
