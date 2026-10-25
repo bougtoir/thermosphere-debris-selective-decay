@@ -1,5 +1,5 @@
 key,value,source_csv,generator
-lt_400_B30,118.18415160096988,phase1_scale_calculations.csv,scripts/build_manuscript.py
+lt_400_B30,118.1841516009699,phase1_scale_calculations.csv,scripts/build_manuscript.py
 lt_250_B10,1.2416588912919562,phase1_scale_calculations.csv,scripts/build_manuscript.py
 dv_A_track,3.530255998915804,phase6_outcomes.csv,scripts/build_manuscript.py
 dv_A_pulse,0.0039862754868248,phase6_outcomes.csv,scripts/build_manuscript.py
@@ -73,3 +73,14 @@ sobol_ladder_prev,1024,sobol_convergence.csv,scripts/build_manuscript.py
 sobol_dST_top,0.002125043433666013,sobol_convergence.csv,scripts/build_manuscript.py
 sobol_violations_top,0,sobol_convergence.csv,scripts/build_manuscript.py
 frac_class_transport,0.4074074074074074,phase12_classification.csv,scripts/build_manuscript.py
+cowell_pct,0.0622844732146,phase2_validation.csv,scripts/build_manuscript.py
+fit_slope,1.0162686231448503,phase11_scaling_fit.csv,scripts/build_manuscript.py
+fit_r2,0.9983939453441296,phase11_scaling_fit.csv,scripts/build_manuscript.py
+pi_med,1.0221041707936922,phase11_scaling.csv,scripts/build_manuscript.py
+pi_iqr,0.0367808068673423,phase11_scaling.csv,scripts/build_manuscript.py
+n_pi_outlier,7,phase11_scaling_fit.csv,scripts/build_manuscript.py
+n_pi_total,480,phase11_scaling_fit.csv,scripts/build_manuscript.py
+rho_unc_pct,15.0,config/default.yaml,scripts/build_manuscript.py
+n_pop,2000,data/processed/population.csv,scripts/build_manuscript.py
+n_sigma_noenc,6.0,src/analysis/exposure_class.py,scripts/build_manuscript.py
+collat_E_enc,29,phase6_outcomes.csv,scripts/build_manuscript.py

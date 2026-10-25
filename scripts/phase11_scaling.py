@@ -31,7 +31,8 @@ from src.experiment import make_object, simulate  # noqa: E402
 from src.atmosphere.lookup import build_lookup, rho_fn_from_lookup  # noqa: E402
 from src.orbits.elements import MU, R_EARTH  # noqa: E402
 from src.orbits.fastprop import corotation_factor  # noqa: E402
-from src.utils import load_config, rng, repo_root  # noqa: E402
+from src.utils import load_config, rng  # noqa: E402
+from src.utils import repo_root  # noqa: E402
 
 HORIZON_S = 40 * 86400.0
 T_ENH = 86400.0
@@ -87,6 +88,15 @@ def main():
     slope, intercept = np.polyfit(logx[mask], logy[mask], 1)
     r2 = 1 - np.sum((logy[mask] - (slope * logx[mask] + intercept)) ** 2) \
         / np.sum((logy[mask] - logy[mask].mean()) ** 2)
+
+    iqr = df["Pi_benefit"].quantile(0.75) - df["Pi_benefit"].quantile(0.25)
+    pd.DataFrame([dict(
+        slope=slope, intercept=intercept, r2=r2,
+        pi_mean=df["Pi_benefit"].mean(), pi_std=df["Pi_benefit"].std(),
+        pi_median=df["Pi_benefit"].median(), pi_iqr=iqr,
+        n=len(df), n_outlier=int((df["Pi_benefit"] > 1.5).sum()),
+    )]).to_csv(os.path.join(
+        root, "results/tables/phase11_scaling_fit.csv"), index=False)
 
     with open(os.path.join(root, "docs/PHASE_11_HANDOFF.md"), "w") as f:
         f.write("# Phase 11 handoff\n\n")

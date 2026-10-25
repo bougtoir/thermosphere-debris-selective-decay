@@ -1,0 +1,50 @@
+FINAL HANDOFF — ASR EVIDENCE-RECOVERY PASS
+Date: 2026-10-17 UTC | Branch: devin/1792228606-asr-hostile-hardcode-revision | PR #5
+
+1. FINAL VERDICT: SUBMIT
+   All required audits were genuinely performed in this session chain,
+   all execution evidence exists, no unresolved CRITICAL/MAJOR defect.
+
+2. ROOT CAUSE OF REPEATED ZIP EXCLUSION (Phase 5)
+   scripts/build_submission_package.py uses an explicit ITEMS allowlist
+   under 03_submission_docs/. The audit artifacts from the three
+   review/lock passes were never added to it, and the builder silently
+   skips files it doesn't know — no completeness check existed.
+   FIX: all required evidence now listed under 08_audit_evidence/;
+   a missing audit file now aborts the build (fail-loud), and zip
+   contents were programmatically verified post-build.
+
+3. RECOVERED vs NEWLY-EXECUTED
+   Recovered (FOUND_CURRENT, all 19, results/evidence_inventory.csv):
+   every required doc/CSV/log already existed and was current — nothing
+   had to be re-run. New work this pass: inventory docs, the ITEMS fix,
+   package rebuild, content verification.
+
+4. COMMANDS / EXIT CODES / LOGS
+   - make all: exit 0, 39m09s — logs/make_all.log
+   - pytest tests/ -x -q: exit 0, 26/26 — logs/final_qc_commands.log
+   - pytest test_numeric_provenance -v: exit 0, 6/6 — same log
+   - make quick: exit 0, 7.1s — same log
+   - input perturbation Bx2: exit 0, expected-direction change — same log
+   - build_submission_package.py: exit 0, 130+21 files
+
+5. HOSTILE REVIEW COUNTS: CRITICAL 0; MAJOR 2 found across sweeps
+   (placeholder render defect, CSV schema drift) — both fixed;
+   MINOR 1 (supplement table wrap) fixed; residual = declared
+   irreducible limitations only.
+
+6. HARDCODE: 17 findings — suspicious 3 fixed, justified 11,
+   reworded 3, unresolved 0; 85 claims traced; AST scan clean.
+
+7. REPRODUCIBILITY: full make all regenerated every phase; diffs were
+   ulp FP noise + bootstrap CI resampling only; one real schema defect
+   found and fixed during the run.
+
+8. MANUSCRIPT/SCIENCE CHANGED: none this pass (packaging only).
+
+9. FINAL ZIP: ASR_SUBMISSION_EVIDENCE_VERIFIED_FINAL.zip at repo root
+   (SHA256 recorded in the git commit message and session report —
+   it cannot hash itself).
+
+10. GIT: branch devin/1792228606-asr-hostile-hardcode-revision;
+    commits ef02a98 -> a28aed3 -> (this commit); PR #5.
