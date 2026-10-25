@@ -1,0 +1,18 @@
+ASR FINAL TARGETED QC — executed commands (no make all)
+=======================================================
+[branch] devin/1792916965-asr-final-qc based on devin/1790845369-reentry-flag-reset @5c595d5 (contains merged PR #5)
+[note] canonical default branch `main` @e72c646 does NOT contain PR #4+#5 — branch-only state reported in FINAL_HANDOFF_ASR_QC.txt
+
+1. python3 scripts/build_manuscript.py                     -> exit 0 ("manuscript + supplement written")
+2. python3 -m pytest tests/ -x -q                          -> 26 passed in 4.33s, exit 0
+3. python3 scripts/build_submission_package.py             -> exit 0 (151 files, submission/ASR_final_submission.zip 2.74 MB)
+4. soffice --headless --convert-to pdf manuscript.docx     -> 14 pages, equations/italics render verified (pages 1,2,9,10 imaged)
+5. soffice --headless --convert-to pdf manuscript_inline.docx -> 20 pages
+6. soffice --headless --convert-to pdf supplement.docx     -> 34 pages
+7. Crossref /works/{doi} for 14 DOIs                       -> 14 FOUND, metadata consistent
+8. OpenLibrary search "Satellite Orbits in an Atmosphere"  -> FOUND (King-Hele, 1987, Blackie)
+9. python3 w:t-run scan of document.xml + headers/footers  -> 0 '*' or '`' residues in all 3 docx
+10. python3 OMML inventory                                 -> main 12, inline 12, supplement 0 m:oMath objects
+11. python3 -c "Document(...)" reopen of all 3 docx        -> OK (XML integrity)
+12. citation-order scripts (in-text [n], Fig/Table first-appearance) -> 17/17 refs cited, ordered; Figs 1-8 & Tables 1-8 sequential
+13. spot numeric check: 47 frozen literals present in rendered docx -> all True
