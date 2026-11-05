@@ -970,7 +970,9 @@ def main():
 
     H(1, "Data availability")
     P("All results regenerate from `make all` (or `make quick`) in the "
-      "accompanying repository; every number in this manuscript is "
+      "accompanying repository "
+      "(https://github.com/bougtoir/thermosphere-debris-selective-decay);"
+      " every number in this manuscript is "
       "written from results/tables CSVs by scripts/build_manuscript.py.")
 
     H(1, "References")

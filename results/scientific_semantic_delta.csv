@@ -1,0 +1,15 @@
+classification,location,original,corrected,note
+AUTHORIZED_EDITORIAL,"in-text citations (15 groups, 24 instances)",Vancouver [n],"Harvard (Author, Year)",editorial instruction + ASR Harvard style
+AUTHORIZED_EDITORIAL,reference list,"numbered, first-appearance order","unnumbered, alphabetical by first-author surname",editorial instruction
+AUTHORIZED_EDITORIAL,section headings,unnumbered (Introduction...),numbered (1. Introduction...),cosmetic numbering
+AUTHORIZED_EDITORIAL,main text line numbering,absent,w:lnNumType continuous,editorial instruction
+METADATA_EXCEPTION,author block,full name + Shiga University affiliation + address,[Authors] placeholder,authorized exception 1 — author completes locally
+AUTHORIZED_EDITORIAL,Statements and Declarations block,Acknowledgement/CRediT/Competing/GenAI declarations present,removed from manuscript,authorized exception 2 — moved to submission-system fields; retained in docs/DECLARATIONS.md
+SCIENTIFIC_CHANGE (fixed),Data availability paragraph,asserts code+data at https://github.com/bougtoir/thermosphere-debris-selective-decay,URL was dropped,repository link assertion restored in generator (this pass)
+SEMANTICALLY_EQUIVALENT,figure placement,inline figures with captions,separate-figure placeholders + 'Figure captions' end section,same 8 caption texts; all 8 embedded images byte-identical (SHA256) to supplied figure files
+SEMANTICALLY_EQUIVALENT,12 OMML equations,glyph variants -/' and different equation order in §2,"− / ′ glyphs; same 12-equation multiset, identical structure",structure signature (f/sSub/sSup/d/num/den) identical
+SEMANTICALLY_EQUIVALENT,supplement,no title heading,'Supplementary material' heading added,4/4 supplement media images byte-identical; 9/9 tables identical
+SEMANTICALLY_EQUIVALENT,main tables,8 tables,"8 tables, 0 cell diffs",
+SEMANTICALLY_EQUIVALENT,supplement tables,9 tables (S1–S9),"9 tables, 0 cell diffs",
+AUTHORIZED_EDITORIAL,target-journal line,absent,'Target journal: Advances in Space Research...' note line,"boilerplate, non-scientific"
+METADATA_EXCEPTION,corresponding-author line,full correspondence address,bougtoir@gmail.com placeholder,authorized exception 1
