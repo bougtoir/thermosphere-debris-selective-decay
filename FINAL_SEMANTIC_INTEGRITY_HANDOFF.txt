@@ -1,0 +1,11 @@
+ASR SEMANTIC INTEGRITY DELTA GATE — HANDOFF
+
+1. Hashes: original AISR-S-26-05628.zip sha256 7d81efb5…9333; corrected ASR_EDITORIAL_TECHNICAL_CORRECTION_FINAL.zip sha256 9b54bf31…76b8 (pre-repair; repaired package hash below).
+2. Differences: ~14 groups — 9 AUTHORIZED_EDITORIAL, 2 METADATA_EXCEPTION, 2 SEMANTICALLY_EQUIVALENT, 1 SCIENTIFIC_CHANGE (repaired).
+3. Scientific differences: one — repository URL assertion lost from Data availability during Statements-block removal; restored via generator (commit on PR #8 branch).
+4. Minimal corrections applied: that single URL restoration only; rebuilt docx; 34/34 tests pass.
+5. Unverified elements: none material. (In-text cites, refs, tables, figures, equations, numbers all compared.)
+6. Editorial compliance: PASS on all three editorial requests.
+7. Verdict: PASS — the corrected manuscript preserves the scientific meaning and validated results of the original submission.
+8. Ready to return to ASR: yes, after author completes metadata and uploads the corrected package.
+9. Author metadata intentionally reserved for local completion; editor-approved declarations removal is not a HOLD condition.

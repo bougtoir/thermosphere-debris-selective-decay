@@ -1,0 +1,18 @@
+old_id,citation_key,author_year_label,alphabetical_position,source_identity,verified_status,in_text_occurrences
+1,liou2006risk,"Liou and Johnson, 2006",10,10.1126/science.1121337,verified,1
+2,iadc2021,"IADC, 2021",7,iadc-home.org,verified_no_doi,1
+3,shan2016adr,"Shan et al., 2016",16,10.1016/j.paerosci.2015.11.001,verified,1
+4,phipps2012lodr,"Phipps et al., 2012",14,10.1016/j.asr.2012.02.003,verified,1
+5,bruinsma2006storm,"Bruinsma et al., 2006",3,10.1029/2005JA011284,verified,1
+6,parker2024gannon,"Parker and Linares, 2024",13,10.2514/1.A36164,verified,2
+7,berger2023starlink,"Berger et al., 2023",1,10.1029/2022SW003330,verified,2
+8,picone2002nrlmsise,"Picone et al., 2002",15,10.1029/2002JA009430,verified,1
+9,nrlmsis_code,"NRL Space Science Division, 2024",12,map.nrl.navy.mil,verified_no_doi,1
+10,emmert2015review,"Emmert, 2015",6,10.1016/j.asr.2015.05.038,verified,2
+11,bowman2008jb2008,"Bowman et al., 2008",2,10.2514/6.2008-6438,verified,1
+12,kinghele1987,"King-Hele, 1987",8,publisher,verified_no_doi,1
+13,moe2005gassurface,"Moe and Moe, 2005",11,10.1016/j.pss.2005.03.005,verified,1
+14,vallado2008sgp4,"Vallado and Crawford, 2008",17,10.2514/6.2008-6770,verified,1
+15,drob2015hwm14,"Drob et al., 2015",5,10.1002/2014EA000089,verified,3
+16,bruinsma2007tad,"Bruinsma and Forbes, 2007",4,10.1029/2007GL030243,verified,3
+17,knipp2004heating,"Knipp et al., 2004",9,10.1007/s11207-005-6393-4,verified,1

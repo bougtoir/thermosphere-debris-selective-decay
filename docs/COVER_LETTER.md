@@ -2,7 +2,7 @@
 
 Dear Editors,
 
-We submit "Quantifying the feasibility boundary of localized
+I submit "Quantifying the feasibility boundary of localized
 thermospheric density enhancement for selective orbital debris decay"
 for consideration in Advances in Space Research.
 
@@ -30,4 +30,4 @@ The manuscript is original, not under consideration elsewhere, and all
 data and code are available in the accompanying repository.
 
 Sincerely,
-The authors
+T. Onishi

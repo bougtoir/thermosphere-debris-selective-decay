@@ -1,0 +1,8 @@
+component,scope,result,status
+OMML equation set,12 equations,"identical multiset; glyph normalization -→−, '→′; order differs within §2 (same content)",PASS
+Main tables 1–8,all cells,0 cell diffs,PASS
+Supplement tables S1–S9,all cells,0 cell diffs,PASS
+Figures 1–8,embedded media vs supplied PNGs,8/8 SHA256-identical,PASS
+Supplement figures S1–S4,embedded media vs supplied PNGs,4/4 SHA256-identical,PASS
+Numeric token multiset,all body+table digits,"all differences traced to: ref-list numbering removal, heading numbers, author metadata, statements block, figure placeholders; no scientific value changed",PASS
+"Frozen values (6.87, 3.53, 3.98e-3, 1726×/887×, 11/27, Pi 1.062±0.260, 1.016/0.9984, 0.062%, 5.8e7 W, 464/95 GW)",abstract/results/discussion,identical in both documents,PASS
