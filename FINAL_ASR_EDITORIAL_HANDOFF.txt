@@ -1,0 +1,21 @@
+FINAL ASR EDITORIAL TECHNICAL CORRECTION — HANDOFF (AISR-S-26-05628)
+
+1. Editorial requirements:
+   a. Only Appendix/Acknowledgements/Data availability between Conclusion and References
+      → SATISFIED: sole heading is "Data availability"; "Figure captions" remains after References (standard end matter).
+   b. Continuous line numbers in the manuscript
+      → SATISFIED: native w:lnNumType countBy=1 restart=continuous in manuscript.docx and manuscript_inline.docx; rendered margins verified (1→46+ continuous across pages).
+   c. Unnumbered, alphabetical reference list
+      → SATISFIED: 17 references, alphabetical by first-author surname, no numbering fields/styles.
+
+2. In-text citation style: author–year parenthetical (Harvard). Source: CSL registry maps ASR → elsevier-harvard (author-date); editorial demand for unnumbered alphabetical list implies author–year. docs/ASR_REFERENCE_STYLE_DECISION.md.
+3. Totals: 17 references; 24 in-text cited instances in 15 groups; 0 unresolved mappings; 0 dangling [n].
+4. Alphabetical bibliography: verified programmatically; institutional authors sort by name.
+5. Declarations: no funding/COI/ethics subsections in the constrained interval; disclosures remain in docs/DECLARATIONS.md for EM fields.
+6. Line numbers: XML-verified and PDF-render verified; margin placement, not text.
+7. OMML: 12 equations intact and editable; typography: TNR 12 pt body, 10 pt captions, headings TNR black, no char-grid snapping.
+8. Canonical numeric checksums: unchanged — no simulation phase rerun (per instructions); builder aborts on missing CSVs.
+9. Targeted tests: pytest 34/34 PASS, including new editorial regression tests (test_editorial_format.py).
+10. Render: manuscript 16 pp / inline 20 pp / supplement 34 pp, LibreOffice PDF — inspected first/middle/references pages, margins, equations, captions; no defects.
+11. Package: ASR_EDITORIAL_TECHNICAL_CORRECTION_FINAL.zip + docs/EDITORIAL_CHANGE_NOTE.md for the editorial office.
+12. EM actions for the human: upload corrected manuscript.docx (and supplement/figures unchanged), paste change note where the system asks; affiliation entered in EM metadata (not in the docx).

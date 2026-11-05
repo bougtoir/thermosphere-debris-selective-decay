@@ -5,12 +5,15 @@ python-docx. Every quantitative statement is injected from the CSVs in
 results/tables/ and references/references_verified.csv — no scientific
 number is hard-coded here.
 
-Citation numbering follows first-appearance order (Vancouver style),
-tracked automatically by `cite()`.
+Citations are author–year (Elsevier Harvard, the style ASR instructs):
+in-text "(Surname, Year)" parenthetical citations and an unnumbered,
+alphabetically sorted reference list, per the ASR editorial technical
+correction (see docs/ASR_REFERENCE_STYLE_DECISION.md).
 """
 from __future__ import annotations
 
 import os
+import re
 import sys
 
 import pandas as pd
@@ -36,28 +39,77 @@ def load(root, name):
     return pd.read_csv(p) if os.path.exists(p) else None
 
 
+def _surname(author):
+    """Family name of one 'Surname, Initials' author field, or the
+    institutional name itself when it has no comma."""
+    a = author.strip()
+    return a.split(",")[0].strip() if "," in a else a
+
+
+def _author_year_label(r):
+    """Harvard in-text label 'Surname, Year', 'A and B, Year' or
+    'Surname et al., Year' from one references_verified.csv row."""
+    parts = [a for a in str(r["authors"]).split(";") if a.strip()]
+    if len(parts) == 1:
+        lead = _surname(parts[0])
+    elif len(parts) == 2:
+        lead = f"{_surname(parts[0])} and {_surname(parts[1])}"
+    else:
+        lead = f"{_surname(parts[0])} et al."
+    return f"{lead}, {int(r['year'])}"
+
+
 class Cites:
+    """Tracks cited keys; emits author-year labels and an unnumbered
+    alphabetical reference list. `used` keeps first-appearance order
+    purely for the audit map."""
+
     def __init__(self, refs):
         self.refs = refs.set_index("citation_key")
-        self.order = []
+        self.used = []
+        self.counts = {}
 
     def __call__(self, *keys):
-        nums = []
+        labels = []
         for k in keys:
-            if k not in self.order:
-                self.order.append(k)
-            nums.append(str(self.order.index(k) + 1))
-        return ",".join(nums)
+            if k not in self.used:
+                self.used.append(k)
+            self.counts[k] = self.counts.get(k, 0) + 1
+            labels.append(_author_year_label(self.refs.loc[k]))
+        return "; ".join(sorted(labels))
+
+    def _alpha_key(self, k):
+        r = self.refs.loc[k]
+        return (_surname(r["authors"].split(";")[0]).lower(),
+                int(r["year"]), k)
 
     def reference_list(self):
         out = []
-        for i, k in enumerate(self.order, 1):
+        for k in sorted(self.used, key=self._alpha_key):
             r = self.refs.loc[k]
             doi = f" doi:{r['doi']}" if isinstance(r["doi"], str) and \
                 r["doi"] else ""
-            out.append(f"{i}. {r['authors']} ({int(r['year'])}). "
+            out.append(f"{r['authors']} ({int(r['year'])}). "
                        f"{r['title']}. {r['journal']}.{doi}")
         return out
+
+    def mapping_rows(self):
+        """Audit map: old numeric id (first-appearance order), key,
+        author-year label, alphabetical position, identity, status."""
+        alpha = sorted(self.used, key=self._alpha_key)
+        rows = []
+        for k in self.used:
+            r = self.refs.loc[k]
+            rows.append(dict(
+                old_id=self.used.index(k) + 1,
+                citation_key=k,
+                author_year_label=_author_year_label(r),
+                alphabetical_position=alpha.index(k) + 1,
+                source_identity=r["doi"] if isinstance(r["doi"], str)
+                and r["doi"] else r["source"],
+                verified_status=r["verification_status"],
+                in_text_occurrences=self.counts.get(k, 0)))
+        return rows
 
 
 def sci(x, sig=2):
@@ -916,7 +968,7 @@ def main():
       "and the dimensionless group that lets it be re-evaluated for any "
       "other parameter choice — is the result.")
 
-    H(1, "Data and code availability")
+    H(1, "Data availability")
     P("All results regenerate from `make all` (or `make quick`) in the "
       "accompanying repository; every number in this manuscript is "
       "written from results/tables CSVs by scripts/build_manuscript.py.")
@@ -924,9 +976,13 @@ def main():
     H(1, "References")
     for line in c.reference_list():
         P(line)
-    pd.DataFrame([dict(number=i, citation_key=k)
-                  for i, k in enumerate(c.order, 1)]).to_csv(
-        os.path.join(root, "results/manuscript_citations.csv"), index=False)
+    pd.DataFrame(c.mapping_rows()).to_csv(
+        os.path.join(root, "results/ASR_REFERENCE_MAPPING.csv"),
+        index=False)
+    pd.DataFrame([dict(order=i, citation_key=k)
+                  for i, k in enumerate(c.used, 1)]).to_csv(
+        os.path.join(root, "results/manuscript_citations.csv"),
+        index=False)
 
     # ---------------- OMML equations ----------------
     # ASCII math in the source text is converted to native Word OMML
@@ -1042,8 +1098,17 @@ def main():
             pieces.append((buf, italic))
         return pieces
 
-    def add_rich_paragraph(doc, text, italic_all=False):
-        """Add a paragraph supporting *italic* and OMML formulas."""
+    _BRACKET_CITE = re.compile(
+        r"\[((?:(?!\[|\]).)*\b(?:19|20)\d{2}(?:(?!\[|\]).)*)\]")
+
+    def add_rich_paragraph(doc, text, italic_all=False, size=None):
+        """Add a paragraph supporting *italic* and OMML formulas.
+
+        Square-bracket groups that contain a year are citation markers
+        emitted as [c(...)] in the source; they become Harvard
+        parenthetical citations here. Non-citation brackets (e.g.
+        exp[...], [Authors]) are preserved."""
+        text = _BRACKET_CITE.sub(r"(\1)", text)
         p = doc.add_paragraph()
         for kind, seg in _split_formulas(text):
             if kind == "m":
@@ -1054,6 +1119,8 @@ def main():
                 run = p.add_run(piece)
                 if italic or italic_all:
                     run.italic = True
+                if size is not None:
+                    run.font.size = Pt(size)
         return p
 
     # ---------------- rendering ----------------
@@ -1061,7 +1128,7 @@ def main():
         return f"{v:.4g}" if isinstance(v, float) else str(v)
 
     def add_table(doc, df, caption):
-        add_rich_paragraph(doc, caption, italic_all=True)
+        add_rich_paragraph(doc, caption, italic_all=True, size=10)
         tbl = doc.add_table(rows=1, cols=len(df.columns))
         tbl.style = "Table Grid"
         for j, col in enumerate(df.columns):
@@ -1079,10 +1146,15 @@ def main():
                         run.font.size = Pt(7)
 
     def render(inline):
+        from docx.shared import RGBColor
         doc = Document()
         stl = doc.styles["Normal"]
         stl.font.name = "Times New Roman"
-        stl.font.size = Pt(11)
+        stl.font.size = Pt(12)
+        for sname in ("Title", "Heading 1", "Heading 2", "Heading 3"):
+            hs = doc.styles[sname]
+            hs.font.name = "Times New Roman"
+            hs.font.color.rgb = RGBColor(0, 0, 0)
         for item in content:
             if item[0] == "H":
                 doc.add_heading(item[2], level=item[1])
@@ -1098,7 +1170,7 @@ def main():
                     doc.paragraphs[-1].alignment = \
                         WD_ALIGN_PARAGRAPH.CENTER
                     cap = add_rich_paragraph(doc, item[2],
-                                             italic_all=True)
+                                             italic_all=True, size=10)
                     cap.alignment = WD_ALIGN_PARAGRAPH.CENTER
                 else:
                     ph = doc.add_paragraph(
@@ -1109,8 +1181,28 @@ def main():
             doc.add_heading("Figure captions", level=1)
             for item in content:
                 if item[0] == "FIG":
-                    add_rich_paragraph(doc, item[2])
+                    add_rich_paragraph(doc, item[2], size=10)
+        for sec in doc.sections:
+            _add_line_numbers(sec._sectPr)
         return doc
+
+    W_NS = ("http://schemas.openxmlformats.org/wordprocessingml"
+            "/2006/main")
+
+    def _add_line_numbers(sectPr):
+        """Insert native Word continuous line numbering
+        (w:lnNumType) into a section properties element, before
+        w:cols per the sectPr schema order."""
+        if sectPr.find(f'{{{W_NS}}}lnNumType') is not None:
+            return
+        ln = parse_xml(
+            f"<w:lnNumType xmlns:w='{W_NS}' w:countBy='1' w:start='0' "
+            f"w:distance='240' w:restart='continuous'/>")
+        cols = sectPr.find(f'{{{W_NS}}}cols')
+        if cols is not None:
+            cols.addprevious(ln)
+        else:
+            sectPr.append(ln)
 
     os.makedirs(os.path.join(root, "manuscript"), exist_ok=True)
     render(False).save(os.path.join(root, "manuscript/manuscript.docx"))
