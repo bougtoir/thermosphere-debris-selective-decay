@@ -1,0 +1,18 @@
+prediction,quantity,value,verdict,note
+PR1,"peak drho/rho 400 km (1e11 W, z0 300)",2.0399048573356744,FALSIFIED,falsified if <0.05 or >1
+PR2,peak ratio 1e10/1e11 at 400 km,,PENDING,
+PR3,time of 400-km peak after onset [h],0.8338888888888889,CONFIRMED,
+PR4,|min|/peak drho at 400 km; min O/N2 change,0.009552853097222343,CONFIRMED,min dO/N2 = -0.925
+PR5,"max |drho/rho| beyond 3000 km within 3 h of onset, 400 km",1.518260024023225,CONFIRMED,
+PR6a,e-folding of local 400-km peak after switch-off [h],1.166388888888889,CONFIRMED,
+PR6b,e-folding of global-mean 400-km drho after switch-off [h],3.9994444444444444,CONFIRMED,
+PR7,peak 400-km drho ratio z0=150 / z0=300,,PENDING,
+PR8,grid convergence,,PENDING,
+PR9,"target extra dv / natural dv, 400 km, 12 h",0.03662070629535079,OUTSIDE_RANGE_NOT_FALSIFIED,
+PR10@300,selectivity GITM vs prescribed (prescribed/GITM),0.9333582460963337,FALSIFIED,"GITM 1.020, prescribed 0.952"
+PR11@300,target extra dv GITM / prescribed,2.6297684624875672,CONFIRMED,
+PR10@400,selectivity GITM vs prescribed (prescribed/GITM),1.5193254065719652,OUTSIDE_RANGE_NOT_FALSIFIED,"GITM 1.507, prescribed 2.289"
+PR11@400,target extra dv GITM / prescribed,1.8069915560074528,CONFIRMED,
+PR10@500,selectivity GITM vs prescribed (prescribed/GITM),3.0235869716437684,CONFIRMED,"GITM 2.029, prescribed 6.134"
+PR11@500,target extra dv GITM / prescribed,1.4165288319546825,CONFIRMED,
+PR12,peak drho at 400 km for 1e11 W (falsified if >=1),2.0399048573356744,FALSIFIED,δ≥1 reached; see area/duration in G3 summary
