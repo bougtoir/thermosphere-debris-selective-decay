@@ -77,3 +77,20 @@ at high latitude is not credible in this configuration; results at 250–500 km
 are larger than MSIS; perturbation results are always reported as
 GITM-perturbed minus GITM-control, never against MSIS.
 
+
+### 3.3 V10 — determinism / hook side effects
+Compared `c4_ctrl` (P0 = 0) with `c4_p11_z300` (P0 = 1e11 W but, owing to the
+t_on defect in `physical/gitm/QUEUE_NOTES.md`, a heating window that had
+already closed, so P(t) = 0 throughout), both restarted from `spin4` with
+identical drivers and 2 ranks. Table: `results/tables/physical_g2_v10_determinism.csv`.
+
+* 68 of 72 snapshots (00:10–11:20 UT) are bitwise identical (max |Δρ/ρ| = 0).
+* The last four (11:30–12:00 UT) differ by 1.3e-6 to 4.8e-6 in ρ and
+  ≤1.4e-3 K in Tn.
+
+Strictly, the <1e-6 target is missed in the last 30 min. Per the
+pre-declared rule this is reported as the noise floor: |Δρ/ρ| ≤ 5e-6. A
+heating response is only counted where it exceeds 1e-4, i.e. 20× this
+floor. The cause of the late divergence was not identified (the hook
+contributes exactly zero there; possibly non-reproducible floating-point
+ordering in a reduction).
