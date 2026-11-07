@@ -59,9 +59,11 @@ def gc_km(lat0, lon0, lat, lon, z0):
 
 def main():
     cdir, pdir, label = sys.argv[1:4]
-    heat = json.load(open(os.path.join(pdir, "case_manifest.json")))["case"]["heating"] \
-        if os.path.exists(os.path.join(pdir, "case_manifest.json")) else \
-        [float(x) for x in open(os.path.join(pdir, "UA/DataIn/user_heating.in")).read().split()]
+    # heating as written to GITM: t_on is in seconds since GITM StartTime
+    heat = [float(x) for x in open(os.path.join(pdir, "UA/DataIn/user_heating.in")).read().split()]
+    mf = os.path.join(pdir, "case_manifest.json")
+    case = json.load(open(mf))["case"] if os.path.exists(mf) else None
+    t_case0 = heat[6] - float(case["heating"][6]) if case else float(os.environ.get("G3_T_OFFSET", "0"))
     p0, lat0, lon0, z0 = heat[:4]
     elog = np.loadtxt(os.path.join(pdir, "UA/data/user_heating_log.dat")) if p0 > 0 else None
     cs = {os.path.basename(p): p for p in gitm_io.snapshots(os.path.join(cdir, "UA/data"))}
@@ -83,7 +85,7 @@ def main():
             dM_above[zz] = float(((p["Rho"] - c["Rho"]) * dV)[:, :, m].sum())
         ecum = 0.0
         if elog is not None and elog.size:
-            sel = elog[elog[:, 0] <= tsec - t_first + 1e-6]
+            sel = elog[elog[:, 0] <= t_case0 + tsec + 1e-6]
             ecum = float(sel[-1, 3]) if len(sel) else 0.0
         wA = np.cos(np.radians(lat))[None, :] * np.ones((lon.size, 1))
         for zz in ALTS:
@@ -100,7 +102,7 @@ def main():
             area = wA / wA.sum()
             far = dist > 3000.0
             rows.append(dict(
-                snapshot=k, t_s=tsec - t_first, alt_km=zz, E_cum_J=ecum, dH_total_J=dH,
+                snapshot=k, t_s=tsec, alt_km=zz, E_cum_J=ecum, dH_total_J=dH,
                 dM_above300_kg=dM_above[300.0], dM_above400_kg=dM_above[400.0],
                 max_abs_drho_rel=float(d[i, j]), lat_of_max=float(lat[j]), lon_of_max=float(lon[i]),
                 dist_of_max_km=float(dist[i, j]), min_drho_rel=float(d.min()), max_drho_rel=float(d.max()),
@@ -121,7 +123,7 @@ def main():
             for v, key in (("rho", "Rho"), ("ve", "V!Dn!N(east)"), ("vn", "V!Dn!N(north)"), ("vu", "V!Dn!N(up)")):
                 arr = s[key] if key == "Rho" else var(s, key)
                 slab.setdefault(f"{nm}_{v}", []).append(arr[:, :, m].astype(np.float32))
-        slab.setdefault("t_s", []).append(tsec - t_first)
+        slab.setdefault("t_s", []).append(tsec)
         print(k, flush=True)
     os.makedirs("results/tables", exist_ok=True)
     out = f"results/tables/physical_g3_{label}_timeseries.csv"
@@ -131,7 +133,7 @@ def main():
         w.writerows(rows)
     os.makedirs("data/physical/processed", exist_ok=True)
     np.savez_compressed(f"data/physical/processed/{label}_slices.npz",
-                        lon_deg=lon, lat_deg=lat, alt_km=z[m], heating=np.array(heat),
+                        lon_deg=lon, lat_deg=lat, alt_km=z[m], heating=np.array(heat), t_case0_s=t_case0,
                         **{k2: np.array(v2) for k2, v2 in slab.items()})
     print("wrote", out)
 

@@ -115,6 +115,7 @@ def run(label, rows_out, obj_rows):
     t, lon, lat, alt = z["t_s"].astype(float), z["lon_deg"], z["lat_deg"], z["alt_km"]
     heat = z["heating"]
     p0, lat0, lon0, z0, sig_h, sig_z, t_on, dur = heat[:8]
+    t_on = t_on - float(z["t_case0_s"]) if "t_case0_s" in z else t_on   # case-relative
     rng = np.random.default_rng(SEED)
     obj = orbits(rng)
     tq = np.arange(t[0] + FINE_DT / 2, t[-1], FINE_DT)
