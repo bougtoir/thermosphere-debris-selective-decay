@@ -5,3 +5,6 @@ results/logs/*.tmp
 .DS_Store
 manuscript/output/
 submission/
+
+# regenerable from raw GITM output (see data/physical/GITM_RUN_MANIFEST.csv)
+data/physical/processed/*.npz
