@@ -108,5 +108,115 @@
   "sha256": "5833dfb4f6d11df92c88ecc057d7f7d2dc3ed63bba0fb068bbbc74ed1d252a44",
   "items": 40,
   "note": "first page only (rows=40); relevance-ranked, not exhaustive"
+ },
+ {
+  "query_key": "E_storm_orbital_decay",
+  "query": "geomagnetic storm orbital decay satellite loss thermosphere density",
+  "url": "https://api.crossref.org/works?query=geomagnetic+storm+orbital+decay+satellite+loss+thermosphere+density&rows=40&select=DOI%2Ctitle%2Cauthor%2Cissued%2Ccontainer-title%2Ctype%2Cis-referenced-by-count",
+  "retrieved_utc": "2026-11-07T11:33:03.847136Z",
+  "path": "data/physical/raw/crossref_search/E_storm_orbital_decay.json",
+  "bytes": 45784,
+  "sha256": "b84613976f6dc4e93bcfafbb9e74d60aae7b4445502275083ec9eca52cd2c35e",
+  "items": 40,
+  "note": "first page only (rows=40)"
+ },
+ {
+  "query_key": "E_starlink_2022",
+  "query": "Starlink satellite loss February 2022 geomagnetic storm thermosphere",
+  "url": "https://api.crossref.org/works?query=Starlink+satellite+loss+February+2022+geomagnetic+storm+thermosphere&rows=40&select=DOI%2Ctitle%2Cauthor%2Cissued%2Ccontainer-title%2Ctype%2Cis-referenced-by-count",
+  "retrieved_utc": "2026-11-07T11:33:05.258125Z",
+  "path": "data/physical/raw/crossref_search/E_starlink_2022.json",
+  "bytes": 46811,
+  "sha256": "6d27e6c57844872d2d585db5006726aa8f4f236deb6ab3b4503671c293d272f7",
+  "items": 40,
+  "note": "first page only (rows=40)"
+ },
+ {
+  "query_key": "E_physics_model_drag_coupling",
+  "query": "physics-based thermosphere model orbit propagation drag coupling",
+  "url": "https://api.crossref.org/works?query=physics-based+thermosphere+model+orbit+propagation+drag+coupling&rows=40&select=DOI%2Ctitle%2Cauthor%2Cissued%2Ccontainer-title%2Ctype%2Cis-referenced-by-count",
+  "retrieved_utc": "2026-11-07T11:33:06.827120Z",
+  "path": "data/physical/raw/crossref_search/E_physics_model_drag_coupling.json",
+  "bytes": 26469,
+  "sha256": "d2046c452b032679d9b08dea7327f62d467915a4a831e4f42b54ab7d744547d1",
+  "items": 40,
+  "note": "first page only (rows=40)"
+ },
+ {
+  "query_key": "D_atmosphere_augmentation_debris",
+  "query": "debris removal artificial atmosphere gas cloud drag augmentation",
+  "url": "https://api.crossref.org/works?query=debris+removal+artificial+atmosphere+gas+cloud+drag+augmentation&rows=40&select=DOI%2Ctitle%2Cauthor%2Cissued%2Ccontainer-title%2Ctype%2Cis-referenced-by-count",
+  "retrieved_utc": "2026-11-07T11:33:08.192122Z",
+  "path": "data/physical/raw/crossref_search/D_atmosphere_augmentation_debris.json",
+  "bytes": 23383,
+  "sha256": "1dd9657e692b74dcf703657cf0cca9fba6051c620c4d6043293b49d62150d046",
+  "items": 40,
+  "note": "first page only (rows=40)"
+ },
+ {
+  "query_key": "D_laser_debris_removal",
+  "query": "laser orbital debris removal ablation momentum",
+  "url": "https://api.crossref.org/works?query=laser+orbital+debris+removal+ablation+momentum&rows=40&select=DOI%2Ctitle%2Cauthor%2Cissued%2Ccontainer-title%2Ctype%2Cis-referenced-by-count",
+  "retrieved_utc": "2026-11-07T11:33:09.550119Z",
+  "path": "data/physical/raw/crossref_search/D_laser_debris_removal.json",
+  "bytes": 26497,
+  "sha256": "c997925d88cb9aaf4ac119dd6f0894781efb6c7ac77861af47c6f79d07b76992",
+  "items": 40,
+  "note": "first page only (rows=40)"
+ },
+ {
+  "query_key": "D_drag_augmentation_device",
+  "query": "drag augmentation device deorbit sail",
+  "url": "https://api.crossref.org/works?query=drag+augmentation+device+deorbit+sail&rows=40&select=DOI%2Ctitle%2Cauthor%2Cissued%2Ccontainer-title%2Ctype%2Cis-referenced-by-count",
+  "retrieved_utc": "2026-11-07T11:33:10.880124Z",
+  "path": "data/physical/raw/crossref_search/D_drag_augmentation_device.json",
+  "bytes": 33716,
+  "sha256": "59191e42b2285d4fd1ff49a1c1f0f577d6271540d1fe698de8f3f0bebb4a5ab2",
+  "items": 40,
+  "note": "first page only (rows=40)"
+ },
+ {
+  "query_key": "A_tad_persistence_local_density",
+  "query": "localized thermospheric density anomaly persistence recovery time",
+  "url": "https://api.crossref.org/works?query=localized+thermospheric+density+anomaly+persistence+recovery+time&rows=40&select=DOI%2Ctitle%2Cauthor%2Cissued%2Ccontainer-title%2Ctype%2Cis-referenced-by-count",
+  "retrieved_utc": "2026-11-07T11:33:12.195121Z",
+  "path": "data/physical/raw/crossref_search/A_tad_persistence_local_density.json",
+  "bytes": 31829,
+  "sha256": "251461b763e9c39cbeccb83ed1d76463371fb167b2e1050a7a0085ea22c27bc3",
+  "items": 40,
+  "note": "first page only (rows=40)"
+ },
+ {
+  "query_key": "A_density_cells",
+  "query": "thermospheric density cell enhancement cusp localized",
+  "url": "https://api.crossref.org/works?query=thermospheric+density+cell+enhancement+cusp+localized&rows=40&select=DOI%2Ctitle%2Cauthor%2Cissued%2Ccontainer-title%2Ctype%2Cis-referenced-by-count",
+  "retrieved_utc": "2026-11-07T11:33:13.587123Z",
+  "path": "data/physical/raw/crossref_search/A_density_cells.json",
+  "bytes": 30265,
+  "sha256": "6f152ce16c9e8554acceaa931314008ea12e1d14bb5c0e0b1d809c1bd3776ae4",
+  "items": 40,
+  "note": "first page only (rows=40)"
+ },
+ {
+  "query_key": "C_ballistic_coefficient_lifetime",
+  "query": "satellite lifetime ballistic coefficient atmospheric density solar cycle",
+  "url": "https://api.crossref.org/works?query=satellite+lifetime+ballistic+coefficient+atmospheric+density+solar+cycle&rows=40&select=DOI%2Ctitle%2Cauthor%2Cissued%2Ccontainer-title%2Ctype%2Cis-referenced-by-count",
+  "retrieved_utc": "2026-11-07T11:33:15.020128Z",
+  "path": "data/physical/raw/crossref_search/C_ballistic_coefficient_lifetime.json",
+  "bytes": 25156,
+  "sha256": "50fecdbda25eba4ce25b04696ea78d74be046db22045817881c517e45874c6c2",
+  "items": 40,
+  "note": "first page only (rows=40)"
+ },
+ {
+  "query_key": "C_orbit_prediction_uncertainty_storm",
+  "query": "orbit prediction error geomagnetic storm density model",
+  "url": "https://api.crossref.org/works?query=orbit+prediction+error+geomagnetic+storm+density+model&rows=40&select=DOI%2Ctitle%2Cauthor%2Cissued%2Ccontainer-title%2Ctype%2Cis-referenced-by-count",
+  "retrieved_utc": "2026-11-07T11:33:16.385125Z",
+  "path": "data/physical/raw/crossref_search/C_orbit_prediction_uncertainty_storm.json",
+  "bytes": 34249,
+  "sha256": "45b909639884e51d876c7d0ca44ccf5de6a08a7295ac81ee43f90c21070d001d",
+  "items": 40,
+  "note": "first page only (rows=40)"
  }
 ]
