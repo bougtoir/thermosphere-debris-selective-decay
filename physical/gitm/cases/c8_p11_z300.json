@@ -1,0 +1,22 @@
+{
+ "name": "c8_p11_z300",
+ "rundir": "/home/ubuntu/models/runs/c8_p11_z300",
+ "restart_from": "/home/ubuntu/models/runs/spin8",
+ "start": "2002-03-21T00:00:00",
+ "end": "2002-03-21T04:00:00",
+ "nblon": 8,
+ "nblat": 8,
+ "dtplot": 600.0,
+ "heating": [
+  100000000000.0,
+  45,
+  0,
+  300,
+  1000,
+  50,
+  3600,
+  3600,
+  600
+ ],
+ "nproc": 2
+}

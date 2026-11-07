@@ -1,0 +1,112 @@
+[
+ {
+  "query_key": "localized_heating_response",
+  "query": "thermosphere response localized heating neutral density simulation",
+  "url": "https://api.crossref.org/works?query=thermosphere+response+localized+heating+neutral+density+simulation&rows=40&select=DOI%2Ctitle%2Cauthor%2Cissued%2Ccontainer-title%2Ctype%2Cis-referenced-by-count",
+  "retrieved_utc": "2026-11-07T11:01:52.485147Z",
+  "path": "data/physical/raw/crossref_search/localized_heating_response.json",
+  "bytes": 30878,
+  "sha256": "2b5a7fb06d071a68a3f2157b9ea0767a89ff9419da6eb2eeb1ee8785ee153a3b",
+  "items": 40,
+  "note": "first page only (rows=40); relevance-ranked, not exhaustive"
+ },
+ {
+  "query_key": "gitm_joule_heating_density",
+  "query": "GITM Joule heating thermospheric density response",
+  "url": "https://api.crossref.org/works?query=GITM+Joule+heating+thermospheric+density+response&rows=40&select=DOI%2Ctitle%2Cauthor%2Cissued%2Ccontainer-title%2Ctype%2Cis-referenced-by-count",
+  "retrieved_utc": "2026-11-07T11:01:53.875625Z",
+  "path": "data/physical/raw/crossref_search/gitm_joule_heating_density.json",
+  "bytes": 39524,
+  "sha256": "f8b44bd06302f8efa06fa50f87f3448398c399f9fa7c4f7c55afd42014afed4d",
+  "items": 40,
+  "note": "first page only (rows=40); relevance-ranked, not exhaustive"
+ },
+ {
+  "query_key": "tad_gravity_waves",
+  "query": "traveling atmospheric disturbances thermosphere heating model",
+  "url": "https://api.crossref.org/works?query=traveling+atmospheric+disturbances+thermosphere+heating+model&rows=40&select=DOI%2Ctitle%2Cauthor%2Cissued%2Ccontainer-title%2Ctype%2Cis-referenced-by-count",
+  "retrieved_utc": "2026-11-07T11:01:55.195546Z",
+  "path": "data/physical/raw/crossref_search/tad_gravity_waves.json",
+  "bytes": 32724,
+  "sha256": "86f9a2624c80f3050442768afee15e2439c205802d8140bb6bcccb9ef4cadcd7",
+  "items": 40,
+  "note": "first page only (rows=40); relevance-ranked, not exhaustive"
+ },
+ {
+  "query_key": "storm_density_perturbation",
+  "query": "storm-time thermospheric density perturbation satellite drag model",
+  "url": "https://api.crossref.org/works?query=storm-time+thermospheric+density+perturbation+satellite+drag+model&rows=40&select=DOI%2Ctitle%2Cauthor%2Cissued%2Ccontainer-title%2Ctype%2Cis-referenced-by-count",
+  "retrieved_utc": "2026-11-07T11:01:56.698940Z",
+  "path": "data/physical/raw/crossref_search/storm_density_perturbation.json",
+  "bytes": 36050,
+  "sha256": "a335e131f47706f14813956b6da78d20628772481fb726fe999db3d2e8e06ea1",
+  "items": 40,
+  "note": "first page only (rows=40); relevance-ranked, not exhaustive"
+ },
+ {
+  "query_key": "tiegcm_heating_experiment",
+  "query": "TIE-GCM simulation thermosphere heating density response experiment",
+  "url": "https://api.crossref.org/works?query=TIE-GCM+simulation+thermosphere+heating+density+response+experiment&rows=40&select=DOI%2Ctitle%2Cauthor%2Cissued%2Ccontainer-title%2Ctype%2Cis-referenced-by-count",
+  "retrieved_utc": "2026-11-07T11:01:58.101153Z",
+  "path": "data/physical/raw/crossref_search/tiegcm_heating_experiment.json",
+  "bytes": 37622,
+  "sha256": "43136687ec81ea8a0c8faf268868542a428a197e3a1d5c8c8ceb432b290b6c86",
+  "items": 40,
+  "note": "first page only (rows=40); relevance-ranked, not exhaustive"
+ },
+ {
+  "query_key": "non_hydrostatic_heating",
+  "query": "non-hydrostatic thermosphere response sudden heating",
+  "url": "https://api.crossref.org/works?query=non-hydrostatic+thermosphere+response+sudden+heating&rows=40&select=DOI%2Ctitle%2Cauthor%2Cissued%2Ccontainer-title%2Ctype%2Cis-referenced-by-count",
+  "retrieved_utc": "2026-11-07T11:01:59.491428Z",
+  "path": "data/physical/raw/crossref_search/non_hydrostatic_heating.json",
+  "bytes": 30383,
+  "sha256": "6bfc1b7fb3b6294cc82aa650d7a49d239a09b92876911506553b4ffd990e16fe",
+  "items": 40,
+  "note": "first page only (rows=40); relevance-ranked, not exhaustive"
+ },
+ {
+  "query_key": "differential_drag",
+  "query": "differential drag satellite control thermosphere density",
+  "url": "https://api.crossref.org/works?query=differential+drag+satellite+control+thermosphere+density&rows=40&select=DOI%2Ctitle%2Cauthor%2Cissued%2Ccontainer-title%2Ctype%2Cis-referenced-by-count",
+  "retrieved_utc": "2026-11-07T11:02:00.821870Z",
+  "path": "data/physical/raw/crossref_search/differential_drag.json",
+  "bytes": 28579,
+  "sha256": "6f384bb1ba2d3f23f6db42bd0bbe34d1e70fccfbf0a95287df7cf35300a069a4",
+  "items": 40,
+  "note": "first page only (rows=40); relevance-ranked, not exhaustive"
+ },
+ {
+  "query_key": "debris_remediation_drag",
+  "query": "space debris removal atmospheric drag enhancement",
+  "url": "https://api.crossref.org/works?query=space+debris+removal+atmospheric+drag+enhancement&rows=40&select=DOI%2Ctitle%2Cauthor%2Cissued%2Ccontainer-title%2Ctype%2Cis-referenced-by-count",
+  "retrieved_utc": "2026-11-07T11:02:02.430083Z",
+  "path": "data/physical/raw/crossref_search/debris_remediation_drag.json",
+  "bytes": 24466,
+  "sha256": "43c486f3d5794f24e6a3d32eb671655d2c1f976a26dd0a3ad3ec01e9c17fa1ea",
+  "items": 40,
+  "note": "first page only (rows=40); relevance-ranked, not exhaustive"
+ },
+ {
+  "query_key": "artificial_heating_neutral",
+  "query": "ionospheric heating experiment neutral atmosphere density effect",
+  "url": "https://api.crossref.org/works?query=ionospheric+heating+experiment+neutral+atmosphere+density+effect&rows=40&select=DOI%2Ctitle%2Cauthor%2Cissued%2Ccontainer-title%2Ctype%2Cis-referenced-by-count",
+  "retrieved_utc": "2026-11-07T11:02:03.846342Z",
+  "path": "data/physical/raw/crossref_search/artificial_heating_neutral.json",
+  "bytes": 34119,
+  "sha256": "7b02dea1fc97534b87dba675d964a52b01cd1177324d372b409a6d326d88e4a9",
+  "items": 40,
+  "note": "first page only (rows=40); relevance-ranked, not exhaustive"
+ },
+ {
+  "query_key": "drag_density_uncertainty",
+  "query": "satellite drag thermospheric density model uncertainty orbit prediction",
+  "url": "https://api.crossref.org/works?query=satellite+drag+thermospheric+density+model+uncertainty+orbit+prediction&rows=40&select=DOI%2Ctitle%2Cauthor%2Cissued%2Ccontainer-title%2Ctype%2Cis-referenced-by-count",
+  "retrieved_utc": "2026-11-07T11:02:05.259553Z",
+  "path": "data/physical/raw/crossref_search/drag_density_uncertainty.json",
+  "bytes": 33313,
+  "sha256": "5833dfb4f6d11df92c88ecc057d7f7d2dc3ed63bba0fb068bbbc74ed1d252a44",
+  "items": 40,
+  "note": "first page only (rows=40); relevance-ranked, not exhaustive"
+ }
+]
