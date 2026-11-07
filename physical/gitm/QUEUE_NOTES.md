@@ -16,3 +16,9 @@
   was overwritten with the corrected heated case (name/rundir
   `c4_p11_z300r`); the original 1-h repeat control is `cases/c4_ctrl_rep2.json`
   and runs in queue 2 after queue 1 exits (`~/models/runs/queue2.log`).
+* 2026-11-07T21:45Z (before spin8 started): c8_ctrl and c8_p11_z300 shortened
+  from 4 h to 3 h (end 03:00 UT). The 5°×2.5° grid has 4× the columns and a
+  smaller CFL step; 3 h covers onset, the 400–500 km peak (~50 min after
+  onset in the coarse run) and the first ~1 h of spreading, which is what the
+  grid-convergence test (PR8) compares. Later decay is assessed on the coarse
+  grid only.
