@@ -1,6 +1,6 @@
 prediction,quantity,value,verdict,note
 PR1,"peak drho/rho 400 km (1e11 W, z0 300)",2.0399048573356744,FALSIFIED,falsified if <0.05 or >1
-PR2,peak ratio 1e10/1e11 at 400 km,,PENDING,
+PR2,peak ratio 1e10/1e11 at 400 km,0.3095760086039019,FALSIFIED,
 PR3,time of 400-km peak after onset [h],0.8338888888888889,CONFIRMED,
 PR4,|min|/peak drho at 400 km; min O/N2 change,0.009552853097222343,CONFIRMED,min dO/N2 = -0.925
 PR5,"max |drho/rho| beyond 3000 km within 3 h of onset, 400 km",1.518260024023225,CONFIRMED,
