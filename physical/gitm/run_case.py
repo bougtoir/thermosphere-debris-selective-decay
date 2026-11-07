@@ -4,6 +4,7 @@ usage: python3 run_case.py <case.json>
 case.json: {"name", "rundir", "restart_from" (dir or null), "start", "end",
             "nblon", "nblat", "dtplot", "heating": [P0_W, lat0, lon0, z0_km,
             sigma_h_km, sigma_z_km, t_on_s, duration_s, ramp_s], "nproc"}
+t_on_s is relative to the case start; it is shifted to GITM's StartTime.
 Writes <rundir>/case_manifest.json with input hashes, wall time and exit code.
 """
 from __future__ import annotations
@@ -27,6 +28,16 @@ def sha(p: str) -> str:
     return hashlib.sha256(open(p, "rb").read()).hexdigest()
 
 
+def time_origin(src: str) -> dt.datetime:
+    """GITM keeps StartTime from the restart chain, and the heating hook times
+    t_on from StartTime, so t_on must be shifted for restarted cases."""
+    lines = [x.strip() for x in open(os.path.join(src, "UAM.in"))]
+    if lines[lines.index("#RESTART") + 1] != "F":
+        raise SystemExit(f"{src} is itself a restart; set 'time_origin' in the case JSON")
+    i = lines.index("#TIMESTART")
+    return dt.datetime(*[int(x) for x in lines[i + 1:i + 7]])
+
+
 def main() -> None:
     c = json.load(open(sys.argv[1]))
     r = c["rundir"]
@@ -44,9 +55,17 @@ def main() -> None:
     imf, ae = driver_files(dt.datetime(2002, 3, 20), dt.datetime(2002, 3, 23))
     open(os.path.join(r, "UA/DataIn/static_imf.dat"), "w").write(imf)
     open(os.path.join(r, "UA/DataIn/static_sme.dat"), "w").write(ae)
+    heat = list(c["heating"])
+    offset = 0.0
+    if c.get("restart_from"):
+        origin = (dt.datetime.strptime(c["time_origin"], F) if c.get("time_origin")
+                  else time_origin(c["restart_from"]))
+        offset = (s - origin).total_seconds()
+    heat[6] = float(heat[6]) + offset
     open(os.path.join(r, "UA/DataIn/user_heating.in"), "w").write(
-        " ".join(repr(float(x)) for x in c["heating"]) + "\n")
-    man = dict(case=c, gitm_exe_sha256=sha(os.path.realpath(os.path.join(r, "GITM.exe"))),
+        " ".join(repr(float(x)) for x in heat) + "\n")
+    man = dict(case=c, heating_t_on_offset_s=offset, heating_as_written=heat,
+               gitm_exe_sha256=sha(os.path.realpath(os.path.join(r, "GITM.exe"))),
                inputs={p: sha(os.path.join(r, p)) for p in
                        ("UAM.in", "UA/DataIn/static_imf.dat", "UA/DataIn/static_sme.dat",
                         "UA/DataIn/user_heating.in")},
