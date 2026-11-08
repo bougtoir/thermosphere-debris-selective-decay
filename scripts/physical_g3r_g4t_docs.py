@@ -170,7 +170,21 @@ if GR is None:
           "truncated to the same 3-h window; metrics of Sections 2–5 are recomputed for fine-native, fine-remapped",
           "and coarse-3 h. fine-native vs fine-remapped isolates B; fine-remapped vs coarse isolates A.", ""]
 else:
-    L += [md(GR.round(4)), ""]
+    gr = GR[GR.A_model_discretization_rel.notna()]
+    big = gr[gr.A_model_discretization_rel.abs() > 0.2]
+    small = gr[~gr.metric.isin(big.metric) & ~gr.metric.str.startswith("centroid_lon")]
+    L += ["Coarse = c4 pair truncated to the fine window (case time ≤ 3 h); fine_native = c8b pair on 72×72;",
+          "fine_remapped = fine fields area-weighted 2×2 onto 36×36. A = fine_remapped/coarse − 1 (physical-model",
+          "discretization), B = fine_native/fine_remapped − 1 (diagnostic grid). Two resolutions only: this is a",
+          "resolution-sensitivity test, not formal convergence.", "",
+          f"* {len(small)} of {len(gr)} remappable metric×altitude rows have |A| ≤ 0.2 "
+          f"(max |A| among them {small.A_model_discretization_rel.abs().max():.3f}).",
+          "* Rows with |A| > 0.2 (all small-magnitude quantities: negative-anomaly extremes/integrals, or",
+          "  centroid distances of a few hundred km, i.e. below one coarse cell):", ""]
+    L += [md(big[["metric", "alt_km", "coarse", "fine_native", "fine_remapped", "A_model_discretization_rel",
+                  "B_diagnostic_grid_rel"]].round(4)), ""]
+    L += ["Centroid longitudes are near 0°, so their relative change is not meaningful (absolute shifts are a few",
+          "degrees, i.e. less than one coarse cell).", "", "Full table:", "", md(GR.round(4)), ""]
 open(os.path.join(R, "docs/G3R_RESOLUTION_DISCRETIZATION_AUDIT.md"), "w").write("\n".join(L))
 
 # ---------------------------------------------------------------- G4T

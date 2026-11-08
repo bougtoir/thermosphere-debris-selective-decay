@@ -94,3 +94,18 @@ heating response is only counted where it exceeds 1e-4, i.e. 20× this
 floor. The cause of the late divergence was not identified (the hook
 contributes exactly zero there; possibly non-reproducible floating-point
 ordering in a reduction).
+
+## 4. Fine-grid (5°×2.5°) background and run notes
+
+* spin8b: cold start from MSIS at 2002-03-20 18:00 UT, 6 h, 8×8 blocks, 4 MPI ranks (same GITM.exe SHA-256 as
+  all coarse runs). The first attempt (spin8, 2 ranks) stopped at step 1 on GITM's per-block, cross-rank
+  `CPCP is zero` sanity check; diagnosis and the decomposition-only fix are recorded in
+  `physical/gitm/QUEUE_NOTES.md`. The failed directories are preserved.
+* Background at the start of the paired window (2002-03-21 00:00 UT), fine remapped 2×2 onto the coarse grid
+  vs the 24-h coarse spin-up: `results/tables/physical_g3r_background_fine_vs_coarse.csv`
+  (`scripts/physical_g3r_background.py`). Global-mean density agrees to < 0.5 % at 300–500 km, but local
+  differences are 11–25 % rms (temperature ~50 K rms). The fine background is therefore *not* the same state
+  as the coarse one; paired differences (perturbed − own control) are compared, and this background
+  difference is part of what the coarse/fine test measures.
+* Energy hook on the fine grid: realized power equals the configured 1e11 W; first-heated-snapshot closure
+  dH/E ≈ 1.04 (coarse 1.04), from `results/tables/physical_g3_p11_z300_fine_timeseries.csv`.

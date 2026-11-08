@@ -21,6 +21,8 @@ without the tag use the run's own output grid.
 | c4_p11_z150 | 36 | 36 | 7.534 | 1e+11 | 0.9877 | 0.9945 | 45 | 6.328e-15 | 150.4 | 996.1 | 19.6 | 8.721e+17 | 2.857e-07 | 71.1 | 1.406e+09 | 1.757 | 1.242 |
 | c8_p11_z300_prerun | 72 | 72 | 16.77 | 1e+11 | 0.9921 | 1 | 45 | 0 | 300.8 | 996.3 | 49.99 | 2.202e+18 | 1.24e-07 | 2793 | 3.58e+07 | 3.435 | 2.429 |
 | p11_z150 | 36 | 36 | 7.534 | 1e+11 | 0.9877 | 0.9945 | 45 | 6.328e-15 | 150.4 | 996.1 | 19.6 | 8.721e+17 | 2.857e-07 | 71.1 | 1.406e+09 | 1.757 | 1.242 |
+| p11_z300_fine_spin8b_grid | 72 | 72 | 16.76 | 1e+11 | 0.9921 | 1 | 45 | -3.161e-15 | 300.8 | 996.3 | 49.99 | 2.202e+18 | 1.24e-07 | 1977 | 5.058e+07 | 3.435 | 2.429 |
+| p11_z300_fine | 72 | 72 | 16.76 | 1e+11 | 0.9921 | 1 | 45 | -3.161e-15 | 300.8 | 996.3 | 49.99 | 2.202e+18 | 1.24e-07 | 2485 | 4.023e+07 | 3.435 | 2.429 |
 
 Fine/coarse (`c8_p11_z300_prerun` vs `c4_p11_z300`): effective volume +0.0235 %,
 σh,eff -5.07e-06 %, energy-weighted specific heating -0.0124 %, heated mass +0.0124 %, peak q +9.61 %.
@@ -181,8 +183,114 @@ Target-definition and statistic dependence of selectivity (nominal configuration
 
 ## 6. Coarse vs fine grid (A)
 
-PENDING — c8b_ctrl / c8b_p11_z300 (5°×2.5°, 3 h; rerun of c8_* on 4 MPI ranks,
-see physical/gitm/QUEUE_NOTES.md) not yet complete. Comparison plan: fine fields are
-conservatively remapped (area-weighted 2×2 means of ρ) onto the coarse grid; coarse results are
-truncated to the same 3-h window; metrics of Sections 2–5 are recomputed for fine-native, fine-remapped
-and coarse-3 h. fine-native vs fine-remapped isolates B; fine-remapped vs coarse isolates A.
+Coarse = c4 pair truncated to the fine window (case time ≤ 3 h); fine_native = c8b pair on 72×72;
+fine_remapped = fine fields area-weighted 2×2 onto 36×36. A = fine_remapped/coarse − 1 (physical-model
+discretization), B = fine_native/fine_remapped − 1 (diagnostic grid). Two resolutions only: this is a
+resolution-sensitivity test, not formal convergence.
+
+* 54 of 69 remappable metric×altitude rows have |A| ≤ 0.2 (max |A| among them 0.131).
+* Rows with |A| > 0.2 (all small-magnitude quantities: negative-anomaly extremes/integrals, or
+  centroid distances of a few hundred km, i.e. below one coarse cell):
+
+| metric | alt_km | coarse | fine_native | fine_remapped | A_model_discretization_rel | B_diagnostic_grid_rel |
+|---|---|---|---|---|---|---|
+| min_drho_rel_min | 300.0 | -0.1258 | -0.1769 | -0.1635 | 0.2996 | 0.0823 |
+| centroid_lon_deg_end | 300.0 | -0.5802 | 2.2752 | 2.2857 | -4.9396 | -0.0046 |
+| centroid_dist_from_source_km_end | 300.0 | 694.86 | 995.4942 | 990.3163 | 0.4252 | 0.0052 |
+| min_drho_rel_min | 400.0 | -0.0181 | -0.014 | -0.01 | -0.4483 | 0.4038 |
+| int_neg_drho_kg_m_min | 400.0 | -1.3782 | -0.5932 | -0.4541 | -0.6705 | 0.3065 |
+| centroid_lon_deg_end | 400.0 | -4.5407 | 0.4875 | 0.4873 | -1.1073 | 0.0003 |
+| min_drho_rel_min | 500.0 | -0.0269 | -0.0204 | -0.0143 | -0.4699 | 0.4264 |
+| int_neg_drho_kg_m_min | 500.0 | -0.4367 | -0.1676 | -0.1289 | -0.7049 | 0.3009 |
+| centroid_lon_deg_end | 500.0 | -7.4543 | -0.6961 | -0.6982 | -0.9063 | -0.003 |
+| centroid_dist_from_source_km_end | 500.0 | 660.3148 | 185.1978 | 181.9844 | -0.7244 | 0.0177 |
+| orbit_selectivity_median | 500.0 | 8.0087 | 6.3438 | 6.0252 | -0.2477 | 0.0529 |
+
+Centroid longitudes are near 0°, so their relative change is not meaningful (absolute shifts are a few
+degrees, i.e. less than one coarse cell).
+
+Full table:
+
+| metric | alt_km | coarse | fine_native | fine_remapped | A_model_discretization_rel | B_diagnostic_grid_rel | fine_native_vs_coarse_rel | note |
+|---|---|---|---|---|---|---|---|---|
+| peak_drho_rel_max | 300.0 | 0.3206 | 0.352 | 0.3451 | 0.0766 | 0.0199 | 0.0981 | common snapshots after onset (fine run ends at tmax case time) |
+| t_of_peak_after_onset_s | 300.0 | 5402.0 | 5401.0 | 5401.0 | -0.0002 | 0.0 | -0.0002 | common snapshots after onset (fine run ends at tmax case time) |
+| min_drho_rel_min | 300.0 | -0.1258 | -0.1769 | -0.1635 | 0.2996 | 0.0823 | 0.4065 | common snapshots after onset (fine run ends at tmax case time) |
+| mean_drho_rel_max | 300.0 | 0.0322 | 0.0315 | 0.0315 | -0.0211 | 0.0007 | -0.0204 | common snapshots after onset (fine run ends at tmax case time) |
+| int_drho_kg_m_max | 300.0 | 356.3503 | 349.3186 | 349.3185 | -0.0197 | 0.0 | -0.0197 | common snapshots after onset (fine run ends at tmax case time) |
+| int_neg_drho_kg_m_min | 300.0 | -16.0149 | -18.8154 | -18.8148 | 0.1748 | 0.0 | 0.1749 | common snapshots after onset (fine run ends at tmax case time) |
+| participation_area_frac_end | 300.0 | 0.211 | 0.1945 | 0.197 | -0.0663 | -0.0126 | -0.0781 | common snapshots after onset (fine run ends at tmax case time) |
+| radius_of_gyration_km_end | 300.0 | 5187.8216 | 5268.1293 | 5271.9611 | 0.0162 | -0.0007 | 0.0155 | common snapshots after onset (fine run ends at tmax case time) |
+| rg_growth_ms_mean_after_30min | 300.0 | 498.9267 | 526.7205 | 523.408 | 0.0491 | 0.0063 | 0.0557 | common snapshots after onset (fine run ends at tmax case time) |
+| centroid_lat_deg_end | 300.0 | 39.0484 | 36.6254 | 36.6723 | -0.0609 | -0.0013 | -0.0621 | common snapshots after onset (fine run ends at tmax case time) |
+| centroid_lon_deg_end | 300.0 | -0.5802 | 2.2752 | 2.2857 | -4.9396 | -0.0046 | -4.9215 | common snapshots after onset (fine run ends at tmax case time) |
+| centroid_dist_from_source_km_end | 300.0 | 694.86 | 995.4942 | 990.3163 | 0.4252 | 0.0052 | 0.4327 | common snapshots after onset (fine run ends at tmax case time) |
+| max_abs_dvh_ms_max | 300.0 | 363.3126 | 362.027 | 353.5031 | -0.027 | 0.0241 | -0.0035 | common snapshots after onset (fine run ends at tmax case time) |
+| anomaly_wt_abs_dvh_ms_max | 300.0 | 247.6006 | 261.9572 | 257.0025 | 0.038 | 0.0193 | 0.058 | common snapshots after onset (fine run ends at tmax case time) |
+| area_frac_pos_gt_0.005_max | 300.0 | 0.2814 | 0.2529 | 0.2582 | -0.0822 | -0.0208 | -0.1013 | nan |
+| area_frac_pos_gt_0.01_max | 300.0 | 0.2671 | 0.246 | 0.2468 | -0.0758 | -0.0034 | -0.0789 | nan |
+| area_frac_pos_gt_0.02_max | 300.0 | 0.252 | 0.2337 | 0.2372 | -0.0586 | -0.0148 | -0.0726 | nan |
+| area_frac_pos_gt_0.05_max | 300.0 | 0.2115 | 0.2019 | 0.206 | -0.0261 | -0.02 | -0.0456 | nan |
+| area_frac_pos_gt_0.1_max | 300.0 | 0.1568 | 0.1479 | 0.1457 | -0.0708 | 0.0152 | -0.0567 | nan |
+| orbit_target_dv_mean | 300.0 | 0.0019 | 0.0021 | 0.0021 | 0.0992 | -0.0072 | 0.0913 | orbit coupling over the first 3 h of the case |
+| orbit_nontarget_dv_mean | 300.0 | 0.0019 | 0.0022 | 0.0022 | 0.131 | 0.0038 | 0.1352 | orbit coupling over the first 3 h of the case |
+| orbit_selectivity_mean | 300.0 | 0.9945 | 0.956 | 0.9666 | -0.0281 | -0.0109 | -0.0387 | orbit coupling over the first 3 h of the case |
+| orbit_selectivity_median | 300.0 | 0.9771 | 0.7871 | 0.8059 | -0.1752 | -0.0233 | -0.1944 | orbit coupling over the first 3 h of the case |
+| peak_drho_rel_max | 400.0 | 2.0871 | 1.9383 | 1.9284 | -0.076 | 0.0051 | -0.0713 | common snapshots after onset (fine run ends at tmax case time) |
+| t_of_peak_after_onset_s | 400.0 | 3002.0 | 3002.0 | 3002.0 | 0.0 | 0.0 | 0.0 | common snapshots after onset (fine run ends at tmax case time) |
+| min_drho_rel_min | 400.0 | -0.0181 | -0.014 | -0.01 | -0.4483 | 0.4038 | -0.2255 | common snapshots after onset (fine run ends at tmax case time) |
+| mean_drho_rel_max | 400.0 | 0.1182 | 0.1139 | 0.1138 | -0.0371 | 0.0002 | -0.0369 | common snapshots after onset (fine run ends at tmax case time) |
+| int_drho_kg_m_max | 400.0 | 177.424 | 178.3797 | 178.3817 | 0.0054 | -0.0 | 0.0054 | common snapshots after onset (fine run ends at tmax case time) |
+| int_neg_drho_kg_m_min | 400.0 | -1.3782 | -0.5932 | -0.4541 | -0.6705 | 0.3065 | -0.5696 | common snapshots after onset (fine run ends at tmax case time) |
+| participation_area_frac_end | 400.0 | 0.2418 | 0.2393 | 0.241 | -0.0036 | -0.0067 | -0.0103 | common snapshots after onset (fine run ends at tmax case time) |
+| radius_of_gyration_km_end | 400.0 | 4814.2424 | 4905.6825 | 4909.0152 | 0.0197 | -0.0007 | 0.019 | common snapshots after onset (fine run ends at tmax case time) |
+| rg_growth_ms_mean_after_30min | 400.0 | 605.0105 | 630.4869 | 627.6676 | 0.0374 | 0.0045 | 0.0421 | common snapshots after onset (fine run ends at tmax case time) |
+| centroid_lat_deg_end | 400.0 | 41.0198 | 40.2649 | 40.2984 | -0.0176 | -0.0008 | -0.0184 | common snapshots after onset (fine run ends at tmax case time) |
+| centroid_lon_deg_end | 400.0 | -4.5407 | 0.4875 | 0.4873 | -1.1073 | 0.0003 | -1.1074 | common snapshots after onset (fine run ends at tmax case time) |
+| centroid_dist_from_source_km_end | 400.0 | 612.4225 | 561.2566 | 557.3041 | -0.09 | 0.0071 | -0.0835 | common snapshots after onset (fine run ends at tmax case time) |
+| max_abs_dvh_ms_max | 400.0 | 607.9041 | 618.961 | 606.8243 | -0.0018 | 0.02 | 0.0182 | common snapshots after onset (fine run ends at tmax case time) |
+| anomaly_wt_abs_dvh_ms_max | 400.0 | 440.9002 | 466.9886 | 459.6486 | 0.0425 | 0.016 | 0.0592 | common snapshots after onset (fine run ends at tmax case time) |
+| area_frac_pos_gt_0.005_max | 400.0 | 0.2946 | 0.2785 | 0.2828 | -0.0401 | -0.0151 | -0.0546 | nan |
+| area_frac_pos_gt_0.01_max | 400.0 | 0.2905 | 0.2738 | 0.2823 | -0.0285 | -0.0299 | -0.0575 | nan |
+| area_frac_pos_gt_0.02_max | 400.0 | 0.282 | 0.2691 | 0.2711 | -0.0387 | -0.0071 | -0.0455 | nan |
+| area_frac_pos_gt_0.05_max | 400.0 | 0.2639 | 0.2581 | 0.2603 | -0.0138 | -0.0085 | -0.0222 | nan |
+| area_frac_pos_gt_0.1_max | 400.0 | 0.2465 | 0.2436 | 0.2447 | -0.0072 | -0.0044 | -0.0116 | nan |
+| orbit_target_dv_mean | 400.0 | 0.0031 | 0.0033 | 0.0033 | 0.0771 | 0.0129 | 0.0909 | orbit coupling over the first 3 h of the case |
+| orbit_nontarget_dv_mean | 400.0 | 0.0012 | 0.0013 | 0.0013 | 0.1126 | 0.0037 | 0.1166 | orbit coupling over the first 3 h of the case |
+| orbit_selectivity_mean | 400.0 | 2.5611 | 2.5022 | 2.4794 | -0.0319 | 0.0092 | -0.023 | orbit coupling over the first 3 h of the case |
+| orbit_selectivity_median | 400.0 | 2.679 | 2.5088 | 2.4713 | -0.0775 | 0.0152 | -0.0635 | orbit coupling over the first 3 h of the case |
+| peak_drho_rel_max | 500.0 | 9.9841 | 9.7183 | 9.6072 | -0.0377 | 0.0116 | -0.0266 | common snapshots after onset (fine run ends at tmax case time) |
+| t_of_peak_after_onset_s | 500.0 | 3002.0 | 3002.0 | 3002.0 | 0.0 | 0.0 | 0.0 | common snapshots after onset (fine run ends at tmax case time) |
+| min_drho_rel_min | 500.0 | -0.0269 | -0.0204 | -0.0143 | -0.4699 | 0.4264 | -0.2439 | common snapshots after onset (fine run ends at tmax case time) |
+| mean_drho_rel_max | 500.0 | 0.3565 | 0.3385 | 0.3384 | -0.0506 | 0.0002 | -0.0504 | common snapshots after onset (fine run ends at tmax case time) |
+| int_drho_kg_m_max | 500.0 | 92.2215 | 93.5249 | 93.5262 | 0.0141 | -0.0 | 0.0141 | common snapshots after onset (fine run ends at tmax case time) |
+| int_neg_drho_kg_m_min | 500.0 | -0.4367 | -0.1676 | -0.1289 | -0.7049 | 0.3009 | -0.6161 | common snapshots after onset (fine run ends at tmax case time) |
+| participation_area_frac_end | 500.0 | 0.2367 | 0.2411 | 0.2423 | 0.0236 | -0.0048 | 0.0187 | common snapshots after onset (fine run ends at tmax case time) |
+| radius_of_gyration_km_end | 500.0 | 4705.3151 | 4812.5385 | 4816.0377 | 0.0235 | -0.0007 | 0.0228 | common snapshots after onset (fine run ends at tmax case time) |
+| rg_growth_ms_mean_after_30min | 500.0 | 618.7482 | 647.4674 | 644.3082 | 0.0413 | 0.0049 | 0.0464 | common snapshots after onset (fine run ends at tmax case time) |
+| centroid_lat_deg_end | 500.0 | 43.6269 | 43.5385 | 43.5674 | -0.0014 | -0.0007 | -0.002 | common snapshots after onset (fine run ends at tmax case time) |
+| centroid_lon_deg_end | 500.0 | -7.4543 | -0.6961 | -0.6982 | -0.9063 | -0.003 | -0.9066 | common snapshots after onset (fine run ends at tmax case time) |
+| centroid_dist_from_source_km_end | 500.0 | 660.3148 | 185.1978 | 181.9844 | -0.7244 | 0.0177 | -0.7195 | common snapshots after onset (fine run ends at tmax case time) |
+| max_abs_dvh_ms_max | 500.0 | 739.8355 | 766.1635 | 749.4553 | 0.013 | 0.0223 | 0.0356 | common snapshots after onset (fine run ends at tmax case time) |
+| anomaly_wt_abs_dvh_ms_max | 500.0 | 540.9774 | 572.4609 | 564.6005 | 0.0437 | 0.0139 | 0.0582 | common snapshots after onset (fine run ends at tmax case time) |
+| area_frac_pos_gt_0.005_max | 500.0 | 0.3037 | 0.2806 | 0.2869 | -0.0552 | -0.022 | -0.0759 | nan |
+| area_frac_pos_gt_0.01_max | 500.0 | 0.294 | 0.2773 | 0.2825 | -0.039 | -0.0185 | -0.0568 | nan |
+| area_frac_pos_gt_0.02_max | 500.0 | 0.2874 | 0.2722 | 0.2803 | -0.0245 | -0.0292 | -0.053 | nan |
+| area_frac_pos_gt_0.05_max | 500.0 | 0.2742 | 0.2634 | 0.2646 | -0.0352 | -0.0044 | -0.0394 | nan |
+| area_frac_pos_gt_0.1_max | 500.0 | 0.2547 | 0.2531 | 0.2549 | 0.001 | -0.0072 | -0.0062 | nan |
+| orbit_target_dv_mean | 500.0 | 0.0017 | 0.0018 | 0.0018 | 0.065 | 0.0241 | 0.0907 | orbit coupling over the first 3 h of the case |
+| orbit_nontarget_dv_mean | 500.0 | 0.0004 | 0.0005 | 0.0005 | 0.1015 | 0.0016 | 0.1032 | orbit coupling over the first 3 h of the case |
+| orbit_selectivity_mean | 500.0 | 3.9076 | 3.8635 | 3.7784 | -0.0331 | 0.0225 | -0.0113 | orbit coupling over the first 3 h of the case |
+| orbit_selectivity_median | 500.0 | 8.0087 | 6.3438 | 6.0252 | -0.2477 | 0.0529 | -0.2079 | orbit coupling over the first 3 h of the case |
+| native_extreme_max_dT_K | 300.0 | 2283.7892 | 2423.4821 | nan | nan | nan | 0.0612 | grid-point extreme on each native grid; not remappable from slices |
+| native_extreme_max_dvh_ms | 300.0 | 363.3126 | 362.027 | nan | nan | nan | -0.0035 | grid-point extreme on each native grid; not remappable from slices |
+| native_extreme_max_abs_dvu_ms | 300.0 | 141.1894 | 144.2992 | nan | nan | nan | 0.022 | grid-point extreme on each native grid; not remappable from slices |
+| native_extreme_min_dOn2_rel | 300.0 | -0.7628 | -0.7786 | nan | nan | nan | 0.0208 | grid-point extreme on each native grid; not remappable from slices |
+| native_extreme_max_dT_K | 400.0 | 2544.1422 | 2738.8754 | nan | nan | nan | 0.0765 | grid-point extreme on each native grid; not remappable from slices |
+| native_extreme_max_dvh_ms | 400.0 | 607.9041 | 618.961 | nan | nan | nan | 0.0182 | grid-point extreme on each native grid; not remappable from slices |
+| native_extreme_max_abs_dvu_ms | 400.0 | 334.3382 | 340.8891 | nan | nan | nan | 0.0196 | grid-point extreme on each native grid; not remappable from slices |
+| native_extreme_min_dOn2_rel | 400.0 | -0.9245 | -0.9319 | nan | nan | nan | 0.008 | grid-point extreme on each native grid; not remappable from slices |
+| native_extreme_max_dT_K | 500.0 | 2098.7061 | 2258.5909 | nan | nan | nan | 0.0762 | grid-point extreme on each native grid; not remappable from slices |
+| native_extreme_max_dvh_ms | 500.0 | 739.8355 | 766.1635 | nan | nan | nan | 0.0356 | grid-point extreme on each native grid; not remappable from slices |
+| native_extreme_max_abs_dvu_ms | 500.0 | 471.6583 | 478.1777 | nan | nan | nan | 0.0138 | grid-point extreme on each native grid; not remappable from slices |
+| native_extreme_min_dOn2_rel | 500.0 | -0.9676 | -0.9696 | nan | nan | nan | 0.0021 | grid-point extreme on each native grid; not remappable from slices |

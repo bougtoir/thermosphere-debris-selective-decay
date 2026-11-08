@@ -112,7 +112,8 @@ peak response (PR2), is a lower bound on the required power only if Δv per joul
 | PR6a | e-folding of local 400-km peak after switch-off [h] | 1.17 | CONFIRMED |  |
 | PR6b | e-folding of global-mean 400-km drho after switch-off [h] | 4 | CONFIRMED |  |
 | PR7 | peak 400-km drho ratio z0=150 / z0=300 | 0.162 | FALSIFIED |  |
-| PR8 | grid convergence | — | PENDING |  |
+| PR8a | fine/coarse peak drho at 400 km - 1 (t<=3h) | -0.0717 | CONFIRMED |  |
+| PR8b | max abs(fine/coarse mass excess above 400 km - 1) | 0.0208 | CONFIRMED |  |
 | PR9 | target extra dv / natural dv, 400 km, 12 h | 0.0366 | OUTSIDE_RANGE_NOT_FALSIFIED |  |
 | PR10@300 | selectivity GITM vs prescribed (prescribed/GITM) | 0.933 | FALSIFIED | GITM 1.020, prescribed 0.952 |
 | PR11@300 | target extra dv GITM / prescribed | 2.63 | CONFIRMED |  |

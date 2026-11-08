@@ -1,6 +1,6 @@
 # Gate 1B/5 — Scientific contribution gate
 
-Status: **PROVISIONAL — no verdict.** Written 2026-11-08 after the three coarse
+Status: **VERDICT ISSUED 2026-11-08 after the fine-grid comparison (§4).** Sections 1–3 were written after the three coarse
 pairs (p11_z300, p10_z300, p11_z150) and before any fine-grid (spin8b /
 c8b_ctrl / c8b_p11_z300) output exists. Per the G3R/G4T instruction no GO
 verdict is issued until the coarse/fine comparison is evaluated. The decision
@@ -52,6 +52,41 @@ up 6 h from MSIS at 18 UT versus 24 h for the coarse grid; the fine run uses 4
 MPI ranks instead of 2 (same executable); the fine window is 3 h, so
 persistence/e-folding (PR6) is assessed on the coarse grid only.
 
-## 4. Verdict
+## 4. Fine-grid outcome and verdict
 
-Pending the fine-grid pair.
+Sources: `results/grid_sensitivity_metrics.csv`, `docs/G3R_RESOLUTION_DISCRETIZATION_AUDIT.md` §6,
+`results/tables/physical_g4t_gaussian_matching.csv` (rows `*_tmax10800`), PR8a/PR8b in
+`results/tables/physical_prediction_outcomes.csv`.
+
+**Magnitude (A-type, physical discretization).** PR8a and PR8b CONFIRMED (400-km peak −7 %, mass excess
+≤ 2 %). 54 of 69 remappable metric×altitude rows change by ≤ 13 %, including GITM target/non-target
+selectivity at 300–500 km (−3 %), affected-area fractions at every threshold, integrated anomaly, radius of
+gyration and its growth rate (+2–5 %). Resolution-sensitive (|A| 0.3–0.7): negative-anomaly extremes and
+integrals and sub-cell centroid offsets — none of these carries a claim. Diagnostic-grid (B-type) effects are
+≤ 5 % except for the negative-anomaly metrics.
+
+**Direction.** Against the frozen rule in §3:
+* 500 km: GITM selectivity below the peak-fitted Gaussian on both grids (≈ 1.6–1.9×) — preserved.
+* 400 km, 0–3 h window: GITM and the peak-fitted Gaussian are equal within ~12 %, and the sign of the small
+  difference differs between grids (coarse GITM higher, fine GITM 1 % lower). The GITM side changed by −2 %;
+  the change comes from the fitted comparator (σ and centre of the fit, +10 %), i.e. a B-type fitting
+  dependence, not a change in the physics. Rule (a) is therefore **not met at 400 km** for the 3-h window,
+  and the discrepancy was investigated as required by rule (c): it does not reverse the GITM result itself.
+* The 400-km erosion relative to the peak-fitted Gaussian (×1.5) appears only over the 12-h window, i.e. after
+  switch-off spreading, and is supported on the coarse grid only.
+* Against the baseline-style source-centred σ = 1000 km patch, GITM selectivity is 2.8–4.4× lower at
+  400–500 km on both grids (0–3 h) and 4.7–8.5× lower over 12 h (coarse) — preserved.
+
+**Verdict: CONDITIONAL GO.** A potentially novel coupled result exists and its 0–3 h quantities are
+resolution-robust to ~10 %: (i) self-consistent selectivity is O(1–4) and far below the baseline's
+prescribed-patch selectivity; (ii) it decreases from 1e10 to 1e11 W and vanishes for 150-km deposition
+(coarse only, two levels each, no functional form); (iii) most of the extra drag falls on non-target objects
+after switch-off. STRONG GO is excluded (§2). The claim that self-consistent transport erodes selectivity
+*relative to a static field with the same peak and width* is UNRESOLVED at 400 km and QUALITATIVELY
+SUPPORTED at 500 km.
+
+**The one specific additional analysis that would resolve the condition:** continue the fine pair
+(c8b_ctrl, c8b_p11_z300) from their 3-h restarts to 12 h and repeat the 12-h orbit coupling and
+Gaussian matching on the fine grid. Estimated cost on this VM ≈ 2 × 8 h wall, sequential. Without it, the
+manuscript must restrict the peak-matched comparison at 400 km to "comparable during heating, lower after
+switch-off on the coarse grid (model-dependent)".
