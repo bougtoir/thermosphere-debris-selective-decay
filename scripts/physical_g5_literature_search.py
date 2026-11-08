@@ -28,7 +28,8 @@ def main():
     for key, q in QUERIES.items():
         url = "https://api.crossref.org/works?" + urllib.parse.urlencode(
             {"query": q, "rows": 40, "select": "DOI,title,author,issued,container-title,type,is-referenced-by-count"})
-        req = urllib.request.Request(url, headers={"User-Agent": "thermosphere-debris-selective-decay (mailto:bougtoir@gmail.com)"})
+        UA = "thermosphere-debris-selective-decay (mailto:bougtoir@gmail.com)"
+        req = urllib.request.Request(url, headers={"User-Agent": UA})
         raw = urllib.request.urlopen(req, timeout=60).read()
         path = os.path.join(OUT, f"{key}.json")
         if not os.path.exists(path):
