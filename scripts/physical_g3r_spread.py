@@ -91,7 +91,8 @@ def run(label, k):
                        mean_drho_rel=float((d * dA).sum() / A), mean_abs_drho_rel=float((np.abs(d) * dA).sum() / A),
                        int_drho_kg_m=float((dr * dA).sum()), int_abs_drho_kg_m=float((np.abs(dr) * dA).sum()),
                        int_pos_drho_kg_m=mp, int_neg_drho_kg_m=float((np.clip(dr, None, 0) * dA).sum()),
-                       peak_drho_rel=float(d.max()))
+                       peak_drho_rel=float(d.max()), min_drho_rel=float(d.min()),
+                       max_abs_dvh_ms=float(np.hypot(DVE[it], DVN[it]).max()))
             if mp > 0:
                 # participation-ratio area of the positive anomaly (threshold-free spread)
                 row["participation_area_frac"] = float(mp ** 2 / (pos ** 2 * dA).sum() / A)

@@ -31,7 +31,7 @@ mean(non-target).
 ## 3. Is the selectivity decrease robust to post-processing choices?
 
 Selectivity change from 1e10 W to 1e11 W under every orbit post-processing variant and target radius
-(coarse grid): negative in 90 of 90 combinations.
+(coarse grid): negative in 99 of 99 combinations.
 
 | variant | target_radius | alt | sel_1e10 | sel_1e11 | change | sel_median_change |
 |---|---|---|---|---|---|---|
@@ -71,6 +71,15 @@ Selectivity change from 1e10 W to 1e11 W under every orbit post-processing varia
 | linear_rho_not_log | 2σh | 300.0 | 1.18 | 1.04 | -12 % | -8.34 % |
 | linear_rho_not_log | 2σh | 400.0 | 1.89 | 1.54 | -18.4 % | -21.3 % |
 | linear_rho_not_log | 2σh | 500.0 | 2.23 | 2.04 | -8.43 % | -8.59 % |
+| lon_seam_moved_93deg | 0.5σh | 300.0 | 1.17 | 1.03 | -12.4 % | -7.28 % |
+| lon_seam_moved_93deg | 0.5σh | 400.0 | 1.85 | 1.47 | -20.5 % | -28.8 % |
+| lon_seam_moved_93deg | 0.5σh | 500.0 | 2.31 | 2.08 | -9.86 % | -13.4 % |
+| lon_seam_moved_93deg | 1σh | 300.0 | 1.16 | 1.02 | -12.1 % | -8.34 % |
+| lon_seam_moved_93deg | 1σh | 400.0 | 1.93 | 1.51 | -21.9 % | -31 % |
+| lon_seam_moved_93deg | 1σh | 500.0 | 2.27 | 2.03 | -10.7 % | -16.6 % |
+| lon_seam_moved_93deg | 2σh | 300.0 | 1.19 | 1.04 | -12.5 % | -8.28 % |
+| lon_seam_moved_93deg | 2σh | 400.0 | 1.88 | 1.53 | -18.6 % | -21 % |
+| lon_seam_moved_93deg | 2σh | 500.0 | 2.21 | 2.01 | -9.14 % | -9.33 % |
 | nearest_space_time | 0.5σh | 300.0 | 1.09 | 0.99 | -9.02 % | -4.44 % |
 | nearest_space_time | 0.5σh | 400.0 | 1.89 | 1.51 | -20.1 % | -29 % |
 | nearest_space_time | 0.5σh | 500.0 | 2.36 | 2.16 | -8.18 % | -13.4 % |

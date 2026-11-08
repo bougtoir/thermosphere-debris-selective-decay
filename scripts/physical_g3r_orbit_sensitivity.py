@@ -65,7 +65,9 @@ def drag_acc(z, tag, t, T, lon360, la, altq, v_corot, th, method="linear", winds
         lon = np.mod(lon + lon_shift, 360.0)
         o = np.argsort(lon)
         lon, rho, W = lon[o], rho[:, o], [w[:, o] for w in W]
-        lon360 = np.mod(lon360 + lon_shift, 360.0)
+        lonq = np.mod(lon360 + lon_shift, 360.0)
+    else:
+        lonq = lon360
     Tq = T
     if tsnap:
         Tq = t[np.clip(np.searchsorted(t, T - 0.5 * np.diff(t).mean()), 0, t.size - 1)]
@@ -73,10 +75,10 @@ def drag_acc(z, tag, t, T, lon360, la, altq, v_corot, th, method="linear", winds
         f = g4.grid_interp(t, lon, lat, alt, rho, False, method)
     else:
         f = g4.grid_interp(t, lon, lat, alt, rho, True, method)
-    r = f(Tq, lon360, la, altq)
+    r = f(Tq, lonq, la, altq)
     vr = v_corot
     if winds:
-        w = [g4.grid_interp(t, lon, lat, alt, x, False, method)(Tq, lon360, la, altq) for x in W]
+        w = [g4.grid_interp(t, lon, lat, alt, x, False, method)(Tq, lonq, la, altq) for x in W]
         vr = v_corot - g4.wind_eci(la, lon360, th, *w)
     return r * np.sum(vr ** 2, -1) / (2 * g4.B_REF)
 
