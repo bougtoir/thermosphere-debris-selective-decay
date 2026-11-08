@@ -164,7 +164,8 @@ if OI is not None:
     L += ["Target-definition and statistic dependence of selectivity (nominal configuration):", "", md(tr2), ""]
 L += ["## 6. Coarse vs fine grid (A)", ""]
 if GR is None:
-    L += ["PENDING — c8b_ctrl / c8b_p11_z300 (5°×2.5°, 3 h; rerun of c8_* on 4 MPI ranks, see physical/gitm/QUEUE_NOTES.md) not yet complete. Comparison plan: fine fields are",
+    L += ["PENDING — c8b_ctrl / c8b_p11_z300 (5°×2.5°, 3 h; rerun of c8_* on 4 MPI ranks,",
+          "see physical/gitm/QUEUE_NOTES.md) not yet complete. Comparison plan: fine fields are",
           "conservatively remapped (area-weighted 2×2 means of ρ) onto the coarse grid; coarse results are",
           "truncated to the same 3-h window; metrics of Sections 2–5 are recomputed for fine-native, fine-remapped",
           "and coarse-3 h. fine-native vs fine-remapped isolates B; fine-remapped vs coarse isolates A.", ""]
