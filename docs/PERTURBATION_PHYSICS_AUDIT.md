@@ -15,6 +15,7 @@ later values fall as energy is conducted downward, radiated (NO/CO2) and convert
 |---|---|---|---|---|---|---|---|---|---|
 | p11_z300 | 1e+11 | 300 | 1e+03 | 1.00 | 3e+14 | 1.04 | 0.795 | 0.503 | 12.00 |
 | p10_z300 | 1e+10 | 300 | 1e+03 | 1.00 | 3e+13 | 1.05 | 0.906 | 0.642 | 12.00 |
+| p11_z150 | 1e+11 | 150 | 1e+03 | 1.00 | 3e+14 | 1.04 | 1.02 | 0.821 | 12.00 |
 
 ## 2. Neutral density, temperature, winds and composition
 
@@ -30,6 +31,11 @@ later values fall as energy is conducted downward, radiated (NO/CO2) and convert
 | p10_z300 | 300 | +6.2 % | 1.17 | 2.07e+03 | -1.62 % | 361 | 86.9 | 19.3 | -34.6 % | +2.57 % |
 | p10_z300 | 400 | +63.2 % | 0.83 | 504 | -0.353 % | 411 | 138 | 60.1 | -58.4 % | +3.35 % |
 | p10_z300 | 500 | +165 % | 0.83 | 512 | -0.515 % | 373 | 159 | 82.5 | -58.6 % | +19.1 % |
+| p11_z150 | 150 | +2.56 % | 2.17 | 500 | -11 % | 186 | 44.6 | 4.75 | -23.7 % | +3.89 % |
+| p11_z150 | 200 | +40.3 % | 0.83 | 489 | -1.39 % | 128 | 132 | 14.2 | -37.1 % | +3.63 % |
+| p11_z150 | 300 | +48.3 % | 0.83 | 497 | -13.6 % | 44.3 | 123 | 22.1 | -33.9 % | +5.56 % |
+| p11_z150 | 400 | +33.1 % | 0.50 | 504 | -29.4 % | 44.2 | 111 | 28 | -31.5 % | +6.93 % |
+| p11_z150 | 500 | +41.2 % | 1.67 | 4.14e+03 | -42.3 % | 43.7 | 108 | 30.5 | -32.2 % | +8.43 % |
 
 ## 3. Spread, remote response, sign changes and persistence
 
@@ -48,6 +54,11 @@ from the source centre; e-folding times are measured after heating switch-off.
 | p10_z300 | 300 | +18.7 % | +0 % | +3.31 % | +5.83 % | +0.426 % | +0.108 % | 2.17 | 5.83 |
 | p10_z300 | 400 | +31.6 % | +0 % | +3.88 % | +18.5 % | +1.67 % | +0.174 % | 0.67 | 2.67 |
 | p10_z300 | 500 | +35.6 % | +0 % | +5.41 % | +33.9 % | +3.7 % | +0.245 % | 0.50 | 1.67 |
+| p11_z150 | 150 | +13.4 % | +0 % | +20.9 % | +2.72 % | +0.137 % | +0.134 % | 6.33 | — |
+| p11_z150 | 200 | +31.6 % | +0.219 % | +13.9 % | +8.74 % | +0.926 % | +0.328 % | 0.50 | 10.00 |
+| p11_z150 | 300 | +42 % | +22.6 % | +17.6 % | +22 % | +1.51 % | +0.618 % | 3.00 | — |
+| p11_z150 | 400 | +50.9 % | +42.6 % | +22 % | +30.9 % | +1.8 % | +0.892 % | 3.17 | — |
+| p11_z150 | 500 | +57.3 % | +54 % | +24.4 % | +41.2 % | +2.17 % | +1.19 % | 3.00 | — |
 
 ## 4. Orbit coupling and selectivity (Gate 4)
 
@@ -61,6 +72,9 @@ neighbour interpolation, altitude referenced to 6378 km, 1200-s output sampling.
 | p10_z300 | 300 | 0.0019 | +0.197 % | 1.16 | 2.46 | -0.467 % | -2.14 % | -0.789 % | -3.2 % | 62.5 |
 | p10_z300 | 400 | 0.00102 | +0.562 % | 1.93 | 5.17 | -0.496 % | -2.2 % | +6.05 % | -2.6 % | 47.5 |
 | p10_z300 | 500 | 0.000336 | +0.76 % | 2.27 | 6.69 | -0.519 % | -2.02 % | +7.49 % | -3.06 % | 47.5 |
+| p11_z150 | 300 | 0.00858 | +0.892 % | 1.21 | 4.92 | -0.338 % | +10 % | +12.6 % | +0.0313 % | 47.5 |
+| p11_z150 | 400 | 0.00149 | +0.826 % | 0.975 | 4.16 | -0.303 % | -7.71 % | +9.66 % | -0.97 % | 47.5 |
+| p11_z150 | 500 | 0.000376 | +0.859 % | 0.946 | 1.75 | -0.257 % | -7.48 % | +8.3 % | -0.965 % | 22.5 |
 | p11_z300 | 300 | 0.0134 | +1.39 % | 1.02 | 0.952 | -0.607 % | +0.296 % | +2.13 % | -0.775 % | 22.5 |
 | p11_z300 | 400 | 0.00664 | +3.66 % | 1.51 | 2.29 | -0.532 % | -1.7 % | +5.11 % | -1.4 % | 42.5 |
 | p11_z300 | 500 | 0.00277 | +6.28 % | 2.03 | 6.13 | -0.466 % | -0.261 % | +5.61 % | -2.3 % | 42.5 |
@@ -79,6 +93,9 @@ comparator is less representative.
 | p10_z300 | 300 | 3e+13 | 0.0114 | +88.4 % | 3.81e-16 | 1.07e+11 |
 | p10_z300 | 400 | 3e+13 | 0.00613 | +80.8 % | 2.04e-16 | 2e+11 |
 | p10_z300 | 500 | 3e+13 | 0.00201 | +74.8 % | 6.71e-17 | 6.09e+11 |
+| p11_z150 | 300 | 3e+14 | 0.0515 | +88 % | 1.72e-16 | 2.38e+11 |
+| p11_z150 | 400 | 3e+14 | 0.00896 | +89.3 % | 2.99e-17 | 1.37e+12 |
+| p11_z150 | 500 | 3e+14 | 0.00226 | +87.7 % | 7.52e-18 | 5.43e+12 |
 
 The last column linearly extrapolates far outside the simulated regime and, given the sublinear
 peak response (PR2), is a lower bound on the required power only if Δv per joule does not fall further.
@@ -94,7 +111,7 @@ peak response (PR2), is a lower bound on the required power only if Δv per joul
 | PR5 | max abs(drho/rho) beyond 3000 km within 3 h of onset, 400 km | 1.52 | CONFIRMED |  |
 | PR6a | e-folding of local 400-km peak after switch-off [h] | 1.17 | CONFIRMED |  |
 | PR6b | e-folding of global-mean 400-km drho after switch-off [h] | 4 | CONFIRMED |  |
-| PR7 | peak 400-km drho ratio z0=150 / z0=300 | — | PENDING |  |
+| PR7 | peak 400-km drho ratio z0=150 / z0=300 | 0.162 | FALSIFIED |  |
 | PR8 | grid convergence | — | PENDING |  |
 | PR9 | target extra dv / natural dv, 400 km, 12 h | 0.0366 | OUTSIDE_RANGE_NOT_FALSIFIED |  |
 | PR10@300 | selectivity GITM vs prescribed (prescribed/GITM) | 0.933 | FALSIFIED | GITM 1.020, prescribed 0.952 |

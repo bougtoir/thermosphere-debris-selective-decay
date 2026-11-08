@@ -6,7 +6,7 @@ PR4,|min|/peak drho at 400 km; min O/N2 change,0.009552853097222343,CONFIRMED,mi
 PR5,"max |drho/rho| beyond 3000 km within 3 h of onset, 400 km",1.518260024023225,CONFIRMED,
 PR6a,e-folding of local 400-km peak after switch-off [h],1.166388888888889,CONFIRMED,
 PR6b,e-folding of global-mean 400-km drho after switch-off [h],3.9994444444444444,CONFIRMED,
-PR7,peak 400-km drho ratio z0=150 / z0=300,,PENDING,
+PR7,peak 400-km drho ratio z0=150 / z0=300,0.16224966058941015,FALSIFIED,
 PR8,grid convergence,,PENDING,
 PR9,"target extra dv / natural dv, 400 km, 12 h",0.03662070629535079,OUTSIDE_RANGE_NOT_FALSIFIED,
 PR10@300,selectivity GITM vs prescribed (prescribed/GITM),0.9333582460963337,FALSIFIED,"GITM 1.020, prescribed 0.952"
