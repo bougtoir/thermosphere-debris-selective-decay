@@ -22,3 +22,22 @@
   onset in the coarse run) and the first ~1 h of spreading, which is what the
   grid-convergence test (PR8) compares. Later decay is assessed on the coarse
   grid only.
+* 2026-11-08T01:42Z: **spin8 failed at the first time step** (rc 253, 8 s wall):
+  `CPCP is zero and model is not zero! Must Stop!` in `get_potential.f90`.
+  Diagnosis (code reading + test): the stop check in `get_potential` is
+  evaluated per block and reduced only across MPI ranks, i.e. it looks at the
+  iBlock-th block of every rank at the same time. With 8×8 blocks on 2 ranks
+  (32 blocks/rank, 22.5° latitude rows) some simultaneous block pairs contain
+  no cell with |mlat| > 45° carrying non-zero Weimer potential, so the
+  cross-rank CPCP is 0 and GITM stops; with 4×4 blocks every pair includes a
+  polar row. This is a decomposition-dependent sanity check, not a physics
+  failure. c8_ctrl / c8_p11_z300 then stopped immediately (no
+  `restartIN/header.rst`). All three directories are preserved unchanged as
+  failure records.
+* Fix without modifying GITM: same executable (same SHA-256), same 8×8 grid,
+  **4 MPI ranks** (`--oversubscribe` on 2 vCPU; 16 blocks/rank). Verified by
+  `cases/spin8_np4test.json` (18:00–18:10 UT) which passes the step where
+  the 2-rank run stopped. Replacement cases: `spin8b`, `c8b_ctrl`,
+  `c8b_p11_z300` (otherwise identical to spin8/c8_*; queue log
+  `~/models/runs/queue4.log`). MPI rank count changes only round-off-level
+  domain decomposition, which is recorded as a fine/coarse difference.
