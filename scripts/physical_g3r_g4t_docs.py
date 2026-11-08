@@ -47,13 +47,13 @@ L = ["# G3R — Resolution and discretization robustness audit", "",
      "`results/orbit_interpolation_sensitivity.csv`, `results/grid_sensitivity_metrics.csv`.", "",
      "Two kinds of grid dependence are kept apart:", "",
      "* **A — physical-model discretization**: the GITM solution itself changes with the grid "
-     "(10°×5° vs 5°×2.5°; same 50 altitude levels, same time-step control). Tested only by the c8 pair.",
+     "(10°×5° vs 5°×2.5°; same 50 altitude levels, same time-step control). Tested only by the c8b pair.",
      "* **B — diagnostic/aggregation dependence**: the same GITM fields give different metrics because of "
      "thresholds, interpolation, output cadence, orbit step, coordinate conventions or the diagnostic grid. "
      "Tested on existing output without rerunning GITM.", "",
      "## 1. Realized physical forcing (equivalence check before the fine-grid run)", "",
      "The hook's weights were re-evaluated on each grid with spherical cell volumes. Rows tagged `_prerun` use the",
-     "fine-grid cell centres with the coarse-grid altitude levels (computed before c8_p11_z300 started); rows",
+     "fine-grid cell centres with the coarse-grid altitude levels (computed before the fine pair started); rows",
      "without the tag use the run's own output grid.", ""]
 if F is not None:
     cols = ["label", "n_lon", "n_lat", "dz_at_z0_km", "realized_power_W", "sum_w_dV_over_continuous",
@@ -164,7 +164,7 @@ if OI is not None:
     L += ["Target-definition and statistic dependence of selectivity (nominal configuration):", "", md(tr2), ""]
 L += ["## 6. Coarse vs fine grid (A)", ""]
 if GR is None:
-    L += ["PENDING — c8_ctrl / c8_p11_z300 (5°×2.5°, 3 h) not yet complete. Comparison plan: fine fields are",
+    L += ["PENDING — c8b_ctrl / c8b_p11_z300 (5°×2.5°, 3 h; rerun of c8_* on 4 MPI ranks, see physical/gitm/QUEUE_NOTES.md) not yet complete. Comparison plan: fine fields are",
           "conservatively remapped (area-weighted 2×2 means of ρ) onto the coarse grid; coarse results are",
           "truncated to the same 3-h window; metrics of Sections 2–5 are recomputed for fine-native, fine-remapped",
           "and coarse-3 h. fine-native vs fine-remapped isolates B; fine-remapped vs coarse isolates A.", ""]
