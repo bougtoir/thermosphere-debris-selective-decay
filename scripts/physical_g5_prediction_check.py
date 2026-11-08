@@ -9,7 +9,7 @@ import pandas as pd
 
 G3 = "results/tables/physical_g3_summary.csv"
 G4 = "results/physical_model_vs_prescribed_patch.csv"
-REF, LOW, Z150, FINE = "p11_z300", "p10_z300", "p11_z150", "c8_p11_z300"
+REF, LOW, Z150, FINE = "p11_z300", "p10_z300", "p11_z150", "p11_z300_fine"
 
 
 def ts(label):
