@@ -294,3 +294,9 @@ Full table:
 | native_extreme_max_dvh_ms | 500.0 | 739.8355 | 766.1635 | nan | nan | nan | 0.0356 | grid-point extreme on each native grid; not remappable from slices |
 | native_extreme_max_abs_dvu_ms | 500.0 | 471.6583 | 478.1777 | nan | nan | nan | 0.0138 | grid-point extreme on each native grid; not remappable from slices |
 | native_extreme_min_dOn2_rel | 500.0 | -0.9676 | -0.9696 | nan | nan | nan | 0.0021 | grid-point extreme on each native grid; not remappable from slices |
+
+## 7. Coarse vs fine grid over 12 h (A)
+
+PENDING — c8x_ctrl / c8x_p11_z300 continue the c8b pair from its 03:00 UT restart files to 12:00 UT
+(same executable, grid, ranks and forcing; physical/gitm/QUEUE_NOTES.md). The 0–3 h products of
+Section 6 are kept unchanged; the 12-h comparison uses label p11_z300_fine12.

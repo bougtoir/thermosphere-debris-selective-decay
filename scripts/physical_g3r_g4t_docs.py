@@ -185,6 +185,23 @@ else:
                   "B_diagnostic_grid_rel"]].round(4)), ""]
     L += ["Centroid longitudes are near 0°, so their relative change is not meaningful (absolute shifts are a few",
           "degrees, i.e. less than one coarse cell).", "", "Full table:", "", md(GR.round(4)), ""]
+GR12 = rd("results/grid_sensitivity_metrics_12h.csv")
+L += ["## 7. Coarse vs fine grid over 12 h (A)", ""]
+if GR12 is None:
+    L += ["PENDING — c8x_ctrl / c8x_p11_z300 continue the c8b pair from its 03:00 UT restart files to 12:00 UT",
+          "(same executable, grid, ranks and forcing; physical/gitm/QUEUE_NOTES.md). The 0–3 h products of",
+          "Section 6 are kept unchanged; the 12-h comparison uses label p11_z300_fine12.", ""]
+else:
+    gr = GR12[GR12.A_model_discretization_rel.notna()]
+    big = gr[gr.A_model_discretization_rel.abs() > 0.2]
+    small = gr[~gr.metric.isin(big.metric) & ~gr.metric.str.startswith("centroid_lon")]
+    L += ["Same definitions as Section 6, over case time ≤ 12 h (c8b 0–3 h + c8x 3–12 h for the fine pair).",
+          "The fine background was spun up 6 h from MSIS, the coarse one 24 h; this difference is part of A.", "",
+          f"* {len(small)} of {len(gr)} remappable metric×altitude rows have |A| ≤ 0.2 "
+          f"(max |A| among them {small.A_model_discretization_rel.abs().max():.3f}).", "",
+          "Rows with |A| > 0.2:", "",
+          md(big[["metric", "alt_km", "coarse", "fine_native", "fine_remapped", "A_model_discretization_rel",
+                  "B_diagnostic_grid_rel"]].round(4)), "", "Full table:", "", md(GR12.round(4)), ""]
 open(os.path.join(R, "docs/G3R_RESOLUTION_DISCRETIZATION_AUDIT.md"), "w").write("\n".join(L))
 
 # ---------------------------------------------------------------- G4T
@@ -267,6 +284,36 @@ if GM is not None:
               f"{r.label} {r.alt_km:g} km (Δlat {r.fit_lat_offset_from_source_deg:+.1f}°)"
               for r in GM[(GM.comparator == 'peak_matched_fit') & (GM.grid == COARSE)
                           & (GM.fit_lat_offset_from_source_deg.abs() > 5)].itertuples()) + ".", ""]
+GD = rd("results/tables/physical_g4t_gaussian_decomposition.csv")
+if GD is not None:
+    L += ["## 4b. Why the peak-matched comparison differs between grids (fit-ingredient swaps)", "",
+          "`scripts/physical_g4t_gaussian_decomposition.py` recomputes the peak-matched comparator on each grid",
+          "while replacing one fit ingredient at a time by the coarse-grid value (centre, σ, half-max time window)",
+          "or by a sub-grid centre (anomaly-weighted centroid above dmax·e^-1/2, not quantized to a cell). GITM",
+          "selectivity is unchanged by these swaps; only the comparator moves. The amplitude cancels in the ratio.",
+          ""]
+    for tm, q in GD.groupby("tmax_s"):
+        q = q[q.alt_km >= 400]
+        L += [f"Window: case time ≤ {tm / 3600:g} h", "",
+              md(q[["alt_km", "run", "variant", "centre_lat", "centre_lon", "sigma_km", "window_s",
+                    "gaussian_selectivity", "gitm_selectivity", "gitm_over_gaussian"]].round(3)), ""]
+SE = rd("results/tables/physical_g4t_selectivity_evolution.csv")
+if SE is not None:
+    L += ["## 6. Time evolution of cumulative extra Δv and selectivity", "",
+          "`results/tables/physical_g4t_selectivity_evolution.csv` (same population and target definition as the",
+          "nominal coupling; cumulative from the case start). Rows nearest to 1, 2, 3, 6, 9 h after onset (actual output time shown; output cadence is coarser later in some runs) and at the end:", ""]
+    rows = []
+    for (lab, gd, h), q in SE.groupby(["label", "grid", "alt_km"]):
+        q = q.sort_values("t_after_onset_s")
+        for tt in sorted({3600, 7200, 10800, 21600, 32400, float(q.t_after_onset_s.max())}):
+            r = q.iloc[(q.t_after_onset_s - tt).abs().argsort()[:1]].iloc[0]
+            if abs(r.t_after_onset_s - tt) > 1900:
+                continue
+            rows.append(dict(case=lab, grid=gd, alt=h, t_after_onset_h=round(r.t_after_onset_s / 3600, 2),
+                             target_cum_dv=g(r.target_cum_dv_mean), nontarget_cum_dv=g(r.nontarget_cum_dv_mean),
+                             selectivity=g(r.selectivity_mean),
+                             nontarget_share=g(r.nontarget_share_of_total_extra)))
+    L += [md(pd.DataFrame(rows).drop_duplicates()), ""]
 L += ["## 5. Descriptive trade-off assessment", "",
       "See `docs/CLAIM_EVIDENCE_MATRIX.md` for the calibrated status of each statement; this section only lists",
       "what the two observed cases show. Interpretation is post hoc unless it is a frozen prediction (PR2, PR10).",
