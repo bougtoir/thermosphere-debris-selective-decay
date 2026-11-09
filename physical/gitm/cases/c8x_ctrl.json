@@ -1,0 +1,23 @@
+{
+ "name": "c8x_ctrl",
+ "rundir": "/home/ubuntu/models/runs/c8x_ctrl",
+ "restart_from": "/home/ubuntu/models/runs/c8b_ctrl",
+ "start": "2002-03-21T03:00:00",
+ "end": "2002-03-21T12:00:00",
+ "nblon": 8,
+ "nblat": 8,
+ "dtplot": 600.0,
+ "heating": [
+  0.0,
+  45,
+  0,
+  300,
+  1000,
+  50,
+  -7200,
+  3600,
+  600
+ ],
+ "nproc": 4,
+ "time_origin": "2002-03-20T18:00:00"
+}

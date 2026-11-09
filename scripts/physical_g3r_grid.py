@@ -1,6 +1,7 @@
 """G3R: coarse vs fine grid comparison over the common window.
 
 usage: python3 scripts/physical_g3r_grid.py <coarse_label> <fine_label> [tmax_s]
+Output: results/grid_sensitivity_metrics.csv for tmax = 10800 s, else results/grid_sensitivity_metrics_<h>h.csv.
 Requires (all generated beforehand):
   results/tables/physical_g3r_spread_metrics.csv  rows for coarse (36x36), fine native and fine remapped_2
   results/threshold_sensitivity.csv              same grids
@@ -97,5 +98,8 @@ for alt in (300.0, 400.0, 500.0):
             q = ts[(ts.alt_km == alt) & (ts.t_s <= tmax + 1)]
             out[k] = float(q[m].min() if m.startswith("min") else q[m].max())
         add(f"native_extreme_{m}", alt, out, "grid-point extreme on each native grid; not remappable from slices")
-pd.DataFrame(rows).to_csv("results/grid_sensitivity_metrics.csv", index=False)
+out = ("results/grid_sensitivity_metrics.csv" if tmax == 10800.0
+       else f"results/grid_sensitivity_metrics_{tmax / 3600:g}h.csv")
+pd.DataFrame(rows).to_csv(out, index=False)
+print("wrote", out)
 print(pd.DataFrame(rows).round(4).to_string())

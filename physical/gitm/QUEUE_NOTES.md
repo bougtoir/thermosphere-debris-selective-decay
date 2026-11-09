@@ -41,3 +41,10 @@
   `c8b_p11_z300` (otherwise identical to spin8/c8_*; queue log
   `~/models/runs/queue4.log`). MPI rank count changes only round-off-level
   domain decomposition, which is recorded as a fine/coarse difference.
+* 2026-11-08 (user-approved): **fine-pair extension to 12 h.** `cases/c8x_ctrl.json` and
+  `cases/c8x_p11_z300.json` restart from the 03:00 UT restart files of c8b_ctrl / c8b_p11_z300
+  (copied into the new run's `restartIN`; c8b directories untouched) and run 03:00–12:00 UT on the same
+  executable, 8×8 grid and 4 ranks. GITM keeps StartTime = 2002-03-20 18:00 (spin8b), so `time_origin` is
+  set explicitly; heating parameters are identical with t_on shifted by −3 h so the absolute onset stays
+  01:00 UT (already switched off, P = 0 in this window). Queue log `~/models/runs/queue5.log`. The 0–3 h
+  outputs of c8b are concatenated with c8x in post-processing; the earlier 3-h results are kept.
