@@ -242,7 +242,8 @@ Window: case time ≤ 3 h
 ## 6. Time evolution of cumulative extra Δv and selectivity
 
 `results/tables/physical_g4t_selectivity_evolution.csv` (same population and target definition as the
-nominal coupling; cumulative from the case start). Rows nearest to 1, 2, 3, 6, 9 h after onset (actual output time shown; output cadence is coarser later in some runs) and at the end:
+nominal coupling; cumulative from the case start). Rows nearest to 1, 2, 3, 6, 9 h after onset
+(actual output time shown; output cadence is coarser later in some runs) and at the end:
 
 | case | grid | alt | t_after_onset_h | target_cum_dv | nontarget_cum_dv | selectivity | nontarget_share |
 |---|---|---|---|---|---|---|---|

@@ -301,7 +301,8 @@ SE = rd("results/tables/physical_g4t_selectivity_evolution.csv")
 if SE is not None:
     L += ["## 6. Time evolution of cumulative extra Δv and selectivity", "",
           "`results/tables/physical_g4t_selectivity_evolution.csv` (same population and target definition as the",
-          "nominal coupling; cumulative from the case start). Rows nearest to 1, 2, 3, 6, 9 h after onset (actual output time shown; output cadence is coarser later in some runs) and at the end:", ""]
+          "nominal coupling; cumulative from the case start). Rows nearest to 1, 2, 3, 6, 9 h after onset",
+          "(actual output time shown; output cadence is coarser later in some runs) and at the end:", ""]
     rows = []
     for (lab, gd, h), q in SE.groupby(["label", "grid", "alt_km"]):
         q = q.sort_values("t_after_onset_s")
