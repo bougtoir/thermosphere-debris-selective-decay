@@ -1,0 +1,6 @@
+relpath,size_bytes,sha256,hashed_utc,produced_by,storage
+data/physical/processed/p10_z300_slices.npz,47635582,0e30ab6f7f675ad861238b1cde6dae07b606e77d58a4bdf8b740b6aa7af386d5,2026-11-10T03:12:14Z,scripts/physical_g3_paired.py,VM persistent disk (not in git: size); see FINAL_HANDOFF
+data/physical/processed/p11_z150_slices.npz,36723640,99aa68628c8ae6255db65d2d5b5eb1f2bb7f20bab00aae0d0c1a366f73a19352,2026-11-10T03:12:14Z,scripts/physical_g3_paired.py,VM persistent disk (not in git: size); see FINAL_HANDOFF
+data/physical/processed/p11_z300_fine12_slices.npz,209642932,85d999e2c9bf31f7ca581b69ac177dc423e5402de177936938b4f798ff01cbb7,2026-11-10T03:12:15Z,scripts/physical_g3_paired.py,VM persistent disk (not in git: size); see FINAL_HANDOFF
+data/physical/processed/p11_z300_fine_slices.npz,73926012,2727b352eee46ee3a2cc86986d42ca2f595a421bcc485d00256d5913dc4e9572,2026-11-10T03:12:15Z,scripts/physical_g3_paired.py,VM persistent disk (not in git: size); see FINAL_HANDOFF
+data/physical/processed/p11_z300_slices.npz,35734353,d834d7bd58aa1cf1ea45076b396581dd6003e9494a6d900dc92fd785b51642ae,2026-11-10T03:12:15Z,scripts/physical_g3_paired.py,VM persistent disk (not in git: size); see FINAL_HANDOFF

@@ -6,7 +6,7 @@ PY ?= python3
 
 .PHONY: all quick clean test manuscript qc figures tables submission
 .PHONY: phase1 phase2 phase3 phase4 phase5 phase6 phase7 phase8 phase9 phase10 phase11 phase12
-.PHONY: audits audit-sobol
+.PHONY: audits audit-sobol physical-figures physical-manuscript physical-qc
 
 all: phase1 phase2 phase3 phase4 phase5 phase6 phase7 phase8 phase9 phase10 phase11 phase12 audits figures tables manuscript qc submission
 
@@ -79,6 +79,17 @@ qc:
 
 submission:
 	$(PY) scripts/build_submission_package.py
+
+# physical-model (GITM) study: analysis products -> canonical CSVs -> figures -> manuscript -> QC
+physical-figures:
+	$(PY) scripts/physical_g7_selectivity_bootstrap.py
+	$(PY) scripts/physical_manuscript_figures.py
+
+physical-manuscript: physical-figures
+	$(PY) scripts/build_physical_manuscript.py
+
+physical-qc: physical-manuscript
+	$(PY) scripts/qc_physical_manuscript.py
 
 clean:
 	rm -rf results/figures/* results/tables/* results/logs/* data/processed/* manuscript/output submission 2>/dev/null || true

@@ -188,7 +188,7 @@ fine_remapped = fine fields area-weighted 2×2 onto 36×36. A = fine_remapped/co
 discretization), B = fine_native/fine_remapped − 1 (diagnostic grid). Two resolutions only: this is a
 resolution-sensitivity test, not formal convergence.
 
-* 54 of 69 remappable metric×altitude rows have |A| ≤ 0.2 (max |A| among them 0.131).
+* 54 of 69 remappable metric×altitude rows belong to metrics with |A| ≤ 0.2 at every altitude (max |A| among them 0.131).
 * Rows with |A| > 0.2 (all small-magnitude quantities: negative-anomaly extremes/integrals, or
   centroid distances of a few hundred km, i.e. below one coarse cell):
 
@@ -300,7 +300,7 @@ Full table:
 Same definitions as Section 6, over case time ≤ 12 h (c8b 0–3 h + c8x 3–12 h for the fine pair).
 The fine background was spun up 6 h from MSIS, the coarse one 24 h; this difference is part of A.
 
-* 57 of 69 remappable metric×altitude rows have |A| ≤ 0.2 (max |A| among them 0.136).
+* 57 of 69 remappable metric×altitude rows belong to metrics with |A| ≤ 0.2 at every altitude (max |A| among them 0.136).
 
 Rows with |A| > 0.2:
 

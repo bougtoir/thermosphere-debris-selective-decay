@@ -1,0 +1,23 @@
+check,result,detail
+citations numbered in order of first appearance,PASS,"[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]"
+reference list numbered 1..N,PASS,N=23
+every reference cited and every citation listed,PASS,set()
+no citation in abstract,PASS,
+figures first cited in order,PASS,"[1, 2, 3, 4, 5]"
+caption for every cited figure and vice versa,PASS,"[1, 2, 3, 4, 5] vs [1, 2, 3, 4, 5]"
+tables first cited in order and all present,PASS,"[1, 2, 3, 4]; tables=4"
+no hard line breaks in paragraphs: manuscript.docx,PASS,0
+no hard line breaks in paragraphs: manuscript_review_inline.docx,PASS,0
+no hard line breaks in paragraphs: tables.docx,PASS,0
+no hard line breaks in paragraphs: highlights.docx,PASS,0
+no hard line breaks in paragraphs: cover_letter.docx,PASS,0
+highlights 3-5 items,PASS,5
+highlights <= 85 characters,PASS,"[78, 72, 55, 54, 66]"
+<= 6 keywords,PASS,Keywords: thermosphere; orbital debris; atmospheric drag; GITM; localized heating; density perturbation
+"word count <= 13000 (incl. refs, 300 per display item)",PASS,6969
+figure file Fig1.tif present,PASS,
+figure file Fig2.tif present,PASS,
+figure file Fig3.tif present,PASS,
+figure file Fig4.tif present,PASS,
+figure file Fig5.tif present,PASS,
+every body number injected or a declared design constant,PASS,

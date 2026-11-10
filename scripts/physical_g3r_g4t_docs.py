@@ -177,7 +177,7 @@ else:
           "fine_remapped = fine fields area-weighted 2×2 onto 36×36. A = fine_remapped/coarse − 1 (physical-model",
           "discretization), B = fine_native/fine_remapped − 1 (diagnostic grid). Two resolutions only: this is a",
           "resolution-sensitivity test, not formal convergence.", "",
-          f"* {len(small)} of {len(gr)} remappable metric×altitude rows have |A| ≤ 0.2 "
+          f"* {len(small)} of {len(gr)} remappable metric×altitude rows belong to metrics with |A| ≤ 0.2 at every altitude "
           f"(max |A| among them {small.A_model_discretization_rel.abs().max():.3f}).",
           "* Rows with |A| > 0.2 (all small-magnitude quantities: negative-anomaly extremes/integrals, or",
           "  centroid distances of a few hundred km, i.e. below one coarse cell):", ""]
@@ -197,7 +197,7 @@ else:
     small = gr[~gr.metric.isin(big.metric) & ~gr.metric.str.startswith("centroid_lon")]
     L += ["Same definitions as Section 6, over case time ≤ 12 h (c8b 0–3 h + c8x 3–12 h for the fine pair).",
           "The fine background was spun up 6 h from MSIS, the coarse one 24 h; this difference is part of A.", "",
-          f"* {len(small)} of {len(gr)} remappable metric×altitude rows have |A| ≤ 0.2 "
+          f"* {len(small)} of {len(gr)} remappable metric×altitude rows belong to metrics with |A| ≤ 0.2 at every altitude "
           f"(max |A| among them {small.A_model_discretization_rel.abs().max():.3f}).", "",
           "Rows with |A| > 0.2:", "",
           md(big[["metric", "alt_km", "coarse", "fine_native", "fine_remapped", "A_model_discretization_rel",

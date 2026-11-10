@@ -104,7 +104,7 @@ and `results/tables/physical_g4t_gaussian_matching.csv` (rows `tmax_s = 43200` /
 `results/tables/physical_g4t_selectivity_evolution.csv` (G4T §6), `results/tables/physical_prediction_outcomes.csv`
 (PR8a_12h, PR8b_12h, PR10@*_fine12_*).
 
-**Magnitude (A-type).** 57 of 69 remappable metric×altitude rows change by |A| ≤ 0.2 over 12 h (largest 0.14).
+**Magnitude (A-type).** 57 of 69 remappable metric×altitude rows belong to metrics with |A| ≤ 0.2 at every altitude over 12 h (largest 0.14; 60 rows individually satisfy |A| ≤ 0.2).
 GITM 12-h selectivity changes by −2 % (400 km), +1 % (500 km) and −4 % (300 km); at every 10-min output after
 the first hour the fine/coarse selectivity ratio stays within −3 %…+6 % at 400–500 km. Integrated 400-km
 anomaly, affected area at every threshold, radius of gyration and its growth rate stay within the |A| ≤ 0.2
