@@ -56,3 +56,10 @@ PR: https://github.com/bougtoir/thermosphere-debris-selective-decay/pull/9 (open
 
 Canonical scientific CSVs (`results/tables/physical_g*.csv`, `results/physical_model_vs_prescribed_patch.csv`,
 `results/grid_sensitivity_metrics*.csv`), raw runs and processed NPZ files are not to be modified.
+
+
+## Addendum — final state (after the delta)
+
+The tables above describe the baseline `23add38`. The delta's code/results commit is `8aa5205`; the final branch HEAD
+adds only documentation, the handoff and the Zenodo record JSON. Final artifact SHA-256 values are listed in
+`FINAL_HANDOFF.txt`; changed files and QC status are in `docs/ACTA_FINAL_DELTA_QC_MATRIX.md`.

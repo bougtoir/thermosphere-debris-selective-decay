@@ -1,5 +1,5 @@
 {
- "checked_utc": "2026-11-10T08:21:21Z",
+ "checked_utc": "2026-11-10T08:25:26Z",
  "http": 200,
  "deposition_id": 24101202,
  "state": "unsubmitted",
@@ -55,11 +55,6 @@
    "md5": "9159732c0f42f1abd49c63067cd794a5"
   },
   {
-   "name": "repository_snapshot.zip",
-   "size": 5581045,
-   "md5": "d8a4402252d6de33d9be4d7304f0abc3"
-  },
-  {
    "name": "p11_z300_fine_slices.npz",
    "size": 73926012,
    "md5": "f12a4baeddac0c8ea2548577ead65782"
@@ -68,9 +63,15 @@
    "name": "p11_z300_slices.npz",
    "size": 35734353,
    "md5": "c5505b1b2cf14361f9a3742bba0f6655"
+  },
+  {
+   "name": "repository_snapshot.zip",
+   "size": 31289926,
+   "md5": "ef2c640c5982b47365828fe74b367195"
   }
  ],
  "public_record_url_after_publication": "https://zenodo.org/records/24101202",
  "doi_resolves": 404,
- "public_page_http_anonymous": 404
+ "public_page_http_anonymous": 404,
+ "code_snapshot_commit": "8aa5205"
 }
