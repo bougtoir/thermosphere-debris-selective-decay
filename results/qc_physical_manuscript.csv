@@ -14,7 +14,7 @@ no hard line breaks in paragraphs: cover_letter.docx,PASS,0
 highlights 3-5 items,PASS,5
 highlights <= 85 characters,PASS,"[78, 72, 55, 54, 66]"
 <= 6 keywords,PASS,Keywords: thermosphere; orbital debris; atmospheric drag; GITM; localized heating; density perturbation
-"word count <= 13000 (incl. refs, 300 per display item)",PASS,7147
+"word count <= 13000 (incl. refs, 300 per display item)",PASS,7209
 figure file Fig1.tif present,PASS,
 figure file Fig2.tif present,PASS,
 figure file Fig3.tif present,PASS,

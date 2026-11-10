@@ -138,6 +138,7 @@ def collect():
             q = x.sort_values("t_after_onset_s").iloc[-1]
             v["t_end_h"] = V.put("t_end_after_onset_h", q.t_after_onset_s / 3600, s, "{:.0f}")
             v[f"S{tag}_{h}"] = V.put(f"S12_{lab}_{grid}_{h}", q.selectivity_mean, s, "{:.2f}")
+            v[f"S{tag}_{h}_raw"] = float(q.selectivity_mean)
             v[f"share{tag}_{h}"] = V.put(f"nontarget_share_{lab}_{grid}_{h}", 100 * q.nontarget_share_of_total_extra, s,
                                          "{:.0f}")
     s = "results/tables/physical_selectivity_bootstrap.csv"
@@ -149,7 +150,7 @@ def collect():
     v["n_boot"] = V.put("n_boot", int(bs.n_boot.iloc[0]), s, "{:,}")
     s = "results/tables/physical_g4t_selectivity_evolution.csv"
     v["S_grid_max"] = V.put("S12_fine_vs_coarse_max_diff_400_500_pct",
-                            max(100 * abs(float(v[f"Sf_{h}"]) / float(v[f"Sc_{h}"]) - 1) for h in (400, 500)), s, "{:.1f}")
+                            max(100 * abs(v[f"Sf_{h}_raw"] / v[f"Sc_{h}_raw"] - 1) for h in (400, 500)), s, "{:.1f}")
     s = "data/physical/GITM_RUN_MANIFEST.csv"
     v["raw_gb"] = V.put("raw_gitm_output_total_GB", rd(s).size_bytes.sum() / 1e9, s, "{:.0f}")
     s = "results/tables/physical_fig1_panel_ranges.csv"
@@ -742,13 +743,16 @@ def body(D, v):
         "What has not been established is how the horizontal and vertical redistribution of a localized perturbation "
         "translates into the drag received by objects that did, and did not, pass through the heated region. "
         "Screening studies that prescribe a static Gaussian density patch around the source implicitly assume that "
-        "the perturbation stays put, which maximises the apparent selectivity. Here I replace the prescribed patch "
+        "the perturbation stays put, which can inflate the apparent selectivity. Here I replace the prescribed patch "
         "with a self-consistent general circulation model, the Global Ionosphere–Thermosphere Model (GITM) "
         "[@ridley2006gitm], couple its paired heated and control fields directly to an orbit propagator, and ask "
         "three questions: (i) how selective the cumulative drag is over 12 h; (ii) by how much static patches "
         "overstate it; and (iii) whether the answer survives a change of model resolution. Predictions for the "
         "physical response and for selectivity were written down and committed before any heated output existed, "
-        "and are scored against the results.")
+        "and are scored against the results. The thermospheric response to localized heating — the local density "
+        "increase, its spreading and the associated waves — is established physics and is not claimed as new; the "
+        "contribution is the quantified division of the resulting extra drag between target and non-target objects. "
+        "How such a heat source could be produced is outside the scope, and no engineering feasibility is claimed.")
 
     D.h("2. Methods")
     D.h("2.1. Thermosphere model and background state", 2)
