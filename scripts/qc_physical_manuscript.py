@@ -85,6 +85,7 @@ def main():
     known |= {x.lstrip("+") for x in known}
     unk = []
     scan = "\n".join(body[body.index("Abstract"):]) + "\n" + "\n".join(caps)
+    scan = re.sub(r"https?://\S+", "", scan)
     scan = re.sub(r"\[\d+(?:[–,]\d+)*\]", "", scan)
     scan = re.sub(r"(?:Fig|Figs|Table|Section|PR)\.? ?\d+[a-z]?(?:[–-]\d+)?", "", scan)
     for tok in re.findall(r"[−+]?\d[\d.,×°/–-]*\d|[−+]?\d", scan):
