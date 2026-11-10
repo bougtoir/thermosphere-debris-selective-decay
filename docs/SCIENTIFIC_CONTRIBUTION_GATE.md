@@ -1,6 +1,6 @@
 # Gate 1B/5 — Scientific contribution gate
 
-Status: **VERDICT ISSUED 2026-11-08 after the fine-grid comparison (§4).** Sections 1–3 were written after the three coarse
+Status: **VERDICT ISSUED 2026-11-08 after the 3-h fine-grid comparison (§4); condition resolved 2026-11-10 by the 12-h fine-grid continuation (§5).** Sections 1–3 were written after the three coarse
 pairs (p11_z300, p10_z300, p11_z150) and before any fine-grid (spin8b /
 c8b_ctrl / c8b_p11_z300) output exists. Per the G3R/G4T instruction no GO
 verdict is issued until the coarse/fine comparison is evaluated. The decision
@@ -90,3 +90,62 @@ SUPPORTED at 500 km.
 Gaussian matching on the fine grid. Estimated cost on this VM ≈ 2 × 8 h wall, sequential. Without it, the
 manuscript must restrict the peak-matched comparison at 400 km to "comparable during heating, lower after
 switch-off on the coarse grid (model-dependent)".
+
+## 5. Twelve-hour fine-grid continuation and final gate decision (2026-11-10)
+
+The fine pair was continued from its 03:00 UT restart files to 12:00 UT (`c8x_ctrl`, `c8x_p11_z300`; same
+executable, 8×8 grid, 4 ranks, identical heating parameters with the absolute onset unchanged; heating is off in
+the continuation window). The 0–3 h products of §4 are unchanged; the 0–12 h fine pair has label
+`p11_z300_fine12`. The §3 rule is applied unchanged, now to the 12-h window, by
+`scripts/physical_g5_contribution_gate.py` → `results/tables/physical_contribution_gate_checks.csv`.
+
+Sources: `results/grid_sensitivity_metrics_12h.csv` (G3R §7), `results/tables/physical_g4t_gaussian_decomposition.csv`
+and `results/tables/physical_g4t_gaussian_matching.csv` (rows `tmax_s = 43200` / `*_tmax43200`),
+`results/tables/physical_g4t_selectivity_evolution.csv` (G4T §6), `results/tables/physical_prediction_outcomes.csv`
+(PR8a_12h, PR8b_12h, PR10@*_fine12_*).
+
+**Magnitude (A-type).** 57 of 69 remappable metric×altitude rows change by |A| ≤ 0.2 over 12 h (largest 0.14).
+GITM 12-h selectivity changes by −2 % (400 km), +1 % (500 km) and −4 % (300 km); at every 10-min output after
+the first hour the fine/coarse selectivity ratio stays within −3 %…+6 % at 400–500 km. Integrated 400-km
+anomaly, affected area at every threshold, radius of gyration and its growth rate stay within the |A| ≤ 0.2
+group. PR8 bounds hold over 12 h (PR8a_12h, PR8b_12h CONFIRMED). Resolution-sensitive rows are the
+negative-anomaly metrics (as at 3 h) and end-of-run centroids of a near-global anomaly; neither carries a claim.
+At 300 km (the source altitude) selectivity during the heating hour differs by up to ~40 % between grids,
+converging to within 5 % after switch-off.
+
+**Direction.** Over 0–12 h, GITM selectivity at 400 and 500 km is below the peak-fitted static Gaussian for
+every fit-ingredient variant (own fit, coarse centre, coarse σ, coarse window, all three, sub-grid centre,
+source centre) on the coarse, fine-native and fine-remapped grids, and is ≤ 3: rule (a) is met
+(`rule_a_all_variants = True`). The 0–3 h 400-km indistinguishability of §4 is a property of the
+during-heating window and of the half-maximum window discretization (G4T §4b), not a reversal; it does not
+recur over 12 h. Against the baseline-style source-centred σ = 1000 km patch, GITM selectivity is ~5–6× lower
+at 400 km and ~8× lower at 500 km on both grids.
+
+**Calibration against the frozen magnitudes.** PR10 (prescribed/GITM ≥ 3) is met at 500 km on both grids but
+not at 400 km, where the reduction is ~1.5–1.7× (OUTSIDE_RANGE_NOT_FALSIFIED), and it is falsified at 300 km
+(no reduction). The claim is therefore worded as a factor of ~1.5 at 400 km and ~3 at 500 km relative to a
+peak-matched static Gaussian, not as a uniform ≥ 3× erosion.
+
+**Time evolution.** On both grids 400-km selectivity decreases monotonically after onset (≈ 5 at 1 h, ≈ 2 at
+3 h, ≈ 1.5 at 11 h after onset) and the non-target share of the total extra Δv rises to ≈ 0.85 at 400 km and
+≈ 0.77 at 500 km; this is the post-heating redistribution the claim rests on, and it is now supported on two
+resolutions.
+
+**Retained confounders and limits.** Unequal spin-up (fine 6 h, coarse 24 h) is part of the A-type
+difference; two resolutions are not a convergence study; power and deposition-altitude dependence
+(1e10 W, 150 km) remain coarse-grid only and two-level; all §2 constraints apply.
+
+**Final verdict: CONDITIONAL GO — condition resolved; the scientific-contribution gate is satisfied for a
+calibrated, single-model claim.** STRONG GO remains excluded (§2). Claim set carried to G6:
+
+1. (C3, SUPPORTED within one model and two resolutions) A compact 1e11 W, 1-h neutral heat source at 300 km
+   gives a target/non-target cumulative extra-Δv selectivity of ~1.5 (400 km) and ~2 (500 km) over 12 h, and
+   ~1 at 300 km; most of the extra drag falls on non-target objects after switch-off.
+2. (C3 vs C2, SUPPORTED at 400–500 km over 12 h; UNRESOLVED during heating at 400 km) Self-consistent
+   selectivity is below that of a static Gaussian matched to the GITM peak (×~1.5 at 400 km, ×~3 at 500 km)
+   and far below the baseline-style source-centred patch (×~5–8).
+3. (QUALITATIVELY SUPPORTED / MODEL-DEPENDENT, coarse only, two levels) Selectivity is lower at 1e11 W than at
+   1e10 W and vanishes for 150-km deposition; the peak response is sublinear in power.
+4. (MODEL-DEPENDENT, extrapolated) Energy-anchored exclusion bound of §1 C5.
+
+No engineering feasibility, scaling law, causal transport mechanism or observational validation is claimed.

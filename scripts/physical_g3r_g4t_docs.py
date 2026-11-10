@@ -201,7 +201,14 @@ else:
           f"(max |A| among them {small.A_model_discretization_rel.abs().max():.3f}).", "",
           "Rows with |A| > 0.2:", "",
           md(big[["metric", "alt_km", "coarse", "fine_native", "fine_remapped", "A_model_discretization_rel",
-                  "B_diagnostic_grid_rel"]].round(4)), "", "Full table:", "", md(GR12.round(4)), ""]
+                  "B_diagnostic_grid_rel"]].round(4)), "",
+          "Besides the negative-anomaly metrics (as in Section 6), the large |A| rows are end-of-run centroid",
+          "coordinates: by 12 h the positive anomaly covers most of the sphere (participation area and radius of",
+          "gyration rows above), so its centroid is a weakly constrained mean of a near-global field and is not used",
+          "for any claim. Selectivity, integrated anomaly, affected area at every threshold and spread metrics stay",
+          "within the |A| ≤ 0.2 group. This is a two-resolution comparison with unequal spin-up (6 h vs 24 h); it",
+          "is not evidence of formal numerical convergence.", "",
+          "Full table:", "", md(GR12.round(4)), ""]
 open(os.path.join(R, "docs/G3R_RESOLUTION_DISCRETIZATION_AUDIT.md"), "w").write("\n".join(L))
 
 # ---------------------------------------------------------------- G4T

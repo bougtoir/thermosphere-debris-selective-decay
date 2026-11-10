@@ -316,6 +316,13 @@ Rows with |A| > 0.2:
 | centroid_lat_deg_end | 500.0 | -25.6102 | 9.7605 | 9.7903 | -1.3823 | -0.003 |
 | centroid_lon_deg_end | 500.0 | 86.9259 | 126.249 | 126.5024 | 0.4553 | -0.002 |
 
+Besides the negative-anomaly metrics (as in Section 6), the large |A| rows are end-of-run centroid
+coordinates: by 12 h the positive anomaly covers most of the sphere (participation area and radius of
+gyration rows above), so its centroid is a weakly constrained mean of a near-global field and is not used
+for any claim. Selectivity, integrated anomaly, affected area at every threshold and spread metrics stay
+within the |A| ≤ 0.2 group. This is a two-resolution comparison with unequal spin-up (6 h vs 24 h); it
+is not evidence of formal numerical convergence.
+
 Full table:
 
 | metric | alt_km | coarse | fine_native | fine_remapped | A_model_discretization_rel | B_diagnostic_grid_rel | fine_native_vs_coarse_rel | note |
