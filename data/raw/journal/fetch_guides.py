@@ -18,6 +18,12 @@ URLS = {
     "scimago_jastp": "https://www.scimagojr.com/journalsearch.php?q=27525&tip=sid",
     "scimago_jsse": "https://www.scimagojr.com/journalsearch.php?q=21100869517&tip=sid",
     "scimago_asr": "https://www.scimagojr.com/journalsearch.php?q=12347&tip=sid",
+    # corrected Scimago source ids (2026-11-10): the four ids above resolve to unrelated journals (see
+    # LEDGER.jsonl correction records); ids below were taken from the Scimago search results page.
+    "scimago_acta_astronautica_sid12372": "https://www.scimagojr.com/journalsearch.php?q=12372&tip=sid",
+    "scimago_jastp_sid28436": "https://www.scimagojr.com/journalsearch.php?q=28436&tip=sid",
+    "scimago_asr_sid12375": "https://www.scimagojr.com/journalsearch.php?q=12375&tip=sid",
+    "scimago_jsse_sid21100871641": "https://www.scimagojr.com/journalsearch.php?q=21100871641&tip=sid",
     "acta_astronautica_about": "https://www.sciencedirect.com/journal/acta-astronautica/about/aims-and-scope",
     "acta_astronautica_insights": "https://www.sciencedirect.com/journal/acta-astronautica/about/insights",
 }
