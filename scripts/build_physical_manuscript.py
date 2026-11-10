@@ -22,8 +22,10 @@ import shutil
 import numpy as np
 import pandas as pd
 from docx import Document
-from docx.enum.text import WD_ALIGN_PARAGRAPH
-from docx.shared import Inches, Pt
+from docx.enum.text import WD_ALIGN_PARAGRAPH, WD_TAB_ALIGNMENT
+from docx.oxml import OxmlElement, parse_xml
+from docx.oxml.ns import qn
+from docx.shared import Inches, Pt, RGBColor
 from pptx import Presentation
 from pptx.util import Inches as PInches
 from pptx.util import Pt as PPt
@@ -145,6 +147,27 @@ def collect():
         v[f"ci_lo_{h}"] = V.put(f"S12_ci95_lo_p11_z300_{h}", q.ci95_lo, s, "{:.2f}")
         v[f"ci_hi_{h}"] = V.put(f"S12_ci95_hi_p11_z300_{h}", q.ci95_hi, s, "{:.2f}")
     v["n_boot"] = V.put("n_boot", int(bs.n_boot.iloc[0]), s, "{:,}")
+    s = "results/tables/physical_g4t_selectivity_evolution.csv"
+    v["S_grid_max"] = V.put("S12_fine_vs_coarse_max_diff_400_500_pct",
+                            max(100 * abs(float(v[f"Sf_{h}"]) / float(v[f"Sc_{h}"]) - 1) for h in (400, 500)), s, "{:.1f}")
+    s = "data/physical/GITM_RUN_MANIFEST.csv"
+    v["raw_gb"] = V.put("raw_gitm_output_total_GB", rd(s).size_bytes.sum() / 1e9, s, "{:.0f}")
+    s = "results/tables/physical_fig1_panel_ranges.csv"
+    f1 = rd(s)
+    v["f1_max"] = V.put("fig1_max_drho_rel", f1.max_drho_rel.max(), s, "{:.2f}")
+    v["f1_min"] = V.put("fig1_min_drho_rel", f1.min_drho_rel.min(), s, "{:.3f}")
+    v["f1_cmax"] = V.put("fig1_colour_max", f1.colour_max.iloc[0], s, "{:.1f}")
+    v["f1_cmin"] = V.put("fig1_colour_min", f1.colour_min.iloc[0], s, "{:.2f}")
+    assert int(f1.n_above_colour_max.sum() + f1.n_below_colour_min.sum()) == 0, "Fig. 1 saturates: revise caption"
+    s = "results/tables/physical_fig3_illconditioned_interval.csv"
+    f3 = rd(s).set_index("alt_km")
+    v["ill_300_min"] = V.put("fig3_nonpositive_interval_300km_min", 60 * f3.loc[300.0, "last_nonpositive_t_after_onset_h"],
+                             s, "{:.0f}")
+    s = "docs/ZENODO_DEPOSIT.json"
+    zp = os.path.join(ROOT, s)
+    v["zenodo"] = json.load(open(zp)) if os.path.exists(zp) else None
+    s = "data/physical/PROCESSED_MANIFEST.csv"
+    v["proc_gb"] = V.put("processed_fields_total_GB", rd(s).size_bytes.sum() / 1e9, s, "{:.1f}")
     s = "results/tables/physical_g4t_selectivity_evolution.csv"
     for lab in ("p10_z300", "p11_z150"):
         x = ev[(ev.label == lab) & (ev.grid == "36x36")].sort_values("t_after_onset_s").groupby("alt_km").tail(1)
@@ -313,6 +336,86 @@ class Refs:
 
 
 # ---------------------------------------------------------------- docx helpers
+def new_doc():
+    """Document with Times New Roman (no theme-font override), black text, no snap-to-grid."""
+    d = Document()
+    for nm, sz, it in (("Normal", 12, None), ("Heading 1", 12, False), ("Heading 2", 12, True),
+                       ("Heading 3", 12, True), ("Title", 14, False), ("List Bullet", 12, None)):
+        st = d.styles[nm]
+        st.font.name = "Times New Roman"
+        st.font.size = Pt(sz)
+        st.font.color.rgb = RGBColor(0, 0, 0)
+        if it is not None:
+            st.font.bold, st.font.italic = True, it
+            st.paragraph_format.space_before, st.paragraph_format.space_after = Pt(12), Pt(0)
+        rf = st.element.get_or_add_rPr().get_or_add_rFonts()
+        for a in ("asciiTheme", "hAnsiTheme", "eastAsiaTheme", "cstheme"):
+            rf.attrib.pop(qn(f"w:{a}"), None)
+        for a in ("ascii", "hAnsi", "eastAsia", "cs"):
+            rf.set(qn(f"w:{a}"), "Times New Roman")
+    nrm = d.styles["Normal"]
+    nrm.paragraph_format.space_after = Pt(0)
+    snap = OxmlElement("w:snapToGrid")
+    snap.set(qn("w:val"), "0")
+    nrm.element.get_or_add_pPr().append(snap)
+    for g in list(d.element.body.iter(qn("w:docGrid"))):
+        g.getparent().remove(g)
+    return d
+
+
+MNS = ('xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" '
+       'xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"')
+
+
+def m_r(t, plain=False):
+    sty = '<m:rPr><m:sty m:val="p"/></m:rPr>' if plain else ""
+    return f'<m:r>{sty}<m:t xml:space="preserve">{t}</m:t></m:r>'
+
+
+def m_sub(b, x):
+    return f"<m:sSub><m:e>{b}</m:e><m:sub>{x}</m:sub></m:sSub>"
+
+
+def m_subsup(b, x, y):
+    return f"<m:sSubSup><m:e>{b}</m:e><m:sub>{x}</m:sub><m:sup>{y}</m:sup></m:sSubSup>"
+
+
+def m_sup(b, y):
+    return f"<m:sSup><m:e>{b}</m:e><m:sup>{y}</m:sup></m:sSup>"
+
+
+def m_frac(n, d):
+    return f"<m:f><m:num>{n}</m:num><m:den>{d}</m:den></m:f>"
+
+
+def m_delim(e, a, b):
+    return f'<m:d><m:dPr><m:begChr m:val="{a}"/><m:endChr m:val="{b}"/></m:dPr><m:e>{e}</m:e></m:d>'
+
+
+def m_int(lo, hi, e):
+    return (f'<m:nary><m:naryPr><m:chr m:val="∫"/></m:naryPr><m:sub>{lo}</m:sub><m:sup>{hi}</m:sup>'
+            f"<m:e>{e}</m:e></m:nary>")
+
+
+def eq_dv():
+    """Eq. (1): cumulative extra drag Δv, as implemented in scripts/physical_g4_orbit_coupling.py."""
+    def term(k):
+        return (m_sub(m_r("ρ"), m_r(k, True))
+                + m_sup(m_delim(m_sub(m_r("v"), m_r(f"rel,{k}", True)), "|", "|"), m_r("2", True)))
+    return (m_subsup(m_r("Δ") + m_r("v"), m_r("i"), m_r("extra", True)) + m_r("(t)", True) + m_r(" = ", True)
+            + m_frac(m_r("1", True), m_r("2", True) + m_r("B"))
+            + m_int(m_r("0", True), m_r("t"), m_delim(term("p") + m_r(" − ", True) + term("c"), "[", "]")
+                    + m_r("d", True) + m_r("t′")))
+
+
+def eq_s():
+    """Eq. (2): selectivity S(t)."""
+    def mean(g):
+        return m_sub(m_delim(m_sup(m_r("Δ") + m_r("v"), m_r("extra", True)) + m_r("(t)", True), "⟨", "⟩"),
+                     m_r(g, True))
+    return m_r("S") + m_r("(t)", True) + m_r(" = ", True) + m_frac(mean("T"), mean("N"))
+
+
 def runs(par, text, size=None, bold=False):
     for part in re.split(r"(\^\{[^}]*\}|_\{[^}]*\}|\*[^*]+\*)", text):
         if not part:
@@ -335,12 +438,16 @@ def runs(par, text, size=None, bold=False):
     return par
 
 
+def small(par):
+    for r in par.runs:
+        r.font.size = Pt(10)
+    return par
+
+
 class Doc:
     def __init__(self, refs, inline_figs):
-        self.d = Document()
+        self.d = new_doc()
         st = self.d.styles["Normal"]
-        st.font.name = "Times New Roman"
-        st.font.size = Pt(12)
         st.paragraph_format.line_spacing = 2.0
         self.refs = refs
         self.inline = inline_figs
@@ -369,9 +476,20 @@ class Doc:
             self.words += len(re.sub(r"[\^_]\{|\}", "", text).split())
         return par
 
+    def eq(self, xml, n):
+        par = self.d.add_paragraph()
+        par.paragraph_format.left_indent = Inches(0.5)
+        par.paragraph_format.tab_stops.add_tab_stop(Inches(6.5), WD_TAB_ALIGNMENT.RIGHT)
+        par._p.append(parse_xml(f"<m:oMath {MNS}>{xml}</m:oMath>"))
+        par.add_run(f"\t({n})")
+        self.words += 12
+        return par
+
     def table(self, n, caption, df, note=None):
         assert n in self.tab_seen, f"Table {n} placed before it is cited"
-        self.p(f"Table {n}. {caption}", count=True).runs[0].bold = True
+        cap = self.p(f"Table {n}. {caption}", count=True)
+        cap.runs[0].bold = True
+        small(cap)
         t = self.d.add_table(rows=1, cols=len(df.columns))
         t.style = "Table Grid"
         for i, c in enumerate(df.columns):
@@ -384,7 +502,7 @@ class Doc:
             for c in row.cells:
                 c.paragraphs[0].paragraph_format.line_spacing = 1.0
         if note:
-            self.p(note).runs[0].font.size = Pt(10)
+            small(self.p(note))
         self.words += 300
 
     def figure(self, n, stem):
@@ -392,7 +510,7 @@ class Doc:
         self.words += 300
         if self.inline:
             self.d.add_picture(os.path.join(FIG, stem + ".png"), width=Inches(6.3))
-            self.p(f"Fig. {n}. {CAPTIONS[n][1]}", count=False)
+            small(self.p(f"Fig. {n}. {CAPTIONS[n][1]}", count=False))
 
 
 CAPTIONS = {
@@ -408,27 +526,36 @@ def fill_captions(v):
     CAPTIONS[1] = (CAPTIONS[1][0], (
         "Relative neutral mass-density perturbation Δρ/ρ (heated minus control, divided by control) at 400 km in the "
         "fine-grid (5°×2.5°) GITM pair, at four times after the onset of the 100 GW, 1 h heat source centred at "
-        "45°N, 0°E, 300 km (cross). Times are the nearest 10-min model outputs. The colour scale is non-linear."))
+        "45°N, 0°E, 300 km (cross). Densities are interpolated log-linearly in altitude to 400 km; times are the "
+        "nearest 10 min model outputs. The colour scale is non-linear and common to all panels; values between "
+        f"−0.01 and 0.01 are white. All plotted values ({v['f1_min']} to {v['f1_max']}) lie inside the colour range "
+        f"({v['f1_cmin']} to {v['f1_cmax']}), so no cell is saturated."))
     CAPTIONS[2] = (CAPTIONS[2][0], (
         "Redistribution of the 400 km density perturbation for the 100 GW, 300 km case: (a) area-integrated excess "
-        "∫Δρ dA over the 400 km shell, (b) participation area fraction, (c) anomaly-weighted radius of gyration about "
+        "∫Δρ dA over the 400 km shell (kg m^{−1}), (b) participation area fraction, (∫Δρ_{+} dA)^{2}/(A∫Δρ_{+}^{2} dA), "
+        "where Δρ_{+} is the positive part of Δρ and A the shell area, (c) anomaly-weighted radius of gyration about "
         "the anomaly centroid. Solid: coarse grid (10°×5°); dashed: fine grid (5°×2.5°); dotted: fine grid "
         "conservatively remapped (area-weighted 2×2 means of ρ) to the coarse grid before differencing."))
     CAPTIONS[3] = (CAPTIONS[3][0], (
         "Time evolution of the cumulative drag selectivity S(t) (mean extra Δv of target objects divided by that of "
         f"non-target objects; top) and the non-target share of the total extra Δv (bottom) for {v['n_tot']} synthetic "
-        "circular orbits per shell at 300, 400 and 500 km (B = 30 kg m^{−2}). Line styles as in Fig. 2. At 300 km "
-        "the ratio is ill-conditioned during the first ~30 min because both groups' extra Δv is close to zero."))
+        "circular orbits per shell at 300, 400 and 500 km (B = 30 kg m^{−2}). Line styles as in Fig. 2. Grey shading "
+        f"marks the first {v['ill_300_min']} min at 300 km, during which the cumulative extra Δv of the target or "
+        "non-target group is still zero or negative in at least one run, so the ratio has no defined sign; values "
+        "outside the shading are not filtered. Non-positive ratios cannot appear on the logarithmic axis."))
     CAPTIONS[4] = (CAPTIONS[4][0], (
         f"Selectivity over the 12 h case window ({v['t_end_h']} h after onset) from GITM and from two static "
         "Gaussian density patches imposed on the GITM control atmosphere: a peak-matched fit (amplitude, centre and "
         "e^{−1/2} width of the GITM perturbation at its peak, switched on while the GITM peak exceeds half its maximum) "
         "and a source-centred patch with σ = 1000 km and the same amplitude and window. Panels: coarse grid, fine grid "
-        "on its native grid, and fine grid remapped to the coarse grid. Logarithmic ordinate."))
+        "on its native grid, and fine grid remapped to the coarse grid. Logarithmic ordinate. The patches are diagnostic "
+        "comparators for the prescribed-field assumption, not alternative physical solutions or upper bounds."))
     CAPTIONS[5] = (CAPTIONS[5][0], (
         "Dependence of the 12 h GITM selectivity on heating power and deposition altitude (coarse grid only, two levels "
         "per factor): 10 GW and 100 GW deposited around 300 km (σ_{z} = 50 km), and 100 GW deposited around 150 km "
-        "(σ_{z} = 20 km); same horizontal source shape, timing and orbit population in all cases."))
+        "(σ_{z} = 20 km); same horizontal source shape, timing and orbit population in all cases. "
+        "Markers are the three simulated orbit "
+        "altitudes; dotted lines only guide the eye and do not imply a continuous altitude or power response."))
 
 
 # ---------------------------------------------------------------- tables
@@ -529,8 +656,26 @@ def table4(v):
 
 
 # ---------------------------------------------------------------- manuscript text
-TITLE = ("Transport limits the orbital-drag selectivity of a localized thermospheric heat source: "
+TITLE = ("Self-consistent thermospheric response limits the orbital-drag selectivity of a localized heat source: "
          "a coupled GITM–orbit study")
+
+
+def data_statement(S):
+    z = S["zenodo"]
+    t = ("The analysis code, GITM case configurations, the heating hook and all result tables are openly available "
+         "at https://github.com/bougtoir/thermosphere-debris-selective-decay. ")
+    what = (f"The processed GITM fields used for the figures and the field and orbit analyses (about {S['proc_gb']} GB, "
+            "five paired heated/control files with SHA-256 checksums) and a snapshot of the code ")
+    if z and z.get("published"):
+        t += what + f"are archived at Zenodo, https://doi.org/{z['doi']}. "
+    elif z:
+        t += what + (f"have been uploaded to a Zenodo record with the reserved DOI https://doi.org/{z['doi']}, "
+                     "which resolves once the record is published. ")
+    else:
+        t += what + "are not yet in a public archive and are available from the author on request. "
+    return t + (f"Raw GITM output (about {S['raw_gb']} GB, including failed and test runs) is listed file by file "
+                "with SHA-256 checksums in data/physical/GITM_RUN_MANIFEST.csv of the repository and is available "
+                "from the author on request.")
 
 
 def highlights(v):
@@ -550,7 +695,8 @@ def body(D, v):
     S = v
     D.p(TITLE, align=WD_ALIGN_PARAGRAPH.CENTER).runs[0].bold = True
     D.p("T. Onishi", align=WD_ALIGN_PARAGRAPH.CENTER)
-    D.p("Affiliation: [to be entered by the author]. Corresponding author: T. Onishi, bougtoir@gmail.com",
+    D.p("Affiliation: Shiga University, Japan [department and postal address to be completed by the author]. "
+        "Corresponding author: T. Onishi, bougtoir@gmail.com",
         align=WD_ALIGN_PARAGRAPH.CENTER)
 
     D.h("Abstract")
@@ -566,10 +712,10 @@ def body(D, v):
         f"{S['sharec_400']}% of the extra drag at 400 km falls on non-target objects. Static Gaussian patches matched "
         f"to the GITM peak overstate selectivity by factors of {S['gf_lo_12_400']}–{S['gf_hi_12_400']} at 400 km and "
         f"{S['gf_lo_12_500']}–{S['gf_hi_12_500']} at 500 km, and a source-centred 1000 km patch by "
-        f"{S['src_lo_400']}–{S['src_hi_500']}. A 5°×2.5° repeat changes the 12 h selectivity by less than 2% at 400 "
-        "and 500 km. In two-level tests, selectivity is lower at 100 GW than at 10 GW and disappears for deposition "
-        "at 150 km. Transport therefore bounds the selectivity attainable from localized heating well below what "
-        "prescribed-patch models imply.")
+        f"{S['src_lo_400']}–{S['src_hi_500']}. A 5°×2.5° repeat changes the 12 h selectivity by at most {S['S_grid_max']}% "
+        "at 400 and 500 km. In two-level tests, selectivity is lower at 100 GW than at 10 GW and disappears for deposition "
+        "at 150 km. Under the tested conditions, the dynamically evolving GITM density field therefore yields much "
+        "lower cumulative drag selectivity than prescribed static density patches imply.")
     D.p("Keywords: thermosphere; orbital debris; atmospheric drag; GITM; localized heating; density perturbation",
         count=True)
 
@@ -656,19 +802,25 @@ def body(D, v):
         f"For each of 300, 400 and 500 km, {S['n_tot']} synthetic circular orbits were generated at inclinations "
         "of 30°, 50°, 70° and 97° with random node and phase (fixed seed). Orbits were propagated with J2 secular "
         "rates at 10 s steps, and the GITM density (log-linear interpolation in space and time between 10 min "
-        "outputs) and winds were sampled along each track. The extra drag velocity change of each object is the "
-        "time integral of (ρ_{p}|v_{rel,p}|^{2} − ρ_{c}|v_{rel,c}|^{2})/(2B), where subscripts p and c denote the "
-        "heated and control runs, v_{rel} is the velocity relative to the co-rotating atmosphere plus the GITM wind, "
-        "and B = 30 kg m^{−2}. An object is a target if its ground track comes within σ_{h} of the source centre "
-        f"while the source is on ({S['n_t400']} of {S['n_tot']} objects at 400 km). The selectivity S(t) is the mean "
-        "cumulative extra Δv of targets divided by that of non-targets. Replacing linear by nearest-neighbour "
+        "outputs) and winds were sampled along each track. The cumulative extra drag velocity change of object i is")
+    D.eq(eq_dv(), 1)
+    D.p(
+        "where subscripts p and c denote the heated and control runs, v_{rel} is the velocity relative to the "
+        "co-rotating atmosphere plus the GITM wind, B = 30 kg m^{−2} is the ballistic coefficient and t is time "
+        "after heating onset. An object is a target if its ground track comes within σ_{h} of the source centre "
+        f"while the source is on ({S['n_t400']} of {S['n_tot']} objects at 400 km). The selectivity is")
+    D.eq(eq_s(), 2)
+    D.p(
+        "where angle brackets denote the mean over the target (T) or non-target (N) objects of a shell. "
+        "Replacing linear by nearest-neighbour "
         "interpolation, removing winds, changing the Earth radius used for altitude, or doubling the output interval "
         f"changed the 12 h selectivity at 400 and 500 km by at most {S['orbit_sens']}%. Sampling uncertainty of S "
         f"was estimated by resampling targets and non-targets separately with replacement ({S['n_boot']} replicates, "
         "percentile 95% intervals).")
     D.h("2.5. Static comparators", 2)
     D.p(
-        "To isolate the effect of transport, the same orbits were also flown through static Gaussian patches "
+        "To compare the evolving GITM perturbation with the prescribed-field assumption, the same orbits were also "
+        "flown through static Gaussian patches "
         "imposed on the GITM control atmosphere. The peak-matched patch takes the amplitude, centre and e^{−1/2} "
         "area-equivalent width of the GITM perturbation at the time of its peak at each orbit altitude, and is held "
         "fixed while the GITM peak exceeds half its maximum. The source-centred patch, the form used in earlier "
@@ -686,10 +838,13 @@ def body(D, v):
         "sensitivity; they do not establish numerical convergence.")
     D.h("2.7. Frozen predictions", 2)
     D.p(
-        "Before the first heated run, I recorded quantitative predictions (PR1–PR12) derived from published "
+        "Before the first heated case was started, I committed quantitative predictions (PR1–PR12) to the project "
+        "repository (docs/PRIOR_PREDICTIONS_FROZEN.md), derived from published "
         "simulations and observations, together with falsification rules, and a decision rule for the scientific "
         "contribution that required the direction of the GITM-versus-patch difference to be preserved across grids. "
-        "Thresholds were not changed after results were available; the outcomes are scored in Section 3.6.")
+        "Thresholds were not changed after results were available; the outcomes are scored in Section 3.6. These "
+        "predictions were frozen prospectively within the project; they were not registered with an external "
+        "registry.")
 
     D.h("3. Results")
     D.h("3.1. Physical response and redistribution", 2)
@@ -739,9 +894,9 @@ def body(D, v):
         f"that of the peak-matched patch (ratio {S['gr_lo_3_400']}–{S['gr_hi_3_400']} across grids and fit variants), and the "
         "sign of the difference depends on the fit. The sign change between grids comes from the half-maximum time "
         "window, which starts one 10 min output earlier on the fine grid; using the coarse-grid window on the fine "
-        f"grid restores agreement in sign, and the GITM selectivity itself differs between grids by {S['g3h_diff']}%. The "
-        "transport-driven reduction relative to a static patch at 400 km is therefore a property of the post-heating "
-        f"redistribution, not of the heating hour. At 500 km the reduction is already present at 3 h "
+        f"grid restores agreement in sign, and the GITM selectivity itself differs between grids by {S['g3h_diff']}%. At "
+        "400 km, the reduction relative to a static patch therefore emerges after switch-off, while the perturbation "
+        "spreads, rather than during the heating hour. At 500 km the reduction is already present at 3 h "
         f"(ratio {S['gr_lo_3_500']}–{S['gr_hi_3_500']}).")
     D.figure(3, CAPTIONS[3][0])
     D.figure(4, CAPTIONS[4][0])
@@ -777,7 +932,7 @@ def body(D, v):
     D.figure(5, CAPTIONS[5][0])
     D.h("3.6. Scorecard of frozen predictions", 2)
     D.p(
-        f"Of the {S['n_core']} pre-registered outcomes evaluated on the primary configuration, {S['n_conf']} were "
+        f"Of the {S['n_core']} prospectively frozen outcomes evaluated on the primary configuration, {S['n_conf']} were "
         f"confirmed, {S['n_fals']} falsified and {S['n_out']} fell outside the predicted range without being "
         "falsified (Table 4). The falsifications are informative. The 400 km peak response was "
         f"{S['PR1']}%, above the predicted 5–100% (PR1), so a 100 GW source does reach δ ≥ 1 (PR12). The response was "
@@ -794,16 +949,19 @@ def body(D, v):
 
     D.h("4. Discussion")
     D.p(
-        "The central result is that the selectivity of drag from a localized heat source is limited by the "
-        "thermosphere's own transport. Within a few hours of switch-off, the excess energy and mass are carried well "
-        "beyond the source by the same wind and wave response known from auroral and cusp heating [@deng2008nonhydro,"
-        "gardner2010tad,liu2015substorm], and objects that never passed the source then collect most of the extra "
-        "drag. A static density patch cannot represent this, so it overstates selectivity by a factor that grows "
+        "The central result is that, in a self-consistent thermosphere model, the drag selectivity of a localized "
+        "heat source is much lower than a static density patch implies. Within a few hours of switch-off the "
+        "perturbation spreads well beyond the source (Figs. 1–2), consistent with the wind and wave response known "
+        "from auroral and cusp heating [@deng2008nonhydro,gardner2010tad,liu2015substorm], and objects that never "
+        "passed the source then collect most of the extra drag. The static comparators differ from the GITM field in "
+        "persistence, shape, peak location and timing at once, and no transport budget was computed, so the "
+        "difference is attributed to the time-evolving GITM field as a whole rather than to one mechanism. A static "
+        "patch cannot represent this evolution, so it overstates selectivity by a factor that grows "
         "with altitude and with the time over which drag is accumulated. In this experiment the overstatement over "
         f"12 h is about {S['gf_lo_12_400']}–{S['gf_hi_12_400']}-fold at 400 km and {S['gf_lo_12_500']}–"
         f"{S['gf_hi_12_500']}-fold at 500 km relative to a patch fitted to GITM itself, and "
         f"{S['src_lo_400']}–{S['src_hi_500']}-fold relative to a source-sized patch. These factors, rather than the "
-        "absolute selectivity, are the transferable result, because they compare a self-consistent and a prescribed "
+        "absolute selectivity, are the more informative result, because they compare a self-consistent and a prescribed "
         "density field under the same forcing, background and orbits.")
     D.p(
         f"The power dependence points the same way. Increasing the power tenfold increased the 400 km peak only "
@@ -836,9 +994,11 @@ def body(D, v):
         f"{float(S['Sc_300']):.0f} at 300 km, with most of the extra drag falling on non-target objects. Static "
         f"Gaussian patches overstate this selectivity by factors of {S['gf_lo_12_400']}–{S['gf_hi_12_400']} at 400 km "
         f"and {S['gf_lo_12_500']}–{S['gf_hi_12_500']} at 500 km when fitted to the model, and by "
-        f"{S['src_lo_400']}–{S['src_hi_500']} when sized to the source. These results are robust to doubling the "
-        "horizontal resolution. Any assessment of localized thermospheric heating for selective debris decay should "
-        "therefore use self-consistent transport rather than prescribed density patches.")
+        f"{S['src_lo_400']}–{S['src_hi_500']} when sized to the source. Doubling the horizontal "
+        f"resolution changed the 12 h selectivity at 400 and 500 km by at most {S['S_grid_max']}%, which indicates "
+        "robustness to resolution but not formal convergence. Any assessment of localized thermospheric heating for "
+        "selective debris decay should therefore use a self-consistent, time-evolving thermosphere rather than "
+        "prescribed static density patches.")
 
     D.h("Declaration of competing interest")
     D.p("The author declares no known competing financial interests or personal relationships that could have "
@@ -850,10 +1010,7 @@ def body(D, v):
     D.p("T. Onishi: Conceptualization, Methodology, Software, Formal analysis, Investigation, Data curation, "
         "Writing – original draft, Writing – review and editing, Visualization.")
     D.h("Data availability")
-    D.p("Model configurations, the heating hook, analysis scripts, processed fields and all result tables are in "
-        "https://github.com/bougtoir/thermosphere-debris-selective-decay. Raw GITM output (about 30 GB) is listed "
-        "file-by-file with SHA-256 checksums in data/physical/GITM_RUN_MANIFEST.csv and is available from the "
-        "author on request.")
+    D.p(data_statement(S))
     D.h("Declaration of generative AI and AI-assisted technologies in the manuscript preparation process")
     D.p("During the preparation of this work the author used an AI software assistant (Devin, Cognition AI) to "
         "implement and run the simulation and analysis code and to draft text. The author reviewed and edited the "
@@ -873,14 +1030,14 @@ def build(inline, v):
     if not inline:
         D.h("Figure captions")
         for n in sorted(CAPTIONS):
-            D.p(f"Fig. {n}. {CAPTIONS[n][1]}", count=False)
+            small(D.p(f"Fig. {n}. {CAPTIONS[n][1]}", count=False))
     assert D.fig_seen == sorted(D.fig_seen) == list(range(1, len(CAPTIONS) + 1)), D.fig_seen
     assert D.tab_seen == [1, 2, 3, 4], D.tab_seen
     return D
 
 
 def tables_doc(v):
-    d = Document()
+    d = new_doc()
     d.styles["Normal"].font.name = "Times New Roman"
     for n, (cap, df) in enumerate((("Configuration of the coarse- and fine-grid GITM experiments.", table1(v)),
                                    ("Twelve-hour drag selectivity from GITM and from static comparators.", table2(v)),
@@ -916,27 +1073,31 @@ def figures_pptx():
 
 
 def cover_letter(v, words):
-    d = Document()
+    d = new_doc()
     d.styles["Normal"].font.name = "Times New Roman"
     paras = (
         "Dear Editor,",
         f"Please consider the enclosed Research Paper, \"{TITLE}\", for publication in Acta Astronautica.",
-        "Concepts that would accelerate the decay of selected debris objects by locally heating the thermosphere "
-        "have so far been assessed with prescribed, static density patches. This paper tests that assumption with a "
-        "physically self-consistent thermosphere model (GITM) coupled directly to an orbit propagator. It shows that "
-        "post-heating transport limits the target/non-target drag selectivity to about "
-        f"{float(v['Sc_400']):.1f} at 400 km and {float(v['Sc_500']):.0f} at 500 km over 12 h, that static patches "
-        f"overstate it by factors of {v['gf_lo_12_400']} to {v['src_hi_500']} depending on altitude and patch "
-        "definition, and that these results are "
-        "robust to doubling the model resolution. Predictions were committed before the simulations were run and "
-        "are scored in the paper, including those that failed.",
-        "The results bear directly on the evaluation of non-contact debris remediation concepts and on the "
-        "modelling standards such assessments should meet, which I believe makes Acta Astronautica the appropriate "
-        "venue.",
-        "An earlier, prescribed-patch version of this project was declined by Advances in Space Research "
-        "(AISR-D-26-03405) for insufficient novelty and quantitative support. The present manuscript is a new study: "
-        "the physical model, simulations, analysis and conclusions are all new, and the earlier patch model now "
-        "serves only as a comparator.",
+        "Proposals to accelerate the decay of selected debris objects by locally heating the thermosphere are "
+        "usually screened with prescribed, static density patches. Such patches fix the size, shape and duration of "
+        "the density enhancement in advance, so they cannot show how much of the extra drag reaches objects that "
+        "never passed the heated region. A heated thermosphere expands, drives winds and launches waves that move the "
+        "perturbation away from the source after switch-off, and that evolution decides whether any selectivity "
+        "survives.",
+        "In this paper I couple a physically self-consistent thermosphere model (GITM) directly to an orbit "
+        "propagator and compare the drag received by target and non-target objects with that implied by static "
+        "patches flown along the same orbits. Over 12 h, the target/non-target drag ratio is about "
+        f"{float(v['Sc_400']):.1f} at 400 km and {float(v['Sc_500']):.0f} at 500 km and close to one at 300 km; most of "
+        "the extra drag falls on non-targets. Static patches fitted to the GITM perturbation overstate this ratio by "
+        f"{v['gf_lo_12_400']}–{v['gf_hi_12_400']}-fold at 400 km and {v['gf_lo_12_500']}–{v['gf_hi_12_500']}-fold at "
+        f"500 km, and a source-sized patch by {v['src_lo_400']}–{v['src_hi_500']}-fold. The 12 h selectivity changes by "
+        f"at most {v['S_grid_max']}% when the horizontal resolution is doubled.",
+        "The study uses one model, one set of geophysical conditions and two grid resolutions; it does not establish "
+        "numerical convergence, multi-model agreement, observational validation or engineering feasibility, and the "
+        "power and altitude dependences rest on two-level contrasts. Predictions were frozen before the heated runs "
+        "and are scored in the paper, including those that failed.",
+        "Because the results bear on how non-contact debris remediation concepts should be evaluated and on the "
+        "atmospheric modelling such evaluations require, I believe Acta Astronautica is the appropriate venue.",
         f"The manuscript has about {words} words including references, five figures and four tables. It has not "
         "been published and is not under consideration elsewhere. The author declares no competing interests.",
         "Sincerely,", "T. Onishi", "bougtoir@gmail.com")
@@ -957,7 +1118,7 @@ def main():
     build(True, v).d.save(os.path.join(OUT, "manuscript_review_inline.docx"))
     tables_doc(v)
     figures_pptx()
-    hl = Document()
+    hl = new_doc()
     hl.add_heading("Highlights", 1)
     for x in highlights(v):
         hl.add_paragraph(x, style="List Bullet")

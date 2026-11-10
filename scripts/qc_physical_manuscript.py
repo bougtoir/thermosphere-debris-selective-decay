@@ -14,6 +14,7 @@ import sys
 
 import pandas as pd
 from docx import Document
+from docx.oxml.ns import qn
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 M = os.path.join(ROOT, "manuscript/physical")
@@ -22,7 +23,7 @@ DESIGN = {  # experiment-design constants and identifiers stated in Methods/capt
     "97", "100", "107", "150", "250", "300", "400", "500", "600", "1000", "2002", "21", "4.1.2", "11.4", "2.5",
     "0.05", "0.2", "0.1", "0.3", "1/3", "2.0", "−2", "2002-03-21", "10.7", "1.5", "1/2", "−1", "−1/2", "−2", "2×2", "9×9",
     "4×4", "8×8", "36×36", "72×72", "100–107", "5–100", "0.05–0.2", "0.1–3", "0.3–3", "1–4", "0.5–2", "1–3",
-    "10°×5°", "5°×2.5°", "AISR-D-26-03405", "PR1–PR12", "13,000", "2.1", "2.2", "2.3", "2.4", "2.5", "2.6", "2.7",
+    "10°×5°", "5°×2.5°", "PR1–PR12", "0.01", "−0.01", "+2", "13,000", "2.1", "2.2", "2.3", "2.4", "2.5", "2.6", "2.7",
     "3.1", "3.2", "3.3", "3.4", "3.5", "3.6", "00", "315", "95", "10°×5", "5°×2.5",
 }
 
@@ -93,6 +94,51 @@ def main():
             if q and q not in known and q.rstrip("%") not in known:
                 unk.append(q)
     chk("every body number injected or a declared design constant", not unk, " ".join(sorted(set(unk))))
+    names = ("manuscript.docx", "manuscript_review_inline.docx", "tables.docx", "highlights.docx", "cover_letter.docx")
+    docs = {n: Document(os.path.join(M, n)) for n in names}
+    alltext = {}
+    for n, d in docs.items():
+        cells = [c.text for t in d.tables for r in t.rows for c in r.cells]
+        alltext[n] = "\n".join([p.text for p in d.paragraphs] + cells)
+    chk("no 'preregistered' terminology (no external registry exists)",
+        not any(re.search(r"pre-?regist", t, re.I) for t in alltext.values()))
+    chk("cover letter has no prior-journal rejection paragraph",
+        not re.search(r"Advances in Space Research|AISR|declined", alltext["cover_letter.docx"]))
+    bad_font, bad_col, theme = [], [], []
+    for n, d in docs.items():
+        for st in ("Normal", "Heading 1", "Heading 2"):
+            if st not in [x.name for x in d.styles]:
+                continue
+            x = d.styles[st]
+            rf = x.element.rPr.rFonts if x.element.rPr is not None else None
+            if x.font.name != "Times New Roman":
+                bad_font.append(f"{n}:{st}")
+            if rf is not None and any(rf.get(qn(f"w:{a}")) for a in ("asciiTheme", "hAnsiTheme")):
+                theme.append(f"{n}:{st}")
+            if x.font.color.rgb not in (None, ) and str(x.font.color.rgb) != "000000":
+                bad_col.append(f"{n}:{st}")
+        for r in d.element.body.iter(qn("w:color")):
+            if r.get(qn("w:val")) not in ("000000", "auto"):
+                bad_col.append(f"{n}:run")
+    chk("Times New Roman in Normal/Heading styles", not bad_font, " ".join(bad_font))
+    chk("no theme-font override in Normal/Heading styles", not theme, " ".join(theme))
+    chk("all text black", not bad_col, " ".join(sorted(set(bad_col))))
+    md = docs["manuscript.docx"]
+    chk("body text 12 pt", md.styles["Normal"].font.size.pt == 12)
+    capsz = [r.font.size.pt if r.font.size else None for p in md.paragraphs
+             if re.match(r"(Fig|Table) \d+\. ", p.text) for r in p.runs]
+    chk("figure and table captions 10 pt", capsz and all(x == 10 for x in capsz), str(sorted(set(capsz))))
+    xml = md.element.xml
+    chk("displayed equations are editable OMML (>= 2)", xml.count("<m:oMath ") + xml.count("<m:oMath>") >= 2,
+        str(xml.count("<m:oMath")))
+    chk("no document-grid snapping", "w:docGrid" not in xml)
+    chk("no tracked changes or comments", not re.search(r"<w:(ins|del|commentReference)\b", xml))
+    ph = re.findall(r"\[[^\]]*to be (?:entered|completed)[^\]]*\]", alltext["manuscript.docx"])
+    chk("only author-side placeholder is the affiliation detail", len(ph) <= 1, "; ".join(ph))
+    da = body[body.index("Data availability") + 1]
+    chk("data statement does not claim processed fields are on GitHub",
+        "processed fields" not in da.split("Raw GITM")[0].split("github.com")[0] and
+        ("Zenodo" in da or "not yet in a public archive" in da), da[:120])
     out = pd.DataFrame(rows)
     out.to_csv(os.path.join(ROOT, "results/qc_physical_manuscript.csv"), index=False)
     print(out.to_string())

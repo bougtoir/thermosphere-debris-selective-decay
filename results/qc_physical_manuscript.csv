@@ -14,10 +14,22 @@ no hard line breaks in paragraphs: cover_letter.docx,PASS,0
 highlights 3-5 items,PASS,5
 highlights <= 85 characters,PASS,"[78, 72, 55, 54, 66]"
 <= 6 keywords,PASS,Keywords: thermosphere; orbital debris; atmospheric drag; GITM; localized heating; density perturbation
-"word count <= 13000 (incl. refs, 300 per display item)",PASS,6969
+"word count <= 13000 (incl. refs, 300 per display item)",PASS,7147
 figure file Fig1.tif present,PASS,
 figure file Fig2.tif present,PASS,
 figure file Fig3.tif present,PASS,
 figure file Fig4.tif present,PASS,
 figure file Fig5.tif present,PASS,
 every body number injected or a declared design constant,PASS,
+no 'preregistered' terminology (no external registry exists),PASS,
+cover letter has no prior-journal rejection paragraph,PASS,
+Times New Roman in Normal/Heading styles,PASS,
+no theme-font override in Normal/Heading styles,PASS,
+all text black,PASS,
+body text 12 pt,PASS,
+figure and table captions 10 pt,PASS,[10.0]
+displayed equations are editable OMML (>= 2),PASS,2
+no document-grid snapping,PASS,
+no tracked changes or comments,PASS,
+only author-side placeholder is the affiliation detail,PASS,[department and postal address to be completed by the author]
+data statement does not claim processed fields are on GitHub,PASS,"The analysis code, GITM case configurations, the heating hook and all result tables are openly available at https://gith"
