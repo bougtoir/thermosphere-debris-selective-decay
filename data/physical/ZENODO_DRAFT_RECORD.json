@@ -1,0 +1,78 @@
+{
+ "checked_utc": "2026-11-12T05:13:09Z",
+ "http": 200,
+ "deposition_id": 24101202,
+ "state": "published",
+ "submitted": true,
+ "reserved_doi": "10.5281/zenodo.24101202",
+ "title": "Processed GITM fields and analysis code for a coupled GITM–orbit study of orbital-drag selectivity from localized thermospheric heating",
+ "creators": [
+  {
+   "name": "Onishi, Tatsuki",
+   "affiliation": "Shiga University"
+  }
+ ],
+ "license": "cc-by-4.0",
+ "access_right": "open",
+ "version": null,
+ "related_identifiers": [
+  {
+   "identifier": "https://github.com/bougtoir/thermosphere-debris-selective-decay",
+   "relation": "isSupplementTo",
+   "resource_type": "software",
+   "scheme": "url"
+  }
+ ],
+ "files": [
+  {
+   "name": "p10_z300_slices.npz",
+   "size": 47635582,
+   "md5": "md5:096c802e9a2636c0745e861505f23616"
+  },
+  {
+   "name": "p11_z300_fine12_slices.npz",
+   "size": 209642932,
+   "md5": "md5:da564bb01a3f00adbdd6e1ff022f6b0e"
+  },
+  {
+   "name": "PROCESSED_MANIFEST.csv",
+   "size": 1206,
+   "md5": "md5:65d6725f5fad8e6368beb6c20aad896b"
+  },
+  {
+   "name": "p11_z150_slices.npz",
+   "size": 36723640,
+   "md5": "md5:cc81afb3cce085e80723bf7c390ce144"
+  },
+  {
+   "name": "GITM_RUN_MANIFEST.csv",
+   "size": 4533728,
+   "md5": "md5:fb0cdd56836e2691fb11a639470b5d5f"
+  },
+  {
+   "name": "p11_z300_fine_slices.npz",
+   "size": 73926012,
+   "md5": "md5:f12a4baeddac0c8ea2548577ead65782"
+  },
+  {
+   "name": "p11_z300_slices.npz",
+   "size": 35734353,
+   "md5": "md5:c5505b1b2cf14361f9a3742bba0f6655"
+  },
+  {
+   "name": "repository_snapshot.zip",
+   "size": 31289926,
+   "md5": "md5:ef2c640c5982b47365828fe74b367195"
+  },
+  {
+   "name": "README.md",
+   "size": 1860,
+   "md5": "md5:93eccedb1788367b77e1aa4e996fb815"
+  }
+ ],
+ "public_record_url_after_publication": "https://zenodo.org/records/24101202",
+ "doi_resolves": 302,
+ "public_page_http_anonymous": 200,
+ "code_snapshot_commit": "8aa5205",
+ "publication_date": "2026-11-10"
+}

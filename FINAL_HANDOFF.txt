@@ -1,50 +1,69 @@
-FINAL HANDOFF — ASR EVIDENCE-RECOVERY PASS
-Date: 2026-10-17 UTC | Branch: devin/1792228606-asr-hostile-hardcode-revision | PR #5
+FINAL HANDOFF — Acta Astronautica final delta revision (GITM–orbit drag selectivity)
 
-1. FINAL VERDICT: SUBMIT
-   All required audits were genuinely performed in this session chain,
-   all execution evidence exists, no unresolved CRITICAL/MAJOR defect.
+Repository : https://github.com/bougtoir/thermosphere-debris-selective-decay
+Branch     : devin/1794047620-physical-model-rebuild
+PR         : https://github.com/bougtoir/thermosphere-debris-selective-decay/pull/9 (open, not merged)
+Baseline   : 23add38e72a7950816baf6d92aa3531ec13d5c30 (scientific baseline main@ac67802 untouched)
+Code/results commit of this delta: 8aa5205940fcd7551e5f8ba96a0d52aae5701c39 (the Zenodo code snapshot is git archive of this commit)
+Final HEAD : the commit adding this file (documentation and the regenerated manuscript data statement on top of 8aa5205)
 
-2. ROOT CAUSE OF REPEATED ZIP EXCLUSION (Phase 5)
-   scripts/build_submission_package.py uses an explicit ITEMS allowlist
-   under 03_submission_docs/. The audit artifacts from the three
-   review/lock passes were never added to it, and the builder silently
-   skips files it doesn't know — no completeness check existed.
-   FIX: all required evidence now listed under 08_audit_evidence/;
-   a missing audit file now aborts the build (fail-loud), and zip
-   contents were programmatically verified post-build.
+DECISION: SUBMIT
+  The former condition (public processed-data archive) is met: the author published Zenodo record 24101202 on 2026-11-12;
+  https://doi.org/10.5281/zenodo.24101202 resolves, the record page is public, and all 9 files match the local MD5/size.
+  The Data availability statement now reads 'archived at Zenodo'. Remaining items are author-only metadata (below).
 
-3. RECOVERED vs NEWLY-EXECUTED
-   Recovered (FOUND_CURRENT, all 19, results/evidence_inventory.csv):
-   every required doc/CSV/log already existed and was current — nothing
-   had to be re-run. New work this pass: inventory docs, the ITEMS fix,
-   package rebuild, content verification.
+WHAT WAS NOT DONE: no GITM run, no new simulation, no change to forcing, orbits, configurations or estimands;
+  no canonical CSV, processed NPZ, manifest or raw output modified; no merge, no journal submission/contact, no payment;
+  Zenodo record published by the author (not by Devin).
 
-4. COMMANDS / EXIT CODES / LOGS
-   - make all: exit 0, 39m09s — logs/make_all.log
-   - pytest tests/ -x -q: exit 0, 26/26 — logs/final_qc_commands.log
-   - pytest test_numeric_provenance -v: exit 0, 6/6 — same log
-   - make quick: exit 0, 7.1s — same log
-   - input perturbation Bx2: exit 0, expected-direction change — same log
-   - build_submission_package.py: exit 0, 130+21 files
+CORRECTIONS (display/derivation only):
+  Fig.1 exact 400 km (log-linear interp; baseline showed the 390.6 km native level), neutral bin white (was blue); no saturation (0 cells out of range).
+  Fig.3 shading of the 300 km sign-undefined interval (first 30 min; rule = a group mean <= 0).
+  Fig.5 discrete markers, dotted lines labelled visual guide only.
+  Coarse/fine 12 h selectivity difference from unrounded values: 1.1% (was 1.3% from rounded strings).
+  Raw output size from manifest: 54 GB (prose said ~30 GB).
+  Title/abstract/discussion/conclusions: no single-mechanism (transport) attribution; 'robust to resolution, not formal convergence'.
+  'pre-registered' -> 'prospectively frozen' (commit c93bf8c; no external registry).
+  Data statement truthful (GitHub = code/results; Zenodo draft = processed fields; raw on request with SHA-256 manifest).
+  Cover letter rewritten (first person, no ASR paragraph). TNR 12/10 pt styles, black text, OMML Eq.(1)-(2), no docGrid.
 
-5. HOSTILE REVIEW COUNTS: CRITICAL 0; MAJOR 2 found across sweeps
-   (placeholder render defect, CSV schema drift) — both fixed;
-   MINOR 1 (supplement table wrap) fixed; residual = declared
-   irreducible limitations only.
+UNCHANGED SCIENTIFIC RESULTS: 12 h S = 1.02/1.51/2.03 (coarse) and 0.98/1.49/2.04 (fine) at 300/400/500 km; non-target share 84%/77%
+  (400/500 km); static-patch overstatement 1.5-1.7x (400), 2.8-3.6x (500), 4.7-8.5x source-centred; prediction outcomes 15/7/4.
 
-6. HARDCODE: 17 findings — suspicious 3 fixed, justified 11,
-   reworded 3, unresolved 0; 85 claims traced; AST scan clean.
+QC: manuscript QC 34/34 PASS; semantic checks 325/325 PASS; pytest 34 passed; flake8 clean; LibreOffice PDF 21 pp, no missing glyphs
+  (Liberation Serif substitutes Times New Roman on the VM only); TIFF 600 dpi RGB LZW; fresh public clone + deposited NPZ reproduces
+  all figures/tables byte-identically; GITM simulations themselves not independently re-run.
 
-7. REPRODUCIBILITY: full make all regenerated every phase; diffs were
-   ulp FP noise + bootstrap CI resampling only; one real schema defect
-   found and fixed during the run.
+AUTHOR-ONLY ACTIONS:
+  1. (done 2026-11-12) Zenodo record published: https://doi.org/10.5281/zenodo.24101202
+  2. Complete department, postal address and ORCID in manuscript.docx (placeholder on the title page) and in Editorial Manager.
+  3. Read the final manuscript, highlights and cover letter; confirm funding/acknowledgements statements.
+  4. Submit manually; merge PR #9 only if wanted.
 
-8. MANUSCRIPT/SCIENCE CHANGED: none this pass (packaging only).
+UNRESOLVED LIMITATIONS (stated in the manuscript): one model, one quiet equinox background (Tn min 118 K near 100-107 km fails a
+  frozen 150 K criterion), two grids with unequal spin-up (24 h vs 6 h), extreme 100 GW forcing, two-level power/altitude contrasts
+  on the coarse grid only, synthetic orbits with one ballistic coefficient, a single target definition, no transport budget.
 
-9. FINAL ZIP: ASR_SUBMISSION_EVIDENCE_VERIFIED_FINAL.zip at repo root
-   (SHA256 recorded in the git commit message and session report —
-   it cannot hash itself).
-
-10. GIT: branch devin/1792228606-asr-hostile-hardcode-revision;
-    commits ef02a98 -> a28aed3 -> (this commit); PR #5.
+ARTIFACTS (SHA-256):
+  25cff5ad6c5e1d959a5c3b9fd7abadcd4a075af179b0d1b19b1d7e02684ba6ef  manuscript/physical/manuscript.docx
+  5ef9757c66c98e70efd27ffbb24289df0ac6931d7e0e863193ac05db0831da8d  manuscript/physical/manuscript_review_inline.docx
+  8a08342176e5dd8981a1cf4b1d2008f19417932107d95934d0a3533ad44f29d6  manuscript/physical/tables.docx
+  9a05a2da0a9ec22b1660fec7937aaa749169e6bd4a84758d5c820b684b0cbd96  manuscript/physical/figures.pptx
+  e9e3661d729267610db1907a4ea4921ae0ad3f470271862bf14ad4d1b864de3b  manuscript/physical/highlights.docx
+  21144acafea97e298d2b2d2c9fe5668ef18eb6899ded509d7192f3b1bd1ee188  manuscript/physical/cover_letter.docx
+  b30d0b10c755976c19bf295229a4e34173ada5462e4e9918109d8402e3c58e23  manuscript/physical/figures/Fig1.tif
+  89944dcdb8b643305a80dae5359c127630685f7b4117ab725de8f97c3fdc7191  manuscript/physical/figures/Fig2.tif
+  0cc0d2585aff5aaefd51055dfb088c5000666999f002ed212e13fbf59c901af6  manuscript/physical/figures/Fig3.tif
+  fd1254419b7368a98e2cd78e105419710384c90cf05a5b4f915a44454e77d610  manuscript/physical/figures/Fig4.tif
+  a264d3b11bc8a5d1f2b2a030d8b4f2f22d9e40467846f53d684cf3a40eece6cd  manuscript/physical/figures/Fig5.tif
+  393a3e9e0444590491b4fe90aa85d7e1d1cf2d1a7e92f83920dfb8a60c1a7656  docs/ACTA_FINAL_DELTA_BASELINE.md
+  1ab32bd246e9b9599603ab727d6f7d6ed96a2f6cd5ccf094e6742e42001adb4d  docs/ACTA_CLAIM_CALIBRATION_AUDIT.md
+  ee45e594fbcc3b7bae3d5574e837f5a51bf6cf4782700bb82df42b04ba2ba773  docs/ACTA_DATA_AVAILABILITY_AUDIT.md
+  b1b884dffce72d87874d931813bf959344e9a717bdcae481895cf1911eea7da1  docs/ACTA_PUBLIC_REPRODUCTION_CHECK.md
+  f614cd31e2a510119df5047cbcf4d637073bc2289ecf75f2c16cb3a0ba92186d  docs/ACTA_FIGURE_EXPORT_AUDIT.md
+  54321956d41d85b85d2713c5f316904ff2cb9a3403d965b2eb14c6e60e59de33  docs/ACTA_FINAL_SEMANTIC_CODE_AUDIT.md
+  2eefd79039334b819de82f1376fc5a136520e9777df806ea79e4da68d7a182a7  docs/ACTA_FINAL_HOSTILE_REVIEW.md
+  2290fbba5df9868159f90cca0fd88e35fdf3daf455bbf4d6b2cc70a076703f41  docs/ACTA_FINAL_DELTA_QC_MATRIX.md
+  bc449d6e0c5297a1d78d2117b7695767e16ca11559a25b743d6a7836050119ac  results/qc_physical_manuscript.csv
+  610fc96d436df920212f6b6548d36989aefdb8df377d26293207c1b74cade636  results/tables/acta_semantic_checks.csv
+  29dac593cc3b74cc59a9f4a7e325d20e0ce80b9b37f1a7c9a84f6c240cd7d67b  data/physical/ZENODO_DRAFT_RECORD.json

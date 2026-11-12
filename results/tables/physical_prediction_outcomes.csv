@@ -1,0 +1,27 @@
+prediction,quantity,value,verdict,note
+PR1,"peak drho/rho 400 km (1e11 W, z0 300)",2.0399048573356744,FALSIFIED,falsified if <0.05 or >1
+PR2,peak ratio 1e10/1e11 at 400 km,0.3095760086039019,FALSIFIED,
+PR3,time of 400-km peak after onset [h],0.8338888888888889,CONFIRMED,
+PR4,|min|/peak drho at 400 km; min O/N2 change,0.009552853097222343,CONFIRMED,min dO/N2 = -0.925
+PR5,"max |drho/rho| beyond 3000 km within 3 h of onset, 400 km",1.518260024023225,CONFIRMED,
+PR6a,e-folding of local 400-km peak after switch-off [h],1.166388888888889,CONFIRMED,
+PR6b,e-folding of global-mean 400-km drho after switch-off [h],3.9994444444444444,CONFIRMED,
+PR7,peak 400-km drho ratio z0=150 / z0=300,0.16224966058941015,FALSIFIED,
+PR8a,fine/coarse peak drho at 400 km - 1 (t<=3h),-0.0717049334740757,CONFIRMED,
+PR8b,max |fine/coarse mass excess above 400 km - 1|,0.02079701058240402,CONFIRMED,
+PR8a_12h,fine/coarse peak drho at 400 km - 1 (t<=12h),-0.0717049334740757,CONFIRMED,supplementary: same frozen PR8 bounds applied over the 0-12 h fine pair (c8b + c8x)
+PR8b_12h,max |fine/coarse mass excess above 400 km - 1| (t<=12h),0.08705717244071198,CONFIRMED,supplementary: same frozen PR8 bounds applied over the 0-12 h fine pair (c8b + c8x)
+PR9,"target extra dv / natural dv, 400 km, 12 h",0.03662070629535079,OUTSIDE_RANGE_NOT_FALSIFIED,
+PR10@300,selectivity GITM vs prescribed (prescribed/GITM),0.9333582460963337,FALSIFIED,"GITM 1.020, prescribed 0.952"
+PR11@300,target extra dv GITM / prescribed,2.6297684624875672,CONFIRMED,
+PR10@400,selectivity GITM vs prescribed (prescribed/GITM),1.5193254065719652,OUTSIDE_RANGE_NOT_FALSIFIED,"GITM 1.507, prescribed 2.289"
+PR11@400,target extra dv GITM / prescribed,1.8069915560074528,CONFIRMED,
+PR10@500,selectivity GITM vs prescribed (prescribed/GITM),3.0235869716437684,CONFIRMED,"GITM 2.029, prescribed 6.134"
+PR11@500,target extra dv GITM / prescribed,1.4165288319546825,CONFIRMED,
+PR10@300_fine12_native,selectivity GITM vs prescribed (prescribed/GITM),0.9136165171448192,FALSIFIED,"fine grid 0-12 h, peak-matched fit; GITM 0.975, prescribed 0.891"
+PR10@400_fine12_native,selectivity GITM vs prescribed (prescribed/GITM),1.697371198944088,OUTSIDE_RANGE_NOT_FALSIFIED,"fine grid 0-12 h, peak-matched fit; GITM 1.491, prescribed 2.530"
+PR10@500_fine12_native,selectivity GITM vs prescribed (prescribed/GITM),3.4831564431416804,CONFIRMED,"fine grid 0-12 h, peak-matched fit; GITM 2.044, prescribed 7.118"
+PR10@300_fine12_remapped,selectivity GITM vs prescribed (prescribed/GITM),0.8998753593835404,FALSIFIED,"fine grid 0-12 h, peak-matched fit; GITM 0.977, prescribed 0.879"
+PR10@400_fine12_remapped,selectivity GITM vs prescribed (prescribed/GITM),1.5369765939640996,OUTSIDE_RANGE_NOT_FALSIFIED,"fine grid 0-12 h, peak-matched fit; GITM 1.482, prescribed 2.278"
+PR10@500_fine12_remapped,selectivity GITM vs prescribed (prescribed/GITM),3.567564901880376,CONFIRMED,"fine grid 0-12 h, peak-matched fit; GITM 2.012, prescribed 7.178"
+PR12,peak drho at 400 km for 1e11 W (falsified if >=1),2.0399048573356744,FALSIFIED,δ≥1 reached; see area/duration in G3 summary

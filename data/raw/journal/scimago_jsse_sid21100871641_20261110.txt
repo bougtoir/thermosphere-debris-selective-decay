@@ -1,0 +1,569 @@
+Skip to main content
+       
+Journal of Space Safety Engineering
+United Kingdom
+|
+Universities and research institutions
+|
+Media Ranking
+Country
+United Kingdom
+Subject Area and Category
+Engineering
+Aerospace Engineering
+Safety, Risk, Reliability and Quality
+Publisher
+Elsevier Ltd
+SJR 2025
+0.551
+Q2
+H-Index
+23
+Publication type
+Journals
+ISSN
+24688967, 24688975
+Coverage
+2014-2026
+Information
+Home
+How to publish in this journal
+jsse@iaass.org
+Scope
+The Journal of Space Safety Engineering (JSSE) is a quarterly publication of the International Association for the Advancement of Space Safety (IAASS). The JSSE is published using an open access publication model, meaning that all interested readers are able to freely access the journal online without the need for a subscription, and authors are not charged and retain the copyright of their work. JSSE provides an authoritative source of information in the field of space safety design, research and development. It serves applied scientists, engineers, policy makers and safety advocates with a platform to develop, promote and coordinate the science, technology and practice of space safety. JSSE seeks to establish channels of communication between industry, academy and government in the field of space safety, and also covers related environmental issues. The journal has a distinguished Editorial Board with extensive qualifications, ensuring that the journal maintains high scientific and technical standards and has a broad international coverage. Moreover, all published articles will be made available on PubMed Central and indexed in PubMed at the time of publication.
+Quartiles
+2019
+2020
+2021
+2022
+2023
+2024
+2025
+Aerospace Engineering
+Safety, Risk, Reliability and Quality
+
+The set of journals have been ranked according to their SJR and divided into four equal groups, four quartiles. Q1 (green) comprises the quarter of the journals with the highest values, Q2 (yellow) the second highest values, Q3 (orange) the third highest values and Q4 (red) the lowest values.
+
+Category	Year	Quartile
+Aerospace Engineering	2019	Q3
+Aerospace Engineering	2020	Q2
+Aerospace Engineering	2021	Q3
+Aerospace Engineering	2022	Q3
+Aerospace Engineering	2023	Q3
+Aerospace Engineering	2024	Q2
+Aerospace Engineering	2025	Q2
+Safety, Risk, Reliability and Quality	2019	Q3
+Safety, Risk, Reliability and Quality	2020	Q2
+Safety, Risk, Reliability and Quality	2021	Q3
+Safety, Risk, Reliability and Quality	2022	Q2
+Safety, Risk, Reliability and Quality	2023	Q3
+Safety, Risk, Reliability and Quality	2024	Q2
+Safety, Risk, Reliability and Quality	2025	Q2
+Find similar journals
+All quartiles
+All countries
+All subject categories
+Clear filters
+Download
+Only Open Access Journals
+1 - Acta Astronautica
+55%
+similarity
+2 - CEAS Space Journal
+53%
+similarity
+3 - Space: Science and Technology (United States)
+45%
+similarity
+4 - JBIS - Journal of the British Interplanetary Society
+28%
+similarity
+5 - Journal of the Astronautical Sciences
+28%
+similarity
+6 - Journal of Deep Space Exploration
+28%
+similarity
+7 - Advances in Space Research
+26%
+similarity
+8 - Aerospace Systems
+24%
+similarity
+9 - Aerospace
+23%
+similarity
+10 - Journal of Aerospace Engineering
+22%
+similarity
+11 - Journal of Spacecraft and Rockets
+21%
+similarity
+12 - International Journal of Aerospace Engineering
+21%
+similarity
+SJR
+2019
+2020
+2021
+2022
+2023
+2024
+2025
+0.2
+0.4
+0.6
+0.8
+
+The SJR is a size-independent prestige indicator that ranks journals by their 'average prestige per article'. It is based on the idea that 'all citations are not created equal'. SJR is a measure of scientific influence of journals that accounts for both the number of citations received by a journal and the importance or prestige of the journals where such citations come from It measures the scientific influence of the average article in a journal, it expresses how central to the global scientific discussion an average article of the journal is.
+
+Year	SJR
+2019	0.335
+2020	0.410
+2021	0.316
+2022	0.372
+2023	0.310
+2024	0.621
+2025	0.551
+Total Documents
+2014
+2016
+2017
+2018
+2020
+2022
+2024
+0
+30
+60
+90
+
+Evolution of the number of published documents. All types of documents are considered, including citable and non citable documents.
+
+Year	Documents
+2014	12
+2015	17
+2016	20
+2017	23
+2018	23
+2019	42
+2020	71
+2021	50
+2022	78
+2023	65
+2024	87
+2025	90
+External Cites per Doc Cites per Doc
+2014
+2016
+2017
+2018
+2020
+2022
+2024
+0
+0.7
+1.4
+2.1
+
+Evolution of the number of total citation per document and external citation per document (i.e. journal self-citations removed) received by a journal's published documents during the three previous years. External citations are calculated by subtracting the number of self-citations from the total number of citations received by the journal’s documents.
+
+Cites	Year	Value
+External Cites per document	2014	0
+External Cites per document	2015	0.167
+External Cites per document	2016	0.103
+External Cites per document	2017	0.204
+External Cites per document	2018	0.267
+External Cites per document	2019	0.470
+External Cites per document	2020	0.739
+External Cites per document	2021	1.132
+External Cites per document	2022	1.405
+External Cites per document	2023	1.412
+External Cites per document	2024	1.772
+External Cites per document	2025	1.700
+Cites per document	2014	0.000
+Cites per document	2015	0.333
+Cites per document	2016	0.138
+Cites per document	2017	0.204
+Cites per document	2018	0.283
+Cites per document	2019	0.545
+Cites per document	2020	0.818
+Cites per document	2021	1.199
+Cites per document	2022	1.528
+Cites per document	2023	1.563
+Cites per document	2024	1.891
+Cites per document	2025	1.961
+% International Collaboration
+2014
+2015
+2017
+2018
+2020
+2022
+2024
+0
+9
+18
+27
+36
+
+International Collaboration accounts for the articles that have been produced by researchers from several countries. The chart shows the ratio of a journal's documents signed by researchers from more than one country; that is including more than one country address.
+
+Year	International Collaboration
+2014	8.33
+2015	5.88
+2016	5.00
+2017	30.43
+2018	4.35
+2019	19.05
+2020	16.90
+2021	10.00
+2022	25.64
+2023	20.00
+2024	19.54
+2025	18.89
+Cited documents Uncited documents
+2014
+2016
+2017
+2018
+2020
+2022
+2024
+0
+80
+160
+240
+
+Ratio of a journal's items, grouped in three years windows, that have been cited at least once vs. those not cited during the following year.
+
+Documents	Year	Value
+Uncited documents	2014	0
+Uncited documents	2015	10
+Uncited documents	2016	26
+Uncited documents	2017	42
+Uncited documents	2018	46
+Uncited documents	2019	44
+Uncited documents	2020	48
+Uncited documents	2021	77
+Uncited documents	2022	70
+Uncited documents	2023	86
+Uncited documents	2024	81
+Uncited documents	2025	85
+Cited documents	2014	0
+Cited documents	2015	2
+Cited documents	2016	3
+Cited documents	2017	7
+Cited documents	2018	14
+Cited documents	2019	22
+Cited documents	2020	40
+Cited documents	2021	59
+Cited documents	2022	93
+Cited documents	2023	113
+Cited documents	2024	112
+Cited documents	2025	145
+% Female Authors
+2014
+2015
+2017
+2018
+2020
+2022
+2024
+0
+9
+18
+27
+36
+
+Evolution of the percentage of female authors.
+
+Year	Female Percent
+2014	11.76
+2015	9.09
+2016	30.77
+2017	5.77
+2018	17.07
+2019	21.05
+2020	18.40
+2021	19.17
+2022	23.36
+2023	26.67
+2024	26.95
+2025	22.65
+Estimated APC
+2014
+2015
+2016
+2017
+2018
+2020
+2022
+2024
+0
+1k
+2k
+3k
+
+It estimates the article processing charges (APCs) a journal might charge, based on its visibility, prestige, and impact as measured by the SJR. It does not reflect the actual APC, but rather a calculated approximation based on journal quality.
+
+Year	Est. APC (USD)
+2014	
+2015	
+2016	
+2017	
+2018	
+2019	2721
+2020	2775
+2021	2749
+2022	2755
+2023	2741
+2024	2819
+2025	2854
+Estimated financial value
+2014
+2016
+2018
+2020
+2022
+2024
+0
+400k
+800k
+1.2M
+
+It represents the potential financial worth of a journal. It is obtained by multiplying the journal's Estimated APC by the total number of citable documents published over the past five years. This value reflects the hypothetical revenue a journal could generate based on its estimated publication costs and scholarly output.
+
+Year	Est. value (USD)
+2014	
+2015	
+2016	
+2017	
+2018	
+2019	114290
+2020	313570
+2021	448011
+2022	663971
+2023	838816
+2024	989509
+2025	1056075
+Total Cites Self-Cites
+2014
+2016
+2017
+2018
+2020
+2022
+2024
+0
+200
+400
+600
+
+Evolution of the total number of citations and journal's self-citations received by a journal's published documents during the three previous years.
+Journal Self-citation is defined as the number of citation from a journal citing article to articles published by the same journal.
+
+Cites	Year	Value
+Self Cites	2014	0
+Self Cites	2015	2
+Self Cites	2016	1
+Self Cites	2017	0
+Self Cites	2018	1
+Self Cites	2019	5
+Self Cites	2020	7
+Self Cites	2021	9
+Self Cites	2022	20
+Self Cites	2023	30
+Self Cites	2024	23
+Self Cites	2025	60
+Total Cites	2014	0
+Total Cites	2015	4
+Total Cites	2016	4
+Total Cites	2017	10
+Total Cites	2018	17
+Total Cites	2019	36
+Total Cites	2020	72
+Total Cites	2021	163
+Total Cites	2022	249
+Total Cites	2023	311
+Total Cites	2024	365
+Total Cites	2025	451
+Citations per document
+Cites / Doc. (4 years)
+Cites / Doc. (3 years)
+Cites / Doc. (2 years)
+2014
+2016
+2017
+2018
+2020
+2022
+2024
+0
+0.4
+0.8
+1.2
+1.6
+2
+2.4
+
+This indicator counts the number of citations received by documents from a journal and divides them by the total number of documents published in that journal. The chart shows the evolution of the average number of times documents published in a journal in the past two, three and four years have been cited in the current year. The two years line is equivalent to journal impact factor ™ (Thomson Reuters) metric.
+
+Cites per document	Year	Value
+Cites / Doc. (4 years)	2014	0.000
+Cites / Doc. (4 years)	2015	0.333
+Cites / Doc. (4 years)	2016	0.138
+Cites / Doc. (4 years)	2017	0.204
+Cites / Doc. (4 years)	2018	0.264
+Cites / Doc. (4 years)	2019	0.518
+Cites / Doc. (4 years)	2020	0.750
+Cites / Doc. (4 years)	2021	1.195
+Cites / Doc. (4 years)	2022	1.387
+Cites / Doc. (4 years)	2023	1.697
+Cites / Doc. (4 years)	2024	1.898
+Cites / Doc. (4 years)	2025	1.854
+Cites / Doc. (3 years)	2014	0.000
+Cites / Doc. (3 years)	2015	0.333
+Cites / Doc. (3 years)	2016	0.138
+Cites / Doc. (3 years)	2017	0.204
+Cites / Doc. (3 years)	2018	0.283
+Cites / Doc. (3 years)	2019	0.545
+Cites / Doc. (3 years)	2020	0.818
+Cites / Doc. (3 years)	2021	1.199
+Cites / Doc. (3 years)	2022	1.528
+Cites / Doc. (3 years)	2023	1.563
+Cites / Doc. (3 years)	2024	1.891
+Cites / Doc. (3 years)	2025	1.961
+Cites / Doc. (2 years)	2014	0.000
+Cites / Doc. (2 years)	2015	0.333
+Cites / Doc. (2 years)	2016	0.138
+Cites / Doc. (2 years)	2017	0.243
+Cites / Doc. (2 years)	2018	0.372
+Cites / Doc. (2 years)	2019	0.696
+Cites / Doc. (2 years)	2020	0.908
+Cites / Doc. (2 years)	2021	1.389
+Cites / Doc. (2 years)	2022	1.273
+Cites / Doc. (2 years)	2023	1.328
+Cites / Doc. (2 years)	2024	2.119
+Cites / Doc. (2 years)	2025	1.993
+Citable documents Non-citable documents
+2014
+2016
+2017
+2018
+2020
+2022
+2024
+0
+80
+160
+240
+
+Not every article in a journal is considered primary research and therefore "citable", this chart shows the ratio of a journal's articles including substantial research (research articles, conference papers and reviews) in three year windows vs. those documents other than research articles, reviews and conference papers.
+
+Documents	Year	Value
+Non-citable documents	2014	0
+Non-citable documents	2015	2
+Non-citable documents	2016	5
+Non-citable documents	2017	8
+Non-citable documents	2018	9
+Non-citable documents	2019	10
+Non-citable documents	2020	15
+Non-citable documents	2021	15
+Non-citable documents	2022	15
+Non-citable documents	2023	13
+Non-citable documents	2024	15
+Non-citable documents	2025	15
+Citable documents	2014	0
+Citable documents	2015	10
+Citable documents	2016	24
+Citable documents	2017	41
+Citable documents	2018	51
+Citable documents	2019	56
+Citable documents	2020	73
+Citable documents	2021	121
+Citable documents	2022	148
+Citable documents	2023	186
+Citable documents	2024	178
+Citable documents	2025	215
+Documents cited by public policy (Overton)
+2014
+2015
+2016
+2017
+2018
+2019
+2021
+2022
+2024
+0
+3
+6
+9
+
+Evolution of the number of documents cited by public policy documents according to Overton database.
+
+Documents	Year	Value
+Overton	2014	0
+Overton	2015	0
+Overton	2016	0
+Overton	2017	5
+Overton	2018	1
+Overton	2019	9
+Overton	2020	6
+Overton	2021	5
+Overton	2022	5
+Overton	2023	4
+Overton	2024	2
+Overton	2025	1
+Documents related to SDGs (UN)
+
+Coming soon
+
+Evolution of the number of documents related to Sustainable Development Goals defined by United Nations. Available from 2018 onwards.
+
+Show this widget in your own website
+
+Just copy the code below and paste within your html code:
+SCImago Graphica
+
+
+Explore, visually communicate and make sense of data with our new data visualization tool.
+Metrics based on Scopus® data as of March 2026
+S
+Saria Hannan
+6 years ago
+can you please provide me the impact factor, abstract submission deadline, publication timeline and most importantly publication fee for this journal please? its urgent.
+reply
+M
+Melanie Ortiz
+6 years ago
+Dear Saria, thank you very much for your comment. SCImago Journal and Country Rank uses Scopus data, our impact indicator is the SJR. Check out our web to localize the journal. We suggest you consult the Journal Citation Report for other indicators (like Impact Factor) with a Web of Science data source. For further information about this journal, please visit the journal's website. Best Regards, SCImago Team
+
+The users of Scimago Journal & Country Rank have the possibility to dialogue through comments linked to a specific journal. The purpose is to have a forum in which general doubts about the processes of publication in the journal, experiences and other issues derived from the publication of papers are resolved. For topics on particular articles, maintain the dialogue through the usual channels with your editor.
+
+Services
+Journal Rankings
+Country Rankings
+Journal Value
+About us
+Who we are
+Contact us
+SCImago’s products
+SCImago Journal Country & Rank
+SCImago Institutions Ranking
+SCImago Media Ranking
+SCImago Iber
+SCImago Arab
+SCImago Graphica
+Ediciones Profesionales de la Información
+All the information shown in the SCImago Journal Country & Rank website can be used for non-commercial purposes as long as it is cited.
+
+How to cite:
+SCImago, (n.d.). SJR-SCImago Journal Country & Rank [Portal]. Retrieved (Date), from https://www.scimagojr.com
+Powered by:
+Scopus®
+© 2026 SCImago Journal & Country Rank
+Legal Notice
+Privacy Policy
+Accessibility

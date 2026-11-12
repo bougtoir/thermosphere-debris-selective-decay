@@ -1,0 +1,905 @@
+Skip to main content
+       
+Acta Astronautica
+United Kingdom
+|
+Universities and research institutions
+|
+Media Ranking
+Country
+United Kingdom
+Subject Area and Category
+Engineering
+Aerospace Engineering
+Publisher
+Elsevier Ltd
+SJR 2025
+1.078
+Q1
+H-Index
+122
+Publication type
+Journals
+ISSN
+00945765
+Coverage
+1974-2026
+Information
+Home
+How to publish in this journal
+editor-in-chief@iaamail.org
+Scope
+Acta Astronautica is sponsored by the International Academy of Astronautics. Content is based on original contributions in all fields of basic, engineering, life and social space sciences and of space technology related to: The peaceful scientific exploration of space, Its exploitation for human welfare and progress, Conception, design, development and operation of space-borne and Earth-based systems, In addition to regular issues, the journal publishes selected proceedings of the annual International Astronautical Congress (IAC), transactions of the IAA and special issues on topics of current interest, such as microgravity, space station technology, geostationary orbits, and space economics. Other subject areas include satellite technology, space transportation and communications, space energy, power and propulsion, astrodynamics, extraterrestrial intelligence and Earth observations.
+Quartiles
+1999
+2001
+2003
+2005
+2007
+2009
+2011
+2013
+2015
+2017
+2019
+2021
+2023
+2025
+Aerospace Engineering
+
+The set of journals have been ranked according to their SJR and divided into four equal groups, four quartiles. Q1 (green) comprises the quarter of the journals with the highest values, Q2 (yellow) the second highest values, Q3 (orange) the third highest values and Q4 (red) the lowest values.
+
+Category	Year	Quartile
+Aerospace Engineering	1999	Q2
+Aerospace Engineering	2000	Q2
+Aerospace Engineering	2001	Q3
+Aerospace Engineering	2002	Q2
+Aerospace Engineering	2003	Q2
+Aerospace Engineering	2004	Q2
+Aerospace Engineering	2005	Q2
+Aerospace Engineering	2006	Q2
+Aerospace Engineering	2007	Q2
+Aerospace Engineering	2008	Q2
+Aerospace Engineering	2009	Q2
+Aerospace Engineering	2010	Q2
+Aerospace Engineering	2011	Q2
+Aerospace Engineering	2012	Q2
+Aerospace Engineering	2013	Q1
+Aerospace Engineering	2014	Q1
+Aerospace Engineering	2015	Q1
+Aerospace Engineering	2016	Q1
+Aerospace Engineering	2017	Q1
+Aerospace Engineering	2018	Q1
+Aerospace Engineering	2019	Q1
+Aerospace Engineering	2020	Q1
+Aerospace Engineering	2021	Q1
+Aerospace Engineering	2022	Q1
+Aerospace Engineering	2023	Q1
+Aerospace Engineering	2024	Q1
+Aerospace Engineering	2025	Q1
+Find similar journals
+All quartiles
+All countries
+All subject categories
+Clear filters
+Download
+Only Open Access Journals
+1 - Journal of Space Safety Engineering
+55%
+similarity
+2 - CEAS Space Journal
+48%
+similarity
+3 - Space: Science and Technology (United States)
+47%
+similarity
+4 - Journal of Spacecraft and Rockets
+33%
+similarity
+5 - Journal of Aerospace Engineering
+32%
+similarity
+6 - Proceedings of the Institution of Mechanical Engineers, Part G: Journal of Aerospace Engineering
+30%
+similarity
+7 - International Journal of Aerospace Engineering
+30%
+similarity
+8 - Aerospace
+29%
+similarity
+9 - Aerospace Systems
+28%
+similarity
+10 - Aerospace Science and Technology
+24%
+similarity
+11 - Advances in Space Research
+23%
+similarity
+12 - Journal of Guidance, Control, and Dynamics
+22%
+similarity
+SJR
+1999
+2002
+2005
+2008
+2011
+2014
+2017
+2020
+2023
+0
+0.4
+0.8
+1.2
+1.6
+
+The SJR is a size-independent prestige indicator that ranks journals by their 'average prestige per article'. It is based on the idea that 'all citations are not created equal'. SJR is a measure of scientific influence of journals that accounts for both the number of citations received by a journal and the importance or prestige of the journals where such citations come from It measures the scientific influence of the average article in a journal, it expresses how central to the global scientific discussion an average article of the journal is.
+
+Year	SJR
+1999	0.234
+2000	0.378
+2001	0.230
+2002	0.313
+2003	0.278
+2004	0.274
+2005	0.252
+2006	0.332
+2007	0.272
+2008	0.338
+2009	0.311
+2010	0.403
+2011	0.479
+2012	0.475
+2013	0.638
+2014	0.908
+2015	1.004
+2016	1.009
+2017	0.758
+2018	0.907
+2019	1.065
+2020	1.134
+2021	1.000
+2022	1.015
+2023	1.106
+2024	1.277
+2025	1.078
+Total Documents
+1999
+2002
+2005
+2008
+2011
+2014
+2017
+2020
+2023
+0
+200
+400
+600
+800
+
+Evolution of the number of published documents. All types of documents are considered, including citable and non citable documents.
+
+Year	Documents
+1999	150
+2000	184
+2001	164
+2002	178
+2003	210
+2004	215
+2005	212
+2006	198
+2007	244
+2008	237
+2009	310
+2010	325
+2011	344
+2012	266
+2013	294
+2014	477
+2015	329
+2016	457
+2017	469
+2018	547
+2019	600
+2020	572
+2021	618
+2022	581
+2023	615
+2024	660
+2025	650
+External Cites per Doc Cites per Doc
+1999
+2002
+2005
+2008
+2011
+2014
+2017
+2020
+2023
+0
+2
+4
+6
+
+Evolution of the number of total citation per document and external citation per document (i.e. journal self-citations removed) received by a journal's published documents during the three previous years. External citations are calculated by subtracting the number of self-citations from the total number of citations received by the journal’s documents.
+
+Cites	Year	Value
+External Cites per document	1999	0.105
+External Cites per document	2000	0.290
+External Cites per document	2001	0.191
+External Cites per document	2002	0.305
+External Cites per document	2003	0.471
+External Cites per document	2004	0.455
+External Cites per document	2005	0.411
+External Cites per document	2006	0.510
+External Cites per document	2007	0.555
+External Cites per document	2008	0.610
+External Cites per document	2009	0.673
+External Cites per document	2010	0.979
+External Cites per document	2011	1.071
+External Cites per document	2012	1.195
+External Cites per document	2013	1.424
+External Cites per document	2014	1.659
+External Cites per document	2015	1.546
+External Cites per document	2016	1.769
+External Cites per document	2017	2.010
+External Cites per document	2018	2.533
+External Cites per document	2019	2.689
+External Cites per document	2020	2.642
+External Cites per document	2021	2.778
+External Cites per document	2022	3.458
+External Cites per document	2023	3.643
+External Cites per document	2024	3.763
+External Cites per document	2025	3.782
+Cites per document	1999	0.151
+Cites per document	2000	0.328
+Cites per document	2001	0.236
+Cites per document	2002	0.337
+Cites per document	2003	0.492
+Cites per document	2004	0.486
+Cites per document	2005	0.438
+Cites per document	2006	0.553
+Cites per document	2007	0.595
+Cites per document	2008	0.674
+Cites per document	2009	0.736
+Cites per document	2010	1.123
+Cites per document	2011	1.235
+Cites per document	2012	1.358
+Cites per document	2013	1.572
+Cites per document	2014	1.970
+Cites per document	2015	1.825
+Cites per document	2016	2.220
+Cites per document	2017	2.603
+Cites per document	2018	3.324
+Cites per document	2019	3.399
+Cites per document	2020	3.228
+Cites per document	2021	3.501
+Cites per document	2022	4.107
+Cites per document	2023	4.237
+Cites per document	2024	4.370
+Cites per document	2025	4.330
+% International Collaboration
+1999
+2002
+2005
+2008
+2011
+2014
+2017
+2020
+2023
+6
+12
+18
+24
+30
+
+International Collaboration accounts for the articles that have been produced by researchers from several countries. The chart shows the ratio of a journal's documents signed by researchers from more than one country; that is including more than one country address.
+
+Year	International Collaboration
+1999	9.33
+2000	8.70
+2001	22.56
+2002	19.10
+2003	10.00
+2004	11.63
+2005	16.51
+2006	18.18
+2007	22.13
+2008	21.52
+2009	18.06
+2010	14.15
+2011	17.44
+2012	16.54
+2013	15.31
+2014	20.75
+2015	20.97
+2016	23.41
+2017	19.62
+2018	21.21
+2019	21.17
+2020	22.90
+2021	22.82
+2022	21.34
+2023	22.44
+2024	21.36
+2025	26.46
+Cited documents Uncited documents
+1999
+2002
+2005
+2008
+2011
+2014
+2017
+2020
+2023
+0
+700
+1.4k
+2.1k
+
+Ratio of a journal's items, grouped in three years windows, that have been cited at least once vs. those not cited during the following year.
+
+Documents	Year	Value
+Uncited documents	1999	467
+Uncited documents	2000	381
+Uncited documents	2001	389
+Uncited documents	2002	387
+Uncited documents	2003	381
+Uncited documents	2004	394
+Uncited documents	2005	444
+Uncited documents	2006	434
+Uncited documents	2007	404
+Uncited documents	2008	409
+Uncited documents	2009	395
+Uncited documents	2010	410
+Uncited documents	2011	404
+Uncited documents	2012	454
+Uncited documents	2013	379
+Uncited documents	2014	327
+Uncited documents	2015	369
+Uncited documents	2016	345
+Uncited documents	2017	345
+Uncited documents	2018	243
+Uncited documents	2019	265
+Uncited documents	2020	297
+Uncited documents	2021	292
+Uncited documents	2022	232
+Uncited documents	2023	221
+Uncited documents	2024	250
+Uncited documents	2025	254
+Cited documents	1999	55
+Cited documents	2000	85
+Cited documents	2001	81
+Cited documents	2002	111
+Cited documents	2003	145
+Cited documents	2004	158
+Cited documents	2005	159
+Cited documents	2006	203
+Cited documents	2007	221
+Cited documents	2008	245
+Cited documents	2009	284
+Cited documents	2010	381
+Cited documents	2011	468
+Cited documents	2012	525
+Cited documents	2013	556
+Cited documents	2014	577
+Cited documents	2015	668
+Cited documents	2016	755
+Cited documents	2017	918
+Cited documents	2018	1012
+Cited documents	2019	1208
+Cited documents	2020	1319
+Cited documents	2021	1427
+Cited documents	2022	1558
+Cited documents	2023	1550
+Cited documents	2024	1564
+Cited documents	2025	1602
+% Female Authors
+1999
+2002
+2005
+2008
+2011
+2014
+2017
+2020
+2023
+10
+15
+20
+25
+30
+
+Evolution of the percentage of female authors.
+
+Year	Female Percent
+1999	12.77
+2000	13.99
+2001	15.98
+2002	12.99
+2003	13.35
+2004	13.79
+2005	18.55
+2006	13.04
+2007	17.21
+2008	21.61
+2009	16.47
+2010	18.83
+2011	21.83
+2012	20.97
+2013	22.91
+2014	21.95
+2015	18.87
+2016	21.07
+2017	22.85
+2018	23.18
+2019	22.51
+2020	22.46
+2021	24.43
+2022	25.56
+2023	25.04
+2024	23.91
+2025	25.85
+Estimated APC
+1999
+2002
+2005
+2008
+2011
+2014
+2017
+2020
+2023
+2.4k
+2.7k
+3k
+3.3k
+3.6k
+
+It estimates the article processing charges (APCs) a journal might charge, based on its visibility, prestige, and impact as measured by the SJR. It does not reflect the actual APC, but rather a calculated approximation based on journal quality.
+
+Year	Est. APC (USD)
+1999	2547
+2000	2676
+2001	2634
+2002	2648
+2003	2644
+2004	2657
+2005	2614
+2006	2649
+2007	2635
+2008	2656
+2009	2668
+2010	2715
+2011	2758
+2012	2813
+2013	2886
+2014	3012
+2015	3118
+2016	3200
+2017	3240
+2018	3277
+2019	3297
+2020	3313
+2021	3312
+2022	3344
+2023	3368
+2024	3392
+2025	3385
+Estimated financial value
+1999
+2002
+2005
+2008
+2011
+2014
+2017
+2020
+2023
+0
+4M
+8M
+12M
+
+It represents the potential financial worth of a journal. It is obtained by multiplying the journal's Estimated APC by the total number of citable documents published over the past five years. This value reflects the hypothetical revenue a journal could generate based on its estimated publication costs and scholarly output.
+
+Year	Est. value (USD)
+1999	382045
+2000	893827
+2001	1311643
+2002	1789810
+2003	2342585
+2004	2527243
+2005	2559104
+2006	2683863
+2007	2843633
+2008	2937306
+2009	3204281
+2010	3568124
+2011	4027247
+2012	4169153
+2013	4442216
+2014	5137808
+2015	5331674
+2016	5833567
+2017	6564729
+2018	7467282
+2019	7919304
+2020	8764056
+2021	9294352
+2022	9757535
+2023	10055362
+2024	10331591
+2025	10576294
+Total Cites Self-Cites
+1999
+2002
+2005
+2008
+2011
+2014
+2017
+2020
+2023
+0
+3k
+6k
+9k
+
+Evolution of the total number of citations and journal's self-citations received by a journal's published documents during the three previous years.
+Journal Self-citation is defined as the number of citation from a journal citing article to articles published by the same journal.
+
+Cites	Year	Value
+Self Cites	1999	24
+Self Cites	2000	18
+Self Cites	2001	21
+Self Cites	2002	16
+Self Cites	2003	11
+Self Cites	2004	17
+Self Cites	2005	16
+Self Cites	2006	27
+Self Cites	2007	25
+Self Cites	2008	42
+Self Cites	2009	43
+Self Cites	2010	114
+Self Cites	2011	143
+Self Cites	2012	159
+Self Cites	2013	139
+Self Cites	2014	281
+Self Cites	2015	290
+Self Cites	2016	496
+Self Cites	2017	748
+Self Cites	2018	992
+Self Cites	2019	1046
+Self Cites	2020	947
+Self Cites	2021	1244
+Self Cites	2022	1163
+Self Cites	2023	1053
+Self Cites	2024	1101
+Self Cites	2025	1017
+Total Cites	1999	79
+Total Cites	2000	153
+Total Cites	2001	111
+Total Cites	2002	168
+Total Cites	2003	259
+Total Cites	2004	268
+Total Cites	2005	264
+Total Cites	2006	352
+Total Cites	2007	372
+Total Cites	2008	441
+Total Cites	2009	500
+Total Cites	2010	888
+Total Cites	2011	1077
+Total Cites	2012	1329
+Total Cites	2013	1470
+Total Cites	2014	1781
+Total Cites	2015	1893
+Total Cites	2016	2442
+Total Cites	2017	3287
+Total Cites	2018	4171
+Total Cites	2019	5007
+Total Cites	2020	5217
+Total Cites	2021	6019
+Total Cites	2022	7352
+Total Cites	2023	7504
+Total Cites	2024	7927
+Total Cites	2025	8037
+Citations per document
+Cites / Doc. (4 years)
+Cites / Doc. (3 years)
+Cites / Doc. (2 years)
+1999
+2002
+2005
+2008
+2011
+2014
+2017
+2020
+2023
+0
+0.75
+1.5
+2.25
+3
+3.75
+4.5
+5.25
+
+This indicator counts the number of citations received by documents from a journal and divides them by the total number of documents published in that journal. The chart shows the evolution of the average number of times documents published in a journal in the past two, three and four years have been cited in the current year. The two years line is equivalent to journal impact factor ™ (Thomson Reuters) metric.
+
+Cites per document	Year	Value
+Cites / Doc. (4 years)	1999	0.151
+Cites / Doc. (4 years)	2000	0.318
+Cites / Doc. (4 years)	2001	0.232
+Cites / Doc. (4 years)	2002	0.315
+Cites / Doc. (4 years)	2003	0.531
+Cites / Doc. (4 years)	2004	0.488
+Cites / Doc. (4 years)	2005	0.527
+Cites / Doc. (4 years)	2006	0.534
+Cites / Doc. (4 years)	2007	0.571
+Cites / Doc. (4 years)	2008	0.687
+Cites / Doc. (4 years)	2009	0.773
+Cites / Doc. (4 years)	2010	1.065
+Cites / Doc. (4 years)	2011	1.194
+Cites / Doc. (4 years)	2012	1.320
+Cites / Doc. (4 years)	2013	1.569
+Cites / Doc. (4 years)	2014	1.911
+Cites / Doc. (4 years)	2015	1.873
+Cites / Doc. (4 years)	2016	2.187
+Cites / Doc. (4 years)	2017	2.608
+Cites / Doc. (4 years)	2018	3.109
+Cites / Doc. (4 years)	2019	3.460
+Cites / Doc. (4 years)	2020	3.202
+Cites / Doc. (4 years)	2021	3.494
+Cites / Doc. (4 years)	2022	4.047
+Cites / Doc. (4 years)	2023	4.182
+Cites / Doc. (4 years)	2024	4.517
+Cites / Doc. (4 years)	2025	4.393
+Cites / Doc. (3 years)	1999	0.151
+Cites / Doc. (3 years)	2000	0.328
+Cites / Doc. (3 years)	2001	0.236
+Cites / Doc. (3 years)	2002	0.337
+Cites / Doc. (3 years)	2003	0.492
+Cites / Doc. (3 years)	2004	0.486
+Cites / Doc. (3 years)	2005	0.438
+Cites / Doc. (3 years)	2006	0.553
+Cites / Doc. (3 years)	2007	0.595
+Cites / Doc. (3 years)	2008	0.674
+Cites / Doc. (3 years)	2009	0.736
+Cites / Doc. (3 years)	2010	1.123
+Cites / Doc. (3 years)	2011	1.235
+Cites / Doc. (3 years)	2012	1.358
+Cites / Doc. (3 years)	2013	1.572
+Cites / Doc. (3 years)	2014	1.970
+Cites / Doc. (3 years)	2015	1.825
+Cites / Doc. (3 years)	2016	2.220
+Cites / Doc. (3 years)	2017	2.603
+Cites / Doc. (3 years)	2018	3.324
+Cites / Doc. (3 years)	2019	3.399
+Cites / Doc. (3 years)	2020	3.228
+Cites / Doc. (3 years)	2021	3.501
+Cites / Doc. (3 years)	2022	4.107
+Cites / Doc. (3 years)	2023	4.237
+Cites / Doc. (3 years)	2024	4.370
+Cites / Doc. (3 years)	2025	4.330
+Cites / Doc. (2 years)	1999	0.114
+Cites / Doc. (2 years)	2000	0.283
+Cites / Doc. (2 years)	2001	0.198
+Cites / Doc. (2 years)	2002	0.382
+Cites / Doc. (2 years)	2003	0.482
+Cites / Doc. (2 years)	2004	0.392
+Cites / Doc. (2 years)	2005	0.449
+Cites / Doc. (2 years)	2006	0.536
+Cites / Doc. (2 years)	2007	0.583
+Cites / Doc. (2 years)	2008	0.629
+Cites / Doc. (2 years)	2009	0.732
+Cites / Doc. (2 years)	2010	1.137
+Cites / Doc. (2 years)	2011	1.269
+Cites / Doc. (2 years)	2012	1.330
+Cites / Doc. (2 years)	2013	1.580
+Cites / Doc. (2 years)	2014	1.889
+Cites / Doc. (2 years)	2015	1.752
+Cites / Doc. (2 years)	2016	2.143
+Cites / Doc. (2 years)	2017	2.813
+Cites / Doc. (2 years)	2018	3.222
+Cites / Doc. (2 years)	2019	3.405
+Cites / Doc. (2 years)	2020	3.136
+Cites / Doc. (2 years)	2021	3.428
+Cites / Doc. (2 years)	2022	4.213
+Cites / Doc. (2 years)	2023	4.028
+Cites / Doc. (2 years)	2024	4.175
+Cites / Doc. (2 years)	2025	4.294
+Citable documents Non-citable documents
+1999
+2002
+2005
+2008
+2011
+2014
+2017
+2020
+2023
+0
+700
+1.4k
+2.1k
+
+Not every article in a journal is considered primary research and therefore "citable", this chart shows the ratio of a journal's articles including substantial research (research articles, conference papers and reviews) in three year windows vs. those documents other than research articles, reviews and conference papers.
+
+Documents	Year	Value
+Non-citable documents	1999	5
+Non-citable documents	2000	2
+Non-citable documents	2001	2
+Non-citable documents	2002	4
+Non-citable documents	2003	6
+Non-citable documents	2004	4
+Non-citable documents	2005	3
+Non-citable documents	2006	1
+Non-citable documents	2007	5
+Non-citable documents	2008	7
+Non-citable documents	2009	12
+Non-citable documents	2010	11
+Non-citable documents	2011	12
+Non-citable documents	2012	13
+Non-citable documents	2013	14
+Non-citable documents	2014	17
+Non-citable documents	2015	21
+Non-citable documents	2016	18
+Non-citable documents	2017	16
+Non-citable documents	2018	9
+Non-citable documents	2019	13
+Non-citable documents	2020	17
+Non-citable documents	2021	17
+Non-citable documents	2022	15
+Non-citable documents	2023	14
+Non-citable documents	2024	18
+Non-citable documents	2025	16
+Citable documents	1999	517
+Citable documents	2000	464
+Citable documents	2001	468
+Citable documents	2002	494
+Citable documents	2003	520
+Citable documents	2004	548
+Citable documents	2005	600
+Citable documents	2006	636
+Citable documents	2007	620
+Citable documents	2008	647
+Citable documents	2009	667
+Citable documents	2010	780
+Citable documents	2011	860
+Citable documents	2012	966
+Citable documents	2013	921
+Citable documents	2014	887
+Citable documents	2015	1016
+Citable documents	2016	1082
+Citable documents	2017	1247
+Citable documents	2018	1246
+Citable documents	2019	1460
+Citable documents	2020	1599
+Citable documents	2021	1702
+Citable documents	2022	1775
+Citable documents	2023	1757
+Citable documents	2024	1796
+Citable documents	2025	1840
+Documents cited by public policy (Overton)
+1999
+2002
+2005
+2008
+2011
+2014
+2017
+2020
+2023
+0
+10
+20
+30
+
+Evolution of the number of documents cited by public policy documents according to Overton database.
+
+Documents	Year	Value
+Overton	1999	0
+Overton	2000	0
+Overton	2001	0
+Overton	2002	0
+Overton	2003	0
+Overton	2004	5
+Overton	2005	12
+Overton	2006	11
+Overton	2007	19
+Overton	2008	16
+Overton	2009	17
+Overton	2010	24
+Overton	2011	17
+Overton	2012	13
+Overton	2013	25
+Overton	2014	17
+Overton	2015	22
+Overton	2016	17
+Overton	2017	13
+Overton	2018	23
+Overton	2019	14
+Overton	2020	28
+Overton	2021	20
+Overton	2022	11
+Overton	2023	10
+Overton	2024	3
+Overton	2025	1
+Documents related to SDGs (UN)
+
+Coming soon
+
+Evolution of the number of documents related to Sustainable Development Goals defined by United Nations. Available from 2018 onwards.
+
+Show this widget in your own website
+
+Just copy the code below and paste within your html code:
+SCImago Graphica
+
+
+Explore, visually communicate and make sense of data with our new data visualization tool.
+Metrics based on Scopus® data as of March 2026
+M
+murthy
+2 years ago
+Sir,
+
+Request you to confirm, is the Acta Astronautica is Q1 Journal
+reply
+M
+Melanie Ortiz
+2 years ago
+Dear Murthy, thank you very much for your request. You can consult that information just above. Best Regards, SCImago Team
+O
+oscar wilde
+6 years ago
+My topic is related to Aerodynamic Shape Optimization o using Adjoint method in open source software such as SU2 suite
+How much is is this journal relevant?
+
+reply
+M
+Melanie Ortiz
+6 years ago
+Dear Oscar,
+thank you for contacting us.
+We are sorry to tell you that SCImago Journal & Country Rank is not a journal. SJR is a portal with scientometric indicators of journals indexed in Elsevier/Scopus.
+Unfortunately, we cannot help you with your request, we suggest you visit the journal's homepage (See scope and submission/author guidelines) or contact the journal’s editorial staff , so they could inform you more deeply.
+Best Regards, SCImago Team
+
+The users of Scimago Journal & Country Rank have the possibility to dialogue through comments linked to a specific journal. The purpose is to have a forum in which general doubts about the processes of publication in the journal, experiences and other issues derived from the publication of papers are resolved. For topics on particular articles, maintain the dialogue through the usual channels with your editor.
+
+Services
+Journal Rankings
+Country Rankings
+Journal Value
+About us
+Who we are
+Contact us
+SCImago’s products
+SCImago Journal Country & Rank
+SCImago Institutions Ranking
+SCImago Media Ranking
+SCImago Iber
+SCImago Arab
+SCImago Graphica
+Ediciones Profesionales de la Información
+All the information shown in the SCImago Journal Country & Rank website can be used for non-commercial purposes as long as it is cited.
+
+How to cite:
+SCImago, (n.d.). SJR-SCImago Journal Country & Rank [Portal]. Retrieved (Date), from https://www.scimagojr.com
+Powered by:
+Scopus®
+© 2026 SCImago Journal & Country Rank
+Legal Notice
+Privacy Policy
+Accessibility

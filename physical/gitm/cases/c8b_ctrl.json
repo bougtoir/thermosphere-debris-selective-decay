@@ -1,0 +1,22 @@
+{
+ "name": "c8b_ctrl",
+ "rundir": "/home/ubuntu/models/runs/c8b_ctrl",
+ "restart_from": "/home/ubuntu/models/runs/spin8b",
+ "start": "2002-03-21T00:00:00",
+ "end": "2002-03-21T03:00:00",
+ "nblon": 8,
+ "nblat": 8,
+ "dtplot": 600.0,
+ "heating": [
+  0.0,
+  45,
+  0,
+  300,
+  1000,
+  50,
+  3600,
+  3600,
+  600
+ ],
+ "nproc": 4
+}

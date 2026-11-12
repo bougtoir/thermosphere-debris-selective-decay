@@ -1,0 +1,26 @@
+  Benchmark — tiegcm-docs 1.0.1 documentation
+ -->
+            tiegcm-docs
+                latest
+              TIEGCM
+Introduction
+Release Notes for TIEGCM 3.0
+Environment Setup
+Quickstart
+Directory Structure
+Grid Structure and Resolution
+Parameters
+Model Output History Files
+Saving Diagnostic Fields
+Model Source Code
+Benchmark
+          tiegcm-docs
+      Benchmark
+               Edit on GitHub
+Benchmark
+         Previous
+    © Copyright 2024, Nikhil Rao.
+      Revision d1c4b1a5.
+  Built with Sphinx using a
+    theme
+    provided by Read the Docs.
