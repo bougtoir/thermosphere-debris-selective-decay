@@ -6,7 +6,7 @@
 |---|---|---|---|---|
 | Analysis code, GITM case files, heating hook, patch script, Makefile, tests | GitHub `bougtoir/thermosphere-debris-selective-decay` (branch of PR #9) | yes (public repo) | ~10 MB | git |
 | Result tables (`results/`, `results/tables/`), value ledger, QC outputs | GitHub | yes | small | git |
-| Processed GITM fields, 5 NPZ (paired heated/control slices, 150–500 km) | `data/physical/processed/` (git-ignored); deposition package | **draft only** | 0.40 GB | `data/physical/PROCESSED_MANIFEST.csv` (SHA-256) |
+| Processed GITM fields, 5 NPZ (paired heated/control slices, 150–500 km) | `data/physical/processed/` (git-ignored); Zenodo https://doi.org/10.5281/zenodo.24101202 | **yes (published 2026-11-12)** | 0.40 GB | `data/physical/PROCESSED_MANIFEST.csv` (SHA-256) |
 | Raw GITM output, 16 run directories, 23831 files | `/home/ubuntu/models/runs` (session VM) | no | 53.7 GB | `data/physical/GITM_RUN_MANIFEST.csv` (per-file SHA-256) |
 | GITM source | upstream GitHub, commit `c4fc3150aca274e0e0496ba415696a57d0703e00` | yes | — | `physical/gitm/` patch + build notes |
 
@@ -78,5 +78,12 @@ It does not claim a public archive. After the author publishes the record, set `
 
 ## Status
 
-Not complete for submission: the processed fields are not publicly accessible until the author reviews and publishes
-the draft. Publishing is irreversible (DOI minted, files frozen) and was left to the author.
+Before publication (sections above, 2026-11-10): draft only. Before publishing, README.md and the description were
+corrected (raw size "~51 GB" → "about 54 GB = 50 GiB"; exact G4 commands); the README was replaced in the draft, so its
+MD5 differs from the first upload.
+
+**Published by the author on 2026-11-12.** Verified anonymously at 2026-11-12T05:13:09Z:
+https://zenodo.org/api/records/24101202 → HTTP 200, status `published`, DOI 10.5281/zenodo.24101202, licence
+cc-by-4.0; https://doi.org/10.5281/zenodo.24101202 → 302 to Zenodo; record page HTTP 200; all 9 public files match the
+local copies in size and MD5. `docs/ZENODO_DEPOSIT.json` now has `published: true`; the manuscript reads "are archived
+at Zenodo, https://doi.org/10.5281/zenodo.24101202". Gate 8 data availability: complete.

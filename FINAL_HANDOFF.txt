@@ -5,16 +5,16 @@ Branch     : devin/1794047620-physical-model-rebuild
 PR         : https://github.com/bougtoir/thermosphere-debris-selective-decay/pull/9 (open, not merged)
 Baseline   : 23add38e72a7950816baf6d92aa3531ec13d5c30 (scientific baseline main@ac67802 untouched)
 Code/results commit of this delta: 8aa5205940fcd7551e5f8ba96a0d52aae5701c39 (the Zenodo code snapshot is git archive of this commit)
-Final HEAD : the commit adding this file (documentation only on top of 8aa5205)
+Final HEAD : the commit adding this file (documentation and the regenerated manuscript data statement on top of 8aa5205)
 
-DECISION: CONDITIONAL SUBMIT
-  Condition (blocking): publish the Zenodo draft 24101202 so that the reserved DOI 10.5281/zenodo.24101202 resolves,
-  then set "published": true in docs/ZENODO_DEPOSIT.json and run `make physical-qc` (data statement switches to 'archived at').
-  Without publication the processed fields are not publicly accessible and the figures cannot be reproduced from public sources.
+DECISION: SUBMIT
+  The former condition (public processed-data archive) is met: the author published Zenodo record 24101202 on 2026-11-12;
+  https://doi.org/10.5281/zenodo.24101202 resolves, the record page is public, and all 9 files match the local MD5/size.
+  The Data availability statement now reads 'archived at Zenodo'. Remaining items are author-only metadata (below).
 
 WHAT WAS NOT DONE: no GITM run, no new simulation, no change to forcing, orbits, configurations or estimands;
   no canonical CSV, processed NPZ, manifest or raw output modified; no merge, no journal submission/contact, no payment;
-  Zenodo record NOT published.
+  Zenodo record published by the author (not by Devin).
 
 CORRECTIONS (display/derivation only):
   Fig.1 exact 400 km (log-linear interp; baseline showed the 390.6 km native level), neutral bin white (was blue); no saturation (0 cells out of range).
@@ -35,7 +35,7 @@ QC: manuscript QC 34/34 PASS; semantic checks 325/325 PASS; pytest 34 passed; fl
   all figures/tables byte-identically; GITM simulations themselves not independently re-run.
 
 AUTHOR-ONLY ACTIONS:
-  1. Review and publish Zenodo draft https://zenodo.org/deposit/24101202 (irreversible; metadata: Onishi, Tatsuki / Shiga University / CC BY 4.0).
+  1. (done 2026-11-12) Zenodo record published: https://doi.org/10.5281/zenodo.24101202
   2. Complete department, postal address and ORCID in manuscript.docx (placeholder on the title page) and in Editorial Manager.
   3. Read the final manuscript, highlights and cover letter; confirm funding/acknowledgements statements.
   4. Submit manually; merge PR #9 only if wanted.
@@ -45,12 +45,12 @@ UNRESOLVED LIMITATIONS (stated in the manuscript): one model, one quiet equinox 
   on the coarse grid only, synthetic orbits with one ballistic coefficient, a single target definition, no transport budget.
 
 ARTIFACTS (SHA-256):
-  a138048833e515d50b9e96b8d6dfbb38b2ff40d18e4d9ddaf28e2ea8e357a36b  manuscript/physical/manuscript.docx
-  d07a7697e16358a9b4ae46e1447a3fce635054fb83612ff88c8c673e69d9adca  manuscript/physical/manuscript_review_inline.docx
-  b79b03946e3613e6e14c104a8cf596ed019000966f17e4f94e6b00aed47ed531  manuscript/physical/tables.docx
-  8ac63ef48313e3ac7b838f021ea5c96634800b91545777210b86b25740696011  manuscript/physical/figures.pptx
-  fc498f702feb5a9fd3449615dd816bf6d8c570d06024dca22d8fb861bed7eb57  manuscript/physical/highlights.docx
-  039bc0c28355dfc0196304fe9602c3698e7aebc044d1a157056adf270ecdf503  manuscript/physical/cover_letter.docx
+  25cff5ad6c5e1d959a5c3b9fd7abadcd4a075af179b0d1b19b1d7e02684ba6ef  manuscript/physical/manuscript.docx
+  5ef9757c66c98e70efd27ffbb24289df0ac6931d7e0e863193ac05db0831da8d  manuscript/physical/manuscript_review_inline.docx
+  8a08342176e5dd8981a1cf4b1d2008f19417932107d95934d0a3533ad44f29d6  manuscript/physical/tables.docx
+  9a05a2da0a9ec22b1660fec7937aaa749169e6bd4a84758d5c820b684b0cbd96  manuscript/physical/figures.pptx
+  e9e3661d729267610db1907a4ea4921ae0ad3f470271862bf14ad4d1b864de3b  manuscript/physical/highlights.docx
+  21144acafea97e298d2b2d2c9fe5668ef18eb6899ded509d7192f3b1bd1ee188  manuscript/physical/cover_letter.docx
   b30d0b10c755976c19bf295229a4e34173ada5462e4e9918109d8402e3c58e23  manuscript/physical/figures/Fig1.tif
   89944dcdb8b643305a80dae5359c127630685f7b4117ab725de8f97c3fdc7191  manuscript/physical/figures/Fig2.tif
   0cc0d2585aff5aaefd51055dfb088c5000666999f002ed212e13fbf59c901af6  manuscript/physical/figures/Fig3.tif
@@ -58,12 +58,12 @@ ARTIFACTS (SHA-256):
   a264d3b11bc8a5d1f2b2a030d8b4f2f22d9e40467846f53d684cf3a40eece6cd  manuscript/physical/figures/Fig5.tif
   393a3e9e0444590491b4fe90aa85d7e1d1cf2d1a7e92f83920dfb8a60c1a7656  docs/ACTA_FINAL_DELTA_BASELINE.md
   1ab32bd246e9b9599603ab727d6f7d6ed96a2f6cd5ccf094e6742e42001adb4d  docs/ACTA_CLAIM_CALIBRATION_AUDIT.md
-  d68b51677c0d6b510797edcf17feb82e54ea642108dda2a7da91fadb386d1231  docs/ACTA_DATA_AVAILABILITY_AUDIT.md
-  190d84f6260ce97e84dbb089b0d731f8cb432d1ff75e41f1b5b33bfd9252542e  docs/ACTA_PUBLIC_REPRODUCTION_CHECK.md
+  ee45e594fbcc3b7bae3d5574e837f5a51bf6cf4782700bb82df42b04ba2ba773  docs/ACTA_DATA_AVAILABILITY_AUDIT.md
+  b1b884dffce72d87874d931813bf959344e9a717bdcae481895cf1911eea7da1  docs/ACTA_PUBLIC_REPRODUCTION_CHECK.md
   f614cd31e2a510119df5047cbcf4d637073bc2289ecf75f2c16cb3a0ba92186d  docs/ACTA_FIGURE_EXPORT_AUDIT.md
   54321956d41d85b85d2713c5f316904ff2cb9a3403d965b2eb14c6e60e59de33  docs/ACTA_FINAL_SEMANTIC_CODE_AUDIT.md
-  0843840fb97b26600a1b7d47ecb0f67a46538901f8065dbdd2478787c288a441  docs/ACTA_FINAL_HOSTILE_REVIEW.md
-  7faf51bb0ee30610dfe2051670f0b0c16c7aa9b38135184ff1ab871bd6c8e629  docs/ACTA_FINAL_DELTA_QC_MATRIX.md
-  176778945076c4d5645584c0d27dd92e5417ab9d4e38d52217842c39a3542a16  results/qc_physical_manuscript.csv
+  2eefd79039334b819de82f1376fc5a136520e9777df806ea79e4da68d7a182a7  docs/ACTA_FINAL_HOSTILE_REVIEW.md
+  2290fbba5df9868159f90cca0fd88e35fdf3daf455bbf4d6b2cc70a076703f41  docs/ACTA_FINAL_DELTA_QC_MATRIX.md
+  bc449d6e0c5297a1d78d2117b7695767e16ca11559a25b743d6a7836050119ac  results/qc_physical_manuscript.csv
   610fc96d436df920212f6b6548d36989aefdb8df377d26293207c1b74cade636  results/tables/acta_semantic_checks.csv
-  3636d824440d93a6e240e24225e746da1ab8adb399dae9af652e003b6324a09a  data/physical/ZENODO_DRAFT_RECORD.json
+  29dac593cc3b74cc59a9f4a7e325d20e0ce80b9b37f1a7c9a84f6c240cd7d67b  data/physical/ZENODO_DRAFT_RECORD.json

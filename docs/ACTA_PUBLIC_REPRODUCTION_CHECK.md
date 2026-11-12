@@ -15,7 +15,7 @@ No files copied from the working repository except, in step B, the five NPZ file
 
 Conclusion: the public GitHub repository alone does **not** reproduce the figures or the G3/G4 tables.
 
-## B. Public clone + processed fields from the deposition package (what a reader can do once the Zenodo record is public)
+## B. Public clone + processed fields from https://doi.org/10.5281/zenodo.24101202 (public since 2026-11-12; files identical to the package used here)
 
 | Step | Command | Result |
 |---|---|---|

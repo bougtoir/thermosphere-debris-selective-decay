@@ -46,7 +46,7 @@ if unaddressed; **minor** = revision; **noted** = acceptable as stated.
 |---|---|---|
 | Fit | noted | Debris remediation and space-environment modelling are within scope; cover letter connects to that readership without claiming feasibility. |
 | Format | noted | TNR 12 pt body, 10 pt captions, black text, OMML Eq. (1)–(2), no grid snapping, numbered citations in order, 23 references, 5 TIFFs at 600 dpi, highlights ≤ 85 characters, word count 7232 incl. 300 per display item. |
-| Data availability | **major until resolved** | Processed fields are not on GitHub. The statement now says so truthfully and points to the Zenodo record; the record must be **published** (DOI active) before submission, otherwise the statement promises an inaccessible archive. |
+| Data availability | resolved (published 2026-11-12, DOI resolves) | Processed fields are not on GitHub. The statement now says so truthfully and points to the Zenodo record; the record must be **published** (DOI active) before submission, otherwise the statement promises an inaccessible archive. |
 | Affiliation detail, ORCID | author action | Not a scientific issue. |
 
 ## Verdict
@@ -55,5 +55,5 @@ No remaining scientific or numerical defect invalidates the calibrated conclusio
 400 km, ≈ 2 at 500 km, ≈ 1 at 300 km; (ii) most extra drag reaches non-targets; (iii) static patches overstate S by
 1.5–1.7× (400 km) and 2.8–3.6× (500 km) when fitted to GITM, 4.7–8.5× when source-sized; (iv) power/altitude
 contrasts are two-level, coarse-grid observations. Expected reviewer requests (second background, third grid,
-alternative target definitions, published static-patch precedent) are limitations, not errors. The one blocking item is
-public activation of the processed-data archive.
+alternative target definitions, published static-patch precedent) are limitations, not errors. The one blocking item, public activation of the
+processed-data archive, was resolved on 2026-11-12.

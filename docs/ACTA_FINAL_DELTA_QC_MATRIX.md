@@ -13,7 +13,7 @@ GITM run, no `make all`.
 | 5 | Fig. 2/4 | Units, area weighting, native/remapped, 18 comparator cells vs CSV | semantic checks #3, #4, #8 | PASS |
 | 6 | Claim calibration | No single-mechanism attribution; no "bounds"/"maximises"/"robust to resolution" | `docs/ACTA_CLAIM_CALIBRATION_AUDIT.md` (16 edits) | PASS |
 | 7 | Preregistration wording | No `pre-?regist` in any DOCX; chronology with commit c93bf8c | QC check; audit §2 | PASS |
-| 8 | Data availability | Statement truthful; minimal dataset deposited (draft); SHA-256/MD5 match | `docs/ACTA_DATA_AVAILABILITY_AUDIT.md` | PASS for statement; **OPEN**: record unpublished |
+| 8 | Data availability | Statement truthful; minimal dataset deposited (draft); SHA-256/MD5 match | `docs/ACTA_DATA_AVAILABILITY_AUDIT.md` | PASS — record published 2026-11-12, DOI resolves, files match |
 | 8b | Public reproduction | Fresh clone: fails without NPZ; byte-identical outputs with NPZ | `docs/ACTA_PUBLIC_REPRODUCTION_CHECK.md` | PASS (with NPZ); simulation not re-run |
 | 9 | Cover letter | First person, no ASR paragraph, limitations, no invented facts | QC check "no ASR rejection paragraph"; rendered PDF read | PASS |
 | 10 | Format | TNR styles, 12 pt body, 10 pt captions, black, no theme fonts, no docGrid, ≥ 2 OMML equations, no tracked changes/comments, single author placeholder | `results/qc_physical_manuscript.csv` (34/34 PASS) | PASS |
@@ -21,7 +21,7 @@ GITM run, no `make all`.
 | 10c | References | 23 numbered, cited in order, all DOIs Crossref-verified earlier; figure/table order | QC checks | PASS |
 | 11 | TIFF | 600 dpi, RGB, LZW, sizes, SHA-256 | `docs/ACTA_FIGURE_EXPORT_AUDIT.md` | PASS |
 | 12 | Semantic | 325 independent checks | `results/tables/acta_semantic_checks.csv` | PASS (one derived value corrected: 1.3% → 1.1%) |
-| 13 | Hostile review | 5 perspectives | `docs/ACTA_FINAL_HOSTILE_REVIEW.md` | No invalidating defect; 1 blocking item (archive) |
+| 13 | Hostile review | 5 perspectives | `docs/ACTA_FINAL_HOSTILE_REVIEW.md` | No invalidating defect; archive item resolved |
 | 14 | Tests / lint | `pytest -q` 34 passed; flake8 clean on changed scripts | console | PASS |
 | 15 | Canonical results unchanged | `git diff 23add38 HEAD` on `results/tables/physical_*` (pre-existing), `physical_model_vs_prescribed_patch.csv`, processed NPZ, manifests | no change; `manuscript_physical_values.csv` only gains 8 new rows, no existing row altered | PASS |
 | 16 | Raw data preserved | `/home/ubuntu/models/runs` untouched; manifests unchanged | — | PASS |

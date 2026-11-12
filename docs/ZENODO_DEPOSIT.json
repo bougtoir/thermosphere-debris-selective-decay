@@ -1,8 +1,8 @@
 {
  "deposition_id": 24101202,
  "doi": "10.5281/zenodo.24101202",
- "published": false,
- "state": "unsubmitted",
- "checked_utc": "2026-11-10T08:21:21Z",
- "note": "Draft with reserved DOI; DOI resolves only after the author publishes the record."
+ "published": true,
+ "state": "published",
+ "checked_utc": "2026-11-12T05:13:09Z",
+ "note": "Published by the author 2026-11-12; DOI resolves (doi.org 302 -> zenodo.org), record page HTTP 200, 9 files match local MD5/size."
 }
