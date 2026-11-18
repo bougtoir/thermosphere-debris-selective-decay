@@ -1,5 +1,7 @@
 # Acta final delta — data availability audit (Gate 8)
 
+> Superseded by `docs/DATA_AVAILABILITY_FINAL_AUDIT.md` (2026-11-18); kept as history.
+
 ## Inventory
 
 | Item | Location | Public? | Size | Integrity record |

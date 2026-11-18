@@ -661,12 +661,17 @@ TITLE = ("Self-consistent thermospheric response limits the orbital-drag selecti
          "a coupled GITM–orbit study")
 
 
+REPO_URL = "https://github.com/bougtoir/thermosphere-debris-selective-decay"
+REPO_TAG = "gitm-orbit-selectivity-v1"
+
+
 def data_statement(S):
     z = S["zenodo"]
-    t = ("The analysis code, GITM case configurations, the heating hook and all result tables are openly available "
-         "at https://github.com/bougtoir/thermosphere-debris-selective-decay. ")
-    what = (f"The processed GITM fields used for the figures and the field and orbit analyses (about {S['proc_gb']} GB, "
-            "five paired heated/control files with SHA-256 checksums) and a snapshot of the code ")
+    t = ("The analysis code, GITM case configurations, the heating hook and the figure- and manuscript-generation "
+         f"scripts are publicly available at {REPO_URL} (tag {REPO_TAG}). ")
+    what = (f"The processed GITM fields required to reproduce the figures, tables and principal numerical results "
+            f"(about {S['proc_gb']} GB, five paired heated/control files with SHA-256 checksums) and a snapshot of "
+            "the code ")
     if z and z.get("published"):
         t += what + f"are archived at Zenodo, https://doi.org/{z['doi']}. "
     elif z:
@@ -674,9 +679,12 @@ def data_statement(S):
                      "which resolves once the record is published. ")
     else:
         t += what + "are not yet in a public archive and are available from the author on request. "
-    return t + (f"Raw GITM output (about {S['raw_gb']} GB, including failed and test runs) is listed file by file "
-                "with SHA-256 checksums in data/physical/GITM_RUN_MANIFEST.csv of the repository and is available "
-                "from the author on request.")
+    return t + ("The GITM run configurations, execution records and file-level SHA-256 checksums of the raw output "
+                "are documented in the repository (data/physical/run_records/ and "
+                "data/physical/GITM_RUN_MANIFEST.csv). Reproducing the results from the processed fields does not "
+                "require GITM; regenerating the processed fields requires rerunning GITM. "
+                f"The full raw GITM output (about {S['raw_gb']} GB, including failed and test runs) is not deposited "
+                "and is available from the author on reasonable request.")
 
 
 def highlights(v):

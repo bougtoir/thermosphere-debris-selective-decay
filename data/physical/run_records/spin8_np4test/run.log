@@ -1,0 +1,39 @@
+ > Reading Inputs
+ ----------------------------------------------
+ GITM allows the use of a 10% seasonal 
+ correction factor in the conversion of AE to HP
+ Put another T after convert to HP if you want this,
+ or put an F to silence this message.
+ ----------------------------------------------
+ > init_grid
+ > init_msis
+ > init_iri
+ > init_b0
+ > Initializing IE Library
+  => Weimer Initialized
+  => FTA Initialized
+Writing Output files (3DALL) at iStep :       1 2002  3 20 18  0  0
+ > Starting Main Time Loop
+ user_heating: P0,lat0,lon0,z0,sigh,sigz,ton,tdur,tramp =    0.0000000000000000        45.000000000000000        0.0000000000000000        300.00000000000000        1000.0000000000000        50.000000000000000        3600.0000000000000        3600.0000000000000        600.00000000000000     
+Writing Output files (3DALL) at iStep :     202 2002  3 20 18 10  0
+ No errors to report!
+ No errors to report!
+-> GITM                      took   502.5 seconds to complete
+--> initialize               took     4.6 seconds to complete
+---> init_b0                 took     0.2 seconds to complete
+----> calc_rates             took    13.2 seconds to complete
+---> calc_electrodyn_1d      took     0.0 seconds to complete
+---> get_potential           took     8.8 seconds to complete
+----> Message Pass           took    46.7 seconds to complete
+----> chapman_integrals      took     0.2 seconds to complete
+---> calc_efield             took     0.3 seconds to complete
+--> advance                  took   491.3 seconds to complete
+---> euv_ionization_heat     took     1.8 seconds to complete
+----> conduction_1d          took    25.7 seconds to complete
+---> Aurora                  took     0.6 seconds to complete
+---> Ion Forcing             took     2.3 seconds to complete
+---> calc_chemistry          took    18.7 seconds to complete
+---> vertical_all            took   308.6 seconds to complete
+---> horizontal_all          took    90.4 seconds to complete
+--> check_stop               took     3.6 seconds to complete
+--> Finalize                 took     0.2 seconds to complete

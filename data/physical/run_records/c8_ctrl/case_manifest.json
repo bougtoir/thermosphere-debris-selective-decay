@@ -1,0 +1,48 @@
+{
+ "case": {
+  "name": "c8_ctrl",
+  "rundir": "/home/ubuntu/models/runs/c8_ctrl",
+  "restart_from": "/home/ubuntu/models/runs/spin8",
+  "start": "2002-03-21T00:00:00",
+  "end": "2002-03-21T03:00:00",
+  "nblon": 8,
+  "nblat": 8,
+  "dtplot": 600.0,
+  "heating": [
+   0.0,
+   45,
+   0,
+   300,
+   1000,
+   50,
+   3600,
+   3600,
+   600
+  ],
+  "nproc": 2
+ },
+ "heating_t_on_offset_s": 21600.0,
+ "heating_as_written": [
+  0.0,
+  45,
+  0,
+  300,
+  1000,
+  50,
+  25200.0,
+  3600,
+  600
+ ],
+ "gitm_exe_sha256": "c89d1650d133bf555807ecbe215efefbacac7b8ff83f14921982f341eaa1df69",
+ "inputs": {
+  "UAM.in": "e933a51c0b2f8b456b3418927f208a3287f427d2c3e624bddeddfbbe2fb7ef27",
+  "UA/DataIn/static_imf.dat": "f3351ef70c91d5e471d4327edfceeb841d66922d5a826aa6ff028c96308acd51",
+  "UA/DataIn/static_sme.dat": "966ce36759567476f99ee94ad45ccad2a1ed6e0d48f2cf8766aba08b27ce91bf",
+  "UA/DataIn/user_heating.in": "732b8e95389e84fb445739e8ddda3934e3c2f65bfde7c183d7d67eccb7155456"
+ },
+ "started_utc": "2026-11-08T01:42:42.600281",
+ "restart_in_sha256": {},
+ "exit_code": 0,
+ "wall_s": 0.295849084854126,
+ "finished_utc": "2026-11-08T01:42:42.896207"
+}

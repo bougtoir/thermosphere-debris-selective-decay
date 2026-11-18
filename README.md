@@ -37,6 +37,26 @@ is generated from those outputs (no hard-coded scientific values).
 - `references/references_verified.csv` — verified bibliography ledger
 - `manuscript/` — generated manuscript sources
 
+## Physical-model (GITM) study
+
+The current manuscript (*Self-consistent thermospheric response limits the orbital-drag selectivity of a localized
+heat source: a coupled GITM–orbit study*) replaces the prescribed-Gaussian study above with paired heated/control
+GITM simulations coupled to an orbit population. Its code is on tag `gitm-orbit-selectivity-v1`.
+
+- Processed GITM fields (five NPZ files, about 0.4 GB): https://doi.org/10.5281/zenodo.24101202 — place them in
+  `data/physical/processed/` (checksums in `data/physical/PROCESSED_MANIFEST.csv`).
+- Reproduce figures, tables, manuscript and QC from the processed fields (no GITM needed; about 8 min, about 2 GB RAM):
+  `pip install -r requirements.txt`, then the command sequence in `docs/PUBLIC_REPRODUCTION_FINAL_REPORT.md`
+  (ends with `make physical-qc`).
+- GITM runs: upstream https://github.com/GITMCode/GITM commit `c4fc3150aca274e0e0496ba415696a57d0703e00`,
+  patched with `physical/gitm/apply_patch.py` (heating hook `physical/gitm/user_perturbation_heating.f90` and a
+  block-allocation guard); case definitions in `physical/gitm/cases/`; execution records (case manifests, input
+  files, logs) in `data/physical/run_records/`; raw-output SHA-256 manifest in `data/physical/GITM_RUN_MANIFEST.csv`.
+  The raw output (about 54 GB) is not deposited and is available from the author on request.
+- Provenance and reproduction audits: `docs/RAW_SIMULATION_PROVENANCE_AUDIT.md`,
+  `docs/PUBLIC_REPRODUCTION_FINAL_REPORT.md`, `docs/ZENODO_PUBLICATION_AUDIT.md`,
+  `docs/DATA_AVAILABILITY_FINAL_AUDIT.md`.
+
 ## License
 
 MIT (code). Manuscript text: CC-BY-4.0.

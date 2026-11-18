@@ -74,5 +74,24 @@
  "doi_resolves": 302,
  "public_page_http_anonymous": 200,
  "code_snapshot_commit": "8aa5205",
- "publication_date": "2026-11-10"
+ "publication_date": "2026-11-10",
+ "metadata_edit_20261118": {
+  "by": "Devin via owner account (deposition API: edit, PUT metadata, publish)",
+  "revision": 4,
+  "changed": [
+   "description (npz contents; snapshot file name; PyYAML note; dated correction)",
+   "publication_date 2026-11-10 -> 2026-11-12",
+   "version null -> 1.0"
+  ],
+  "unchanged": [
+   "files",
+   "DOI",
+   "creators",
+   "title",
+   "license",
+   "access_right",
+   "related_identifiers"
+  ],
+  "verified_public_utc": "2026-11-18T09:21:06Z"
+ }
 }

@@ -1,0 +1,47 @@
+{
+ "case": {
+  "name": "spin8",
+  "rundir": "/home/ubuntu/models/runs/spin8",
+  "restart_from": null,
+  "start": "2002-03-20T18:00:00",
+  "end": "2002-03-21T00:00:00",
+  "nblon": 8,
+  "nblat": 8,
+  "dtplot": 3600.0,
+  "heating": [
+   0.0,
+   45,
+   0,
+   300,
+   1000,
+   50,
+   3600,
+   3600,
+   600
+  ],
+  "nproc": 2
+ },
+ "heating_t_on_offset_s": 0.0,
+ "heating_as_written": [
+  0.0,
+  45,
+  0,
+  300,
+  1000,
+  50,
+  3600.0,
+  3600,
+  600
+ ],
+ "gitm_exe_sha256": "c89d1650d133bf555807ecbe215efefbacac7b8ff83f14921982f341eaa1df69",
+ "inputs": {
+  "UAM.in": "43eef2489f7edbe0c0f754f8abaed151d4fee140464764d280a297a68655f5b1",
+  "UA/DataIn/static_imf.dat": "f3351ef70c91d5e471d4327edfceeb841d66922d5a826aa6ff028c96308acd51",
+  "UA/DataIn/static_sme.dat": "966ce36759567476f99ee94ad45ccad2a1ed6e0d48f2cf8766aba08b27ce91bf",
+  "UA/DataIn/user_heating.in": "6fe37f8c1bd62bcc31d1340ebccce78c131bc1e9ac24de10baed9f7eb46c9fd1"
+ },
+ "started_utc": "2026-11-08T01:42:34.839218",
+ "exit_code": 253,
+ "wall_s": 7.574615240097046,
+ "finished_utc": "2026-11-08T01:42:42.413904"
+}
