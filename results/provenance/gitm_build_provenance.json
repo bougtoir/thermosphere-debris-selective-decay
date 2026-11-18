@@ -1,0 +1,11 @@
+{
+ "gitm_commit": "c4fc3150aca274e0e0496ba415696a57d0703e00",
+ "gitm_modified": [
+  " M src/aurora.Earth.f90",
+  " M src/user.f90"
+ ],
+ "hook_in_user_f90": true,
+ "fang_guard": true,
+ "exe_sha256": "c89d1650d133bf555807ecbe215efefbacac7b8ff83f14921982f341eaa1df69",
+ "audited_utc": "2026-11-18T09:12:04Z"
+}
