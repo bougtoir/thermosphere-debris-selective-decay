@@ -710,8 +710,8 @@ def body(D, v):
 
     D.h("Abstract")
     D.p(
-        "Proposals to accelerate the decay of selected debris objects by locally heating the thermosphere assume that "
-        "the resulting density enhancement stays where it was deposited. I test that assumption with a physically "
+        "Accelerating the decay of selected debris objects by locally heating the thermosphere would require the "
+        "resulting density enhancement to stay near where it was deposited. I test whether it does with a physically "
         "self-consistent model. A compact neutral heat source (100 GW for 1 h, centred at 300 km and 45°N) is inserted "
         "into the Global Ionosphere–Thermosphere Model (GITM) and paired with an unheated control, and the resulting "
         f"density and wind fields drive drag on {S['n_tot']} synthetic circular orbits per shell at 300, 400 and 500 km. "
@@ -724,7 +724,7 @@ def body(D, v):
         f"{S['src_lo_400']}–{S['src_hi_500']}. A 5°×2.5° repeat changes the 12 h selectivity by at most {S['S_grid_max']}% "
         "at 400 and 500 km. In two-level tests, selectivity is lower at 100 GW than at 10 GW and disappears for deposition "
         "at 150 km. Under the tested conditions, the dynamically evolving GITM density field therefore yields much "
-        "lower cumulative drag selectivity than prescribed static density patches imply.")
+        "lower cumulative drag selectivity than idealized, prescribed static density patches imply.")
     D.p("Keywords: thermosphere; orbital debris; atmospheric drag; GITM; localized heating; density perturbation",
         count=True)
 
@@ -750,8 +750,11 @@ def body(D, v):
     D.p(
         "What has not been established is how the horizontal and vertical redistribution of a localized perturbation "
         "translates into the drag received by objects that did, and did not, pass through the heated region. "
-        "Screening studies that prescribe a static Gaussian density patch around the source implicitly assume that "
-        "the perturbation stays put, which can inflate the apparent selectivity. Here I replace the prescribed patch "
+        "An idealized screening approach that prescribes a static Gaussian density patch around the source assumes "
+        "that the perturbation stays localized, which can inflate the apparent selectivity. A targeted literature "
+        "search found no published study that evaluates selective debris decay in this way, so the static "
+        "patch is used here as an idealized "
+        "comparator, not as a representation of prior work. Here I compare such patches "
         "with a self-consistent general circulation model, the Global Ionosphere–Thermosphere Model (GITM) "
         "[@ridley2006gitm], couple its paired heated and control fields directly to an orbit propagator, and ask "
         "three questions: (i) how selective the cumulative drag is over 12 h; (ii) by how much static patches "
@@ -831,12 +834,12 @@ def body(D, v):
         "percentile 95% intervals).")
     D.h("2.5. Static comparators", 2)
     D.p(
-        "To compare the evolving GITM perturbation with the prescribed-field assumption, the same orbits were also "
+        "To compare the evolving GITM perturbation with a prescribed static field, the same orbits were also "
         "flown through static Gaussian patches "
         "imposed on the GITM control atmosphere. The peak-matched patch takes the amplitude, centre and e^{−1/2} "
         "area-equivalent width of the GITM perturbation at the time of its peak at each orbit altitude, and is held "
-        "fixed while the GITM peak exceeds half its maximum. The source-centred patch, the form used in earlier "
-        "screening, has the same amplitude and window but is centred on the source with σ = 1000 km. Because the "
+        "fixed while the GITM peak exceeds half its maximum. The source-centred patch, the simplest idealized "
+        "screening form, has the same amplitude and window but is centred on the source with σ = 1000 km. Because the "
         "peak-matched fit depends on discrete choices, I also recomputed it with the centre, width and time window "
         "taken from the other grid.")
     D.h("2.6. Resolution test", 2)
@@ -1090,9 +1093,11 @@ def cover_letter(v, words):
     paras = (
         "Dear Editor,",
         f"Please consider the enclosed Research Paper, \"{TITLE}\", for publication in Acta Astronautica.",
-        "Proposals to accelerate the decay of selected debris objects by locally heating the thermosphere are "
-        "usually screened with prescribed, static density patches. Such patches fix the size, shape and duration of "
-        "the density enhancement in advance, so they cannot show how much of the extra drag reaches objects that "
+        "The simplest way to screen the idea of accelerating the decay of selected debris objects by locally heating "
+        "the thermosphere is to prescribe a static density patch around the source. A targeted literature search "
+        "found no published study that evaluates selective debris decay with a physics-based thermosphere "
+        "model. Such patches fix the size, shape "
+        "and duration of the density enhancement in advance, so they cannot show how much of the extra drag reaches objects that "
         "never passed the heated region. A heated thermosphere expands, drives winds and launches waves that move the "
         "perturbation away from the source after switch-off, and that evolution decides whether any selectivity "
         "survives.",

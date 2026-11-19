@@ -37,7 +37,7 @@ if unaddressed; **minor** = revision; **noted** = acceptable as stated.
 | Issue | Severity | Assessment |
 |---|---|---|
 | Density response to localized heating is well known (Deng, Gardner, Liu, Lühr, Carlson) | noted | Introduction now states explicitly that this physics is established and not claimed; the contribution is the target/non-target drag division and the quantified overstatement by static patches. |
-| Is the static-patch assumption a straw man? | minor | The patch form is the one used in earlier screening (including this author's own prior work, not cited as a publication). A reviewer could ask for published examples of static-patch screening; the manuscript cites ionospheric-drag and laser concepts [1–5] but no published static-patch selectivity study, because none was found in the 38-study Crossref search. Phrase "Screening studies that prescribe …" could be challenged; acceptable but exposed. |
+| Is the static-patch assumption a straw man? | minor (resolved 2026-11-19) | No published static-patch selectivity study was found in the 38-study Crossref base. The manuscript and cover letter now call the static patch an idealized screening comparator, state that a targeted search found no published study of this kind, and no longer refer to "screening studies" or "earlier screening" (`docs/FINAL_PRIOR_LITERATURE_CLAIM_DELTA.md`). |
 | Single model | noted | Stated; TIE-GCM/WACCM-X could not be run. |
 
 ## 5. Acta Astronautica fit and presentation
