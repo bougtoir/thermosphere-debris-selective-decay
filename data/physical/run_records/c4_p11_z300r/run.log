@@ -1,0 +1,185 @@
+ > Reading Inputs
+ ----------------------------------------------
+ GITM allows the use of a 10% seasonal 
+ correction factor in the conversion of AE to HP
+ Put another T after convert to HP if you want this,
+ or put an F to silence this message.
+ ----------------------------------------------
+ > init_grid
+ > Reading Inputs
+  -> Warning: Option found in UAM.in file without a matching key:
+  -> Warning: #SPHERE
+ > init_msis
+ > init_b0
+ > Initializing IE Library
+  => Weimer Initialized
+  => FTA Initialized
+ > Starting Main Time Loop
+ user_heating: P0,lat0,lon0,z0,sigh,sigz,ton,tdur,tramp =    100000000000.00000        45.000000000000000        0.0000000000000000        300.00000000000000        1000.0000000000000        50.000000000000000        90000.000000000000        3600.0000000000000        600.00000000000000     
+iStep:    22448, Time: 20020321 001001, WallTime:      1.71 min, Proj :    121.10
+Writing Output files (3DALL) at iStep :   22448 2002  3 21  0 10  1
+iStep:    22610, Time: 20020321 002002, WallTime:      3.91 min, Proj :    136.68
+Writing Output files (3DALL) at iStep :   22610 2002  3 21  0 20  2
+iStep:    22771, Time: 20020321 003000, WallTime:      6.04 min, Proj :    138.97
+Writing Output files (3DALL) at iStep :   22771 2002  3 21  0 30  0
+iStep:    22933, Time: 20020321 004001, WallTime:      8.21 min, Proj :    139.38
+Writing Output files (3DALL) at iStep :   22933 2002  3 21  0 40  1
+iStep:    23095, Time: 20020321 005002, WallTime:     10.39 min, Proj :    139.14
+Writing Output files (3DALL) at iStep :   23095 2002  3 21  0 50  2
+iStep:    23257, Time: 20020321 010003, WallTime:     12.36 min, Proj :    135.78
+Writing Output files (3DALL) at iStep :   23257 2002  3 21  1  0  3
+iStep:    23418, Time: 20020321 011000, WallTime:     14.36 min, Proj :    133.33
+Writing Output files (3DALL) at iStep :   23418 2002  3 21  1 10  0
+iStep:    23580, Time: 20020321 012001, WallTime:     16.54 min, Proj :    132.26
+Writing Output files (3DALL) at iStep :   23580 2002  3 21  1 20  1
+iStep:    23742, Time: 20020321 013002, WallTime:     18.17 min, Proj :    127.15
+Writing Output files (3DALL) at iStep :   23742 2002  3 21  1 30  2
+iStep:    23904, Time: 20020321 014002, WallTime:     20.11 min, Proj :    124.61
+Writing Output files (3DALL) at iStep :   23904 2002  3 21  1 40  2
+iStep:    24066, Time: 20020321 015002, WallTime:     21.77 min, Proj :    120.64
+Writing Output files (3DALL) at iStep :   24066 2002  3 21  1 50  2
+iStep:    24228, Time: 20020321 020003, WallTime:     23.30 min, Proj :    116.45
+Writing Output files (3DALL) at iStep :   24228 2002  3 21  2  0  3
+iStep:    24390, Time: 20020321 021003, WallTime:     24.91 min, Proj :    113.01
+Writing Output files (3DALL) at iStep :   24390 2002  3 21  2 10  3
+iStep:    24552, Time: 20020321 022002, WallTime:     26.45 min, Proj :    109.53
+Writing Output files (3DALL) at iStep :   24552 2002  3 21  2 20  2
+iStep:    24714, Time: 20020321 023002, WallTime:     28.08 min, Proj :    106.66
+Writing Output files (3DALL) at iStep :   24714 2002  3 21  2 30  2
+iStep:    24876, Time: 20020321 024002, WallTime:     29.69 min, Proj :    103.88
+Writing Output files (3DALL) at iStep :   24876 2002  3 21  2 40  2
+iStep:    25038, Time: 20020321 025001, WallTime:     31.22 min, Proj :    101.00
+Writing Output files (3DALL) at iStep :   25038 2002  3 21  2 50  1
+iStep:    25201, Time: 20020321 030003, WallTime:     32.80 min, Proj :     98.36
+Writing Output files (3DALL) at iStep :   25201 2002  3 21  3  0  3
+iStep:    25363, Time: 20020321 031002, WallTime:     34.35 min, Proj :     95.78
+Writing Output files (3DALL) at iStep :   25363 2002  3 21  3 10  2
+iStep:    25525, Time: 20020321 032001, WallTime:     35.95 min, Proj :     93.46
+Writing Output files (3DALL) at iStep :   25525 2002  3 21  3 20  1
+iStep:    25688, Time: 20020321 033003, WallTime:     37.72 min, Proj :     91.56
+Writing Output files (3DALL) at iStep :   25688 2002  3 21  3 30  3
+iStep:    25850, Time: 20020321 034001, WallTime:     39.44 min, Proj :     89.63
+Writing Output files (3DALL) at iStep :   25850 2002  3 21  3 40  1
+iStep:    26013, Time: 20020321 035002, WallTime:     41.00 min, Proj :     87.31
+Writing Output files (3DALL) at iStep :   26013 2002  3 21  3 50  2
+iStep:    26175, Time: 20020321 040001, WallTime:     42.65 min, Proj :     85.29
+Writing Output files (3DALL) at iStep :   26175 2002  3 21  4  0  1
+iStep:    26338, Time: 20020321 041002, WallTime:     44.33 min, Proj :     83.32
+Writing Output files (3DALL) at iStep :   26338 2002  3 21  4 10  2
+iStep:    26501, Time: 20020321 042003, WallTime:     46.04 min, Proj :     81.42
+Writing Output files (3DALL) at iStep :   26501 2002  3 21  4 20  3
+iStep:    26663, Time: 20020321 043000, WallTime:     47.59 min, Proj :     79.31
+Writing Output files (3DALL) at iStep :   26663 2002  3 21  4 30  0
+iStep:    26826, Time: 20020321 044001, WallTime:     49.37 min, Proj :     77.56
+Writing Output files (3DALL) at iStep :   26826 2002  3 21  4 40  1
+iStep:    26989, Time: 20020321 045002, WallTime:     51.01 min, Proj :     75.62
+Writing Output files (3DALL) at iStep :   26989 2002  3 21  4 50  2
+iStep:    27152, Time: 20020321 050002, WallTime:     52.59 min, Proj :     73.61
+Writing Output files (3DALL) at iStep :   27152 2002  3 21  5  0  2
+iStep:    27315, Time: 20020321 051001, WallTime:     54.19 min, Proj :     71.65
+Writing Output files (3DALL) at iStep :   27315 2002  3 21  5 10  1
+iStep:    27478, Time: 20020321 052001, WallTime:     55.76 min, Proj :     69.69
+Writing Output files (3DALL) at iStep :   27478 2002  3 21  5 20  1
+iStep:    27641, Time: 20020321 053000, WallTime:     57.34 min, Proj :     67.76
+Writing Output files (3DALL) at iStep :   27641 2002  3 21  5 30  0
+iStep:    27805, Time: 20020321 054002, WallTime:     58.97 min, Proj :     65.90
+Writing Output files (3DALL) at iStep :   27805 2002  3 21  5 40  2
+iStep:    27968, Time: 20020321 055001, WallTime:     60.67 min, Proj :     64.13
+Writing Output files (3DALL) at iStep :   27968 2002  3 21  5 50  1
+iStep:    28132, Time: 20020321 060003, WallTime:     62.41 min, Proj :     62.39
+Writing Output files (3DALL) at iStep :   28132 2002  3 21  6  0  3
+iStep:    28295, Time: 20020321 061001, WallTime:     63.97 min, Proj :     60.50
+Writing Output files (3DALL) at iStep :   28295 2002  3 21  6 10  1
+iStep:    28459, Time: 20020321 062002, WallTime:     65.62 min, Proj :     58.70
+Writing Output files (3DALL) at iStep :   28459 2002  3 21  6 20  2
+iStep:    28622, Time: 20020321 063000, WallTime:     67.15 min, Proj :     56.82
+Writing Output files (3DALL) at iStep :   28622 2002  3 21  6 30  0
+iStep:    28786, Time: 20020321 064001, WallTime:     68.77 min, Proj :     55.01
+Writing Output files (3DALL) at iStep :   28786 2002  3 21  6 40  1
+iStep:    28950, Time: 20020321 065002, WallTime:     70.39 min, Proj :     53.21
+Writing Output files (3DALL) at iStep :   28950 2002  3 21  6 50  2
+iStep:    29114, Time: 20020321 070002, WallTime:     72.18 min, Proj :     51.54
+Writing Output files (3DALL) at iStep :   29114 2002  3 21  7  0  2
+iStep:    29278, Time: 20020321 071003, WallTime:     73.88 min, Proj :     49.81
+Writing Output files (3DALL) at iStep :   29278 2002  3 21  7 10  3
+iStep:    29441, Time: 20020321 072000, WallTime:     75.43 min, Proj :     48.00
+Writing Output files (3DALL) at iStep :   29441 2002  3 21  7 20  0
+iStep:    29605, Time: 20020321 073000, WallTime:     77.05 min, Proj :     46.23
+Writing Output files (3DALL) at iStep :   29605 2002  3 21  7 30  0
+iStep:    29769, Time: 20020321 074000, WallTime:     78.72 min, Proj :     44.49
+Writing Output files (3DALL) at iStep :   29769 2002  3 21  7 40  0
+iStep:    29933, Time: 20020321 075001, WallTime:     80.39 min, Proj :     42.76
+Writing Output files (3DALL) at iStep :   29933 2002  3 21  7 50  1
+iStep:    30097, Time: 20020321 080001, WallTime:     81.98 min, Proj :     40.98
+Writing Output files (3DALL) at iStep :   30097 2002  3 21  8  0  1
+iStep:    30261, Time: 20020321 081000, WallTime:     83.56 min, Proj :     39.22
+Writing Output files (3DALL) at iStep :   30261 2002  3 21  8 10  0
+iStep:    30425, Time: 20020321 082000, WallTime:     85.14 min, Proj :     37.46
+Writing Output files (3DALL) at iStep :   30425 2002  3 21  8 20  0
+iStep:    30590, Time: 20020321 083003, WallTime:     86.78 min, Proj :     35.72
+Writing Output files (3DALL) at iStep :   30590 2002  3 21  8 30  3
+iStep:    30754, Time: 20020321 084003, WallTime:     88.60 min, Proj :     34.06
+Writing Output files (3DALL) at iStep :   30754 2002  3 21  8 40  3
+iStep:    30918, Time: 20020321 085002, WallTime:     90.33 min, Proj :     32.37
+Writing Output files (3DALL) at iStep :   30918 2002  3 21  8 50  2
+iStep:    31082, Time: 20020321 090001, WallTime:     91.95 min, Proj :     30.65
+Writing Output files (3DALL) at iStep :   31082 2002  3 21  9  0  1
+iStep:    31246, Time: 20020321 091000, WallTime:     93.61 min, Proj :     28.93
+Writing Output files (3DALL) at iStep :   31246 2002  3 21  9 10  0
+iStep:    31410, Time: 20020321 092000, WallTime:     95.18 min, Proj :     27.20
+Writing Output files (3DALL) at iStep :   31410 2002  3 21  9 20  0
+iStep:    31575, Time: 20020321 093002, WallTime:     96.98 min, Proj :     25.51
+Writing Output files (3DALL) at iStep :   31575 2002  3 21  9 30  2
+iStep:    31739, Time: 20020321 094001, WallTime:     98.60 min, Proj :     23.80
+Writing Output files (3DALL) at iStep :   31739 2002  3 21  9 40  1
+iStep:    31903, Time: 20020321 095000, WallTime:    100.33 min, Proj :     22.11
+Writing Output files (3DALL) at iStep :   31903 2002  3 21  9 50  0
+iStep:    32068, Time: 20020321 100002, WallTime:    102.07 min, Proj :     20.40
+Writing Output files (3DALL) at iStep :   32068 2002  3 21 10  0  2
+iStep:    32232, Time: 20020321 101001, WallTime:    103.64 min, Proj :     18.68
+Writing Output files (3DALL) at iStep :   32232 2002  3 21 10 10  1
+iStep:    32397, Time: 20020321 102003, WallTime:    105.25 min, Proj :     16.96
+Writing Output files (3DALL) at iStep :   32397 2002  3 21 10 20  3
+iStep:    32561, Time: 20020321 103002, WallTime:    106.91 min, Proj :     15.27
+Writing Output files (3DALL) at iStep :   32561 2002  3 21 10 30  2
+iStep:    32725, Time: 20020321 104001, WallTime:    108.62 min, Proj :     13.57
+Writing Output files (3DALL) at iStep :   32725 2002  3 21 10 40  1
+iStep:    32890, Time: 20020321 105003, WallTime:    110.24 min, Proj :     11.86
+Writing Output files (3DALL) at iStep :   32890 2002  3 21 10 50  3
+iStep:    33054, Time: 20020321 110001, WallTime:    111.85 min, Proj :     10.16
+Writing Output files (3DALL) at iStep :   33054 2002  3 21 11  0  1
+iStep:    33219, Time: 20020321 111003, WallTime:    113.44 min, Proj :      8.46
+Writing Output files (3DALL) at iStep :   33219 2002  3 21 11 10  3
+iStep:    33383, Time: 20020321 112002, WallTime:    115.12 min, Proj :      6.77
+Writing Output files (3DALL) at iStep :   33383 2002  3 21 11 20  2
+iStep:    33547, Time: 20020321 113000, WallTime:    116.91 min, Proj :      5.08
+Writing Output files (3DALL) at iStep :   33547 2002  3 21 11 30  0
+iStep:    33712, Time: 20020321 114002, WallTime:    118.62 min, Proj :      3.38
+Writing Output files (3DALL) at iStep :   33712 2002  3 21 11 40  2
+iStep:    33876, Time: 20020321 115000, WallTime:    120.32 min, Proj :      1.69
+Writing Output files (3DALL) at iStep :   33876 2002  3 21 11 50  0
+iStep:    34041, Time: 20020321 120000, WallTime:    121.94 min, Proj :      0.00
+Writing Output files (3DALL) at iStep :   34041 2002  3 21 12  0  0
+Writing Output files (3DALL) at iStep :   34041 2002  3 21 12  0  0
+ No errors to report!
+ --> Error : Option found in UAM.in file without a matching key:
+ --> Error : #SPHERE
+-> GITM                      took  7316.7 seconds to complete
+--> initialize               took     0.2 seconds to complete
+----> Message Pass           took   702.5 seconds to complete
+---> init_b0                 took     0.1 seconds to complete
+----> calc_rates             took   183.6 seconds to complete
+---> calc_electrodyn_1d      took     0.6 seconds to complete
+---> get_potential           took    87.7 seconds to complete
+--> advance                  took  7266.0 seconds to complete
+---> euv_ionization_heat     took    27.5 seconds to complete
+----> chapman_integrals      took     2.9 seconds to complete
+----> conduction_1d          took   389.5 seconds to complete
+---> calc_efield             took     9.4 seconds to complete
+---> Aurora                  took     7.1 seconds to complete
+---> Ion Forcing             took    57.4 seconds to complete
+---> calc_chemistry          took   288.2 seconds to complete
+---> vertical_all            took  4516.7 seconds to complete
+---> horizontal_all          took  1395.9 seconds to complete
+--> check_stop               took    13.1 seconds to complete
+--> Finalize                 took     0.1 seconds to complete

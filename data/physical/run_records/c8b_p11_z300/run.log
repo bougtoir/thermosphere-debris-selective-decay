@@ -1,0 +1,77 @@
+ > Reading Inputs
+ ----------------------------------------------
+ GITM allows the use of a 10% seasonal 
+ correction factor in the conversion of AE to HP
+ Put another T after convert to HP if you want this,
+ or put an F to silence this message.
+ ----------------------------------------------
+ > init_grid
+ > Reading Inputs
+  -> Warning: Option found in UAM.in file without a matching key:
+  -> Warning: #SPHERE
+ > init_msis
+ > init_b0
+ > Initializing IE Library
+  => Weimer Initialized
+  => FTA Initialized
+ > Starting Main Time Loop
+ user_heating: P0,lat0,lon0,z0,sigh,sigz,ton,tdur,tramp =    100000000000.00000        45.000000000000000        0.0000000000000000        300.00000000000000        1000.0000000000000        50.000000000000000        25200.000000000000        3600.0000000000000        600.00000000000000     
+iStep:     7475, Time: 20020321 001002, WallTime:      8.90 min, Proj :    150.81
+Writing Output files (3DALL) at iStep :    7475 2002  3 21  0 10  2
+iStep:     7673, Time: 20020321 002002, WallTime:     16.82 min, Proj :    134.27
+Writing Output files (3DALL) at iStep :    7673 2002  3 21  0 20  2
+iStep:     7871, Time: 20020321 003002, WallTime:     24.70 min, Proj :    123.25
+Writing Output files (3DALL) at iStep :    7871 2002  3 21  0 30  2
+iStep:     8068, Time: 20020321 004001, WallTime:     33.31 min, Proj :    116.49
+Writing Output files (3DALL) at iStep :    8068 2002  3 21  0 40  1
+iStep:     8265, Time: 20020321 005001, WallTime:     41.49 min, Proj :    107.80
+Writing Output files (3DALL) at iStep :    8265 2002  3 21  0 50  1
+iStep:     8462, Time: 20020321 010002, WallTime:     50.04 min, Proj :     99.98
+Writing Output files (3DALL) at iStep :    8462 2002  3 21  1  0  2
+iStep:     8658, Time: 20020321 011001, WallTime:     58.64 min, Proj :     92.11
+Writing Output files (3DALL) at iStep :    8658 2002  3 21  1 10  1
+iStep:     8854, Time: 20020321 012000, WallTime:     67.98 min, Proj :     84.94
+Writing Output files (3DALL) at iStep :    8854 2002  3 21  1 20  0
+iStep:     9050, Time: 20020321 013001, WallTime:     76.15 min, Proj :     76.11
+Writing Output files (3DALL) at iStep :    9050 2002  3 21  1 30  1
+iStep:     9246, Time: 20020321 014002, WallTime:     84.24 min, Proj :     67.32
+Writing Output files (3DALL) at iStep :    9246 2002  3 21  1 40  2
+iStep:     9441, Time: 20020321 015002, WallTime:     92.92 min, Proj :     59.08
+Writing Output files (3DALL) at iStep :    9441 2002  3 21  1 50  2
+iStep:     9636, Time: 20020321 020002, WallTime:    100.99 min, Proj :     50.45
+Writing Output files (3DALL) at iStep :    9636 2002  3 21  2  0  2
+iStep:     9831, Time: 20020321 021002, WallTime:    113.28 min, Proj :     43.51
+Writing Output files (3DALL) at iStep :    9831 2002  3 21  2 10  2
+iStep:    10025, Time: 20020321 022001, WallTime:    124.52 min, Proj :     35.55
+Writing Output files (3DALL) at iStep :   10025 2002  3 21  2 20  1
+iStep:    10219, Time: 20020321 023001, WallTime:    132.89 min, Proj :     26.56
+Writing Output files (3DALL) at iStep :   10219 2002  3 21  2 30  1
+iStep:    10413, Time: 20020321 024001, WallTime:    141.54 min, Proj :     17.66
+Writing Output files (3DALL) at iStep :   10413 2002  3 21  2 40  1
+iStep:    10606, Time: 20020321 025000, WallTime:    149.70 min, Proj :      8.80
+Writing Output files (3DALL) at iStep :   10606 2002  3 21  2 50  0
+iStep:    10800, Time: 20020321 030000, WallTime:    157.82 min, Proj :      0.00
+Writing Output files (3DALL) at iStep :   10800 2002  3 21  3  0  0
+Writing Output files (3DALL) at iStep :   10800 2002  3 21  3  0  0
+ No errors to report!
+ --> Error : Option found in UAM.in file without a matching key:
+ --> Error : #SPHERE
+-> GITM                      took  9469.7 seconds to complete
+--> initialize               took     0.8 seconds to complete
+----> Message Pass           took  1013.8 seconds to complete
+---> init_b0                 took     0.2 seconds to complete
+----> calc_rates             took   239.5 seconds to complete
+---> calc_electrodyn_1d      took     0.4 seconds to complete
+---> get_potential           took   236.3 seconds to complete
+--> advance                  took  9311.6 seconds to complete
+---> euv_ionization_heat     took    33.2 seconds to complete
+----> chapman_integrals      took     3.5 seconds to complete
+----> conduction_1d          took   467.5 seconds to complete
+---> calc_efield             took     7.2 seconds to complete
+---> Aurora                  took    12.6 seconds to complete
+---> Ion Forcing             took    48.0 seconds to complete
+---> calc_chemistry          took   393.2 seconds to complete
+---> vertical_all            took  5672.7 seconds to complete
+---> horizontal_all          took  1816.8 seconds to complete
+--> check_stop               took    96.9 seconds to complete
+--> Finalize                 took     0.3 seconds to complete

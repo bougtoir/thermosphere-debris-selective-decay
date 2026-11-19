@@ -1,50 +1,75 @@
-FINAL HANDOFF — ASR EVIDENCE-RECOVERY PASS
-Date: 2026-10-17 UTC | Branch: devin/1792228606-asr-hostile-hardcode-revision | PR #5
+FINAL HANDOFF — prior-literature claim correction and merge-target audit (GITM–orbit drag selectivity, Acta Astronautica)
 
-1. FINAL VERDICT: SUBMIT
-   All required audits were genuinely performed in this session chain,
-   all execution evidence exists, no unresolved CRITICAL/MAJOR defect.
+Repository : https://github.com/bougtoir/thermosphere-debris-selective-decay (tag gitm-orbit-selectivity-v1 -> 61478a1, predates this wording correction)
+Branch     : devin/1794047620-physical-model-rebuild
+PR         : https://github.com/bougtoir/thermosphere-debris-selective-decay/pull/9 (open, not merged)
+Data       : https://doi.org/10.5281/zenodo.24101202 (published by the author 2026-11-12; metadata corrected 2026-11-18)
 
-2. ROOT CAUSE OF REPEATED ZIP EXCLUSION (Phase 5)
-   scripts/build_submission_package.py uses an explicit ITEMS allowlist
-   under 03_submission_docs/. The audit artifacts from the three
-   review/lock passes were never added to it, and the builder silently
-   skips files it doesn't know — no completeness check existed.
-   FIX: all required evidence now listed under 08_audit_evidence/;
-   a missing audit file now aborts the build (fail-loud), and zip
-   contents were programmatically verified post-build.
+DECISION (manuscript): SUBMIT   |   MERGE RECOMMENDATION: CONDITIONAL MERGE
 
-3. RECOVERED vs NEWLY-EXECUTED
-   Recovered (FOUND_CURRENT, all 19, results/evidence_inventory.csv):
-   every required doc/CSV/log already existed and was current — nothing
-   had to be re-run. New work this pass: inventory docs, the ITEMS fix,
-   package rebuild, content verification.
+1. Branch / HEAD: devin/1794047620-physical-model-rebuild; HEAD = the commit adding this file, on top of 61478a1.
+2. PR #9: open, base main <- head devin/1794047620-physical-model-rebuild (same repository), mergeable, 0 commits behind
+   main (ac67802), no conflicts. Not merged.
+3. Dependent PRs: none. PRs #1-#8 are all merged and their heads are ancestors of main; #9 is the only open PR.
+4. Merge order: merge PR #9 into main (merge commit recommended, so that tagged commit 61478a1 and c93bf8c stay reachable).
+5. Devin Review: commit status 'failure' ("Completed analysis in 3s"), 0 comments, no log, on every recent head. Not a
+   required check (main unprotected, no rulesets, no CI workflows), so it does not block merging; cause unknown.
+   It reran on the new head: see the PR checks.
+6. Release tag gitm-orbit-selectivity-v1: annotated, -> 61478a1, not moved. It predates this wording correction; the code,
+   manifests and value ledger are identical at the tag and at HEAD. A new tag (e.g. v1.1) is optional and needs approval.
+7. Literature-claim correction (docs/FINAL_PRIOR_LITERATURE_CLAIM_DELTA.md): the abstract, introduction, Methods 2.5 and
+   cover letter no longer describe static Gaussian patches as a published screening practice; they are an idealized
+   comparator, and the absence of a published static-patch selectivity study is stated as the result of a targeted search.
+   Files: scripts/build_physical_manuscript.py, manuscript.docx, manuscript_review_inline.docx, cover_letter.docx,
+   results/qc_physical_manuscript.csv, docs/ACTA_FINAL_HOSTILE_REVIEW.md. Also restored the legacy
+   results/tables/quick_summary.csv to main's version (last-digit float noise, unrelated to this PR).
+8. Numerical results unchanged: value ledger (164 values) byte-identical; figures, TIFFs, tables, highlights unchanged;
+   QC 34/34, semantic checks 325/325, pytest 34 passed. No GITM run. Zenodo record not modified (a re-query on 2026-11-19 got
+   HTTP 403 rate limiting; last full verification 2026-11-18).
+9-12. Final manuscript, cover letter, ZIP and merge audit: listed below.
 
-4. COMMANDS / EXIT CODES / LOGS
-   - make all: exit 0, 39m09s — logs/make_all.log
-   - pytest tests/ -x -q: exit 0, 26/26 — logs/final_qc_commands.log
-   - pytest test_numeric_provenance -v: exit 0, 6/6 — same log
-   - make quick: exit 0, 7.1s — same log
-   - input perturbation Bx2: exit 0, expected-direction change — same log
-   - build_submission_package.py: exit 0, 130+21 files
+AUTHOR-ONLY ACTIONS: department, postal address and ORCID; final reading; manual submission; decide whether to merge PR #9
+  and whether to create a new tag.
 
-5. HOSTILE REVIEW COUNTS: CRITICAL 0; MAJOR 2 found across sweeps
-   (placeholder render defect, CSV schema drift) — both fixed;
-   MINOR 1 (supplement table wrap) fixed; residual = declared
-   irreducible limitations only.
+UNRESOLVED LIMITATIONS (in the manuscript): one model, one quiet equinox background, two grids with unequal spin-up
+  (24 h vs 6 h), extreme 100 GW forcing, coarse-only power/altitude contrasts, synthetic orbits, one target definition,
+  no transport budget.
 
-6. HARDCODE: 17 findings — suspicious 3 fixed, justified 11,
-   reworded 3, unresolved 0; 85 claims traced; AST scan clean.
+PREVIOUS STEP (2026-11-18): Zenodo publication audit PASS; raw provenance PASS (log-verified); clean public reproduction
+  PASS; Data availability final audit PASS (see the documents below).
 
-7. REPRODUCIBILITY: full make all regenerated every phase; diffs were
-   ulp FP noise + bootstrap CI resampling only; one real schema defect
-   found and fixed during the run.
-
-8. MANUSCRIPT/SCIENCE CHANGED: none this pass (packaging only).
-
-9. FINAL ZIP: ASR_SUBMISSION_EVIDENCE_VERIFIED_FINAL.zip at repo root
-   (SHA256 recorded in the git commit message and session report —
-   it cannot hash itself).
-
-10. GIT: branch devin/1792228606-asr-hostile-hardcode-revision;
-    commits ef02a98 -> a28aed3 -> (this commit); PR #5.
+ARTIFACTS (SHA-256):
+  506b7c55d60415e66014cdd8bdc40fed77822a659d3fb9f4f562d30f40c8d158  manuscript/physical/manuscript.docx
+  5d802e521462424b8df666b65cbfe1c9f0c81a6131d69e5d68c774cbd0082372  manuscript/physical/manuscript_review_inline.docx
+  145e4a66799f63e1aacf948565410b4ad4320b7ab82a4ba97c08fd3f236bf9ea  manuscript/physical/tables.docx
+  314cf391ff4f4162845b9a3374388a5f2f51fdc9c623563e1417e82b0dee2dbe  manuscript/physical/figures.pptx
+  2fa0b64eee0253a38155331484a42d11da5d3a90540ef901a78720103d9a308e  manuscript/physical/highlights.docx
+  9409924158b90c2abc4c3f5ece4babb34106b5dff9aaefa742374517716954ba  manuscript/physical/cover_letter.docx
+  b30d0b10c755976c19bf295229a4e34173ada5462e4e9918109d8402e3c58e23  manuscript/physical/figures/Fig1.tif
+  89944dcdb8b643305a80dae5359c127630685f7b4117ab725de8f97c3fdc7191  manuscript/physical/figures/Fig2.tif
+  0cc0d2585aff5aaefd51055dfb088c5000666999f002ed212e13fbf59c901af6  manuscript/physical/figures/Fig3.tif
+  fd1254419b7368a98e2cd78e105419710384c90cf05a5b4f915a44454e77d610  manuscript/physical/figures/Fig4.tif
+  a264d3b11bc8a5d1f2b2a030d8b4f2f22d9e40467846f53d684cf3a40eece6cd  manuscript/physical/figures/Fig5.tif
+  6fff79326a1b2a3c7f04209f9876d001269b86b8233cf192dc920e7ae1b73a64  docs/FINAL_PRIOR_LITERATURE_CLAIM_DELTA.md
+  dffee4c1b9499b20782e4c47ef46280c1344ca2dd79de431997fbbd6cc33329b  docs/PR_MERGE_TARGET_AUDIT.md
+  e41fba45873356bbe0fa781a0d8305c3541d2516e66495b2ebe5e6fa7110c847  docs/FINAL_CLAIM_AND_MERGE_QC.md
+  fb305164ae3d1bd13508dfb0065408f5187b639a0b584efcf4fd20d890d90752  docs/RAW_SIMULATION_PROVENANCE_AUDIT.md
+  772b4d0f76322102be961fc3e757218f7bf9958f7ae526a9b2628032b4f4f20f  docs/PUBLIC_REPRODUCTION_FINAL_REPORT.md
+  32eba0e1ee88649b3da4278f139d589d7c9c8993fcc8f8e10a3e3964f669c736  docs/ZENODO_PUBLICATION_AUDIT.md
+  61c1197139fa2c2dcdc4dd782e972e4445c7e365a550f93b4d9b35c36d120797  docs/DATA_AVAILABILITY_FINAL_AUDIT.md
+  393a3e9e0444590491b4fe90aa85d7e1d1cf2d1a7e92f83920dfb8a60c1a7656  docs/ACTA_FINAL_DELTA_BASELINE.md
+  1ab32bd246e9b9599603ab727d6f7d6ed96a2f6cd5ccf094e6742e42001adb4d  docs/ACTA_CLAIM_CALIBRATION_AUDIT.md
+  dc9d46a89251f27b76391f8b2069e21bac7fc89773882de5f9a978ea79000d57  docs/ACTA_DATA_AVAILABILITY_AUDIT.md
+  b1b884dffce72d87874d931813bf959344e9a717bdcae481895cf1911eea7da1  docs/ACTA_PUBLIC_REPRODUCTION_CHECK.md
+  f614cd31e2a510119df5047cbcf4d637073bc2289ecf75f2c16cb3a0ba92186d  docs/ACTA_FIGURE_EXPORT_AUDIT.md
+  54321956d41d85b85d2713c5f316904ff2cb9a3403d965b2eb14c6e60e59de33  docs/ACTA_FINAL_SEMANTIC_CODE_AUDIT.md
+  adc94d5bce783aba1b1722b9d0e36f019fc70071e8072e9fa8a5897ecfd7f7c3  docs/ACTA_FINAL_HOSTILE_REVIEW.md
+  2290fbba5df9868159f90cca0fd88e35fdf3daf455bbf4d6b2cc70a076703f41  docs/ACTA_FINAL_DELTA_QC_MATRIX.md
+  e1d7089ddac248d35863209176bfb1a83c7dec25ed003da67de87a114d55867e  results/qc_physical_manuscript.csv
+  610fc96d436df920212f6b6548d36989aefdb8df377d26293207c1b74cade636  results/tables/acta_semantic_checks.csv
+  759534534d0cab916abf790893df54abffc40d4e8709f81f6a855be7f44f261c  results/provenance/raw_run_provenance.csv
+  67a2b49c4c55a7b6da0bf8b012307772526775746f795fb046d5226f551ca52c  results/provenance/raw_to_processed_spotcheck.csv
+  2ac9b39303042deb4f0220cfec2b77fd9e9ab2e1074fa2157dc23480ee84c473  results/provenance/gitm_build_provenance.json
+  914f5a967612d09e574df20ced7c76e64ca77dc11af4fb56ef95c0ddeba34a0e  results/provenance/public_reproduction_compare.csv
+  c0c6387dba1dd36f457af2258be86ca91626aeaeaa8cd77ce4883cdad8c50ed3  results/provenance/zenodo_public_download_manifest.json
+  3c3f7e892ed0bc295967834db89f7a0cb5ca8843b69445c61ec389b53f60a56d  data/physical/ZENODO_DRAFT_RECORD.json

@@ -1,0 +1,12 @@
+test,criterion,pass,value
+V2a,no NaN,True,all finite
+V2b,"Tn within [150,3000] K",False,"min 117.9 K, max 1568.3 K"
+V2c,dt > 1 s,True,min dt 2.218 s over 1440 log records
+V3,|rho400(24h)/rho400(18h)-1| < 5%,True,0.40%
+V4@250,"GITM/MSIS rho in [0.67,1.5]",True,0.900-0.908
+V4@400,"GITM/MSIS rho in [0.67,1.5]",True,1.070-1.074
+V4@500,"GITM/MSIS rho in [0.67,1.5]",True,1.291-1.298
+V5,Tn400 - MSIS within 150 K,True,+98.9 to +100.8 K
+V6,O/N2 at 300 km within x2,True,ratio 1.069-1.097
+V7a,"max |Vh| at 300 km in [50,600] m/s",True,398-417 m/s
+V7b,"peak Ne in [1e11,5e12] m^-3",True,2.25e+12-2.41e+12 m^-3

@@ -1,0 +1,4 @@
+alt_km,last_nonpositive_t_after_onset_h,n_nonpositive_records,rule
+300.0,0.5002777777777778,11,target or non-target cumulative extra dv <= 0 (ratio sign undefined); no other threshold
+400.0,0.0008333333333333334,3,target or non-target cumulative extra dv <= 0 (ratio sign undefined); no other threshold
+500.0,0.0008333333333333334,3,target or non-target cumulative extra dv <= 0 (ratio sign undefined); no other threshold

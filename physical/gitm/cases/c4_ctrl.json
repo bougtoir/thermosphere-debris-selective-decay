@@ -1,0 +1,22 @@
+{
+ "name": "c4_ctrl",
+ "rundir": "/home/ubuntu/models/runs/c4_ctrl",
+ "restart_from": "/home/ubuntu/models/runs/spin4",
+ "start": "2002-03-21T00:00:00",
+ "end": "2002-03-21T12:00:00",
+ "nblon": 4,
+ "nblat": 4,
+ "dtplot": 600.0,
+ "heating": [
+  0.0,
+  45,
+  0,
+  300,
+  1000,
+  50,
+  3600,
+  3600,
+  600
+ ],
+ "nproc": 2
+}

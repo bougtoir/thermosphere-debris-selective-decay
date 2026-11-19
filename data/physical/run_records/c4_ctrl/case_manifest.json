@@ -1,0 +1,66 @@
+{
+ "case": {
+  "name": "c4_ctrl",
+  "rundir": "/home/ubuntu/models/runs/c4_ctrl",
+  "restart_from": "/home/ubuntu/models/runs/spin4",
+  "start": "2002-03-21T00:00:00",
+  "end": "2002-03-21T12:00:00",
+  "nblon": 4,
+  "nblat": 4,
+  "dtplot": 600.0,
+  "heating": [
+   0.0,
+   45,
+   0,
+   300,
+   1000,
+   50,
+   3600,
+   3600,
+   600
+  ],
+  "nproc": 2
+ },
+ "heating_t_on_offset_s": 86400.0,
+ "heating_as_written": [
+  0.0,
+  45,
+  0,
+  300,
+  1000,
+  50,
+  90000.0,
+  3600,
+  600
+ ],
+ "gitm_exe_sha256": "c89d1650d133bf555807ecbe215efefbacac7b8ff83f14921982f341eaa1df69",
+ "inputs": {
+  "UAM.in": "e25e993bd1e93e11cd9ba9820cd2ec420a07fea99a8564c78ca4e374c86f463d",
+  "UA/DataIn/static_imf.dat": "f3351ef70c91d5e471d4327edfceeb841d66922d5a826aa6ff028c96308acd51",
+  "UA/DataIn/static_sme.dat": "966ce36759567476f99ee94ad45ccad2a1ed6e0d48f2cf8766aba08b27ce91bf",
+  "UA/DataIn/user_heating.in": "9b607608fcd1d1be0fb8c4f503b27bd250ef0d67f62c397badcf236706a4df56"
+ },
+ "started_utc": "2026-11-07T17:01:38.079918",
+ "restart_in_sha256": {
+  "b0001.rst": "3a17ff601ec565217966c0b7ef7c81cce73bd7643c9c486bea218c62ba37f53b",
+  "b0002.rst": "f382ef391cf1994e7d1f83db2f00ee1a3c1d2e6012d3d34d78e9758d0beb9084",
+  "b0003.rst": "8a0d26a41b70666775e8ca046946d41b0efddfdf0218d78d2eff83f431522ab5",
+  "b0004.rst": "e35b89156a78ca9f8e100cfaecb507fc0faf6f6f0a0c71580784bcd6ca98d0cb",
+  "b0005.rst": "ad0a86fd37a8acfa21632fa66457f8339164fd8b9fbeba63e431338f20c9c512",
+  "b0006.rst": "1f961561d1640c6692dc5d6a6c6eb1b9b57722a2728b221c3d48ec91ef9b1419",
+  "b0007.rst": "ca3d7097180020ebd69279acc73617d55026bcd087c6674a9b9bab9fd1f8842b",
+  "b0008.rst": "5689d2eb1902364b953df866d10cc297797f9af83e1265aa145d3c889760efe7",
+  "b0009.rst": "4dd1b0b5fab2a8423a0dfd3b027dba26376c14e6fed20054c4edaa968638d066",
+  "b0010.rst": "2bfdcfa024c6073fb81203766a97575da0186fc5be3a48752e285919e3fcdee7",
+  "b0011.rst": "1faa52afd4c2d076a4ec32fbccb9600ec8bc4713bed4917004c6df431f15c92b",
+  "b0012.rst": "8b1b3ced09f76e22faac7fa5a4dc629f2496e6eeacc932ceb1cfb6a569571c44",
+  "b0013.rst": "6a59ddcc4b2634737a61926ac03ee156cd2779ae90a4dfb1498c22fdc5965192",
+  "b0014.rst": "6eb70ab3a8a555dfe34120e8049df5924f40e6dea5304d9a80bc267bd7f7a423",
+  "b0015.rst": "eedb73530adf55a5d456cabf25e39748ef317aa5b5c4f595180090ba12d1068f",
+  "b0016.rst": "a5b62d9898c9a7cf18518a3d9b26ee6c3c1fe737670207e299f781f2f86aee4f",
+  "header.rst": "2a94368e847e21d0d7eaab14e77183c27fab3460c71c8a9e37bd66b52528de21"
+ },
+ "exit_code": 0,
+ "wall_s": 8750.248168230057,
+ "finished_utc": "2026-11-07T19:27:28.436429"
+}

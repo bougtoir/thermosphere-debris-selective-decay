@@ -1,0 +1,1022 @@
+Skip to main content
+       
+Discover more
+Scientific Publishing Services
+Research Publication Support
+Study Biology
+International Journal of General Systems
+United Kingdom
+|
+Universities and research institutions
+|
+Media Ranking
+Country
+United Kingdom
+Subject Area and Category
+Computer Science
+Computer Science Applications
+Information Systems
+Engineering
+Control and Systems Engineering
+Mathematics
+Modeling and Simulation
+Theoretical Computer Science
+Publisher
+Taylor and Francis Ltd.
+Discover more
+Find Study Aids
+Elsevier Journal Access
+H-Index Calculation Tool
+SJR 2025
+0.530
+Q2
+H-Index
+59
+Publication type
+Journals
+ISSN
+03081079, 15635104
+Coverage
+1974-2026
+Information
+Home
+How to publish in this journal
+radim.belohlavek@upol.cz
+Discover more
+Look Up Facts
+Try Science Kits
+Search Guides
+Browse Magazines
+Science Research Articles
+Find Library Books
+Learn Sociology
+Journal Impact Analysis
+Scopus Database Access
+Tour Colleges
+Scope
+International Journal of General Systems is a periodical devoted primarily to the publication of original research contributions to system science, basic as well as applied. However, relevant survey articles, invited book reviews, bibliographies, and letters to the editor are also published. The principal aim of the journal is to promote original systems ideas (concepts, principles, methods, theoretical or experimental results, etc.) that are broadly applicable to various kinds of systems. The term “general system” in the name of the journal is intended to indicate this aim–the orientation to systems ideas that have a general applicability. Typical subject areas covered by the journal include: uncertainty and randomness; fuzziness and imprecision; information; complexity; inductive and deductive reasoning about systems; learning; systems analysis and design; and theoretical as well as experimental knowledge regarding various categories of systems. Submitted research must be well presented and must clearly state the contribution and novelty. Manuscripts dealing with particular kinds of systems which lack general applicability across a broad range of systems should be sent to journals specializing in the respective topics.
+Quartiles
+1999
+2001
+2003
+2005
+2007
+2009
+2011
+2013
+2015
+2017
+2019
+2021
+2023
+2025
+Computer Science Applications
+Control and Systems Engineering
+Information Systems
+Modeling and Simulation
+Theoretical Computer Science
+
+The set of journals have been ranked according to their SJR and divided into four equal groups, four quartiles. Q1 (green) comprises the quarter of the journals with the highest values, Q2 (yellow) the second highest values, Q3 (orange) the third highest values and Q4 (red) the lowest values.
+
+Category	Year	Quartile
+Computer Science Applications	1999	Q3
+Computer Science Applications	2000	Q3
+Computer Science Applications	2001	Q3
+Computer Science Applications	2002	Q2
+Computer Science Applications	2003	Q3
+Computer Science Applications	2004	Q3
+Computer Science Applications	2005	Q2
+Computer Science Applications	2006	Q2
+Computer Science Applications	2007	Q2
+Computer Science Applications	2008	Q2
+Computer Science Applications	2009	Q3
+Computer Science Applications	2010	Q3
+Computer Science Applications	2011	Q2
+Computer Science Applications	2012	Q2
+Computer Science Applications	2013	Q2
+Computer Science Applications	2014	Q2
+Computer Science Applications	2015	Q2
+Computer Science Applications	2016	Q1
+Computer Science Applications	2017	Q1
+Computer Science Applications	2018	Q1
+Computer Science Applications	2019	Q2
+Computer Science Applications	2020	Q2
+Computer Science Applications	2021	Q2
+Computer Science Applications	2022	Q2
+Computer Science Applications	2023	Q2
+Computer Science Applications	2024	Q2
+Computer Science Applications	2025	Q2
+Control and Systems Engineering	1999	Q2
+Control and Systems Engineering	2000	Q3
+Control and Systems Engineering	2001	Q3
+Control and Systems Engineering	2002	Q2
+Control and Systems Engineering	2003	Q3
+Control and Systems Engineering	2004	Q2
+Control and Systems Engineering	2005	Q2
+Control and Systems Engineering	2006	Q2
+Control and Systems Engineering	2007	Q2
+Control and Systems Engineering	2008	Q2
+Control and Systems Engineering	2009	Q2
+Control and Systems Engineering	2010	Q3
+Control and Systems Engineering	2011	Q2
+Control and Systems Engineering	2012	Q2
+Control and Systems Engineering	2013	Q2
+Control and Systems Engineering	2014	Q2
+Control and Systems Engineering	2015	Q2
+Control and Systems Engineering	2016	Q1
+Control and Systems Engineering	2017	Q1
+Control and Systems Engineering	2018	Q1
+Control and Systems Engineering	2019	Q2
+Control and Systems Engineering	2020	Q2
+Control and Systems Engineering	2021	Q2
+Control and Systems Engineering	2022	Q2
+Control and Systems Engineering	2023	Q2
+Control and Systems Engineering	2024	Q2
+Control and Systems Engineering	2025	Q2
+Information Systems	1999	Q3
+Information Systems	2000	Q3
+Information Systems	2001	Q3
+Information Systems	2002	Q3
+Information Systems	2003	Q3
+Information Systems	2004	Q3
+Information Systems	2005	Q2
+Information Systems	2006	Q2
+Information Systems	2007	Q2
+Information Systems	2008	Q2
+Information Systems	2009	Q2
+Information Systems	2010	Q3
+Information Systems	2011	Q2
+Information Systems	2012	Q2
+Information Systems	2013	Q2
+Information Systems	2014	Q2
+Information Systems	2015	Q1
+Information Systems	2016	Q1
+Information Systems	2017	Q1
+Information Systems	2018	Q1
+Information Systems	2019	Q2
+Information Systems	2020	Q2
+Information Systems	2021	Q2
+Information Systems	2022	Q2
+Information Systems	2023	Q2
+Information Systems	2024	Q2
+Information Systems	2025	Q2
+Modeling and Simulation	1999	Q3
+Modeling and Simulation	2000	Q3
+Modeling and Simulation	2001	Q3
+Modeling and Simulation	2002	Q2
+Modeling and Simulation	2003	Q3
+Modeling and Simulation	2004	Q3
+Modeling and Simulation	2005	Q2
+Modeling and Simulation	2006	Q2
+Modeling and Simulation	2007	Q2
+Modeling and Simulation	2008	Q2
+Modeling and Simulation	2009	Q3
+Modeling and Simulation	2010	Q3
+Modeling and Simulation	2011	Q2
+Modeling and Simulation	2012	Q2
+Modeling and Simulation	2013	Q3
+Modeling and Simulation	2014	Q2
+Modeling and Simulation	2015	Q1
+Modeling and Simulation	2016	Q1
+Modeling and Simulation	2017	Q1
+Modeling and Simulation	2018	Q1
+Modeling and Simulation	2019	Q2
+Modeling and Simulation	2020	Q2
+Modeling and Simulation	2021	Q2
+Modeling and Simulation	2022	Q2
+Modeling and Simulation	2023	Q2
+Modeling and Simulation	2024	Q2
+Modeling and Simulation	2025	Q2
+Theoretical Computer Science	1999	Q3
+Theoretical Computer Science	2000	Q3
+Theoretical Computer Science	2001	Q3
+Theoretical Computer Science	2002	Q3
+Theoretical Computer Science	2003	Q4
+Theoretical Computer Science	2004	Q3
+Theoretical Computer Science	2005	Q3
+Theoretical Computer Science	2006	Q2
+Theoretical Computer Science	2007	Q3
+Theoretical Computer Science	2008	Q3
+Theoretical Computer Science	2009	Q3
+Theoretical Computer Science	2010	Q4
+Theoretical Computer Science	2011	Q3
+Theoretical Computer Science	2012	Q3
+Theoretical Computer Science	2013	Q3
+Theoretical Computer Science	2014	Q2
+Theoretical Computer Science	2015	Q2
+Theoretical Computer Science	2016	Q1
+Theoretical Computer Science	2017	Q1
+Theoretical Computer Science	2018	Q1
+Theoretical Computer Science	2019	Q2
+Theoretical Computer Science	2020	Q3
+Theoretical Computer Science	2021	Q2
+Theoretical Computer Science	2022	Q3
+Theoretical Computer Science	2023	Q3
+Theoretical Computer Science	2024	Q3
+Theoretical Computer Science	2025	Q2
+Discover more
+Open Access Journal
+Journal Ranking Service
+Academic Journal Publishing
+Find similar journals
+All quartiles
+All countries
+All subject categories
+Clear filters
+Download
+Only Open Access Journals
+1 - Iranian Journal of Fuzzy Systems
+53%
+similarity
+2 - International Journal of Uncertainty, Fuzziness and Knowledge-Based Systems
+49%
+similarity
+3 - New Mathematics and Natural Computation
+44%
+similarity
+4 - Kybernetika
+41%
+similarity
+5 - Fuzzy Sets and Systems
+40%
+similarity
+6 - Information Sciences
+38%
+similarity
+7 - International Journal of Fuzzy Systems
+37%
+similarity
+8 - International Journal of Approximate Reasoning
+36%
+similarity
+9 - Granular Computing
+30%
+similarity
+10 - IEEE Transactions on Fuzzy Systems
+26%
+similarity
+11 - Journal of Intelligent and Fuzzy Systems
+25%
+similarity
+12 - Journal of Multiple-Valued Logic and Soft Computing
+25%
+similarity
+SJR
+1999
+2002
+2005
+2008
+2011
+2014
+2017
+2020
+2023
+0
+0.5
+1
+1.5
+2
+
+The SJR is a size-independent prestige indicator that ranks journals by their 'average prestige per article'. It is based on the idea that 'all citations are not created equal'. SJR is a measure of scientific influence of journals that accounts for both the number of citations received by a journal and the importance or prestige of the journals where such citations come from It measures the scientific influence of the average article in a journal, it expresses how central to the global scientific discussion an average article of the journal is.
+
+Year	SJR
+1999	0.290
+2000	0.239
+2001	0.307
+2002	0.449
+2003	0.238
+2004	0.269
+2005	0.483
+2006	0.635
+2007	0.508
+2008	0.570
+2009	0.404
+2010	0.293
+2011	0.455
+2012	0.545
+2013	0.460
+2014	0.624
+2015	0.758
+2016	0.923
+2017	1.665
+2018	0.855
+2019	0.564
+2020	0.482
+2021	0.720
+2022	0.561
+2023	0.528
+2024	0.556
+2025	0.530
+Total Documents
+1999
+2002
+2005
+2008
+2011
+2014
+2017
+2020
+2023
+30
+60
+90
+120
+
+Evolution of the number of published documents. All types of documents are considered, including citable and non citable documents.
+
+Year	Documents
+1999	42
+2000	63
+2001	54
+2002	57
+2003	72
+2004	38
+2005	35
+2006	39
+2007	33
+2008	38
+2009	49
+2010	43
+2011	43
+2012	50
+2013	51
+2014	51
+2015	58
+2016	53
+2017	39
+2018	47
+2019	43
+2020	42
+2021	39
+2022	34
+2023	43
+2024	48
+2025	118
+External Cites per Doc Cites per Doc
+1999
+2002
+2005
+2008
+2011
+2014
+2017
+2020
+2023
+0
+2
+4
+
+Evolution of the number of total citation per document and external citation per document (i.e. journal self-citations removed) received by a journal's published documents during the three previous years. External citations are calculated by subtracting the number of self-citations from the total number of citations received by the journal’s documents.
+
+Cites	Year	Value
+External Cites per document	1999	0.306
+External Cites per document	2000	0.311
+External Cites per document	2001	0.280
+External Cites per document	2002	0.258
+External Cites per document	2003	0.345
+External Cites per document	2004	0.311
+External Cites per document	2005	0.659
+External Cites per document	2006	0.683
+External Cites per document	2007	0.982
+External Cites per document	2008	0.935
+External Cites per document	2009	1.145
+External Cites per document	2010	0.750
+External Cites per document	2011	0.985
+External Cites per document	2012	0.904
+External Cites per document	2013	1.110
+External Cites per document	2014	1.576
+External Cites per document	2015	1.743
+External Cites per document	2016	2.681
+External Cites per document	2017	2.617
+External Cites per document	2018	1.920
+External Cites per document	2019	1.590
+External Cites per document	2020	1.690
+External Cites per document	2021	1.924
+External Cites per document	2022	1.847
+External Cites per document	2023	2.104
+External Cites per document	2024	2.069
+External Cites per document	2025	2.472
+Cites per document	1999	0.318
+Cites per document	2000	0.322
+Cites per document	2001	0.320
+Cites per document	2002	0.314
+Cites per document	2003	0.379
+Cites per document	2004	0.344
+Cites per document	2005	0.689
+Cites per document	2006	0.752
+Cites per document	2007	1.027
+Cites per document	2008	1.028
+Cites per document	2009	1.209
+Cites per document	2010	0.867
+Cites per document	2011	1.077
+Cites per document	2012	1.074
+Cites per document	2013	1.272
+Cites per document	2014	1.708
+Cites per document	2015	1.888
+Cites per document	2016	2.844
+Cites per document	2017	2.821
+Cites per document	2018	2.220
+Cites per document	2019	1.899
+Cites per document	2020	1.868
+Cites per document	2021	2.439
+Cites per document	2022	2.218
+Cites per document	2023	2.322
+Cites per document	2024	2.526
+Cites per document	2025	3.368
+% International Collaboration
+1999
+2002
+2005
+2008
+2011
+2014
+2017
+2020
+2023
+0
+20
+40
+60
+
+International Collaboration accounts for the articles that have been produced by researchers from several countries. The chart shows the ratio of a journal's documents signed by researchers from more than one country; that is including more than one country address.
+
+Year	International Collaboration
+1999	23.81
+2000	23.81
+2001	7.41
+2002	28.07
+2003	19.44
+2004	28.95
+2005	28.57
+2006	35.90
+2007	27.27
+2008	21.05
+2009	16.33
+2010	23.26
+2011	20.93
+2012	20.00
+2013	27.45
+2014	37.25
+2015	31.03
+2016	39.62
+2017	33.33
+2018	38.30
+2019	39.53
+2020	47.62
+2021	17.95
+2022	14.71
+2023	18.60
+2024	18.75
+2025	25.42
+Cited documents Uncited documents
+1999
+2002
+2005
+2008
+2011
+2014
+2017
+2020
+2023
+0
+70
+140
+210
+
+Ratio of a journal's items, grouped in three years windows, that have been cited at least once vs. those not cited during the following year.
+
+Documents	Year	Value
+Uncited documents	1999	71
+Uncited documents	2000	75
+Uncited documents	2001	98
+Uncited documents	2002	126
+Uncited documents	2003	134
+Uncited documents	2004	139
+Uncited documents	2005	112
+Uncited documents	2006	97
+Uncited documents	2007	63
+Uncited documents	2008	66
+Uncited documents	2009	61
+Uncited documents	2010	61
+Uncited documents	2011	66
+Uncited documents	2012	79
+Uncited documents	2013	72
+Uncited documents	2014	68
+Uncited documents	2015	61
+Uncited documents	2016	63
+Uncited documents	2017	55
+Uncited documents	2018	50
+Uncited documents	2019	46
+Uncited documents	2020	56
+Uncited documents	2021	26
+Uncited documents	2022	35
+Uncited documents	2023	40
+Uncited documents	2024	39
+Uncited documents	2025	20
+Cited documents	1999	14
+Cited documents	2000	15
+Cited documents	2001	27
+Cited documents	2002	33
+Cited documents	2003	40
+Cited documents	2004	44
+Cited documents	2005	55
+Cited documents	2006	48
+Cited documents	2007	49
+Cited documents	2008	41
+Cited documents	2009	49
+Cited documents	2010	59
+Cited documents	2011	64
+Cited documents	2012	56
+Cited documents	2013	64
+Cited documents	2014	76
+Cited documents	2015	91
+Cited documents	2016	97
+Cited documents	2017	107
+Cited documents	2018	100
+Cited documents	2019	93
+Cited documents	2020	73
+Cited documents	2021	106
+Cited documents	2022	89
+Cited documents	2023	75
+Cited documents	2024	77
+Cited documents	2025	105
+% Female Authors
+1999
+2002
+2005
+2008
+2011
+2014
+2017
+2020
+2023
+9
+18
+27
+36
+45
+
+Evolution of the percentage of female authors.
+
+Year	Female Percent
+1999	11.27
+2000	14.42
+2001	14.29
+2002	18.42
+2003	15.91
+2004	16.25
+2005	24.07
+2006	20.00
+2007	22.95
+2008	21.54
+2009	18.75
+2010	25.97
+2011	23.53
+2012	20.90
+2013	22.77
+2014	17.14
+2015	31.96
+2016	21.43
+2017	25.32
+2018	34.34
+2019	29.79
+2020	25.56
+2021	26.58
+2022	33.33
+2023	24.27
+2024	30.41
+2025	37.38
+Estimated APC
+1999
+2002
+2005
+2008
+2011
+2014
+2017
+2020
+2023
+2.5k
+2.75k
+3k
+3.25k
+3.5k
+
+It estimates the article processing charges (APCs) a journal might charge, based on its visibility, prestige, and impact as measured by the SJR. It does not reflect the actual APC, but rather a calculated approximation based on journal quality.
+
+Year	Est. APC (USD)
+1999	2650
+2000	2605
+2001	2630
+2002	2700
+2003	2674
+2004	2667
+2005	2742
+2006	2831
+2007	2845
+2008	2922
+2009	2951
+2010	2910
+2011	2869
+2012	2877
+2013	2851
+2014	2903
+2015	3000
+2016	3085
+2017	3256
+2018	3307
+2019	3300
+2020	3264
+2021	3236
+2022	3063
+2023	3002
+2024	3001
+2025	3010
+Estimated financial value
+1999
+2002
+2005
+2008
+2011
+2014
+2017
+2020
+2023
+0
+250k
+500k
+750k
+1M
+
+It represents the potential financial worth of a journal. It is obtained by multiplying the journal's Estimated APC by the total number of citable documents published over the past five years. This value reflects the hypothetical revenue a journal could generate based on its estimated publication costs and scholarly output.
+
+Year	Est. value (USD)
+1999	111290
+2000	273542
+2001	418226
+2002	583251
+2003	770073
+2004	757436
+2005	701977
+2006	682160
+2007	617413
+2008	534751
+2009	572496
+2010	587821
+2011	590941
+2012	641653
+2013	672859
+2014	690823
+2015	758960
+2016	811450
+2017	820441
+2018	820235
+2019	791947
+2020	731062
+2021	679547
+2022	627916
+2023	603475
+2024	618167
+2025	848842
+Total Cites Self-Cites
+1999
+2002
+2005
+2008
+2011
+2014
+2017
+2020
+2023
+0
+200
+400
+600
+
+Evolution of the total number of citations and journal's self-citations received by a journal's published documents during the three previous years.
+Journal Self-citation is defined as the number of citation from a journal citing article to articles published by the same journal.
+
+Cites	Year	Value
+Self Cites	1999	1
+Self Cites	2000	1
+Self Cites	2001	5
+Self Cites	2002	9
+Self Cites	2003	6
+Self Cites	2004	6
+Self Cites	2005	5
+Self Cites	2006	10
+Self Cites	2007	5
+Self Cites	2008	10
+Self Cites	2009	7
+Self Cites	2010	14
+Self Cites	2011	12
+Self Cites	2012	23
+Self Cites	2013	22
+Self Cites	2014	19
+Self Cites	2015	22
+Self Cites	2016	26
+Self Cites	2017	33
+Self Cites	2018	45
+Self Cites	2019	43
+Self Cites	2020	23
+Self Cites	2021	68
+Self Cites	2022	46
+Self Cites	2023	25
+Self Cites	2024	53
+Self Cites	2025	112
+Total Cites	1999	27
+Total Cites	2000	29
+Total Cites	2001	40
+Total Cites	2002	50
+Total Cites	2003	66
+Total Cites	2004	63
+Total Cites	2005	115
+Total Cites	2006	109
+Total Cites	2007	115
+Total Cites	2008	110
+Total Cites	2009	133
+Total Cites	2010	104
+Total Cites	2011	140
+Total Cites	2012	145
+Total Cites	2013	173
+Total Cites	2014	246
+Total Cites	2015	287
+Total Cites	2016	455
+Total Cites	2017	457
+Total Cites	2018	333
+Total Cites	2019	264
+Total Cites	2020	241
+Total Cites	2021	322
+Total Cites	2022	275
+Total Cites	2023	267
+Total Cites	2024	293
+Total Cites	2025	421
+Citations per document
+Cites / Doc. (4 years)
+Cites / Doc. (3 years)
+Cites / Doc. (2 years)
+1999
+2002
+2005
+2008
+2011
+2014
+2017
+2020
+2023
+0
+0.6
+1.2
+1.8
+2.4
+3
+3.6
+4.2
+
+This indicator counts the number of citations received by documents from a journal and divides them by the total number of documents published in that journal. The chart shows the evolution of the average number of times documents published in a journal in the past two, three and four years have been cited in the current year. The two years line is equivalent to journal impact factor ™ (Thomson Reuters) metric.
+
+Cites per document	Year	Value
+Cites / Doc. (4 years)	1999	0.318
+Cites / Doc. (4 years)	2000	0.331
+Cites / Doc. (4 years)	2001	0.523
+Cites / Doc. (4 years)	2002	0.302
+Cites / Doc. (4 years)	2003	0.356
+Cites / Doc. (4 years)	2004	0.411
+Cites / Doc. (4 years)	2005	0.593
+Cites / Doc. (4 years)	2006	0.723
+Cites / Doc. (4 years)	2007	0.918
+Cites / Doc. (4 years)	2008	1.097
+Cites / Doc. (4 years)	2009	1.159
+Cites / Doc. (4 years)	2010	1.170
+Cites / Doc. (4 years)	2011	0.982
+Cites / Doc. (4 years)	2012	1.006
+Cites / Doc. (4 years)	2013	1.265
+Cites / Doc. (4 years)	2014	1.636
+Cites / Doc. (4 years)	2015	1.631
+Cites / Doc. (4 years)	2016	2.605
+Cites / Doc. (4 years)	2017	2.869
+Cites / Doc. (4 years)	2018	2.080
+Cites / Doc. (4 years)	2019	1.863
+Cites / Doc. (4 years)	2020	1.857
+Cites / Doc. (4 years)	2021	2.216
+Cites / Doc. (4 years)	2022	2.158
+Cites / Doc. (4 years)	2023	2.266
+Cites / Doc. (4 years)	2024	2.380
+Cites / Doc. (4 years)	2025	3.152
+Cites / Doc. (3 years)	1999	0.318
+Cites / Doc. (3 years)	2000	0.322
+Cites / Doc. (3 years)	2001	0.320
+Cites / Doc. (3 years)	2002	0.314
+Cites / Doc. (3 years)	2003	0.379
+Cites / Doc. (3 years)	2004	0.344
+Cites / Doc. (3 years)	2005	0.689
+Cites / Doc. (3 years)	2006	0.752
+Cites / Doc. (3 years)	2007	1.027
+Cites / Doc. (3 years)	2008	1.028
+Cites / Doc. (3 years)	2009	1.209
+Cites / Doc. (3 years)	2010	0.867
+Cites / Doc. (3 years)	2011	1.077
+Cites / Doc. (3 years)	2012	1.074
+Cites / Doc. (3 years)	2013	1.272
+Cites / Doc. (3 years)	2014	1.708
+Cites / Doc. (3 years)	2015	1.888
+Cites / Doc. (3 years)	2016	2.844
+Cites / Doc. (3 years)	2017	2.821
+Cites / Doc. (3 years)	2018	2.220
+Cites / Doc. (3 years)	2019	1.899
+Cites / Doc. (3 years)	2020	1.868
+Cites / Doc. (3 years)	2021	2.439
+Cites / Doc. (3 years)	2022	2.218
+Cites / Doc. (3 years)	2023	2.322
+Cites / Doc. (3 years)	2024	2.526
+Cites / Doc. (3 years)	2025	3.368
+Cites / Doc. (2 years)	1999	0.438
+Cites / Doc. (2 years)	2000	0.145
+Cites / Doc. (2 years)	2001	0.333
+Cites / Doc. (2 years)	2002	0.282
+Cites / Doc. (2 years)	2003	0.279
+Cites / Doc. (2 years)	2004	0.357
+Cites / Doc. (2 years)	2005	0.809
+Cites / Doc. (2 years)	2006	0.863
+Cites / Doc. (2 years)	2007	0.973
+Cites / Doc. (2 years)	2008	0.875
+Cites / Doc. (2 years)	2009	0.676
+Cites / Doc. (2 years)	2010	0.908
+Cites / Doc. (2 years)	2011	0.957
+Cites / Doc. (2 years)	2012	0.919
+Cites / Doc. (2 years)	2013	1.075
+Cites / Doc. (2 years)	2014	2.040
+Cites / Doc. (2 years)	2015	2.127
+Cites / Doc. (2 years)	2016	2.670
+Cites / Doc. (2 years)	2017	2.901
+Cites / Doc. (2 years)	2018	2.467
+Cites / Doc. (2 years)	2019	1.837
+Cites / Doc. (2 years)	2020	2.044
+Cites / Doc. (2 years)	2021	2.435
+Cites / Doc. (2 years)	2022	2.037
+Cites / Doc. (2 years)	2023	2.644
+Cites / Doc. (2 years)	2024	2.740
+Cites / Doc. (2 years)	2025	3.736
+Citable documents Non-citable documents
+1999
+2002
+2005
+2008
+2011
+2014
+2017
+2020
+2023
+0
+70
+140
+210
+
+Not every article in a journal is considered primary research and therefore "citable", this chart shows the ratio of a journal's articles including substantial research (research articles, conference papers and reviews) in three year windows vs. those documents other than research articles, reviews and conference papers.
+
+Documents	Year	Value
+Non-citable documents	1999	0
+Non-citable documents	2000	0
+Non-citable documents	2001	0
+Non-citable documents	2002	2
+Non-citable documents	2003	2
+Non-citable documents	2004	3
+Non-citable documents	2005	1
+Non-citable documents	2006	3
+Non-citable documents	2007	5
+Non-citable documents	2008	6
+Non-citable documents	2009	7
+Non-citable documents	2010	11
+Non-citable documents	2011	17
+Non-citable documents	2012	16
+Non-citable documents	2013	14
+Non-citable documents	2014	12
+Non-citable documents	2015	12
+Non-citable documents	2016	12
+Non-citable documents	2017	12
+Non-citable documents	2018	12
+Non-citable documents	2019	9
+Non-citable documents	2020	5
+Non-citable documents	2021	6
+Non-citable documents	2022	5
+Non-citable documents	2023	5
+Non-citable documents	2024	3
+Non-citable documents	2025	2
+Citable documents	1999	85
+Citable documents	2000	90
+Citable documents	2001	125
+Citable documents	2002	157
+Citable documents	2003	172
+Citable documents	2004	180
+Citable documents	2005	166
+Citable documents	2006	142
+Citable documents	2007	107
+Citable documents	2008	101
+Citable documents	2009	103
+Citable documents	2010	109
+Citable documents	2011	113
+Citable documents	2012	119
+Citable documents	2013	122
+Citable documents	2014	132
+Citable documents	2015	140
+Citable documents	2016	148
+Citable documents	2017	150
+Citable documents	2018	138
+Citable documents	2019	130
+Citable documents	2020	124
+Citable documents	2021	126
+Citable documents	2022	119
+Citable documents	2023	110
+Citable documents	2024	113
+Citable documents	2025	123
+Documents cited by public policy (Overton)
+1999
+2002
+2005
+2008
+2011
+2014
+2017
+2020
+2023
+0
+2
+4
+
+Evolution of the number of documents cited by public policy documents according to Overton database.
+
+Documents	Year	Value
+Overton	1999	0
+Overton	2000	1
+Overton	2001	1
+Overton	2002	1
+Overton	2003	1
+Overton	2004	1
+Overton	2005	0
+Overton	2006	0
+Overton	2007	0
+Overton	2008	1
+Overton	2009	4
+Overton	2010	2
+Overton	2011	2
+Overton	2012	1
+Overton	2013	1
+Overton	2014	0
+Overton	2015	0
+Overton	2016	2
+Overton	2017	1
+Overton	2018	1
+Overton	2019	0
+Overton	2020	1
+Overton	2021	0
+Overton	2022	0
+Overton	2023	0
+Overton	2024	1
+Overton	2025	0
+Documents related to SDGs (UN)
+
+Coming soon
+
+Evolution of the number of documents related to Sustainable Development Goals defined by United Nations. Available from 2018 onwards.
+
+Show this widget in your own website
+
+Just copy the code below and paste within your html code:
+SCImago Graphica
+
+
+Explore, visually communicate and make sense of data with our new data visualization tool.
+Metrics based on Scopus® data as of March 2026
+A
+Ayaz Ahmad
+3 years ago
+Good
+reply
+
+The users of Scimago Journal & Country Rank have the possibility to dialogue through comments linked to a specific journal. The purpose is to have a forum in which general doubts about the processes of publication in the journal, experiences and other issues derived from the publication of papers are resolved. For topics on particular articles, maintain the dialogue through the usual channels with your editor.
+
+Services
+Journal Rankings
+Country Rankings
+Journal Value
+About us
+Who we are
+Contact us
+SCImago’s products
+SCImago Journal Country & Rank
+SCImago Institutions Ranking
+SCImago Media Ranking
+SCImago Iber
+SCImago Arab
+SCImago Graphica
+Ediciones Profesionales de la Información
+All the information shown in the SCImago Journal Country & Rank website can be used for non-commercial purposes as long as it is cited.
+
+How to cite:
+SCImago, (n.d.). SJR-SCImago Journal Country & Rank [Portal]. Retrieved (Date), from https://www.scimagojr.com
+Powered by:
+Scopus®
+© 2026 SCImago Journal & Country Rank
+Legal Notice
+Privacy Policy
+Accessibility

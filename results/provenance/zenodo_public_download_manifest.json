@@ -1,0 +1,101 @@
+[
+ {
+  "key": "p10_z300_slices.npz",
+  "url": "https://zenodo.org/api/records/24101202/files/p10_z300_slices.npz/content",
+  "http": 200,
+  "size_api": 47635582,
+  "size_dl": 47635582,
+  "md5_api": "md5:096c802e9a2636c0745e861505f23616",
+  "md5_dl": "md5:096c802e9a2636c0745e861505f23616",
+  "sha256": "0e30ab6f7f675ad861238b1cde6dae07b606e77d58a4bdf8b740b6aa7af386d5",
+  "utc": "2026-11-18T09:10:38.513274Z"
+ },
+ {
+  "key": "p11_z300_fine12_slices.npz",
+  "url": "https://zenodo.org/api/records/24101202/files/p11_z300_fine12_slices.npz/content",
+  "http": 200,
+  "size_api": 209642932,
+  "size_dl": 209642932,
+  "md5_api": "md5:da564bb01a3f00adbdd6e1ff022f6b0e",
+  "md5_dl": "md5:da564bb01a3f00adbdd6e1ff022f6b0e",
+  "sha256": "85d999e2c9bf31f7ca581b69ac177dc423e5402de177936938b4f798ff01cbb7",
+  "utc": "2026-11-18T09:13:13.245580Z"
+ },
+ {
+  "key": "PROCESSED_MANIFEST.csv",
+  "url": "https://zenodo.org/api/records/24101202/files/PROCESSED_MANIFEST.csv/content",
+  "http": 200,
+  "size_api": 1206,
+  "size_dl": 1206,
+  "md5_api": "md5:65d6725f5fad8e6368beb6c20aad896b",
+  "md5_dl": "md5:65d6725f5fad8e6368beb6c20aad896b",
+  "sha256": "4bd3f7a25f6ed0b13b1aaa32a1fa102fc83749533fa4d58429b55ed3df193425",
+  "utc": "2026-11-18T09:13:13.903407Z"
+ },
+ {
+  "key": "p11_z150_slices.npz",
+  "url": "https://zenodo.org/api/records/24101202/files/p11_z150_slices.npz/content",
+  "http": 200,
+  "size_api": 36723640,
+  "size_dl": 36723640,
+  "md5_api": "md5:cc81afb3cce085e80723bf7c390ce144",
+  "md5_dl": "md5:cc81afb3cce085e80723bf7c390ce144",
+  "sha256": "99aa68628c8ae6255db65d2d5b5eb1f2bb7f20bab00aae0d0c1a366f73a19352",
+  "utc": "2026-11-18T09:14:00.427624Z"
+ },
+ {
+  "key": "GITM_RUN_MANIFEST.csv",
+  "url": "https://zenodo.org/api/records/24101202/files/GITM_RUN_MANIFEST.csv/content",
+  "http": 200,
+  "size_api": 4533728,
+  "size_dl": 4533728,
+  "md5_api": "md5:fb0cdd56836e2691fb11a639470b5d5f",
+  "md5_dl": "md5:fb0cdd56836e2691fb11a639470b5d5f",
+  "sha256": "7896c4ee4d1afac54a4b75c9e75b512590e9ca10ff3a65d1144bc3e134dfbbbc",
+  "utc": "2026-11-18T09:14:03.145108Z"
+ },
+ {
+  "key": "p11_z300_fine_slices.npz",
+  "url": "https://zenodo.org/api/records/24101202/files/p11_z300_fine_slices.npz/content",
+  "http": 200,
+  "size_api": 73926012,
+  "size_dl": 73926012,
+  "md5_api": "md5:f12a4baeddac0c8ea2548577ead65782",
+  "md5_dl": "md5:f12a4baeddac0c8ea2548577ead65782",
+  "sha256": "2727b352eee46ee3a2cc86986d42ca2f595a421bcc485d00256d5913dc4e9572",
+  "utc": "2026-11-18T09:15:41.525811Z"
+ },
+ {
+  "key": "p11_z300_slices.npz",
+  "url": "https://zenodo.org/api/records/24101202/files/p11_z300_slices.npz/content",
+  "http": 200,
+  "size_api": 35734353,
+  "size_dl": 35734353,
+  "md5_api": "md5:c5505b1b2cf14361f9a3742bba0f6655",
+  "md5_dl": "md5:c5505b1b2cf14361f9a3742bba0f6655",
+  "sha256": "d834d7bd58aa1cf1ea45076b396581dd6003e9494a6d900dc92fd785b51642ae",
+  "utc": "2026-11-18T09:16:29.668425Z"
+ },
+ {
+  "key": "repository_snapshot.zip",
+  "url": "https://zenodo.org/api/records/24101202/files/repository_snapshot.zip/content",
+  "http": 200,
+  "size_api": 31289926,
+  "size_dl": 31289926,
+  "md5_api": "md5:ef2c640c5982b47365828fe74b367195",
+  "md5_dl": "md5:ef2c640c5982b47365828fe74b367195",
+  "sha256": "9be3629b00fec78c404bb7a51f731c19ed066783358b42c1d3554fad417e857e",
+  "utc": "2026-11-18T09:17:13.590544Z"
+ },
+ {
+  "key": "README.md",
+  "url": "https://zenodo.org/api/records/24101202/files/README.md/content",
+  "http": 200,
+  "size_api": 1860,
+  "size_dl": 1860,
+  "md5_api": "md5:93eccedb1788367b77e1aa4e996fb815",
+  "md5_dl": "md5:93eccedb1788367b77e1aa4e996fb815",
+  "sha256": "09cda57fcdd78419563f5f46c054314c972c9b368d5fdfee8479260bce114ef7",
+  "utc": "2026-11-18T09:17:14.270143Z"
+ }
+]

@@ -1,0 +1,8 @@
+{
+ "deposition_id": 24101202,
+ "doi": "10.5281/zenodo.24101202",
+ "published": true,
+ "state": "published",
+ "checked_utc": "2026-11-18T09:21:06Z",
+ "note": "Published by the author 2026-11-12; DOI resolves (doi.org 302 -> zenodo.org), record page HTTP 200, 9 files match local MD5/size. 2026-11-18: metadata-only correction (description, publication date 2026-11-12, version 1.0); files unchanged; public download re-verified (docs/ZENODO_PUBLICATION_AUDIT.md)."
+}

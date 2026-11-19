@@ -1,0 +1,6 @@
+item,source_url,identifier_version,retrieved_utc,conditions,stored_at,notes
+GITM source,https://github.com/GITMCode/GITM,c4fc3150aca274e0e0496ba415696a57d0703e00,2026-11-07T10:41Z,Apache-2.0,VM ~/models/GITM (+ physical/gitm patches in repo),science build (gfortran 11.4 -O3)
+GITM Electrodynamics,https://github.com/GITMCode/Electrodynamics,3edb6622a57a80c6ebbe0001a4c121543abacb14,2026-11-07T10:41Z,see repo license,VM ~/models/GITM/ext/Electrodynamics,auto-cloned by Config.pl
+GITM reference-solution build,https://github.com/GITMCode/GITM,a76c88f (GITM) + 18a8264 (Electrodynamics),2026-11-07T10:46Z,Apache-2.0,VM ~/models/GITM_ref,commit at which upstream ref_solns were last regenerated
+TIE-GCM source,https://github.com/NCAR/tiegcm,f93028a (TIEGCM-3.0.1),2026-11-07T10:31Z,see LICENSE (HAO open source),VM ~/models/tiegcm,input data (Globus) not retrieved: authentication required
+Crossref records,https://api.crossref.org/works/{doi},n/a,2026-11-07T10:47Z,public metadata,data/physical/raw/crossref/*.json,raw JSON as returned

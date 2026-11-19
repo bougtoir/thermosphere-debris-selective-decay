@@ -1,0 +1,24 @@
+rc=0 dt=7s :: python -m pytest -q
+rc=0 dt=1s :: python scripts/physical_g3r_spread.py p11_z300 p10_z300 p11_z150
+rc=0 dt=0s :: python scripts/physical_g3r_spread.py p11_z300_fine
+rc=0 dt=1s :: G3R_COARSEN=2 python scripts/physical_g3r_spread.py p11_z300_fine
+rc=0 dt=2s :: python scripts/physical_g3r_spread.py p11_z300_fine12
+rc=0 dt=1s :: G3R_COARSEN=2 python scripts/physical_g3r_spread.py p11_z300_fine12
+rc=0 dt=213s :: python scripts/physical_g3r_orbit_sensitivity.py p11_z300 p10_z300
+rc=0 dt=5s :: G3R_TMAX_S=10800 G3R_VARIANTS=nominal python scripts/physical_g3r_orbit_sensitivity.py p11_z300 p11_z300_fine
+rc=0 dt=3s :: G3R_TMAX_S=10800 G3R_VARIANTS=nominal G3R_COARSEN=2 python scripts/physical_g3r_orbit_sensitivity.py p11_z300_fine
+rc=0 dt=28s :: G3R_TMAX_S=43200 G3R_VARIANTS=nominal python scripts/physical_g3r_orbit_sensitivity.py p11_z300 p11_z300_fine12
+rc=0 dt=13s :: G3R_TMAX_S=43200 G3R_VARIANTS=nominal G3R_COARSEN=2 python scripts/physical_g3r_orbit_sensitivity.py p11_z300_fine12
+rc=0 dt=0s :: python scripts/physical_g3r_grid.py p11_z300 p11_z300_fine 10800
+rc=0 dt=1s :: python scripts/physical_g3r_grid.py p11_z300 p11_z300_fine12 43200
+rc=0 dt=108s :: python scripts/physical_g4_orbit_coupling.py p11_z300 p10_z300 p11_z150
+rc=0 dt=7s :: python scripts/physical_g4t_gaussian_decomposition.py p11_z300 p11_z300_fine 10800
+rc=0 dt=39s :: python scripts/physical_g4t_gaussian_decomposition.py p11_z300 p11_z300_fine12 43200
+rc=0 dt=26s :: python scripts/physical_g4t_selectivity_evolution.py p11_z300 p11_z300_fine12
+rc=0 dt=13s :: G3R_COARSEN=2 python scripts/physical_g4t_selectivity_evolution.py p11_z300_fine12
+rc=0 dt=0s :: python scripts/physical_g3_summary.py
+rc=0 dt=0s :: python scripts/physical_g4t_tradeoff.py
+rc=0 dt=0s :: python scripts/physical_g5_prediction_check.py
+rc=0 dt=1s :: python scripts/physical_g5_contribution_gate.py
+rc=0 dt=7s :: make physical-qc PY=python
+rc=0 dt=1s :: python scripts/acta_semantic_checks.py
