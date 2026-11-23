@@ -52,6 +52,19 @@ No new record, version or DOI was created. The processed data remain record 2410
   - `figures.pptx` content-identical. The DOCX/PPTX files differ only in package metadata.
 - GITM was not rerun. The raw GITM simulations were not independently reproduced.
 
+## Raw GITM output retention (2026-11-23)
+
+The raw GITM outputs are retained by the author in a private GitHub release archive. They are not publicly deposited.
+
+- Contents: the full `runs` tree, the GITM build tree used for the runs (commit `c4fc3150` with local edits to `src/user.f90` and `src/aurora.Earth.f90`), and the build logs.
+- Format: 22 zstd-compressed tar parts, 43,587,555,110 bytes in total.
+- A SHA-256 ledger is stored with the archive.
+- Checks:
+  - all 23,831 files in `data/physical/GITM_RUN_MANIFEST.csv` matched before upload;
+  - all 22 part digests match on GitHub;
+  - a full download-and-decompress round trip reproduced all 25,532 regular files (SHA-256) and all 9,567 symlinks.
+- The originals on the session VM were not modified.
+
 ## Remaining author-only actions
 
 - Department, postal address and ORCID.
