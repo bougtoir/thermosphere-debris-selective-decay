@@ -36,12 +36,13 @@ the evidence, and the disposition in this branch. Priorities: **P0** mandatory b
 | 3.4 | Static patches could be read as upper bounds or alternative physics. | P1 | Fig. 4 caption: "diagnostic comparators ... not alternative physical solutions or upper bounds"; §4.2 heading "Static patches as a modelling representation". |
 | 3.5 | Tables use vertical rules (JSSE guide asks to avoid them). | P0 (resolved) | Horizontal rules only in manuscript and tables.docx; QC check added. |
 | 3.6 | TIFF resolution / format. | P2 | 600 dpi RGB LZW TIFF with opaque white background (QC). |
+| 3.7 | Standalone `tables.docx` lacked the table notes (units, % baselines); `figures.pptx` cut off the right panels of Figs. 2 and 4 (found by Devin Review). | P0 (resolved) | JSSE builder now writes captions and notes into `tables.docx` and scales each figure to fit the slide; two QC checks added. |
 
 ## 4. Reproducibility, provenance, checksums, environment
 
 | # | Finding | Priority | Disposition |
 |---|---|---|---|
-| 4.1 | Can a reader regenerate numbers, figures and text from public material? | P0 (resolved) | Fresh clone of the pushed JSSE branch from GitHub + the five Zenodo NPZ files only → `make jsse-qc PY=python` → 89/89 PASS (88 checks at the time of the clean run; the vertical-rule check was added afterwards and passes locally); value ledger and citations byte-identical; manuscript text identical. Regenerated TIFF/PNG differ from the committed files only by anti-aliasing (0.27% of pixels in Fig. 3, visually identical). |
+| 4.1 | Can a reader regenerate numbers, figures and text from public material? | P0 (resolved) | Fresh clone of the pushed JSSE branch from GitHub + the five Zenodo NPZ files only → `make jsse-qc PY=python` → 91/91 PASS (88 checks at the time of the clean run; the vertical-rule check was added afterwards and passes locally); value ledger and citations byte-identical; manuscript text identical. Regenerated TIFF/PNG differ from the committed files only by anti-aliasing (0.27% of pixels in Fig. 3, visually identical). |
 | 4.2 | Processed data integrity. | P0 (resolved) | Five NPZ files re-downloaded from Zenodo 10.5281/zenodo.24101202: SHA-256 = `PROCESSED_MANIFEST.csv` and MD5 = Zenodo checksums (`data/physical/zenodo_retrieval/ZENODO_RETRIEVAL_LEDGER.csv`). |
 | 4.3 | Raw GITM provenance. | P1 (resolved) | Private release restored; 22/22 parts SHA-256 OK; 23,945 run files, 1,587 build-tree files and 9,567 symlinks verified with 0 mismatches (`data/physical/raw_restore_20261123/RAW_RESTORE_LEDGER.json`). This is log/checksum verification of existing execution, **not** an independent re-simulation (no GITM rerun, by instruction). |
 | 4.4 | Data statement cites tag `gitm-orbit-selectivity-v1.1`, which predates the JSSE builder. | P2 | Statement names the builder file; analysis code and values are unchanged since v1.1. After merge, the author may add a new tag (do not move existing tags). |

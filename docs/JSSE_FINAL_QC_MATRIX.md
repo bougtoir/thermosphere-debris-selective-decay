@@ -14,10 +14,11 @@ this session (2026-11-23 UTC). No GITM run; no change to analysis code, result t
 | Physical manuscript on branch | `make physical-qc PY=python` | **34/34 PASS**; value ledger = HEAD | session log |
 | Semantic code audit | `scripts/acta_semantic_checks.py` (independent recomputation of estimands) | **325/325 PASS** | `results/tables/acta_semantic_checks.csv` |
 | Unit tests | `python -m pytest -q` | **34 passed** | session log |
-| JSSE manuscript | `make jsse-qc PY=python` (generic 34 + JSSE-specific 55 checks) | **89/89 PASS** | `results/qc_jsse_manuscript.csv` |
+| JSSE manuscript | `make jsse-qc PY=python` (generic 34 + JSSE-specific 57 checks) | **91/91 PASS** | `results/qc_jsse_manuscript.csv` |
 | Numerical invariance | JSSE value ledger byte-identical to Acta-final ledger; 27 frozen headline values within frozen ranges | **PASS** | `results/manuscript_jsse_values.csv`; QC rows "frozen value ..." |
 | Clean public reproduction | fresh `git clone` of the pushed branch from GitHub + 5 Zenodo NPZ only → `make jsse-qc` | **PASS** (88/88 at the time; the later table-rule check passes locally); value ledger, citation list and manuscript text identical to the committed build | session log |
-| Figures | 5 TIFF, 600 dpi, RGB, LZW, opaque white; editable PPTX (5 slides); main manuscript has no embedded figures; inline review copy has 5 | **PASS** | QC rows |
+| Figures | 5 TIFF, 600 dpi, RGB, LZW, opaque white; editable PPTX (5 slides, every figure inside the slide); main manuscript has no embedded figures; inline review copy has 5 | **PASS** | QC rows |
+| Tables file | `tables.docx` carries every manuscript caption and note; horizontal rules only | **PASS** | QC rows |
 | Figure regeneration | regenerated PNG/TIFF vs committed | visually identical; anti-aliasing differences only (≈ 0.3% of pixels) | session comparison |
 | Citations | 34 references; order of first appearance; 1:1 with list; ISO 4 journal abbreviations; Crossref record for every DOI | **PASS** | `docs/JSSE_CITATION_ECOLOGY_AUDIT.md` |
 | Claims | safety-language lexicon, negated hazard terms, "synthetic sample" qualifier on every share, no priority words, no rejection history | **PASS** | QC rows; `docs/JSSE_CLAIM_EVIDENCE_AUDIT.md` |

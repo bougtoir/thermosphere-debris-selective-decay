@@ -19,7 +19,7 @@ VERDICT: CONDITIONAL SUBMIT (only author/administrative actions remain). Not sub
    synthetic sample; static peak-matched overstatement 1.5–1.7x (400 km), 2.8–3.6x (500 km); source-centred 4.7–5.8x /
    8.0–8.5x; coarse/fine difference <= 1.1%.
 4. QC: baseline main physical-qc 34/34; branch physical-qc 34/34; acta_semantic_checks 325/325; pytest 34 passed;
-   make jsse-qc 89/89 (results/qc_jsse_manuscript.csv); clean GitHub clone + Zenodo NPZ only -> jsse-qc PASS with
+   make jsse-qc 91/91 (results/qc_jsse_manuscript.csv); clean GitHub clone + Zenodo NPZ only -> jsse-qc PASS with
    identical ledger, citations and manuscript text.
 5. Data: 5 Zenodo NPZ re-downloaded, SHA-256 = PROCESSED_MANIFEST and MD5 = Zenodo (data/physical/zenodo_retrieval/).
    Private raw release bougtoir/wip@thermosphere-gitm-raw-2026-11-23 restored to /home/ubuntu/models: 22/22 parts OK;
