@@ -18,7 +18,10 @@ import shutil
 import sys
 
 import pandas as pd
+from docx import Document
 from docx.enum.text import WD_ALIGN_PARAGRAPH
+from docx.oxml import OxmlElement
+from docx.oxml.ns import qn
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import build_physical_manuscript as bpm  # noqa: E402
@@ -336,7 +339,8 @@ def body(D, v):
         f"1 h to {S['Sc_400_3h']} at 3 h and {S['Sc_400']} at {S['t_end_h']} h after onset; at 500 km from "
         f"{S['Sc_500_1h']} to {S['Sc_500_3h']} and {S['Sc_500']}. Resampling the objects gives 95% intervals of "
         f"{S['ci_lo_400']}–{S['ci_hi_400']} at 400 km and {S['ci_lo_500']}–{S['ci_hi_500']} at 500 km for the coarse "
-        "12 h values, so the orbit sample is not the limiting uncertainty. At 300 km, where the perturbation is smaller and "
+        "12 h values, so the orbit sample is not the limiting uncertainty; these intervals are conditional on the single "
+        "simulated atmosphere and exclude model, background and forcing uncertainty. At 300 km, where the perturbation is smaller and "
         f"broad, S settles near unity ({S['Sc_300']}). By the end of the window non-targets account for "
         f"{S['sharec_400']}% of the total extra Δv of the synthetic sample at 400 km and {S['sharec_500']}% at 500 km "
         "(Eq. (3)). Table 2 summarises "
@@ -404,7 +408,8 @@ def body(D, v):
         f"confirmed, {S['n_fals']} falsified and {S['n_out']} fell outside the predicted range without being "
         "falsified (Table 4). The falsifications are informative. The 400 km peak response was "
         f"{S['PR1']}%, above the predicted 5–100% (PR1), so a 100 GW source does reach δ ≥ 1 (PR12). The response was "
-        f"less than linear in power, with a 10 GW/100 GW peak ratio of {S['PR2']} (predicted 0.05–0.2; PR2). Deposition "
+        f"less than linear in power, with a 10 GW/100 GW peak ratio of {S['PR2']} (predicted 0.05–0.2; PR2). "
+        "Deposition "
         f"at 150 km was much less effective at 400 km than predicted (ratio {S['PR7']}, PR7). The predicted ≥ 3-fold "
         "reduction of selectivity relative to the peak-matched patch (PR10) held at 500 km, was not reached at 400 km "
         f"(factor {S['PR10@400']}, outside the range but not falsified) and was falsified at 300 km "
@@ -446,14 +451,15 @@ def body(D, v):
         f"about {S['gf_lo_12_400']}–{S['gf_hi_12_400']}-fold at 400 km and {S['gf_lo_12_500']}–"
         f"{S['gf_hi_12_500']}-fold at 500 km relative to a patch fitted to GITM itself, and "
         f"{S['src_lo_400']}–{S['src_hi_500']}-fold relative to a source-sized patch. These factors, rather than the "
-        "absolute selectivity, are the more transferable result, because they compare a self-consistent and a "
+        "absolute selectivity, are the more informative result, because they compare a self-consistent and a "
         "prescribed density field under the same forcing, background and orbits.")
     D.h("4.3. What screening of environment-directed remediation should measure", 2)
     D.p(
         "The results suggest three minimum requirements for screening environment-directed remediation concepts. "
         "First, the modified atmosphere should be computed with a time-evolving, self-consistent model rather than "
-        "prescribed as a static patch, because the static representation overstates the target/non-target contrast "
-        "by a factor that depends on altitude and accumulation time. Second, non-target exposure should be reported "
+        "prescribed as a static patch, because in this experiment the static representation overstated the "
+        "target/non-target contrast by a factor that depended on altitude and accumulation time. Second, non-target "
+        "exposure should be reported "
         "alongside the target benefit — for example S together with the non-target share — with the object population "
         "and the target definition stated, because the share depends on both. Third, exposure should be accumulated "
         "over a window that extends well beyond the forcing, because estimates made during or just after the forcing "
@@ -525,9 +531,27 @@ def body(D, v):
         D.words += len(e.split()) + 1
 
 
-
-
 # ---------------------------------------------------------------- outputs
+def horizontal_rules_only(doc):
+    """JSSE guide: avoid vertical rules and shading in tables; keep top, bottom and inside horizontal rules."""
+    for t in doc.tables:
+        pr = t._tbl.tblPr
+        for old in pr.findall(qn("w:tblBorders")):
+            pr.remove(old)
+        b = OxmlElement("w:tblBorders")
+        for side, val in (("top", "single"), ("left", "nil"), ("bottom", "single"), ("right", "nil"),
+                          ("insideH", "single"), ("insideV", "nil")):
+            e = OxmlElement(f"w:{side}")
+            e.set(qn("w:val"), val)
+            if val == "single":
+                e.set(qn("w:sz"), "4")
+                e.set(qn("w:space"), "0")
+                e.set(qn("w:color"), "000000")
+            b.append(e)
+        pr.append(b)
+    return doc
+
+
 def build(inline, v):
     refs = Refs()
     D = Doc(refs, inline)
@@ -538,6 +562,7 @@ def build(inline, v):
             small(D.p(f"Fig. {n}. {CAPTIONS[n][1]}", count=False))
     assert D.fig_seen == sorted(D.fig_seen) == list(range(1, len(CAPTIONS) + 1)), D.fig_seen
     assert D.tab_seen == [1, 2, 3, 4], D.tab_seen
+    horizontal_rules_only(D.d)
     return D
 
 
@@ -603,6 +628,8 @@ def main():
     build(True, v).d.save(os.path.join(OUT, "manuscript_review_inline.docx"))
     bpm.OUT = OUT
     bpm.tables_doc(v)
+    tp = os.path.join(OUT, "tables.docx")
+    horizontal_rules_only(Document(tp)).save(tp)
     bpm.figures_pptx()
     hl = new_doc()
     hl.add_heading("Highlights", 1)

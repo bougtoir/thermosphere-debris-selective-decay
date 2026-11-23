@@ -16,6 +16,7 @@ import sys
 
 import pandas as pd
 from docx import Document
+from docx.oxml.ns import qn
 from PIL import Image
 from pptx import Presentation
 
@@ -76,7 +77,6 @@ def main():
     P = T["manuscript.docx"]
     body = P[:P.index("References")]
     refs = [p for p in P[P.index("References") + 1:P.index("Figure captions")] if p.strip()]
-    bodytext = "\n".join(body)
 
     bad = re.findall(r"\b(unsafe|catastroph\w*|first[- ]ever|for the first time|novel|unprecedented|"
                      r"proves?|validated deployment|safe to deploy)\b", alltext, re.I)
@@ -135,6 +135,16 @@ def main():
         chk(f"Fig{n}.tif >= 600 dpi, RGB, opaque white corner", min(dpi) >= 599 and im.mode == "RGB" and bg ==
             (255, 255, 255), f"{dpi} {im.mode} {bg}")
 
+    vr = []
+    for n in ("manuscript.docx", "manuscript_review_inline.docx", "tables.docx"):
+        for i, t in enumerate(Document(os.path.join(M, n)).tables, 1):
+            b = t._tbl.tblPr.find(qn("w:tblBorders"))
+            vals = {} if b is None else {e.tag.split("}")[1]: e.get(qn("w:val")) for e in b}
+            if any(vals.get(k) not in ("nil", "none") for k in ("left", "right", "insideV")):
+                vr.append(f"{n}:T{i}")
+            if t._tbl.xpath(".//w:shd") or t._tbl.xpath(".//w:tcBorders"):
+                vr.append(f"{n}:T{i}:cell-level")
+    chk("tables: no vertical rules or shading (JSSE guide)", not vr, vr)
     out = pd.DataFrame(rows)
     out.to_csv(os.path.join(ROOT, "results/qc_jsse_manuscript.csv"), index=False)
     print(out.to_string())

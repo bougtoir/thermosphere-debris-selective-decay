@@ -1,0 +1,212 @@
+{
+ "purpose": "Restore and verify the private raw GITM output for the JSSE retargeting session (no GITM rerun).",
+ "source": {
+  "repository": "bougtoir/wip (private)",
+  "release_tag": "thermosphere-gitm-raw-2026-11-23",
+  "url": "https://github.com/bougtoir/wip/releases/tag/thermosphere-gitm-raw-2026-11-23",
+  "release_published_utc": "2026-11-23T04:42:38Z",
+  "access_condition": "private; author consent required for redistribution; not redistributed by this repository"
+ },
+ "retrieval": {
+  "started_utc": "2026-11-23T09:30:09Z",
+  "method": "gh release download, one part at a time; SHA-256 of each part checked against ARCHIVE_PARTS_SHA256.txt before streaming into zstd -d | tar -x; part deleted after streaming (disk limit)",
+  "storage_path": "/home/ubuntu/models (runs/, GITM/, gitm_*.log) on the session VM persistent disk",
+  "extract_done": "2026-11-23T09:44:03Z rc=0"
+ },
+ "parts": [
+  {
+   "file": "gitm_runs.tar.zst.part000",
+   "expected_sha256": "64eb4a7dbfe84cd7f51a695cfa5e3cc1941438c53a9e511088d44ae214a12704",
+   "verified_utc": "2026-11-23T09:30:46Z",
+   "size_bytes": 1992294400,
+   "sha256": "64eb4a7dbfe84cd7f51a695cfa5e3cc1941438c53a9e511088d44ae214a12704",
+   "result": "OK"
+  },
+  {
+   "file": "gitm_runs.tar.zst.part001",
+   "expected_sha256": "fc3a44bc5928654d5f822b7bef778725117d5328162bf6feebf6b5282774d0a0",
+   "verified_utc": "2026-11-23T09:31:24Z",
+   "size_bytes": 1992294400,
+   "sha256": "fc3a44bc5928654d5f822b7bef778725117d5328162bf6feebf6b5282774d0a0",
+   "result": "OK"
+  },
+  {
+   "file": "gitm_runs.tar.zst.part002",
+   "expected_sha256": "58a5423bc83c371aed056a000775b73f06acb9e96724db6fdc61c6da8e741b0c",
+   "verified_utc": "2026-11-23T09:32:03Z",
+   "size_bytes": 1992294400,
+   "sha256": "58a5423bc83c371aed056a000775b73f06acb9e96724db6fdc61c6da8e741b0c",
+   "result": "OK"
+  },
+  {
+   "file": "gitm_runs.tar.zst.part003",
+   "expected_sha256": "265c432ea2b3ff170562712dcedbde549312a54eb78fe7a689d38b63111a7459",
+   "verified_utc": "2026-11-23T09:32:38Z",
+   "size_bytes": 1992294400,
+   "sha256": "265c432ea2b3ff170562712dcedbde549312a54eb78fe7a689d38b63111a7459",
+   "result": "OK"
+  },
+  {
+   "file": "gitm_runs.tar.zst.part004",
+   "expected_sha256": "685bbe404948701ac581fe44adf005d84046e5ce2edbfd28368008f714e14a8d",
+   "verified_utc": "2026-11-23T09:33:12Z",
+   "size_bytes": 1992294400,
+   "sha256": "685bbe404948701ac581fe44adf005d84046e5ce2edbfd28368008f714e14a8d",
+   "result": "OK"
+  },
+  {
+   "file": "gitm_runs.tar.zst.part005",
+   "expected_sha256": "4854716bb97deda1faf7a4ce28058b5c0bd17cb47f255a8fabe660a9a9b2aa28",
+   "verified_utc": "2026-11-23T09:33:45Z",
+   "size_bytes": 1992294400,
+   "sha256": "4854716bb97deda1faf7a4ce28058b5c0bd17cb47f255a8fabe660a9a9b2aa28",
+   "result": "OK"
+  },
+  {
+   "file": "gitm_runs.tar.zst.part006",
+   "expected_sha256": "4398bd55b2adab7792e44c8db4f79e3a7f3597bc67a8b35ae619dd0e481440e3",
+   "verified_utc": "2026-11-23T09:34:18Z",
+   "size_bytes": 1992294400,
+   "sha256": "4398bd55b2adab7792e44c8db4f79e3a7f3597bc67a8b35ae619dd0e481440e3",
+   "result": "OK"
+  },
+  {
+   "file": "gitm_runs.tar.zst.part007",
+   "expected_sha256": "1ddb3ab675a1552feea4ccd20d935564f909bf13c614c55472825645e09b4e13",
+   "verified_utc": "2026-11-23T09:34:55Z",
+   "size_bytes": 1992294400,
+   "sha256": "1ddb3ab675a1552feea4ccd20d935564f909bf13c614c55472825645e09b4e13",
+   "result": "OK"
+  },
+  {
+   "file": "gitm_runs.tar.zst.part008",
+   "expected_sha256": "a73ca527ca0d4e3a212219281e5a3cf45a8697302b6d3e02c024ba25ee0291ff",
+   "verified_utc": "2026-11-23T09:35:32Z",
+   "size_bytes": 1992294400,
+   "sha256": "a73ca527ca0d4e3a212219281e5a3cf45a8697302b6d3e02c024ba25ee0291ff",
+   "result": "OK"
+  },
+  {
+   "file": "gitm_runs.tar.zst.part009",
+   "expected_sha256": "61305f6a58b0b1790f48f931f1f5a6225aa8030ace2c932e08ee67b903161c3d",
+   "verified_utc": "2026-11-23T09:36:09Z",
+   "size_bytes": 1992294400,
+   "sha256": "61305f6a58b0b1790f48f931f1f5a6225aa8030ace2c932e08ee67b903161c3d",
+   "result": "OK"
+  },
+  {
+   "file": "gitm_runs.tar.zst.part010",
+   "expected_sha256": "08f22bb64c16ce11ead82938314d630c2593741e7ef8e9577d7903ca45e248d7",
+   "verified_utc": "2026-11-23T09:36:47Z",
+   "size_bytes": 1992294400,
+   "sha256": "08f22bb64c16ce11ead82938314d630c2593741e7ef8e9577d7903ca45e248d7",
+   "result": "OK"
+  },
+  {
+   "file": "gitm_runs.tar.zst.part011",
+   "expected_sha256": "4697ea0a6b88a96f5280aaa794a0d9f6e7e5a6d9a950cc0edad79a5e9e73d375",
+   "verified_utc": "2026-11-23T09:37:40Z",
+   "size_bytes": 1992294400,
+   "sha256": "4697ea0a6b88a96f5280aaa794a0d9f6e7e5a6d9a950cc0edad79a5e9e73d375",
+   "result": "OK"
+  },
+  {
+   "file": "gitm_runs.tar.zst.part012",
+   "expected_sha256": "04e14a28513bc8dc2f6c5fbbdb1e69bd44488f8d6ebdae7804c0c8eaa02b462d",
+   "verified_utc": "2026-11-23T09:38:23Z",
+   "size_bytes": 1992294400,
+   "sha256": "04e14a28513bc8dc2f6c5fbbdb1e69bd44488f8d6ebdae7804c0c8eaa02b462d",
+   "result": "OK"
+  },
+  {
+   "file": "gitm_runs.tar.zst.part013",
+   "expected_sha256": "7dfddb6186fc9f99e7f186580fe25abefdf71904755ba58815f4d4070d631d49",
+   "verified_utc": "2026-11-23T09:39:00Z",
+   "size_bytes": 1992294400,
+   "sha256": "7dfddb6186fc9f99e7f186580fe25abefdf71904755ba58815f4d4070d631d49",
+   "result": "OK"
+  },
+  {
+   "file": "gitm_runs.tar.zst.part014",
+   "expected_sha256": "5ead6d6ef7661b14a873fd2ec5e3c2b4e29fad283569133ad1291010ae1a36ad",
+   "verified_utc": "2026-11-23T09:39:36Z",
+   "size_bytes": 1992294400,
+   "sha256": "5ead6d6ef7661b14a873fd2ec5e3c2b4e29fad283569133ad1291010ae1a36ad",
+   "result": "OK"
+  },
+  {
+   "file": "gitm_runs.tar.zst.part015",
+   "expected_sha256": "c340b8861435012a6888e72a4e7b11b2429d3ee50be96ff48afde54c4315a533",
+   "verified_utc": "2026-11-23T09:40:11Z",
+   "size_bytes": 1992294400,
+   "sha256": "c340b8861435012a6888e72a4e7b11b2429d3ee50be96ff48afde54c4315a533",
+   "result": "OK"
+  },
+  {
+   "file": "gitm_runs.tar.zst.part016",
+   "expected_sha256": "88cb47e1d5c6e48fe4ed2cd79d5ae6f7cb366866018451ac656b90ccbbd97d41",
+   "verified_utc": "2026-11-23T09:40:54Z",
+   "size_bytes": 1992294400,
+   "sha256": "88cb47e1d5c6e48fe4ed2cd79d5ae6f7cb366866018451ac656b90ccbbd97d41",
+   "result": "OK"
+  },
+  {
+   "file": "gitm_runs.tar.zst.part017",
+   "expected_sha256": "69a1ae1b2fa2b8f6b189217847116dc986261b4bc9744479347fbc3414250ae8",
+   "verified_utc": "2026-11-23T09:41:32Z",
+   "size_bytes": 1992294400,
+   "sha256": "69a1ae1b2fa2b8f6b189217847116dc986261b4bc9744479347fbc3414250ae8",
+   "result": "OK"
+  },
+  {
+   "file": "gitm_runs.tar.zst.part018",
+   "expected_sha256": "942b4a73cdf9d9e3dab6437af645194384d6cc3dbc1b3c310f73c99e1249dc7b",
+   "verified_utc": "2026-11-23T09:42:09Z",
+   "size_bytes": 1992294400,
+   "sha256": "942b4a73cdf9d9e3dab6437af645194384d6cc3dbc1b3c310f73c99e1249dc7b",
+   "result": "OK"
+  },
+  {
+   "file": "gitm_runs.tar.zst.part019",
+   "expected_sha256": "1cad5e88663bde5b3ab339df1402e9c06064b81c111dba229d9b6183a8038e97",
+   "verified_utc": "2026-11-23T09:42:47Z",
+   "size_bytes": 1992294400,
+   "sha256": "1cad5e88663bde5b3ab339df1402e9c06064b81c111dba229d9b6183a8038e97",
+   "result": "OK"
+  },
+  {
+   "file": "gitm_runs.tar.zst.part020",
+   "expected_sha256": "98ab6177b3fbfe836eb556c63b614e74ff80a95bec80657d96e883793f1985db",
+   "verified_utc": "2026-11-23T09:43:27Z",
+   "size_bytes": 1992294400,
+   "sha256": "98ab6177b3fbfe836eb556c63b614e74ff80a95bec80657d96e883793f1985db",
+   "result": "OK"
+  },
+  {
+   "file": "gitm_runs.tar.zst.part021",
+   "expected_sha256": "9d3ed33367ddd6c4527cd5eae8197e2576d29c517ed0cd453b408f8c3b761a0e",
+   "verified_utc": "2026-11-23T09:43:57Z",
+   "size_bytes": 1749372710,
+   "sha256": "9d3ed33367ddd6c4527cd5eae8197e2576d29c517ed0cd453b408f8c3b761a0e",
+   "result": "OK"
+  }
+ ],
+ "verification": {
+  "completed_utc": "2026-11-23T09:48:23Z",
+  "runs_files_checked": 23945,
+  "runs_files_not_ok": 0,
+  "gitm_build_tree_files_checked": 1587,
+  "gitm_build_tree_not_ok": 0,
+  "symlinks_checked": 9567,
+  "symlinks_mismatched": 0,
+  "regular_files_under_runs": 23945,
+  "symlinks_under_runs": 9567,
+  "lists": [
+   "RAW_FILES_SHA256.txt",
+   "GITM_BUILD_TREE_SHA256.txt",
+   "RAW_SYMLINKS.tsv"
+  ],
+  "script": "data/physical/raw_restore_20261123/verify_restore.sh"
+ },
+ "originals": "restored copies were not modified; no file under /home/ubuntu/models/runs or GITM was written after extraction"
+}

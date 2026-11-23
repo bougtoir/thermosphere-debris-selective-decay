@@ -14,7 +14,7 @@ generic: no hard line breaks in paragraphs: cover_letter.docx,PASS,0
 generic: highlights 3-5 items,PASS,5
 generic: highlights <= 85 characters,PASS,"[78, 72, 73, 64, 81]"
 generic: <= 6 keywords,PASS,Keywords: space safety; debris remediation; non-target exposure; atmospheric drag; thermosphere; GITM
-"generic: word count <= 13000 (incl. refs, 300 per display item)",PASS,8296
+"generic: word count <= 13000 (incl. refs, 300 per display item)",PASS,8315
 generic: figure file Fig1.tif present,PASS,
 generic: figure file Fig2.tif present,PASS,
 generic: figure file Fig3.tif present,PASS,
@@ -89,3 +89,4 @@ editable PPTX: five slides with one figure each,PASS,"[1, 1, 1, 1, 1]"
 "Fig3.tif >= 600 dpi, RGB, opaque white corner",PASS,"(600.0, 600.0) RGB (255, 255, 255)"
 "Fig4.tif >= 600 dpi, RGB, opaque white corner",PASS,"(600.0, 600.0) RGB (255, 255, 255)"
 "Fig5.tif >= 600 dpi, RGB, opaque white corner",PASS,"(600.0, 600.0) RGB (255, 255, 255)"
+tables: no vertical rules or shading (JSSE guide),PASS,[]
