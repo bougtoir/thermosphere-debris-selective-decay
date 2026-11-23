@@ -1,0 +1,54 @@
+FINAL HANDOFF — JSSE retargeting (non-target orbital-drag exposure; GITM–orbit study)
+
+Repository : https://github.com/bougtoir/thermosphere-debris-selective-decay
+Branch     : devin/1795426935-jsse-retarget (from main d6817a1 = tag gitm-orbit-selectivity-v1.1; tags not moved)
+PR         : https://github.com/bougtoir/thermosphere-debris-selective-decay/pull/11 (open, NOT merged)
+Data       : https://doi.org/10.5281/zenodo.24101202 (not modified)
+Target     : Journal of Space Safety Engineering (Elsevier/IAASS), https://www.editorialmanager.com/JSSE/
+
+VERDICT: CONDITIONAL SUBMIT (only author/administrative actions remain). Not submitted, nothing paid, no GITM run.
+
+1. Fee gate: PASS. Subscription route "No open access publication fee"; optional gold OA APC USD 2930 (do not select);
+   no submission or page charges stated; colour free online, colour in print optional and charged (choose online only).
+   Evidence: docs/JSSE_JOURNAL_FIT_AND_FEES.md, data/raw/journal/jsse/ (captured 2026-11-23 UTC).
+2. Quartile: JCR quartile NOT verified (no JCR access). Scimago 2025 Q2 (Aerospace Eng.; Safety, Risk, Reliability and
+   Quality); ScienceDirect JIF 1.8, CiteScore 3.5. JSSE was pre-selected in the master prompt; author decides whether
+   the non-Q1 status is acceptable under the usual journal filter.
+3. Numbers frozen: value ledger results/manuscript_jsse_values.csv byte-identical to results/manuscript_physical_values.csv
+   (164 values). S(12 h) 1.51/2.03/1.02 at 400/500/300 km (fine 1.49/2.04); non-target share 84% (fine 85%) and 77% of the
+   synthetic sample; static peak-matched overstatement 1.5–1.7x (400 km), 2.8–3.6x (500 km); source-centred 4.7–5.8x /
+   8.0–8.5x; coarse/fine difference <= 1.1%.
+4. QC: baseline main physical-qc 34/34; branch physical-qc 34/34; acta_semantic_checks 325/325; pytest 34 passed;
+   make jsse-qc 89/89 (results/qc_jsse_manuscript.csv); clean GitHub clone + Zenodo NPZ only -> jsse-qc PASS with
+   identical ledger, citations and manuscript text.
+5. Data: 5 Zenodo NPZ re-downloaded, SHA-256 = PROCESSED_MANIFEST and MD5 = Zenodo (data/physical/zenodo_retrieval/).
+   Private raw release bougtoir/wip@thermosphere-gitm-raw-2026-11-23 restored to /home/ubuntu/models: 22/22 parts OK;
+   23,945 run files, 1,587 build-tree files, 9,567 symlinks, 0 mismatches
+   (data/physical/raw_restore_20261123/RAW_RESTORE_LEDGER.json). Raw data not redistributed. This is checksum/log
+   verification of existing runs, not an independent re-simulation.
+6. Manuscript changes (scripts/build_jsse_manuscript.py): new title "Non-target orbital-drag exposure from localized
+   thermospheric heating: a coupled GITM–orbit assessment"; abstract, Introduction, Discussion (4.1 benefit vs exposure,
+   4.2 static patches as a modelling representation, 4.3 what screening should measure, 4.4 exposure is not hazard,
+   4.5 limitations) and Conclusions rewritten; Eq. (3) aggregate non-target share; "synthetic sample" qualifier;
+   bootstrap CIs stated as conditional on one simulated atmosphere; 11 verified space-safety references (6 JSSE);
+   ISO 4 journal abbreviations; tables without vertical rules; AI declaration expanded. Methods and Results unchanged
+   except the share definition and qualifiers. Five figures and four tables kept; Fig. 3 caption qualifier.
+7. Files (manuscript/JSSE/): manuscript.docx (figures separate, captions listed), manuscript_review_inline.docx,
+   cover_letter.docx, highlights.docx, tables.docx, figures.pptx (editable), figures/Fig1–5.tif (600 dpi).
+   Docs: docs/JSSE_JOURNAL_FIT_AND_FEES.md, JSSE_CITATION_ECOLOGY_AUDIT.md, JSSE_CLAIM_EVIDENCE_AUDIT.md,
+   JSSE_HOSTILE_REVIEW.md, JSSE_FINAL_QC_MATRIX.md. Package: JSSE_FINAL_SUBMISSION_PACKAGE.zip.
+
+AUTHOR-ONLY ACTIONS
+ a. Confirm title-page and cover-letter metadata taken from the JSSE master prompt: "Tatsuki Onishi" (ORCID public name
+    "Onishi Tatsuki"; family name Onishi), "Data Science and AI Innovation Research Promotion Center, Shiga University,
+    1-1-1 Bamba, Hikone, Shiga 522-8522, Japan" (romanisation "Bamba" not independently verified), ORCID
+    0000-0001-7261-9062 (public record: Shiga University, Hikone), bougtoir@gmail.com. The earlier handoff said to leave
+    these blank; the more specific JSSE prompt supplied them.
+ b. Upload Elsevier's declaration-of-competing-interest template in Editorial Manager.
+ c. At acceptance: subscription route and online-only colour (zero mandatory fees).
+ d. Final reading; manual submission; decide whether to merge PR #11 and whether to add a new tag (do not move v1/v1.1).
+
+UNRESOLVED LIMITATIONS (stated in the manuscript): one model; one quiet equinox background with constant drivers; two
+grids, 24 h vs 6 h spin-up, no formal convergence; idealized 100 GW neutral source; synthetic circular orbits, one
+ballistic coefficient, one target definition; two-level coarse-only power/altitude contrasts; no transport budget; no
+observational validation; no collision/conjunction/operational-risk assessment; no engineering feasibility.
