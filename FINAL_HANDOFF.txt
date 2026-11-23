@@ -5,6 +5,15 @@ Branch     : devin/1794047620-physical-model-rebuild
 PR         : https://github.com/bougtoir/thermosphere-debris-selective-decay/pull/9 (open, not merged)
 Data       : https://doi.org/10.5281/zenodo.24101202 (published by the author 2026-11-12; metadata corrected 2026-11-18)
 
+POST-MERGE STATUS (2026-11-19, recorded after tag v1.1; see docs/POST_MERGE_TAG_RECORD.md)
+- PR #9 merged into main with a merge commit: d6817a18682cb7a58a7325cd6c15d13e4df7444e (parents ac67802, 95e5319).
+- Tag gitm-orbit-selectivity-v1.1 (annotated, c58f047) -> d6817a1 = final submission state.
+- Tag gitm-orbit-selectivity-v1 (9040e4e) -> 61478a1, unchanged = initial public reproducibility release.
+- Devin Review on 95e5319: 'failure' ("Completed analysis in 5s"), no findings, no log; cause unexplained; NOT a successful review.
+- Manuscript rebuilt from a fresh v1.1 clone + Zenodo NPZ: QC 34/34, value ledger byte-identical. GITM not rerun. No new Zenodo record or DOI.
+- Remaining author-only actions: department, postal address, ORCID, final reading, manual submission.
+The sections below describe the pre-merge state.
+
 DECISION (manuscript): SUBMIT   |   MERGE RECOMMENDATION: CONDITIONAL MERGE
 
 1. Branch / HEAD: devin/1794047620-physical-model-rebuild; HEAD = the commit adding this file, on top of 61478a1.
