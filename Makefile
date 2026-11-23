@@ -6,7 +6,7 @@ PY ?= python3
 
 .PHONY: all quick clean test manuscript qc figures tables submission
 .PHONY: phase1 phase2 phase3 phase4 phase5 phase6 phase7 phase8 phase9 phase10 phase11 phase12
-.PHONY: audits audit-sobol physical-figures physical-manuscript physical-qc
+.PHONY: audits audit-sobol physical-figures physical-manuscript physical-qc jsse-manuscript jsse-qc
 
 all: phase1 phase2 phase3 phase4 phase5 phase6 phase7 phase8 phase9 phase10 phase11 phase12 audits figures tables manuscript qc submission
 
@@ -93,3 +93,10 @@ physical-qc: physical-manuscript
 
 clean:
 	rm -rf results/figures/* results/tables/* results/logs/* data/processed/* manuscript/output submission 2>/dev/null || true
+
+# JSSE retargeting: same canonical values and figures, space-safety framing (manuscript/JSSE)
+jsse-manuscript: physical-figures
+	$(PY) scripts/build_jsse_manuscript.py
+
+jsse-qc: jsse-manuscript
+	$(PY) scripts/qc_jsse_manuscript.py

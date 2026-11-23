@@ -1,0 +1,263 @@
+Skip to main content
+Skip to article
+LeapSpace
+Journals & Books
+Help
+Search
+My account
+Sign in
+Journal of Space Safety Engineering
+Date: March 2023
+Pages: 55-58
+Volume: Volume 10, Issue 1
+View accessibility information
+Published by
+Review article
+Get rights and content
+Space Environment Hazards
+Review of perspective space debris mitigation solutions
+I.V. Usovik a b
+Show more
+Cite
+Add to Mendeley
+Share
+10.1016/j.jsse.2022.12.001
+Access through your organization
+Purchase PDF
+Article preview
+Recommended articles
+Cited by (16)
+Metrics
+Article preview
+Abstract
+Introduction
+Section snippets
+References (15)
+Abstract
+Space debris poses an increasing threat to functioning spacecraft every year. In order to solve problems created by space debris and make administrative decisions, it is necessary to assess impact of various measures taken to mitigation and remediation on space debris environment. The article presents an overview of promising methods for limiting of space debris and methods developed by author that allow for a detailed assessment of various space debris sources and measures contribution to space debris environment.
+Keywords
+Space debris; Mitigation; Remediation; Active removal
+Abbreviations
+GEO, geostationary Earth orbit; LEO, low Earth orbit; NES, near Earth space; OS, orbital servicing; R/B, rocket bodies; S/C, spacecraft; SD, space debris; SO, space object
+Previous article in this issue
+Next article in this issue
+Introduction
+Space debris mitigation and remediation is two ways to manage space debris environment. For today a lot of methods and solutions for space debris can be used for limit of space debris growth. Review and analysis of perspective space debris mitigation solutions can be used for a lot of applications.
+This paper has been supported by the RUDN University Strategic Academic Leadership Program.
+1. Perspective solutions for space debris mitigation
+Main international documents specifying requirements in field of space debris mitigation are [1, 2]:
+–
+Space debris mitigation guidelines of the Committee on the Peaceful uses of Outer Space;
+–
+IADC Space debris mitigation guidelines;
+–
+ISO 24113:2019 «Space systems — Space debris mitigation requirements»;
+–
+ITU-R S.1003 «Environmental protection of the geostationary-satellite orbit» etc.
+Main document on space debris mitigation In the Russian Federation is national standard GOST R 52925–2018. It sets out the requirements for spacecrafts (S/C), rocket bodies and upper stages (R/B) after end of mission (p. 6.4), prevention of possible destruction (p. 6.2.3), prevention of space debris creating during routine operations (p. 6.1) and a number of others. GOST is fully compliance with «Space debris mitigation guidelines of the Committee on the Peaceful uses of Outer Space» and harmonized with ISO 24113, but not fully duplicate their numerical restrictions. Today is going work for updating GOST, after that it will be more correspond with today space debris mitigation practice and restrictions. Today most of Russian S/C and R/B compliant with GOST. For example is R/B «Freagat», that can make a difficult maneuvers on launch S/C on different orbits and re-entered after that in control manner.
+Compliance with requirements of regulatory and technical documents is basis for space debris mitigation and remediation. Methods and solutions of space debris mitigation are divided into:
+1. Space debris mitigation during normal operation. Solutions used to implement this method are divided into 3 subgroups in accordance with phase of functioning S/C or R/B:
+–
+launching;
+–
+functioning;
+–
+removal and passivating.
+Solutions on launching phase:
+a
+Analysis of launch trajectory, when planning S/C launching an assessment of collision risk with cataloged space objects (SO) should be carried out and, if possible, choice of launch time intervals in order to minimize risk of collisions with catalogued objects. Method and data for calculate this risk developed and using in surveillance systems. Risk of collision larger 10−3 generally is reason to change launching time. According to estimates based on SD model specified by GOST R 25,645.167–2022 «Space environment (natural and artificial). Model of spatial and time distribution for space debris flux density in near-Earth space» [3], probability of collision, calculated on formula from GOST with using flux for trajectory, with SD larger than 1 cm, which is critical in collision event [2], at upper stage ranges between 10−5 to 10−7. A priori probability of collision with cataloged SO at launch phase according to GOST is between 10−7 to 10−8.
+b
+Launching into orbits with smaller SD fluxes, in accordance with GOST R 25,625.167–2022, most dangerous orbits can be considered circularly sun-synchronous orbits in altitude range of 800–900 km, for them estimate is 1 collision with SD lager than 1 cm in 8 years for a S/C with a cross-sectional area of 25 m2; biggest spatial density of cataloged S/C is in altitude range of Starlink system ∼ 550 km, however, they can all avoid a collision; when developing new S/C, especially large exhaust systems, possibility of their deployment in orbits with SD smaller fluxes should be taken into account. Approach with using the space debris flux to assess the criticality of the environment in low Earth orbit can be used too [4]. For example, S/C of «Sphere» constellation is planning to launch into orbits lower than most dangerous orbits and larger than «Starlink» constellation.
+c
+Use of S/C and R/B during operation of which SD fragments are not formed, for example, means of removal, operation of which is not accompanied by release of operational elements (springs, pushers, parts of pyrobolts, etc.) into near Earth Space (NES).
+d
+Use of protected pyrotechnic elements to exclude their triggering under influence of SD impacts, which jeopardizes removal and leads to inability of S/C to function due to separation in a non-operational orbit.
+Solutions on functioning phase:
+a
+Conducting collision avoidance maneuvers, maneuver is carried out by a functioning S/C in order to avoid a collision with a S/C. If a dangerous approach or collision of two non-functioning S/C is predicted, it is possible to use special orbital maintenance S/C to change orbit of one object.
+b
+Conducting continuous monitoring of S/C technical condition to identify and predict events that may lead to their destruction or loss of controllability.
+c
+Use of S/C and R/B during functioning of which SD are not formed. For example, cable systems that separate after their use and burn up in the atmosphere.
+Solutions on removal and passivating phase:
+a
+Exclusion of intentional destruction.
+b
+Removal after end of mission from zones of working orbits. This method can be implemented in two ways: by using its own energy resources (active) or using special devices that are mounted as part of the S/C design or means of removal (passive method).
+c
+Carrying out passivation after end of mission and/or removal, which excludes spontaneous explosions of non-functioning S/C and R/B Various types of engines can be used to remove S/C using its own remote control, depending on required duration of removal. For example, liquid-propellant rocket engines or solid-propellant rocket engines (without creation of SD lager than 1 mm) can be used to quickly remove a spacecraft from orbit. At the same time, it will be taken out of orbit in a fairly short period of time, but this requires a large mass of the working fluid. Electric rocket engines can be used for long-term removal of S/C, while mass of working fluid will be less.
+For removal from low Earth orbits (LEO), aerodynamic devices are used in a passive way, principle of operation of which is based on an increase cross-sectional area of S/C, which leads to an increase in aerodynamic drag force. Structurally, input devices can be made both in form of a three-dimensional structure - in the form of a ball, a torus, a cylinder, a pyramid, and a flat one - in form of a disk, an umbrella, a parachute, a square, a combination of various inflatable forms, etc. Below are some examples of aerodynamic devices.
+–
+Gas-filled structures. When using them, a complex deployment system and orientation system are not required. Disadvantages of inflatable devices include possibility of breaking through shell when colliding with small fragments of SD.
+–
+Aerodynamic sailing devices of flat configuration. In a collision with a SD, although a hole is formed in surface of device, but it will continue to function. Disadvantages: complexity of deployment system and its increased weight. For example Bauman CubeSat's is equipped of same devices [5].
+–
+Stationary magnetic devices, which are made in form of devices for generating a magnetic field placed on S/C board. When using them, deployment and orientation systems are not required, they are more resistant to collisions with SD;
+–
+Electrodynamic tether systems [6, 7]. At the end mission, a cable or tape is deployed from side of S/C. Under action of current flowing in cable, an Ampere force arises, directed against movement of S/C. The advantage of these systems is small weight and ease of use, and disadvantages are problematic deployment of cable.
+2. Destruction prevention.
+Cases of SO fragmentation can be subdivided according to [8]. Collisions and explosions in orbit can lead to formation of hundreds to several thousand new SO. The application of preventing method possible destruction is aimed at reducing and, in future, completely eliminating appearance of new SD fragments as a destruction.
+Solutions for this method.
+–
+Improving visibility and identification of small S/C using additional technologies. The problem of visibility and identification of smallsats, especially their large constellations, has been increasingly raised recently.
+–
+Protection of S/C from SD penetration. Protection can be provided by thickening S/C body itself or using more penetration-resistant materials and coatings, or using protective shields;
+–
+Improving technical characteristics of ground-based observation facilities and warning of dangerous situations in space systems.
+Recent studies in field of assessing long-term evolution of SD indicate insufficiency of above methods in long term, because current state of SD in NES has reached a level where mutual collisions can initiate the process of self-multiplication of SD, commonly known as "Kessler syndrome", even taking into account implementation of all measures to space debris mitigation. Therefore, many experts in world come to conclusion that it is necessary to remediation of environment.
+2. Perspective solutions for space debris remediation
+Interaction with SO already in NES can be carried out using specially developed space technologies, which in fact is implementation of orbital servicing (OS) and is called active debris removal. Methods and solutions of active debris removal are divided into the following main groups.
+1. Removal of SD objects is most effective method compared to others due to purposeful interaction with SD. Removal to graveyard orbits can be carried out in the following ways:
+–
+Removal without mechanical docking:
+a
+System with ion beam. Ion Beam Shepherd solution is to use a quasi-neutral plasma beam in direction of target object, as a result of which, due to force generated by momentum of colliding ions, trajectory of SO changes. At the moment, development of this solution is actively being conducted at RIAME MAI [9], it is on experimental phase today. In cooperation with ISS corp. RIAME MAI is developing project of S/C for removal SD from GEO protected region.
+b
+. Electrostatic Tractor, which uses an electron beam to charge itself positively and target object negatively. As a result, a Coulon force appears, which mutually attracts S/C.
+c
+Ground-based or space-based laser solutions. Theoretical works on space-based laser is ongoing in IAP RAS [10].
+d
+Solutions for spraying clouds of particles that affect SD and reduce orbit altitude. For example, particles of nitrogen oxides I, III, IV, V - N2O, N2O3, NO2, etc. having a shock-kinetic effect on SD or a gaseous spherical cloud, which may include metal additives, heavy molecules with a low adiabatic index, high-molecular elements and halogens, such projects are at research stage and may pose a risk to functioning S/C;
+e
+Structures for removal of small objects and SD particles. For example, a spatial region formed by peripheral surface of a tubular body, and having a greater drag force and density than atmosphere on orbit. SD particles pass through tubular body through open ends and linger in it, after which they descend from orbit, such projects are captured by non-maneuvering S/C.
+–
+Removal with mechanical docking:
+a
+capture devices with a harpoon. Airbus has developed a harpoon system for RemoveDEBRIS mission, which was successfully tested in orbit on February 8, 2019 [11]. Prototypes of such systems are being actively developed.
+b
+Capture devices with a network. RemoveDEBRIS S/C also tested use of network to capture a miniature satellite that it released itself [11]. Networks can consist of different materials, be of different configurations and sizes.
+c
+A robotic manipulator. In 2025, ClearSpace-1 mission is planned [12]. A S/C with four articulated robotic arms is being developed, which will safely remove the Vespa design for Vega rocket launched in 2013;
+d
+Alternative docking/capture options. For example, University of Cape Town (South Africa) has developed a prototype of a capture technology called MEDUSA, using an alloy with effect of memorizing shape of an object, which provides two functional modes - capture and release for multiple attempts to capture a target [13].
+2. Extension of S/C lifetime ensures long-term sustainability of space activities through following implementation methods:
+–
+Maintaining S/C orbit. Orbital ATK is developing S/C under Mission Extension Vehicle - MEV program, which have a reliable docking system and are docked to the nozzle of apogee engine of serviced S/C. After that, MEV performs functions of maintaining orbit and orientation of serviced S/C [14].
+–
+Repair or modernization of S/C equipment. During operation of S/C, unforeseen breakdowns, software errors, loss of stabilization and orientation may occur. Satellite maintenance eliminates need to launch a new S/C.
+–
+Refueling, extends lifetime of S/C.
+The main result of extension S/C lifetime, which will effect on space debris environment, is elimination of need to launch new S/C to replace those that have failed. A non-functioning (or spacecraft with expiring lifetime) can be refueled, repaired (including by reusing parts of S/C), put into working orbit and maintain it (as in MEV missions), which actually allows you to transfer S/C from status of SD to status of a functioning S/C, operate it and receive appropriate services. In fact, this is a reduction in number of existing SD facilities, for a certain period of time, because at some point S/C will no longer be operational even after refueling or repair, and it will still become SD again.
+3. Recycling of SD allows it to be eliminated (in whole or in part):
+–
+Complete recycling of SD. For example, a systems for recycling and processing S/C and R/B into fuel.
+–
+Reuse of SD or its parts. As an example, we can consider one of directions of DARPA program called Phoenix - development of S/C assembly technology on GSO with reuse of some elements. For example, batteries and electronics can be operated for 10–18 years, and antenna for more than 100 years.
+4. Grouping SD in orbit. Problem of SD in GEO cannot be solved only by method of removal to graveyard orbit. Two objects in GEO protected region with inclination up to ∼15° can colliding and completely destroyed, creating a flow of SD that will cross GSO every day. Removal to graveyard orbit only slows down process of increasing SD in GEO, but does not solve problem as a whole. Guest Associates and Hempsell Astronautics conducted research to demonstrate disposal of spent S/C in GEO region [15]. A mission called Necropolis is proposed, consisting of two S/C: Hunter - for collecting and towing non-functioning satellites and Terminus space station located in graveyard orbit, where S/C being removed will be in permanent controlled storage. This project is interesting, some Russian experts looking at this approach in contests of very large repaired and reusable S/C.
+Organizational access
+Get full-text access by signing in with your organisation
+Access through your organization
+Other access options
+Purchase PDF
+Need help with access?
+Section snippets
+Conclusions
+Current level of SD environment will not decrease, and specific state of SD environment will depend on implementation of mitigation measures and active removal. Promising methods and solutions of SD mitigation and remediation can provide an acceptable risks and safety in space. Each project can use a different combination of them for minimize of SD creation.
+Declarations of Interest
+The authors declare that they have no known competing financial interests or personal relationships that could have appeared to influence the work reported in this paper.
+Acknowledgments
+The author wish to acknowledge the support by grant of President of Russian Federation № МК−5287.2022.4 (agreement 12.05.2022 № 075–15–2022–724).
+References (15)
+N.N. Smirnov et al.
+Space traffic hazards from orbital debris mitigation strategies
+Acta Astronaut.
+(2015)
+Carmen Pardini et al.
+Using the space debris flux to assess the criticality of the environment in low Earth orbit
+Acta Astronaut.
+(2022)
+P.A. Diakov et al.
+Dynamic processes in the tether of a space tethered system
+Acta Astronaut.
+(2019)
+Valeriy Trushlyakov et al.
+Dynamics of rotating tethered system for active debris removal
+Acta Astronaut.
+(2022)
+A.I. Nazarenko et al.
+Space debris in low earth orbits region: formation and reduction process analysis in past decade
+Acta Astronaut.
+(2022)
+V.A. Obukhov et al.
+Usovik I.V. etc. Problematic issues of spacecraft development for contactless removal of space debris by ion beam
+Acta Astranautica
+(2021)
+Space debris. Book 2. Space debris mitigation. М.: FIZMATLIT, 2014.…
+There are more references available in the full text version of this article.
+View full text
+Recommended articles
+Based on reading popularity
+Research article
+Liability or labeling? Regulating product risks with costly consumer attention
+Maria Arbatskaya, Maria Vyshnya Aslam
+Journal of Economic Behavior & Organization • Volume 154 • 2018 • Pages 238-252
+Research article
+The political economy of labeling
+David Zilberman, …, Ben Gordon
+Food Policy • Volume 78 • 2018 • Pages 6-13
+Research article
+Orbit determination of China’s first mars probe Tianwen-1 during interplanetary cruise
+Peng Yang, …, Qinghui Liu
+Advances in Space Research • Volume 69, Issue 2 • 2022 • Pages 1060-1071
+Research article
+On-orbit servicing ontology applied to recommended standards for satellites in earth orbit
+David A. Barnhart, Rahul Rughani
+Journal of Space Safety Engineering • Volume 7, Issue 1 • 2020 • Pages 83-98
+Research article
+Problematic issues of spacecraft development for contactless removal of space debris by ion beam
+V.A. Obukhov, …, I.V. Usovik
+Acta Astronautica • Volume 181 • 2021 • Pages 569-578
+Research article
+Legal dilemma for combatting malicious cyber activities against space activities
+Du Li
+Acta Astronautica • Volume 207 • 2023 • Pages 47-53
+Cited by (16)
+Research article
+Adaptive robust fault-tolerant control of spinning tether system for space debris removal
+Sun P., …, Zabolotnovb Y.
+Acta Astronautica • Volume 228 • 2025
+Show abstract
+Research article
+Open access
+The cost of (Un)regulation: Shrinking Earth's orbits and the need for sustainable space governance
+Martin-Lawson D., …, Yerushalmi E.
+Journal of Environmental Management • Volume 349 • 2024 • Article 119382
+Citation Excerpt:
+
+There is a growing literature on the need for defining, addressing, and ensuring sustainability in outer space (Dobos and Prazak, 2019; Ledkov and Aslanov, 2023; Li, 2023; Svotina and Cherkasova, 2023; Paladini et al., 2021) both in the sense of regulating human activities (ESA, 2022c; UN, 2013) and active debris removal. Strategies encompassing regulation of satellites disposal and debris mitigation have emerged as crucial means of managing the space debris environment (Usovik, 2023), with a few initiatives already trialled to actively attempt cleaning up the orbits (Astroscale, 2023; Biesbrok, 2015). However, although there are studies that estimates the likely growth of quantity of objects in space in terms of collision probability scenarios with the aim of costing its economic consequences and estimates the benefit of remediation initiatives (NASA, 2023a; OECD, 2020), there is still limited research that connects the growing threat of debris and international regulations –or the lack of—that allowed this to happen.
+
+Show abstract
+Disturbance observer-based fixed-time control for space tether system with prescribed performance after capturing debris
+Sun P., …, Zabolotnov Y.
+Astrodynamics • Volume 10 • 2026
+SpaceDet: A Large-scale Space-based Image Dataset and RSO Detection for Space Situational Awareness
+Xiao J., …, Feroskhan M.
+IJCAI International Joint Conference on Artificial Intelligence • 2025
+High Accuracy Position Control of a Telescope Tracking System
+Zhou W., …, Li X.
+Chinese Control Conference, CCC • 2025
+A NOVEL ADAPTIVE CAPTURE DEVICE AND CONTROL METHOD FOR SPACE DEBRIS
+Chen J., …, Gu Y.
+Proceedings of the International Astronautical Congress, IAC • Volumes 2023-October • 2023
+View all citing articles on Scopus
+Metrics
+Citations
+Citation Indexes
+16
+Captures
+Mendeley Readers
+16
+View details
+© 2022 International Association for the Advancement of Space Safety. Published by Elsevier Ltd. All rights reserved.
+About ScienceDirect
+Remote access
+Contact and support
+Terms and conditions
+Privacy policy
+Cookie settings
+
+All content on this site: Copyright © 2026 Elsevier B.V., its licensors, and contributors. All rights are reserved, including those for text and data mining, AI training, and similar technologies. For all open access content, the relevant licensing terms apply.
+
+We use cookies that are necessary to make our site work. We may also use additional cookies to analyze, improve, and personalize our content and your digital experience. You can manage your cookie preferences using theCookie settings link. For more information, see ourCookie Policy
+Cookie settings
+Accept all cookies

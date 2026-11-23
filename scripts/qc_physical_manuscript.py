@@ -17,7 +17,9 @@ from docx import Document
 from docx.oxml.ns import qn
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
-M = os.path.join(ROOT, "manuscript/physical")
+M = os.environ.get("QC_MANUSCRIPT_DIR", os.path.join(ROOT, "manuscript/physical"))
+VALUES = os.environ.get("QC_VALUES", os.path.join(ROOT, "results/manuscript_physical_values.csv"))
+QC_OUT = os.environ.get("QC_OUT", os.path.join(ROOT, "results/qc_physical_manuscript.csv"))
 DESIGN = {  # experiment-design constants and identifiers stated in Methods/captions, not results
     "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "14", "20", "30", "36", "45", "50", "70", "72",
     "97", "100", "107", "150", "250", "300", "400", "500", "600", "1000", "2002", "21", "4.1.2", "11.4", "2.5",
@@ -25,6 +27,7 @@ DESIGN = {  # experiment-design constants and identifiers stated in Methods/capt
     "4×4", "8×8", "36×36", "72×72", "100–107", "5–100", "0.05–0.2", "0.1–3", "0.3–3", "1–4", "0.5–2", "1–3",
     "10°×5°", "5°×2.5°", "PR1–PR12", "0.01", "−0.01", "+2", "13,000", "2.1", "2.2", "2.3", "2.4", "2.5", "2.6", "2.7",
     "3.1", "3.2", "3.3", "3.4", "3.5", "3.6", "00", "315", "95", "10°×5", "5°×2.5",
+    "4.1", "4.2", "4.3", "4.4", "4.5",
 }
 
 
@@ -78,7 +81,7 @@ def main():
     chk("word count <= 13000 (incl. refs, 300 per display item)", words <= 13000, str(words))
     for n in capn:
         chk(f"figure file Fig{n}.tif present", os.path.exists(os.path.join(M, "figures", f"Fig{n}.tif")))
-    vals = pd.read_csv(os.path.join(ROOT, "results/manuscript_physical_values.csv"))
+    vals = pd.read_csv(VALUES)
     known = set(vals.formatted.astype(str)) | DESIGN
     for x in list(vals.formatted.astype(str)):
         known |= set(re.findall(r"[−+]?\d[\d.,×°/–-]*\d|[−+]?\d", re.sub(r"[\^_]\{([^}]*)\}", r"\1", x)))
@@ -141,7 +144,7 @@ def main():
         "processed fields" not in da.split("Raw GITM")[0].split("github.com")[0] and
         ("Zenodo" in da or "not yet in a public archive" in da), da[:120])
     out = pd.DataFrame(rows)
-    out.to_csv(os.path.join(ROOT, "results/qc_physical_manuscript.csv"), index=False)
+    out.to_csv(QC_OUT, index=False)
     print(out.to_string())
     sys.exit(int((out.result == "FAIL").any()))
 

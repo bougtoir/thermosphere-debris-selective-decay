@@ -1,0 +1,277 @@
+Skip to main content
+Skip to article
+LeapSpace
+Journals & Books
+Help
+Search
+My account
+Sign in
+Acta Astronautica
+Date: February–March 2014
+Pages: 141-165
+Volume: Volume 95
+View accessibility information
+Published by
+Research article
+Get rights and content
+A critical assessment of satellite drag and atmospheric density modeling☆
+David A. Vallado
+, 
+David Finkleman 1
+Show more
+Cite
+Add to Mendeley
+Share
+10.1016/j.actaastro.2013.10.005
+Access through your organization
+Purchase PDF
+Article preview
+Recommended articles
+Cited by (244)
+Metrics
+Article preview
+Abstract
+Introduction
+Section snippets
+References (27)
+Highlights
+•
+We consolidate existing data and clarify sources of uncertainty in atmospheric drag.
+•
+Our goal is to ensure researchers examine all relevant sources of error in analyses.
+•
+Sample values and tests are shown for several atmospheric models and indices.
+•
+We expose practical issues and their effect on propagation and orbit estimation.
+•
+How you use the data indices is as important as the model you select.
+Abstract
+This paper examines atmospheric drag models and data usage involved with propagating near-Earth satellites. Many studies, and even some International standards try to promote one model over another, rather than identifying the behavior of the numerous parameters necessary to select the best model for a particular mission and application. We briefly summarize existing information, and quantify sources of uncertainty in satellite propagation resulting from several atmospheric models, or from the treatment of input data indices. The goal is for researchers to understand the relative impact of using different models and data indices so they can properly assess which model and data input to use.
+Keywords
+Atmospheric drag; Satellite propagation; Parameters affecting atmospheric drag; Space weather data; Atmospheric density; Space situational awareness
+Previous article in this issue
+Next article in this issue
+Introduction
+Significant research has taken place to determine the proper modeling for atmospheric density. The literature contains information in several different disciplines, ranging from basic physics, aerodynamic gas/surface dynamic interactions, orbit determination approaches, to complex models of density, and corrections to existing atmospheric models. Much of the basic research took place almost a half century ago. Jacchia [8], … began a series of atmospheric models that are still in use today. Gaposchkin and Coster [5] evaluated various atmospheric models and found that none solved all the problems of the day. Today, we are in a similar situation, but with significantly more models and data to choose from. Nonetheless, the orbit estimation community often overlooks the assumptions upon which atmospheric models were developed, and vice versa.
+Atmospheric models generally use parameters based on observables that are considered indicators of atmospheric density, which are often difficult to measure directly (ap or Kp, and F10.7). Researchers often fix one parameter, such as the drag coefficient, and add others to the state vector to be estimated. In some cases, such as spherical objects, this is appropriate. But for more complex shapes this simply moves the uncertainty to another parameter that might not have any real physical connection to the observables. Occasionally, researchers neglect to recognize that the drag coefficients they estimate depend on the model and assumptions they invoke to make the estimates. This leads to physically unrealistic outcomes.
+This paper seeks to clarify the sources of uncertainty in the drag problem, both from the literature, and also from experiments we conducted using various atmospheric models, and by treating the input data differently. Much of the work is inherently related to orbit determination and we use the Kalman filter in Analytical Graphic Inc's Orbit Determination Toolkit (ODTK). This program is used in many operational and high precision applications because it is trusted as a robust, flexible, and highly accurate processing platform. Not all atmospheric models are tested, nor would it be practical to present data from all the models that exist today. We select from ODTK's available models to expose the characteristics one will find when evaluating models for a particular application.
+An important overall consideration is stated. We use propagation comparisons to estimate the effect of various configurations throughout the paper. This is insufficient to accurately measuring what an actual satellite would experience over time, as well as the intricate coupling of all forces, but we are simply trying to demonstrate that several common practices may actually insert significant uncertainty into the solution. The prediction interval is also an important consideration. A 4 to 8-day prediction interval shows the dominant effects. Longer spans risk unnecessarily large errors, and shorter spans may not show the overall effect of input choices and operations. Thus, our approach throughout the paper is to isolate (as much as possible) all other factors and variables, and examine only one item at a time to try and obtain its’ contribution to the overall accuracy and operation of using atmospheric drag for satellite calculations.
+There are five major areas that we examine (see Fig. 1). This is our approach to organizing and examining the coupled issues of atmospheric density and its effect on satellite motion. In some cases we are able to develop metrics to indicate the effect of one parameter on the overall accuracy. We examine the predominant approaches to predicting atmospheric drag forces. We discuss physical inconsistencies in determining and employing approximations to thermospheric density, and drag coefficients. This should be considered a framework to guide the researcher to an internally consistent approach for calculating atmospheric drag effects on a satellite.
+There are two fundamental operations that are involved in atmospheric drag: the determination of atmospheric density, and the interaction of the satellite surface with the atmosphere. Much of the recent literature deals with the former, but the latter is an equally important component to the overall effect of atmospheric density on satellite orbits. We examine the case where we have tracking data for satellite objects, determine the ballistic coefficient from the observations, and then use it for predictions.
+Ref. [27], Sec 8.6.2 provides the basic fundamentals related to atmospheric drag so we will not repeat all that information here. The widely accepted equation for the acceleration imparted on the satellite from atmospheric drag is
+𝑎
+⇀
+𝑑
+𝑟
+𝑎
+𝑔
+=
+−
+1
+2
+𝜌
+𝑐
+𝐷
+𝐴
+𝑚
+𝑣
+𝑟
+𝑒
+𝑙
+2
+𝑣
+⇀
+𝑟
+𝑒
+𝑙
+|
+𝑣
+⇀
+𝑟
+𝑒
+𝑙
+|
+Here m is the satellite mass, A is the satellite area, 
+𝑣
+⇀
+𝑟
+𝑒
+𝑙
+ is the relative velocity, or the satellite velocity relative to the rotating atmosphere, and cD is the coefficient of drag. Despite the innocuous form, atmospheric drag is probably the most elusive of the force models used for satellite operations because in reality, all of the parameters vary over time.
+Atmospheric drag forces are the consequence of a satellite doing work on the atmosphere. Momentum and energy are exchanged between the satellite and the atmosphere. The nature of the momentum exchange depends on the distribution of mass in the atmosphere and the geometry and characteristics of the surface of the satellite. The duration of the encounter between an element of the atmosphere and the satellite is important. A simple approximation of cD
+𝑐
+𝐷
+=
+2
+𝑚
+|
+𝑎
+⇀
+𝑑
+𝑟
+𝑎
+𝑔
+|
+𝜌
+𝑣
+𝑟
+𝑒
+𝑙
+2
+𝐴
+is valid only when the length scale of the problem is much greater than the mean free path between collisions among gas particles or the duration of the interaction between the atmosphere and the satellite is much greater than the time between particle collisions. There has to be enough time for collisions among gas particles to equilibrate the consequences of the interaction. The dependence of drag force upon area, velocity, and density is not necessarily as straightforward in the sparse atmosphere of orbital regimes. The drag coefficient compares inertial forces to the dynamic pressure acting on the area presented to the flow. The density, velocity, and area are variables of the problem. They normalize forces so that cD is non-dimensional. As long as density and velocity do not vary much along the orbit, this is sufficient. If drag scales with dynamic pressure, cD should be a constant for a given orientation of the satellite. The equations of motion can be integrated as though drag force depends on instantaneous local velocity squared and with a density that varies along the flight path. This scaling does not necessarily hold in unsteady, nonequilibrium situations.
+This approximation is valid for hypervelocity, continuum flow. If the oncoming flow is reflected from a vertical surface, the drag is twice the momentum of the free stream intercepted by the surface, cD=4. If the surface were inclined at 45 degrees and the oncoming flow deflected upward, cD=2, and there would be a corresponding downward force on the surface. This roughly bounds drag coefficient, but it is not sufficient for accurate prediction of the drag force. Using Eq. (6), we estimate the significance of drag relative to other forces that a satellite experiences Fig. 2.
+The relative velocity depends on the accuracy of the a-priori estimate, and the results of any orbit determination processes. Because it's generally large, and squared, it becomes a very important factor in the calculation of the acceleration, yet it has received surprisingly little analysis in the literature. A common assumption is that the lower atmosphere rotates with the Earth, allowing a vector summation for the velocity values. The upper atmosphere winds can be several hundred m/s [5] which can have a large effect of the drag acceleration. However, they are particularly unknown, un-modeled, and unpredicted.
+𝑣
+⇀
+𝑟
+𝑒
+𝑙
+=
+𝑣
+⇀
+𝑠
+𝑎
+𝑡
++
+𝑣
+⇀
+𝑎
+𝑡
+𝑚
+𝑜
+𝑠
+.
+The other parameter we do not mention specifically in the following sections is the actual density. Density is a product of all the other parameters we discuss, but ultimately, it's the atmospheric density that affects the trajectory of the satellite. The density usually depends on the atmospheric model, EUV, F10.7, Kp, ap, prediction capability, atmospheric composition, etc. There are a lot of parameters here, each can cause significant changes, and each has uncertainty both in measured values and in prediction. The popular parameters to examine today are the density and the exospheric temperatures. This single parameter represents the largest contribution to error in any orbit determination application.
+Organizational access
+Get full-text access by signing in with your organisation
+Access through your organization
+Other access options
+Purchase PDF
+Need help with access?
+Section snippets
+Atmospheric model development
+Developing atmospheric models is extremely difficult and time consuming, but there are a plethora of available models. Fewer new models have appeared in recent years with the largest advances coming in the form of corrections to existing models. Because of data availability problems and other technological limitations, many of the early models were focused more on the theoretical implications that could be modeled. For instance, the early Jacchia model (J60 for instance) was more a “mean”
+Indices
+Most models use the F10.7, Kp/ap parameters because they are available for the longest period of time. In fact, F10.7 measurements have been made since the 1930s. Some of the newer indices are available only after the satellite was launched (1995, etc), while others must be purchased, or are even classified. This limits the period of time for analysis to older data and for independent verification, but it is still relevant.
+Not often discussed is the accuracy of the measurement indices. Each
+Mass
+Satellite mass is probably the easiest parameter to choose/set in calculations because it is either known by the owner operator, is constant because there is no thrusting capability on the satellite, or is unknown because the data is not released. The latter category presents additional difficulties and will not be considered directly here, noting that the general case for which satellite information is not known is handled via a solution in which the entire ballistic coefficient (BC) is solved 
+Orbit propagation
+At first glance, this may appear to be similar to the next section on orbit determination. However, there is an important difference. In the orbit determination section, the filter can adjust the final state and parameters to match the input observations. Previously, we saw that changing the atmospheric models made a difference, but our comparison was a simulated orbit. The use of independent POEs obviously limits our ability to examine numerous orbits. We also did not use all of the
+Orbit determination
+The process of taking the OD from a portion of the POE, and then predicting from that point is a general way to show the interconnectivity of the concepts from the previous sections. The goal here is to examine the propagation performance using the final state from the OD filter run, and then look at different atmospheric models and treatment of the space weather input data. The key is the separate development of the OD for each case. This lets the filter adjust the state (and therefore
+Summary and conclusions
+The proceeding discussion has provided numerous options for consideration in using atmospheric drag for propagation and OD, and in understanding why differences exist between various implementations. Unfortunately, there is no single recipe for choosing among the numerous alternatives of models and processes discussed in this paper. Experience and expertise guide the most appropriate choices for each investigator. The goal is to understand why there are differences and with the results reported 
+References (27)
+F. Barlier
+A thermospheric model based on satellite drag data
+Ann. Geophys.
+(1978)
+L. Sean et al.
+Evaluation of the DTM-2009 thermosphere model for benchmarking purposes
+J. Space Weather Space Clim.
+(2012)
+Doornbos, Eelco, N. 2011. Thermospheric Density and Wind Determination from Satellite Dynamics. Ph.D. Dissertation.…
+Gaposchkin, E. M. 1994. Calculation of Satellite Drag Coefficients. Technical Report 998. MIT Lincoln Laboratory, MA.…
+E.M. Gaposchkin et al.
+Analysis of satellite drag
+MIT/LL J. Fall
+(1988)
+P. Graziano Benjamin, 2007. Computational Modeling of Aerodynamic Disturbances on Spacecraft within a Concurrent…
+A.E. Hedin
+MSIS-86 thermospheric model
+J. Geophys. Res.
+(1987)
+L.G. Jacchia, 1965. Static Diffusion Models of the Upper Atmosphere with Empirical Temperature Profiles. Smithsonian…
+L.G. Jacchia, 1970. New Static Models for the Thermosphere and Exosphere with Empirical Temperature Profiles. SAO…
+L.G. Jacchia, 1971. Revised Static Models for the Thermosphere and Exosphere with Empirical Temperature Profiles. SAO…
+View more references
+☆
+This is a revision to paper AIAA-2008-6442 presented at the AIAA/AAS Astrodynamics Specialist Conference in Honolulu HI, August 17–21, 2008 and at the AGI Users conference, October 2008.
+1
+Phone +719 573 2600, direct +610 981 8619, fax: +719 573 9079.
+View full text
+Recommended articles
+Based on reading popularity
+Research article
+Precise time estimation of on-orbit satellite fragmentations
+Yuki Itaya, …, Toshiya Hanada
+Acta Astronautica • Volume 152 • 2018 • Pages 415-425
+Research article
+Thermochemical ablation modeling forward uncertainty analysis—Part II: Application to plasma wind-tunnel testing
+Alessandro Turchi, …, Thierry E. Magin
+International Journal of Thermal Sciences • Volume 118 • 2017 • Pages 510-517
+Research article
+Validation of enhanced orbit determination for GPS satellites with LEO GPS data considering multi ground station networks
+Tian Zeng, …, Qinghua Zhang
+Advances in Space Research • Volume 63, Issue 9 • 2019 • Pages 2938-2951
+Research article
+System modelling of very low Earth orbit satellites for Earth observation
+N.H. Crisp, …, S. Seminari
+Acta Astronautica • Volume 187 • 2021 • Pages 475-491
+Research article
+Evaluating the VNIR-SWIR datasets of WorldView-3 for lithological mapping of a metamorphic-igneous terrain using support vector machine algorithm; a case study of Central Iran
+Sogand Karimzadeh, Majid H. Tangestani
+Advances in Space Research • Volume 68, Issue 6 • 2021 • Pages 2421-2440
+Research article
+Open access
+Dynamic GPS-based LEO orbit determination with 1 cm precision using the Bernese GNSS Software
+Xinyuan Mao, …, Adrian Jäggi
+Advances in Space Research • Volume 67, Issue 2 • 2021 • Pages 788-805
+Cited by (244)
+Research article
+Aerodynamic drag analysis and reduction strategy for satellites in Very Low Earth Orbit
+Jiang Y., …, Wen D.
+Aerospace Science and Technology • Volume 132 • 2023 • Article 108077
+Citation Excerpt:
+
+In VLEO the atmosphere is sufficiently rarefied that the gas flow around satellites can be described as FMF. As summarized by Jin [22], Vallado [23], and David [26], there are a variety of methods available to calculate the aerodynamic drag of VLEO satellites. In the early stage of aerospace engineering, a fixed value of 2.2 was generally used as the drag coefficient for satellites of compact shape, which would cause large deviations at different orbit altitudes [27].
+
+Show abstract
+Review article
+Rarefied gas flow simulations using high-order gas-kinetic unified algorithms for Boltzmann model equations
+Li Z.-H., …, Yang J.-Y.
+Progress in Aerospace Sciences • Volume 74 • 2015
+Show abstract
+New thermosphere neutral mass density and crosswind datasets from CHAMP, GRACE, and GRACE-FO
+Siemes C., …, Visser P.
+Journal of Space Weather and Space Climate • Volume 13 • 2023
+Geomagnetic Activity Index Hpo
+Yamazaki Y., …, Jackson D.R.
+Geophysical Research Letters • Volume 49 • 2022 • Article e2022GL098860
+Satellite Orbital Drag During Magnetic Storms
+Oliveira D.M., Zesta E.
+Space Weather • Volume 17 • 2019
+Is the Dst Index Sufficient to Define All Geospace Storms?
+Borovsky J.E., Shprits Y.Y.
+Journal of Geophysical Research: Space Physics • Volume 122 • 2017
+View all citing articles on Scopus
+Metrics
+Citations
+Citation Indexes
+243
+Patent Family Citations
+1
+Policy Citations
+1
+Captures
+Mendeley Readers
+280
+Mentions
+References
+1
+View details
+Copyright © 2013 IAA. Published by Elsevier Ltd. All rights reserved.
+About ScienceDirect
+Remote access
+Contact and support
+Terms and conditions
+Privacy policy
+Cookie settings
+
+All content on this site: Copyright © 2026 Elsevier B.V., its licensors, and contributors. All rights are reserved, including those for text and data mining, AI training, and similar technologies. For all open access content, the relevant licensing terms apply.
+
+We use cookies that are necessary to make our site work. We may also use additional cookies to analyze, improve, and personalize our content and your digital experience. You can manage your cookie preferences using theCookie settings link. For more information, see ourCookie Policy
+Cookie settings
+Accept all cookies

@@ -1,0 +1,157 @@
+Skip to main content
+Skip to article
+LeapSpace
+Journals & Books
+Help
+Search
+My account
+Sign in
+Journal of Space Safety Engineering
+Date: September 2016
+Pages: 73-82
+Volume: Volume 3, Issue 2
+View accessibility information
+Published by
+Research article
+Get rights and content
+Debris Remediation Examined Via an Operational Success Framework
+Darren McKnight PhD
+Show more
+Cite
+Add to Mendeley
+Share
+10.1016/S2468-8967(16)30022-2
+Access through your organization
+Purchase PDF
+Article preview
+Recommended articles
+Cited by (1)
+Metrics
+Article preview
+Abstract
+Section snippets
+References (18)
+ABSTRACT
+The activity of debris remediation is essential to assure future safe access to space. By preventing the existing onorbit debris population from proliferating via collision of objects the collision risk to future space systems can be moderated to permit everyone to operate reliably in space without the disruption of debris impacts. Debris remediation, in most discussions, is considered synonymous with active debris removal (ADR); ADR has been studied by many and determined to provide positive ramifications.
+However, by examining debris risk management within an operational success framework, other response options are identified and characterized. The “operational success” framework is reviewed and is organized around the temporal taxonomy of four phases of activities:
+(1)
+PREPARE: identify, characterize, and predict;
+(2)
+PLAN: dissuade, deny, and deter;
+(3)
+ACT (During): interdict, suppress, and mitigate; and
+(4)
+ACT (After): remediate, recover, and reconstitute.
+An alternative definition of debris remediation as derelict collision prevention is reviewed and a complete list of debris remediation options are presented. Key linkages within the newly formulated operational success framework highlight the benefits and limitations of threat warning, situational awareness, and asset reconstitution. Lastly, the concept of risk transfer is also addressed; enhancing success in one area may simply result in the transfer of the risk to a different domain.
+Previous article in this issue
+Next article in this issue
+Organizational access
+Get full-text access by signing in with your organisation
+Access through your organization
+Other access options
+Purchase PDF
+Need help with access?
+Section snippets
+INTRODUCTION
+Modeling has shown that debris mitigation will likely be insufficient to control the debris environment long-term; debris remediation will also be necessary to assure future safe access to space. [1] By preventing the existing onorbit debris population from proliferating via collision of massive objects, the collision risk to future space systems can be moderated to permit everyone to operate reliably in space without the disruption of debris impacts.
+Debris remediation, in most discussions, is
+OPERATIONAL SUCCESS FRAMEWORK
+Risk management is often represented as a cyclical spiral of action items seemingly focused more on bookkeeping than keeping a system or domain safe. 2., 3. Embedded in this approach are often generic management terms rather than mission-specific, people-oriented action words.
+Prescriptive feedback on which techniques are the best to enhance success is limited and the circular process does not naturally integrate with a domain’s safety which evolves over time but focuses on operational
+OPERATIONAL SUCCESS FRAMEWORK APPLIED TO ORBITAL DEBRIS
+Now that we have established a new framework for ensuring operational success, let’s apply it to the orbital debris problem.
+PREPARATION started in the 1970’s as Don Kessler and Burton Cour-Palais first identified the fact that Delta second stages were exploding in space. Debris can be considered an unintentional manmade barrier to operational success.
+As shown in the table below, two separate but related success domains are considered: space flight safety and space sustainability. The
+CONCLUSIONS
+In closing, this paper introduced three concepts: (1) examine debris management options through development of the operational success framework; and (2) consider debris remediation as derelict collision prevention, not just ADR, and (3) contribute new potential remediation options.
+The operational success framework is linear, reinforcing, action-oriented, and traceable to the key objectives (e.g., space flight safety and space sustainability). Looking at the area of debris remediation in a more 
+5. REFERENCES (18)
+J.-C. Liou
+An Active Debris Removal Parametric Study for LEO Environmental Remediation
+Advances in Space Research
+(2011)
+Douglas Hubbard
+The Failure of Risk Management: Why It’s Broken and How to Fix It
+(2009)
+Mark Dorfman
+Introduction to Risk Management and Insurance
+(2007)
+D. McKnight
+Cognovation Dialogues
+(August 2014)
+Scott Fox
+Deterring and Dissuading in Space: A Systems Approach
+(2008)
+MG Crosier, STRATCOM, Dec 2015: “Juice is not worth the…
+Doug Leverro
+OSD (Space Policy)
+(Dec 2015)
+J.W. Caddell
+Deception 101 – Primer on Deception
+(December 2004)
+J.B. Bell et al.
+Cheating and Deception
+(2010)
+There are more references available in the full text version of this article.
+View full text
+Recommended articles
+Based on reading popularity
+Research article
+Open access
+Thermal infrared characterization of spatially unresolved resident space objects: Prospects from analytical two-component modeling
+Stephen Catsamas, …, Rachel Webster
+Advances in Space Research • Volume 77, Issue 2 • 2026 • Pages 1920-1943
+Research article
+Open access
+The risk on the ground and in the airspace posed by uncontrolled re-entries: Should the growth observed in recent years be considered worrying?
+Carmen Pardini, Luciano Anselmo
+Acta Astronautica • Volume 242 • 2026 • Pages 312-327
+Research article
+Innovative methods for trackability and identification improvement of small objects for space traffic management
+Holger Krag, …, Paolo Marzioli
+Acta Astronautica • Volume 225 • 2024 • Pages 1012-1018
+Research article
+Open access
+Hypervelocity perforation of thin films applicable to debris detection in Low Earth Orbit
+M.J. Burchell, …, P.J. Wozniakiewicz
+Acta Astronautica • Volume 243 • 2026 • Pages 73-90
+Research article
+Covariance estimation and fusion for ephemeris-only catalogues applied to the Special Perturbations Catalogue
+Pietro Canal, …, Diego Escobar
+Acta Astronautica • Volume 243 • 2026 • Pages 207-219
+Research article
+Open access
+Safety considerations for large constellations of satellites
+Hugh G. Lewis, Georgia Skelton
+Journal of Space Safety Engineering • Volume 11, Issue 3 • 2024 • Pages 439-445
+Cited by (1)
+Research article
+The global risk continuum (GRC)
+McKnight D.S., …, Jenniges J.V.
+Journal of Space Safety Engineering • Volume 7 • 2020
+Citation Excerpt:
+
+Fig. 1 presents a simplified risk management process. Fig. 2 depicts the risk management process in more detail [1]. The first phase (“Prepare”) sets the foundation by identifying, characterizing, and assessing the risk.
+
+Show abstract
+Metrics
+Citations
+Citation Indexes
+1
+Captures
+Mendeley Readers
+8
+View details
+Copyright © 2016 IAASS. Published by Elsevier Ltd. All rights reserved.
+About ScienceDirect
+Remote access
+Contact and support
+Terms and conditions
+Privacy policy
+Cookie settings
+
+All content on this site: Copyright © 2026 Elsevier B.V., its licensors, and contributors. All rights are reserved, including those for text and data mining, AI training, and similar technologies. For all open access content, the relevant licensing terms apply.
+
+We use cookies that are necessary to make our site work. We may also use additional cookies to analyze, improve, and personalize our content and your digital experience. You can manage your cookie preferences using theCookie settings link. For more information, see ourCookie Policy
+Cookie settings
+Accept all cookies

@@ -1,0 +1,270 @@
+Skip to main content
+Skip to article
+LeapSpace
+Journals & Books
+Help
+Search
+My account
+Sign in
+Journal of Space Safety Engineering
+Date: June 2024
+Pages: 252-267
+Volume: Volume 11, Issue 2
+View accessibility information
+Published by
+Review article
+Get rights and content
+Space debris removal – Review of technologies and techniques. Rigid coupling between space debris and service spacecraft
+V.V. Svotina
+Show more
+Cite
+Add to Mendeley
+Share
+10.1016/j.jsse.2024.04.002
+Access through your organization
+View Open Manuscript
+Purchase PDF
+Article preview
+Recommended articles
+Cited by (30)
+Metrics
+Article preview
+Abstract
+Introduction
+Section snippets
+References (152)
+Highlights
+•
+Active space debris removal projects and missions for space flight safety reviewed.
+•
+Demonstrated different types of docking units such as manipulators, harpoons, and others.
+Abstract
+Since the late 1950s, as the mankind has been exploring space, the amount of space debris (spacecraft not removed from the orbit at the end of their service life, upper stages, as well as the fragments of spacecraft and upper stages formed as a result of deliberate or accidental collision of spacecraft and upper stages with each other or with natural space debris (meteorites)) with poorly predictable masses and velocities has created a global spacecraft safety problem.
+Various countries conducting space research have adopted special standards and guidelines for space debris mitigation, which require a spacecraft to be transferred to a disposal orbit at the end of its operation. For various reasons, they are not always implemented in practice.
+This paper is a continuation of the previous study conducted to systematize methods developed for debris removal from the near-Earth space up to date. It presents a set of technologies that can be used to transfer space debris to a graveyard orbit using a rigid coupling between space debris and service spacecraft.
+Keywords
+Space debris; Service spacecraft; Graveyard orbit; Space debris removal
+Abbreviations
+ADAM, Astronautical Dual Arm Manipulator; ADRAS, Active Debris Removal by Astroscale; ADRIOS, Active Debris Removal/ In-Orbit Servicing; ADRV, Active Debris Removal Vehicle; AFRL, US's Air Force Research Laboratory; ASTRO, Autonomous Space Transport Robotic Operations; ATLAS, Advanced TeLerobotic Actuation System; CALT, China Academy of Launch Vehicle Technology; CCSFS, Cape Canaveral Space Force Station; CSA, Canadian Space Agency; CSC, Commodities Spacecraft; CX-OLEV-ConeXpress, Orbital Life Extension Vehicle ; DARPA, US Government's Defense Advanced Research Projects Agency; DART, Demonstration of Autonomous Rendezvous Technology; DEOS, Deutsche Orbitale Servicing Mission; DLR, Deutsches Zentrum für Luft- und Raumfahrt e.V.; DMV, Deorbit Modular Vehicle; DOF, Degree of Freedom; EGO, Extended Geostationary Orbit; ELSA-d, End-of-Life Services by Astroscale-demonstration; EPFL, École Polytechnique Fédérale de Lausanne; ESA, European Space Agency; ESAMM, Extended Structure Additive Manufacturing Machine; ESS, Experimental Servicing Satellite; ETS, Engineering Test Satellite; eXCITe, eXperiment for Cellular Integration Technologies; FREND, Front–end Robotics Enabling Near–term Demonstration; GEO, Geostationary orbit; GEOOS, Geostationary Orbit Orbital Service; GNC, Guidance Navigation and Control; GOSM, German Orbital Servicing Mission; GPS, Global Positioning System; GTO, GEO Transfer Orbit; GSFC, NASA's Goddard Space Flight Center; GSV, Geostationary Service Vehicle; HEO, Highly Eccentric Earth Orbit; ISS, International Space Station; JAXA, Japan Aerospace Exploration Agency; JPL, NASA's Jet Propulsion Laboratory; JSC, Joint Stock Company; LED, Light-emitting diode; LEO, Low Earth Orbit; LMO, LEO-MEO Crossing Orbits; MDA, MacDonald, Dettwiler and Associates Ltd.; MEO, Medium Earth Orbit; MEV, Mission Extension Vehicle; MGO, MEO-GEO Crossing Orbits; MUBLCOM, Multiple Paths, Beyond-Line-of-Sight Communications; NASA, National Aeronautics and Space Administration; NASDA, National Space Development Agency of Japan; NCST, Naval Center for Space Technology; NExIS, NASA's Exploration and In-Space Services; NEXTSat, Next Generation Satellite; NGIS, Northrop Grumman Innovation Systems; NRL, US's Naval Research Laboratory; NSO, Navigation SC Orbit; NSTP, British National Space Technology Programme; ODDS, Orbital Debris Defense System; OEDMS, Orbital Express Demonstration Manipulator System; OLEV, Orbital Life Extension Vehicle; OMV, Orbital Maneuvering Vehicle; ORC, Orbital Recovery Corporation; ORL, Orbital Recovery Ltd.; OSAM, On-orbit Servicing, Assembly, and Manufacturing; OSC, Orbital Science Corporation; OSG, Overseas Shipholding Group; OSSL, Orbital Satellite Services Limited; RF, Russian Federation; ROGER, Robotic Geostationary orbit Restorer; RSGS, Robotic Servicing of Geosynchronous Satellites; RSV, Robotic Servicing Vehicle; SC, Spacecraft; SD, Space Debris; SES S.A., Société Européenne des SatelliteSociétéAnonyme; SIS, Space Infrastructure Servicing; SLES, Geosynch Spacecraft Life Extension System; SPIDER, Space Infrastructure Dexterous Robot; SSC, Swedish Space Corporation; SSL, Space System Loral; SUMO, Spacecraft for the Universal Modification of Orbits; TECSAS, TEChnology Satellite for demonstration and verification of Space systems; TNSC, Tanegashima Space Center; TRS, Teleoperator Retrieval System; UK, United Kingdom of Great Britain and Northern Island; US/USA, United States of America; VAFB, Vandenberg Air Force Base; VESPA, Vega Secondary Payload Adapter; XSS, eXperimental Satellite System
+Previous article in this issue
+Next article in this issue
+Introduction
+The first part of our study was published in [1]. It was a brief overview of methods and techniques that can be used for space debris removal into a disposal (graveyard) orbit using a flexible or virtual connection between space debris (SD) and service spacecraft (SSC).
+This review is an attempt to continue the discussion of the problem raised.
+The main purpose of the article is to present a description of those technologies that can be used in R&D of service spacecraft designed to remove space debris. The use of techniques and methods originally developed for servicing a spacecraft can significantly simplify the development of new space technology, using the existing scientific and technical resources, reducing the development cost and time. Spacecraft servicing technologies can be used at the stage of spacecraft and space debris rendezvous to assess the state of the latter. Various docking technologies described in the article can be used to remove space debris in the case of low angular velocities of space debris. The article discusses methods for forming a connection between service spacecraft and space debris using various technical devices, with the exception of networks and cables, which is why the term “rigid coupling” is included in the title.
+Since the late 1970s, SD generation and SC disposal at the end of its service life have been considered as a global problem [2]. Over the period of human space activities, both the number and mass of objects in near-Earth space, and their area were increasing very rapidly [3]. It is necessary to take into account that due to the sensitivity limitations of radars and telescopes it is currently impossible to track small SD. Therefore, less than 30% of all SD has been catalogued to date. The frequency of collisions between functioning SC and SD increases. The likelihood of such events has increased significantly in recent years [3], [4], [5], [6], [7], [8]
+Many researchers are trying to contribute to the solution of this pressing problem by presenting to the world community their vision of the evolution of space debris, strategies for its removal, and mitigation of the consequences of collisions with space debris [9], [10], [11], [12], [13], [14], [15], [16], [17], [18], [19], [20], [21], [22], [23].
+Formation of mechanical connection between two spacecraft is a rather complex problem, ranging from the need to ensure safe approach at very low velocities, especially at the final stage of the trajectory to avoid collision, and ending with the docking process, which must ensure a rigid connection between both spacecraft.
+The docking stage is more dangerous, since if any errors are detected, there is almost no time left to solve the problems that have arisen, as was the case, for example, when docking the Soyuz-25 spacecraft with the Salyut-6 station; Progress M-24 spacecraft with the Mir station, Apollo spacecraft with the Skylab station, and Space Shuttle Endeavor with the International Space Station (STS-108).
+The first automatic docking (rigid capture) in orbit was performed by the Kosmos-186 and Kosmos-188 on October 30, 1967.
+The first successful docking of the manned spacecraft Soyuz-4 and Soyuz-5 took place on January 16, 1969.
+However, in all the mentioned cases, specialized technical devices (docking units) were used to carry out docking. The elements of docking units were located on both spacecraft. In addition, both docked spacecraft were cooperative, that is, controllable, which is not true with failed spacecraft.
+Until now, automatic spacecraft launched for various purposes in the vast majority of cases do not have docking units a priori. If it is necessary to dock with such a spacecraft, specialists have to consider a more complex technical problem. It is necessary to find such structural elements in the spacecraft to be serviced or removed into a disposal orbit that would allow for a mechanical connection that would be sufficiently safe for both vehicles, not to mention the need for rendezvous with a non-cooperative spacecraft, which in the vast majority of cases rotates at high angular velocities.
+The following sections give an overview of technical means that could potentially be used for SD removal into a graveyard orbit. A description of the projects, both implemented already and being under development, is also given. The rigid coupling between the SD and service SC can be provided by various technical means, such as manipulators, tethers and nets.
+Over the past decades, a variety of projects has been proposed that involve docking to SC for its further maintenance and interorbital transfer, as well as SD insertion into disposal orbits. For removing SD, it is possible to use the same technologies that were originally developed for the SC on-orbit servicing. For example, a rigid coupling between the SD and the service SC can be carried out using various technical devices, such as manipulators or docking units.
+Organizational access
+Get full-text access by signing in with your organisation
+Access through your organization
+Other access options
+View Open Manuscript
+Purchase PDF
+Need help with access?
+Section snippets
+Engineering test satellite ETS-VII (KIKU-7) project
+The first mission to test robots for SC servicing in working orbit was implemented by NASDA (now JAXA) (Tokyo, Japan) during ETS-VII (KIKU-7) (Fig. 1) flight in November 1997. The main purpose of the project is demonstrating the possibility of rendezvous-docking-undocking and joint operation of two unmanned SC with the help of a robot arm. The SC was launched into a working orbit (altitude height: 550 km, inclination: 35°) on November 27, 1997 from TNSC (Tanegashima, Kagoshima, Japan) [24], [25]
+Geosynch spacecraft life extension system (SLES) project
+ORC (Washington, USA) proposed a rescue plan for the ASTRA-1 K SC, which was not inserted into the estimated orbit due to the failure of the launch vehicle in December, 2002. The plans were to use the SLES SC to transfer the ASTRA-1 K SC into GEO [28]. The project was not implemented [29]. Skycorp Inc. (Santa Clara, California, USA) proposed the use of SLES SC (a parent SC) to extend the service life of geostationary SC in 2013. The project provided docking with SC-target (a child SC) and the
+eXperimental satellite system XSS-10/XSS-11/XSS-12 projects
+XSS program has been implemented as a series of low-cost micro-SC development at the AFRL (Dayton, Ohio, USA) since the 90ies of the XX century [32].
+The XSS-10 SC (mass of about 30.85 kg) (Fig. 3) was developed by the Boeing Company (Chicago, Illinois, USA). The SC was injected by the second stage of the Delta-2 launch vehicle (Fig. 4) into the working orbit (altitude height: 800 km; inclination: 39.8°) in January 2003 from Cape Canaveral, Florida, USA.XSS-10 SC was ejected from the Delta-2
+Demonstration of autonomous rendezvous technology/multiple paths, beyond-line-of-sight communications (DART/MUBLCOM) project
+The DART/MUBLCOM Project was initiated in 2001 by the OSC (Dulles, Virginia USA) under the auspices of NASA (Washington, D.C., USA). DART SC was launched on April 15, 2005 to demonstrate the technology of autonomous rendezvous and in-orbit service. DART SC was based on the OSC's MicroStar platform (aluminum honeycomb structure with composite face sheets) with mass of about 360 kg [41] (365 kg [42]). It was equipped by three MR-107 hydrazine thrusters with a thrust of about 670 N; six nitrogen
+Orbital express project
+Orbital Express project [[46], [47], [48], [49], [50]] (Fig. 6) has been developed under a contract with DARPA (Arlington, Virginia, USA) since 2007. Automated service technologies ASTRO SC [51] (Fig. 7, developed by the Boeing Integrated Defense Systems (Arlington, Virginia, USA)) of another SC NEXTSat/CSC [52] (Fig. 8, developed by Ball Aerospace & Technologies Corp. (Boulder, Colorado, USA)) has been developed during the program.
+Both SC were launched into a circular LEO with the altitude of
+German orbital servicing mission/Deutsche orbitale servicing mission (GOSM/DEOS) project
+DLR (Cologne, Germany) developed the GOSM project in 2013–2018, within which the DEOS SC concept (Fig. 10) was created for demonstration of possibility of SC in-orbit servicing, non-cooperating SC de-orbiting, as well as equipment transfer from a SC [56,57].
+Both SC should be launched into a polar LEO (altitude height: 550–600 km; inclination: 85–90°) by the same launch vehicle. The SC rendezvous and docking, orbit altitude decreasing down to 400 km, and their joint entry into the Earth's
+SIS concept
+MDA (Brampton, Ontario, Canada) started developing the concept of the SIS SC [[60], [61], [62], [63], [64]] with the fuel storage of 2 tons in 2010. Initially, it was planned to use the SIS SC to deploy stuck solar arrays, as on the Intelsat-19 SC, or capture SD. The functionality related to SC refueling and in-orbit servicing was added to the project goals later.
+The tanker–SC was supposed to be built on the basis of a SC platform being developed at the JSC Academician M.F. Reshetnev
+Mission extension vehicle MEV-1/MEV-2 projects
+The MEV project idea was proposed by ViviSat, established in 2010 on the basis of US Space and Orbital ATK Inc. (Dulles, Virginia, USA) with NASA (Washington, D.C., USA) and DARPA (Arlington, Virginia, USA) as the partners. Orbital ATK Inc. was acquired by NGIS (Dulles, Virginia, USA) in 2018 [65].
+The main purpose of the project was to design a tug-SC, providing a rigid coupling with old geostationary SC through the apogee engine nozzle. The tug-SC performs maneuvers using its own propulsion
+Orbital maneuvering vehicle (OMV) concepts
+OMV is an evolution of the TRS concept, which was conceived to work with Skylab to transfer it into a safe orbit. OMV is a free-flying remotely controlled reusable space tug. The main directions of its use initially were: delivery/retrieve of payloads to/from SC located beyond the practical limit of the existing Space Shuttle (orbit altitude height: 515 km; inclination: 28–57°) by 7.5° in inclination and up to 2414 km) in altitude; SC transfer into the new working orbits; safe SC de-orbit at
+Geostationary service vehicle (GSV) project
+The GSV project proposed by ESA (Paris, France) involves the inspection and maintenance of geostationary SC, including the deployment of solar arrays and antennas, the transfer of non-operating SC to disposal orbits in an unmanned mode. It was proposed to develop a service SC (launch mass: 4.2 tons; dry mass: 1.2 tons) for its launch into GEO by the Ariane-4 launch vehicle. Solar arrays should be mounted on the side surface of the service SC. The proximity sensors and a robotic arm with
+Phoenix/ eXperiment for cellular integration technologies (eXCITe) program
+The Phoenix Program has been developed by DARPA (Arlington, Virginia, USA) since 2011. It provided for a SC (Fig. 12) development for collecting working components (for example, large-sized antennas [74]) from decommissioned SCs to re-install them on other SC, to carry out repair and restoration work, for example, the deployment of non-operational components (antennas and solar panels) or changing the antenna pattern [75]. The SC was supposed to operate in a geosynchronous orbit. The SC was to
+On-orbit servicing, assembly, and manufacturing OSAM-1 (Restore-L) project
+The OSAM-1 project, formerly known as Restore-L, developed by NExIS GSFC (Greenbelt, Maryland, USA), provides for the SC development, which will be able to act as a tanker, assemble antennas and be engaged in production in orbit [80]. The robotic arm was successfully tested at NASA's GSFC and has been approved by NASA (Washington, D.C., USA). The project involves the use of technologies previously developed in the SPIDER (Dragonfly) project, which became the payload for the new SC [81] to be
+OSAM-2 (Archinaut)
+The OSAM-2 (formally known as Archinaut (Versatile In-Space Robotic Precision Manufacturing and Assembly System)) project was developed by Made in Space Inc. (now Redwire Corporation) (Jacksonville, Florida, USA) since November, 2015 [87,88]. The project provides for the creation of a SC, which uses additional production technologies and is aimed at assembling large objects in space. Additive manufacturing is based on ESAMM, which was successfully tested in 2017 in thermal vacuum ignition [87]. 
+Orbital life extension vehicle (OLEV) project
+OSSL (London, UK) has developed the concept of an orbital service satellite OLEV that extends the operational life of geostationary communications SC. A consortium of SSC (Solna, Sweden), Kayser-Threde (Munich, Germany), and SENER Grupo de Ingeneria S.A. (Madrid, Spain) is responsible for the development of the ground and space segment of the project. The OLEV project included two SC: CX-OLEV and SMART-OLEV. CX-OLEV SC is funded by ESA and ORL (London, UK) [32]. The SMART-OLEV SC was developed
+TEChnology satellite for demonstration and verification of space systems (TECSAS) project
+TECSAS is the joint Russian-German-Canadian (Babakin/DLR/CSA) project (2001–2006). It was aimed at demonstrating the possibility of using robotic tools for docking with non-cooperating client-SC as well as for their on-orbit servicing (Fig. 16). The Russian Multi-Purpose Orbital Boost Platform, as the base module for the mission, provides the insertion into initial parking orbit as well as supports rendezvous and docking maneuvers [31,94].
+The mission includes the following stages: rendezvous,
+Experimental servicing satellite (ESS) project
+The ESS project developed by DLR provided for laboratory experiments to study the SC behavior dynamics as well as to confirm the possible rendezvous and docking between a free-flying SC and a service-SC in the GEO vicinity for rendezvous, inspection and repair using a robotic arm and/or removal to a disposal orbit [28,96]. Ground testing both of the behavior dynamics of the SC equipped with a robotic arm and of two SC assembled by a manipulator was carried out. The docking had to be carried out 
+RescueSat project
+The project has been developed by JPL (Pasadena, California, USA) and NCST at the NRL (Washington, D.C., USA) since 2002 under the DARPA contract. The project considers a scenario for client-SC insertion into a working orbit using a tug-SC. Tug-SC docking to a client-SC is provided by robotic arm through the adapter rings. The project shows the possibility of rigid "client-SC-tug-SC" assembly using a manipulator. The project was the predecessor of the SUMO project [74].
+Spacecraft for the universal modification of orbits (SUMO) project
+The SUMO project has been developed by NCST at the NRL (Washington, D.C., USA) with financial support from DARPA (US Government's Defense Advanced Research Projects Agency) since 2005. SUMO SC designed for autonomous rendezvous and capture of SC for the purpose of their repair, rescue, reposition, refueling or insertion into disposal orbits as well as SD removal. Project software was developed by NRL [98].
+It was supposed to launch four modular SUMO SC into basic LEO. Sumo SC includes propulsion 
+Orbital debris defense system/deorbit modular vehicle (ODDS/DMV) project
+The ODDS project was developed at the West Virginia University (Morgantown, West Virginia, USA) in the mid-1990ies. It was designed to work with SD with wide ranges of sizes, orbits and velocities. The DMV was designed to meet and capture SD with dimension from 10 cm to 2 m and can be launched from launch sites located at CCSFS (Florida, USA) or from VAFB (California, USA).
+The SC can be launched into both polar and equatorial orbits, including retrograde polar orbits with an inclination of
+Tanker-001 Tenzing project
+In June, 2021, the SpaceX Falson-9 launch vehicle launched the Tanker-001 Tenzing manufactured by Orbit Fab (Lafayette, Colorado, USA) as a secondary payload.
+The SC mass is 35 kg. The main goal of the project is to refuel thrusters with hydrogen peroxide. Tanker-001 Tenzing is also an orbital laboratory including a variety of payloads intended to test key technologies for refueling.
+Tanker-001 Tenzing consists of a microsat bus derived from an Astrodigital Corvus 16 U bus and payloads from
+Robotic servicing of geosynchronous satellites/robotic servicing vehicle (RSGS/RSV) project
+DARPA (Arlington, Virginia, USA) together with SSL (Palo-Alto, California, USA) (now a part of Maxar Technologies) developed a two-armed robot equipped with interchangeable tools and capable of repairing/upgrading SC in orbit to ensure the sustainability of modern space infrastructure [[104], [105], [106]] as part of the RSGS project. This project was a continuation of the Phoenix project.
+RSV SC (Fig. 17) can provide services of four types: inspection of anomalies that appear in the SC
+Advanced telerobotic actuation system (ATLAS) project
+The ATLAS project (Fig. 18) is proposed for maintenance/removal of SC in LEO and MEO, and can potentially be used in polar orbits and GEO. The SC initial mass is estimated about 1425 kg (476 kg of which is fuel). There are two robotic manipulators weighing 45 kg each, similar to PUMA 560/600, capable of moving a load weighing 225 kg on board the SC [111,112].
+A similar 2000-kg robotic SC with 1400 kg of propellant could remove 35 upper stage rocket bodies from polar orbit using the solid rocket
+Astronautical dual arm manipulator (ADAM)
+The ADAM project uses two manipulators capable of capturing spinning objects. The dynamics and kinematics of the operation of such systems was studied. ADAM has two flexible links and seven joints in each arm [[114], [115], [116], [117]].
+Repeated impact-based capture
+Detumbling and capture of SD by a dual-arm space robot for active SD removal missions was presented (Fig. 19). The method is based on the damping of uncontrolled rotation during repeated contact with the robotic arms. The same method can be used for in-orbit servicing of the non-cooperative SC. Multiple impacts can suppress the SD movement due to the repeated use of the effect of the passive damping factor in the contact characteristics. Various manipulator control methods have been developed
+Robotic geostationary orbit restorer (ROGER) concept by QinetiQ
+The ROGER concept by QinertiQ (Farnborough, UK) is based on the basic design of geostationary SC. A 1450-kg service SC (fueled SC mass in GEO: 1250 kg, SC dry mass: 920 kg) has the shape of an octagonal prism (2.7 × 2.7 × 2.9 m) and is equipped with a telescopic rod with SC or SD gripping system. It is planned to use an electric propulsion system based on four SPTs for GTO - GEO transportation, as well as 24 hydrazine engines and solar arrays (in the deployed state they have a length of 17 m)
+Geostationary orbit orbital service (GEOOS) project
+The GEOOS project includes development of service SC for geostationary orbits. The SC should be equipped with a 7-DOF manipulator with a 2-DOF docking mechanism, a replaceable working device, in addition to the traditional SC subsystems. It is planned to dock with client-SC through the apogee engine. The docking mechanism is similar to that one in the SMART-OLEV project [126].
+The GEOOS SC has a mass of 500 kg, and power plant capacity of about 400 W. SC is equipped with a stereo vision and
+Conclusion
+The paper presents a brief overview of various projects that provide a rigid coupling between the SC and SD or another SC. The purpose of some of the presented projects was, first of all, to ensure the safety of space flights by removing SC from working orbits (ODDS, ADRV, ClearSpace-1, ELSA-d etc.). Another part of the described projects involved inspection and maintenance (ETS-VII, XSS-10, XSS-11, DART / MUBLCOM, GOSM / DEOS, GEOOS, Phoenix, TECSAS, RSGS / RSV, ATLAS etc.) and in-orbit
+CRediT authorship contribution statement
+V.V. Svotina: Conceptualization, Data curation, Formal analysis, Funding acquisition, Investigation, Methodology, Project administration, Resources, Software, Supervision, Validation, Visualization, Writing – original draft, Writing – review & editing.
+Declaration of competing interest
+The authors declare that they have no known competing financial interests or personal relationships that could have appeared to influence the work reported in this paper.
+Acknowledgments
+This work was supported by the RSF (Russian Science Foundation) grant No. 22–19–00329 (https://rscf.ru/project/22–19–00329/).
+The author is grateful to G.V. Soganova from RIAME MAI for her help with the translation of the paper.
+References (152)
+V.V. Svotina et al.
+Space Debris Removal – Review of Technologies and Techniques
+Flexible or Virtual Connection Between Space Debris and Service Spacecraft //Acta Astronautica
+(2023)
+J.C. Liou et al.
+LEGEND – a Three-Dimensional LEO-to-GEO Debris Evolutionary Model
+//Advances in Space Research
+(2004)
+J.C. Liou
+Collision Activities in the Future Orbital Debris Environment
+//Advances in Space Research
+(2006)
+J.C. Liou et al.
+Controlling the Growth of Future LEO Debris Populations with Active Debris Removal
+//Acta Astronautica
+(2010)
+N.L. Johnson et al.
+NASA's New Breakup Model of EVOLVE 4.0 //
+Advanced in Space Research
+(2001)
+M. Gruntman
+Passive Optical Detection of Submillimeter and Millimeter Size Space Debris in Low Earth Orbit
+//Acta Astronautica
+(2014)
+C. Bonnal et al.
+Active Debris Removal: Recent Progress and Current Trends
+//Acta Astronautica
+(2013)
+E.M. Botta et al.
+On the Simulation of Tether-Nets for Space Debris Capture with Vortex Dynamics
+//Acta Astronautica
+(2016)
+N.N. Smirnov et al.
+Physical and Mathematical Models for Space Objects Breakup and Fragmentation in Hypervelocity Collisions
+//Acta Astronautica
+(2020)
+N.N. Smirnov et al.
+Evaluation of Craters Formation in Hypervelocity Impact of Debris Particles on Solid Structures
+//Acta Astronautica
+(2009)
+View more references
+View full text
+Recommended articles
+Based on reading popularity
+Research article
+Commissioning of the COBRA extended demonstrator at the LNGS
+J.-H. Arling, …, K. Zuber
+Nuclear Instruments and Methods in Physics Research Section A: Accelerators, Spectrometers, Detectors and Associated Equipment • Volume 1010 • 2021 • Article 165524
+Research article
+Detumbling control for kinematically redundant space manipulator post-grasping a rotational satellite
+Mingming Wang, …, Ulrich Walter
+Acta Astronautica • Volume 141 • 2017 • Pages 98-109
+Research article
+Review of KITE – Electrodynamic tether experiment on the H-II Transfer Vehicle
+Yasushi Ohkawa, …, Daisuke Tsujita
+Acta Astronautica • Volume 177 • 2020 • Pages 750-758
+Research article
+Complicated robot activity recognition by quality-aware deep reinforcement learning
+Xing Li, …, M.M. Kamruzzaman
+Future Generation Computer Systems • Volume 117 • 2021 • Pages 480-485
+Research article
+Two hybrid model-based control strategies for a flexible parallel planar manipulator
+Fernanda Thaís Colombo, Maíra Martins da Silva
+Control Engineering Practice • Volume 127 • 2022 • Article 105306
+Research article
+Electromagnetic absorption properties of spacecraft and space debris
+D. Micheli, …, M. Marchetti
+Acta Astronautica • Volume 133 • 2017 • Pages 128-135
+Cited by (30)
+Review article
+Review on orbital debris mitigation: Techniques for effective tracking, monitoring, and removal
+Dhinakaran A., …, Priya S.B.M.
+Acta Astronautica • Volume 236 • 2025
+Show abstract
+Research article
+Motion planning of free-flying space robots for tracking relative motion tumbling targets by sequential optimization via reinforcement learning
+Dong Z., …, Guo Y.
+Acta Astronautica • Volume 235 • 2025
+Show abstract
+Research article
+A synergetic control scheme for tether tugging deorbiting with attachment points switching
+Lian D., …, Zhao G.
+Acta Astronautica • Volume 232 • 2025
+Show abstract
+Research article
+Service spacecraft for space debris removal
+Svotina V.V., …, Tsaytler Y.
+Acta Astronautica • Volume 225 • 2024
+Show abstract
+Research article
+Spacecraft protection against man-made and natural space debris particles
+Svotina V.V.
+Acta Astronautica • Volume 225 • 2024
+Citation Excerpt:
+
+In any case, a certain store of propellant should be provided on board the SC to perform such transportation operations, or some systems (special-purpose SC) should be additionally developed that could work with non-cooperative SC/SD for their transportation to disposal orbits. The concepts of space tugs, tether systems, solar sail deployment and many others may be considered as the alternative methods for removing spent SC and their fragments from the near-Earth space [83–85]. Modeling results presented in publications allow us to conclude that from the point of view of ensuring the long-term safety of space activities, it is advisable to remove large-scale SD fragments (over 500 kg in mass) from the near-Earth orbits.
+
+Show abstract
+Compliant Robotics in Space: A Prospective Review of Soft and Deformable Systems for Space Missions
+Rahimi Nohooji H., Voos H.
+Advanced Intelligent Systems • Volume 7 • 2025 • Article 2400785
+View all citing articles on Scopus
+Metrics
+Citations
+Citation Indexes
+29
+Captures
+Mendeley Readers
+19
+View details
+© 2024 International Association for the Advancement of Space Safety. Published by Elsevier Ltd. All rights reserved.
+About ScienceDirect
+Remote access
+Contact and support
+Terms and conditions
+Privacy policy
+Cookie settings
+
+All content on this site: Copyright © 2026 Elsevier B.V., its licensors, and contributors. All rights are reserved, including those for text and data mining, AI training, and similar technologies. For all open access content, the relevant licensing terms apply.
+
+We use cookies that are necessary to make our site work. We may also use additional cookies to analyze, improve, and personalize our content and your digital experience. You can manage your cookie preferences using theCookie settings link. For more information, see ourCookie Policy
+Cookie settings
+Accept all cookies

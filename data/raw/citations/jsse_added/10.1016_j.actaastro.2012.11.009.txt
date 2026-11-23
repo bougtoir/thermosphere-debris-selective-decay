@@ -1,0 +1,224 @@
+Skip to main content
+Skip to article
+LeapSpace
+Journals & Books
+Help
+Search
+My account
+Sign in
+Acta Astronautica
+Date: April–May 2013
+Pages: 51-60
+Volume: Volume 85
+View accessibility information
+Published by
+Review article
+Get rights and content
+Review
+Active debris removal: Recent progress and current trends
+Christophe Bonnal
+, 
+Jean-Marc Ruault
+, 
+Marie-Christine Desjean
+Show more
+Cite
+Add to Mendeley
+Share
+10.1016/j.actaastro.2012.11.009
+Access through your organization
+Purchase PDF
+Article preview
+Recommended articles
+Cited by (398)
+Metrics
+Article preview
+Abstract
+Introduction
+Section snippets
+References (22)
+Abstract
+According to all available findings at international level, the Kessler syndrome, increase of the number of space debris in Low Earth Orbits due to mutual collisions, appears now to be a fact, triggered mainly by several major break-ups in orbit which occurred since 2007. The time may have come to study how to clean this fundamentally useful orbital region in an active way.
+CNES has studied potential solutions for more than 12 years! The paper aims at reviewing the current status of these activities.
+The high level requirements are fundamental, and have to be properly justified. The working basis, as confirmed through IADC studies consists in the removal of 5–10 integer objects from the overcrowded orbits, spent upper stages or old satellites, as identified by NASA.
+The logic of CNES activities consider a stepped approach aiming at progressively gaining the required Technological Readiness Level on the features required for Active Debris Removal which have not yet been demonstrated in orbit. The rendezvous with a non-cooperative, un-prepared, tumbling debris is essential. Following maturation gained with Research and Technology programs, a set of small orbital demonstrators could enable a confidence high enough to perform a full end to end demonstration performing the de-orbiting of a large debris and paving the way for the development of a first generation operational de-orbiter.
+The internal CNES studies, led together by the Toulouse Space Centre and the Paris Launcher Directorate, have started in 2008 and led to a detailed System Requirements Document used for the Industrial studies.
+Three industrial teams did work under CNES contract during 2011, led by Thales Alenia Space, Bertin Technologies and Astrium Space Transportation, with numerous sub-contractors. Their approaches were very rich, complementary, and innovative. The second phase of studies began mid-2012. Some key questions nevertheless have to be resolved, and correspond generally to current IADC actions:
+The casualty risk associated to a “passive” de-orbitation is of paramount importance, major driver between passive and active re-entry,
+The residual movement of debris is crucial for the interfacing phase, whichever the solution is,
+The debris physical state in orbit is a major question,
+Some solutions increase the collision risk, but for a limited time period; we may not have yet the appropriate tools.
+The paper gives a status of where we stand, of the cooperation with the international partners, and raises the questions which remain open and have to be dealt with in the coming months.
+Highlights
+► The paper describes the current status of high level requirements established at international level the other highlights are within character limit. ► The wide variety of potential solutions at system level is then described. ► The five key functions associated to Active Debris Removal are discussed, with associated solutions. ► Concluding statements include some recommendations for future works.
+Keywords
+Space debris; Kessler syndrome; Debris mitigation; Debris remediation; Active debris Removal
+Previous article in this issue
+Next article in this issue
+Introduction
+Identified theoretically as early as 1978 by Don Kessler and Burt Cour-Palais Ref. [1], the so-called Kessler syndrome has been the subject of numerous studies in the world: among the various sources of orbital debris, the collision among objects is the hardest to avoid and can potentially generate thousands of objects per event. If this “collision” part alone becomes more important than the “natural atmospheric cleansing”, then some kind of “chain reaction” can be triggered in the most densely populated areas of space, increasing slowly but ineluctably the overall population of debris.
+This phenomenon has been studied worldwide ever since, leading to an impressive number of publications, dedicated workshops, special sessions during congresses, also. As per today, most of these studies tend to state that the Kessler syndrome was effectively started with the couple of major fragmentations which occurred in 2007 and 2009. The vast majority of these studies, if not all of them, conclude that in order to keep a sustainable space activity on the long term one shall apply the internationally agreed mitigation rules as efficiently as possible, and nevertheless de-orbit actively at least five large objects per year from the most overpopulated orbital regions: mitigation and remediation appear to be both necessary to preserve long-term space operations.
+The need for such an Active Debris Removal (ADR) has to be confirmed and stated in an unambiguous way as the corresponding space missions rapidly turn out to be nightmares! Cleaning space could require technologies which are not yet available, cost hundreds of millions of Euros per year, raise tremendous problems of legal responsibility and insurance, with no clear perspective on how to finance such operations. As the orbital pollution in Low Earth Orbits (LEO) originates from all the space faring nations, even though some have more responsibility in it than others, ADR shall be dealt with at international level! No country or organization can nor shall bear the burden of such an activity alone.
+It appears therefore compulsory:
+–
+To consolidate the need, if any, to perform ADR in addition to the proper application of mitigation rules,
+–
+To identify the corresponding system solutions,
+–
+To identify the required technologies and clarify the corresponding development constraints,
+–
+To identify some reference scenarios, with solutions precise enough to evaluate the programmatic consequences,
+–
+To propose a scheme at international level to initiate such operations if, once again, they appear compulsory.
+These few priorities have guided the works led by CNES since now more that 12 years Ref. [2]. The current status of the ongoing studies is described in the following paragraphs.
+Organizational access
+Get full-text access by signing in with your organisation
+Access through your organization
+Other access options
+Purchase PDF
+Need help with access?
+Section snippets
+Number of debris to be removed
+The intensive studies led by the Orbital Debris Office at NASA-JSC since decades have produced a vast amount of results, generally consolidated with sensitivity analyses implying sophisticated statistical approaches. The most well known conclusion has been summarized by Liou et al. Ref. [3] which has been used as a the reference by most of the orbital debris research teams in the world. It states that even if one assumes an almost perfect Post-Mission-Disposal, with 100% explosion suppression
+Sorting of debris
+The general ADR requirement states that we shall fetch and de-orbit 5–10 large integer debris every year, removed from the most crowded orbital regions. But how can we define an “interesting” target and determine a-priori which ones we should de-orbit?
+This sorting is of course based on size, mass and probability of collision with the rest of the orbital environment, equivalent to orbital density of the considered region.
+A first general identification of the most critical regions has been
+ADR high level functions
+Whatever the mission architecture and the size of the corresponding Chaser, a certain number of high level functions have to be implemented in order to proceed with the de-orbiting of a given debris.
+The following paragraph describes the five high level functions which have been identified, and give a brief description of the technical solutions which may be envisaged to cover them, attempting to give a status of their availability.
+Conclusions
+A lot of work is being done on the subject of Active Debris Removal at worldwide level. However, some of the high level questions do not yet have clear and unambiguous answers: what is really the need: to stabilize the environment? To lower the orbital density? Or on the opposite should we consider there is no real urgency and we can wait a couple of years or decades?
+The key question today may well not be “How?” but rather “What for and When?”; this consolidation of high level requirements
+Acronyms
+ADR
+Active Debris Removal
+ATV
+Automated Transfer Vehicle
+EDT
+Electro-Dynamic Tether
+GEO
+Geostationary Earth Orbit
+GNC
+Guidance, Navigation, Control
+HTV
+H-IIA Transfer Vehicle
+IADC
+Inter Agency Space Debris Coordination Committee
+ISS
+International Space Station
+LEO
+Low Earth Orbit
+RAAN
+Right Ascension of the Ascending Node
+TC
+TeleCommand
+TM
+TeleMetry
+TRL
+Technological Readiness Level
+References (22)
+Ch. Bonnal et al.
+Measures to reduce the growth or decrease the space debris population
+Acta Astronaut.
+(2000)
+J.-C. Liou et al.
+Controlling the growth of future LEO debris populations with active debris removal
+Acta Astronaut.
+(2010)
+N. Praly et al.
+Study on the eddy current damping of the spin dynamics of space debris from the Ariane launcher upper stages
+Acta Astronaut.
+(2012)
+D.J. Kessler et al.
+Collision frequency of artificial satellites: the creation of a debris belt
+JGR
+(1978)
+P. Brudieu, B. Lazare, French Policy for Space Sustainability and Perspectives, in: Proceedings of the 16th ISU…
+R. Destefanis, L. Grassi, Space Debris Vulnerability Assessment of the Sentinel 1LEO S/C, in: Proceedings of the…
+J.C. Liou, The Top 10 Questions for Active Debris Removal, #S1.3, in: Proceedings of the 1st European Workshop on ADR,…
+C. Wiedemann et al., Cost estimation of Active Debris Removal, in: Proceedings of the IAC-12-A.6.5.3, Naples, October…
+P. Couzin, X. Roser, L. Stripolli, Comparison of Active Debris Removal Mission Architectures, in: Proceedings of the…
+T. Martin, E. Pérot, M.-C. Desjean, L. Bitetti, Active Debris Removal mission design for LEO, #479, in: Proceedings of…
+View more references
+View full text
+Recommended articles
+Based on reading popularity
+Research article
+Coordinated control of a space manipulator tested by means of an air bearing free floating platform
+Marco Sabatini, …, Giovanni B. Palmerini
+Acta Astronautica • Volume 139 • 2017 • Pages 296-305
+Chapter
+Chapter Four - Real-time object detection and manipulation using biomimetic musculoskeletal soft robotic grasper addressing robotic fan-handling challenge
+Iyani N. Kalupahana, …, Hongliang Ren
+Control Systems Design of Bio-Robotics and Bio-mechatronics with Advanced Applications • 2020 • Pages 115-141
+Research article
+Risk assessment of power transmission network failures in a uniform pricing electricity market environment
+Adam Abdin, …, Enrico Zio
+Energy • Volume 138 • 2017 • Pages 1042-1055
+Research article
+Force control of a space robot in on-orbit servicing operations
+Lingling Shi, …, Xiaoyi Wang
+Acta Astronautica • Volume 193 • 2022 • Pages 469-482
+Short communication
+Concentration bounds for empirical conditional value-at-risk: The unbounded case
+Ravi Kumar Kolla, …, Krishna Jagannathan
+Operations Research Letters • Volume 47, Issue 1 • 2019 • Pages 16-20
+Research article
+Approach and maneuver for failed spacecraft de-tumbling via space teleoperation robot system
+Ruizhou Cheng, …, Panfeng Huang
+Acta Astronautica • Volume 181 • 2021 • Pages 384-395
+Cited by (398)
+Research article
+The active space debris removal mission RemoveDebris. Part 2: In orbit operations
+Aglietti G.S., …, Steyn W.H.
+Acta Astronautica • Volume 168 • 2020
+Show abstract
+Review article
+Review of Active Space Debris Removal Methods
+Mark C.P., Kamath S.
+Space Policy • Volume 47 • 2019
+Show abstract
+Review article
+A review of cooperative and uncooperative spacecraft pose determination techniques for close-proximity operations
+Opromolla R., …, Grassi M.
+Progress in Aerospace Sciences • Volume 93 • 2017
+Show abstract
+Review article
+Review and comparison of active space debris capturing and removal methods
+Shan M., …, Gill E.
+Progress in Aerospace Sciences • Volume 80 • 2016
+Show abstract
+Large constellations of small satellites: A survey of near future challenges and missions
+Curzi G., …, Tortora P.
+Aerospace • Volume 7 • 2020 • Article 133
+A Review of the Space Environment Effects on Spacecraft in Different Orbits
+Lu Y., …, Yang F.
+IEEE Access • Volume 7 • 2019 • Article 8758870
+View all citing articles on Scopus
+Metrics
+Citations
+Citation Indexes
+398
+Policy Citations
+1
+Captures
+Mendeley Readers
+230
+Mentions
+News Mentions
+1
+View details
+Copyright © 2012 IAA. Published by Elsevier Ltd. All rights reserved.
+About ScienceDirect
+Remote access
+Contact and support
+Terms and conditions
+Privacy policy
+Cookie settings
+
+All content on this site: Copyright © 2026 Elsevier B.V., its licensors, and contributors. All rights are reserved, including those for text and data mining, AI training, and similar technologies. For all open access content, the relevant licensing terms apply.
+
+We use cookies that are necessary to make our site work. We may also use additional cookies to analyze, improve, and personalize our content and your digital experience. You can manage your cookie preferences using theCookie settings link. For more information, see ourCookie Policy
+Cookie settings
+Accept all cookies

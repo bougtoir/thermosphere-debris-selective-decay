@@ -1,0 +1,187 @@
+Skip to main content
+Skip to article
+LeapSpace
+Journals & Books
+Help
+Search
+My account
+Sign in
+Journal of Space Safety Engineering
+Date: September 2020
+Pages: 164-170
+Volume: Volume 7, Issue 3
+View accessibility information
+Part of special issue
+Space Debris: The State of Art
+Edited by Jack Bacon, Christopher L. Ostrom, Daniel Moomey
+View special issue
+Published by
+Research article
+Get rights and content
+Understanding long-term orbital debris population dynamics
+Hugh G. Lewis
+Show more
+Cite
+Add to Mendeley
+Share
+10.1016/j.jsse.2020.06.006
+Access through your organization
+Purchase PDF
+Article preview
+Special issue articles
+Recommended articles
+Cited by (35)
+Metrics
+Article preview
+Abstract
+Introduction
+Section snippets
+References (13)
+Abstract
+Linear growth of the orbital debris population is observed in the results of many evolutionary models when they are used to simulate the effects of the widespread adoption of the Inter-Agency Space Debris Coordination Committee (IADC) debris mitigation guidelines. Such linear growth seemingly confirms the belief that adopting these debris mitigation guidelines will have substantial and positive benefits on the orbital debris population. However, this outcome is not expected from analyses of simple systems models. Either the systems model is too simplistic, or the linear growth of the debris population is actually the beginnings of exponential growth, which is difficult to discern over the typical analysis period. To resolve this ambiguity, the Debris Analysis and Monitoring Architecture to the Geosynchronous Environment (DAMAGE) model was used to perform ultra-long projections of the future debris population ≥ 10 cm in Low Earth Orbit (LEO) under highly optimistic debris mitigation conditions. The DAMAGE results showed that the linear growth rate observed for the first 200 years of the projection period was transient and the growth was exponential, even with the ongoing and widespread adoption of debris mitigation measures. The population growth was driven by the accumulation of orbital debris at altitudes between 1200 km and 1500 km, even though simulated launch activity to that region was limited. Further, the results highlighted a tendency for high and sustained collision rates at altitudes below 700 km, predominantly due to conjunctions between spacecraft and upper stages decaying through this region in observance with the “25-year rule”. Overall, these results indicate that additional, and possibly new, measures to mitigate the effects of orbital debris may be needed, with particular emphasis on post-mission disposal and measures that protect the 1200–1500 km region in LEO.
+Keywords
+space debris; simulation; long-term population dynamics
+Previous article in this issue
+Next article in this issue
+Introduction
+In 1978, Kessler and Cour-Palais warned of the hazards from orbital debris and the creation of a debris belt around the Earth unless measures to address the problem were implemented [1]. Despite this warning, over forty years of uninterrupted space activity since then has created a population of debris around the Earth that now threatens the safe operation of spacecraft and the long-term sustainable use of outer space [2]. There are an estimated 128 million particles between 1 mm and 1 cm, 900,000 objects between 1 cm, and 10 cm, and 34,000 trackable objects larger than 10 cm in Earth orbit [3].
+In response to the growing risks, The Inter-Agency Space Debris Coordination Committee (IADC) released mitigation guidelines that aim to limit the generation of orbital debris [4]. One guideline, often referred to as the “25-year rule”, directs operators to adopt post-mission disposal (PMD) to limit the long-term presence of spacecraft and upper stages in the Low Earth Orbit (LEO) region. For reasons of fuel efficiency, spacecraft and orbital stages seeking to comply with this “25-year rule” tend to employ a maneuver that reduces the altitude of the orbit perigee without adjusting the altitude of the orbit apogee. This approach requires a single maneuver and results in an eccentric disposal orbit, with the perigee altitude selected to ensure re-entry into the Earth's atmosphere within 25 years. In 2013, an IADC study suggested that a 90% adoption rate of this measure could constrain the trackable population in LEO to linear growth under the assumption that launches continued at the prevailing rate [5].
+Nevertheless, in some LEO altitude regimes other studies suggest that the number density of debris has already passed a tipping point where the rate at which new debris is added by collisions exceeds the rate at which debris decays due to atmospheric drag [6,7]. Studies by the US National Aeronautics and Space Administration (NASA) using a high-fidelity three-dimensional physical model indicate that growth of the trackable Earth satellite population in LEO is inevitable even if future launch activity is stopped [8].
+The ambiguity in the interpretation of evolutionary model results is compounded by the commonly held misconception that these models enable accurate forecasts of the orbital debris population. It is not reasonable to use these models to make such forecasts. Instead, their primary purpose is to aid our efforts to anticipate significant events and trends in the population of orbital debris, to offer an understanding of the structural causes of the behavior of the Earth satellite population and to evaluate the responses to new space systems or debris mitigation measures. The typical complexity of fully 3D evolutionary models tends to preclude their use for robust analyses over periods longer than one or two centuries. This is an important limitation because many spacecraft and rocket bodies in LEO have orbital lifetimes much longer than this. Consequently, we lack a true understanding of the future behavior of the orbital debris population engendered by our space activities.
+To gain insight into the true long-term behavior of the orbital debris population, under quite optimistic conditions with respect to existing debris mitigation measures, the Debris Analysis and Monitoring Architecture to the Geosynchronous Environment (DAMAGE) evolutionary model [9] was used to perform 1000-year projections of the future debris population ≥ 10 cm in LEO. The results were subjected to a preliminary analysis of the first 200 years of the projection period to illustrate the difficulties associated with the interpretation of the behavior of the orbital debris population over this relatively short time period. Analysis of the full projection period, based on expectations set by adopting systems thinking, was subsequently conducted in an effort to resolve the ambiguities.
+Organizational access
+Get full-text access by signing in with your organisation
+Access through your organization
+Other access options
+Purchase PDF
+Need help with access?
+Section snippets
+Simulation approach
+DAMAGE is a high-fidelity three-dimensional physical model capable of simulating the evolution of future debris populations [9]. DAMAGE projections make use of a Monte Carlo approach to simulate future collisions. Within a given projection time step (here, 5 days), a random number is drawn and compared with the probability estimated for each pair of target and projectile objects found in close proximity (here, for a cube of side 10 km). The Monte Carlo process requires multiple projection runs
+Preliminary analysis
+The typical projection period for studies is 100 or 200 years. Most IADC studies since the 1990s have employed projection periods of 100 or 200 years because these were assumed to provide sufficient information about the causes of behavior of the debris population, without requiring excessive computer time. However, debris at altitudes above 700 km can have orbital lifetimes that are significantly longer than this. Consequently, our understanding of the true structural behavior of the debris
+Full results and analysis
+Considering the full 1000-year projection period (Fig. 7), the same DAMAGE simulations show that the debris population actually grows at an increasing rate over the projection period, in-line with the expectations from systems thinking. In the last 200-years of the full projection period, the debris population grew at a rate of 48.28 objects per year, more than eight times faster than during the first 200-year period. By 1 February 3018, the orbital population had increased by 134.10% from its
+Conclusions
+The results show that despite the assumed low number of launches to altitudes above 1000 km, widespread adoption of the 25-year rule and a relatively low collision rate at the outset, the debris population there grows at an accelerating rate. The increasing population ultimately leads to a substantially higher spatial density and a correspondingly higher collision rate there, compared with any other region in LEO. In the simulations, altitudes between 1200 km and 1500 km experienced the most
+Declaration of Competing Interest
+The authors declare the following financial interests/personal relationships which may be considered as potential competing interests: Hugh Lewis is a Professor of Astronautics at the University of Southampton, UK. He is a also a member of the UK Space Agency delegation to the Inter-Agency Space Debris Coordination Committee (on that Committee, he serves as the Chair of Working Group 2). There are no other interests to declare." This is in addition to any other corrections submitted by the
+Acknowledgements
+The author would like to thank colleagues from the Space Debris Office of the European Space Agency for the provision of and permission to use the MASTER population and launch traffic for this work.
+References (13)
+P.H. Krisko
+Evolve 4.0 orbital debris mitigation studies
+Adv. Space Res.
+(2001)
+D.J. Kessler et al.
+Collision frequency of artificial satellites: the creation of a debris belt
+J. Geophys. Res.
+(1978)
+The White House. “Policy directive 3 – National Space Traffic Management Policy,” Washington DC,…
+European Space Agency. “Space debris by the numbers,” 2019. Available at…
+Inter-Agency Space Debris Coordination Committee. “IADC Space Debris Mitigation Guidelines,” IADC-02-01,…
+J.-C. Liou
+Stability of the future LEO environment – an IADC comparison study
+There are more references available in the full text version of this article.
+View full text
+Special issue articles
+Articles part of:
+Space Debris: The State of Art
+Edited by Jack Bacon, Christopher L. Ostrom, Daniel Moomey
+View special issue
+Download full issue
+Research article
+Parameterizing large constellation post-mission disposal success to predict the impact to future space environment
+G.A. Henning, …, J.P. McVey
+September 2020
+Research article
+Impact on collision probability by post mission disposal and active debris removal
+Satomi Kawamoto, …, Toshiya Hanada
+September 2020
+Research article
+Evaluation of debris mitigation options for a large constellation
+Hugh G. Lewis
+September 2020
+Recommended articles
+Based on reading popularity
+Research article
+Spin motion determination of the Envisat satellite through laser ranging measurements from a single pass measured by a single station
+Jean-Noël Pittet, …, Thomas Schildknecht
+Advances in Space Research • Volume 61, Issue 4 • 2018 • Pages 1121-1131
+Research article
+Initial safety posture investigations for earth regime rendezvous and proximity operations
+David A. Barnhart, …, Kyle W. Clarke
+Journal of Space Safety Engineering • Volume 7, Issue 4 • 2020 • Pages 519-524
+Research article
+A new tool for conjunction analysis of ISRO's operational satellites, Close Approach Prediction Software: CLAPS
+Satyendra Singh
+Journal of Space Safety Engineering • Volume 7, Issue 3 • 2020 • Pages 290-294
+Research article
+An estimation of Envisat’s rotational state accounting for the precession of its rotational axis caused by gravity-gradient torque
+Hou-Yuan Lin, Chang-Yin Zhao
+Advances in Space Research • Volume 61, Issue 1 • 2018 • Pages 182-188
+Research article
+Open archive
+Perioperative risk factors for hospital readmission after elective endovascular aortic aneurysm repair
+Samuel L. Chen, …, Roy M. Fujitani
+Journal of Vascular Surgery • Volume 68, Issue 3 • 2018 • Pages 731-738.e1
+Research article
+Flyby of large-size space debris objects and their transition to the disposal orbits in LEO
+Andrey A. Baranov, …, Li Jun
+Advances in Space Research • Volume 59, Issue 12 • 2017 • Pages 3011-3022
+Cited by (35)
+Research article
+Active space debris removal by ion multi-beam shepherd spacecraft
+Ledkov A.S., Aslanov V.S.
+Acta Astronautica • Volume 205 • 2023
+Citation Excerpt:
+
+Since the beginning of space activities, the amount of space debris in Earth orbit has been increasing. Maintaining the existing approaches to the problem, the population of space debris will grow at an accelerated rate [1]. According to the estimates given in Refs. [2,3], it is necessary to remove at least 5 large space debris objects annually to stabilize the situation in orbit.
+
+Show abstract
+Review article
+Review of contact and contactless active space debris removal approaches
+Ledkov A., Aslanov V.
+Progress in Aerospace Sciences • Volume 134 • 2022 • Article 100858
+Citation Excerpt:
+
+The study is based on the use of the diversity prediction theorem that states that collective performance of different decision schema exceeds the collective performance of single scheme [31]. Based on eleven different algorithms and indexes for ranking space debris objects [22,30,32–37] the 50 most significant objects were selected. Table 1 is based on Table 4 from Ref. [30] and contains objects grouped by their types.
+
+Show abstract
+Greenhouse gases reduce the satellite carrying capacity of low Earth orbit
+Parker W.E., …, Linares R.
+Nature Sustainability • Volume 8 • 2025 • Article e2022JD036767
+Monitoring, trends and impacts of light pollution
+Linares Arroyo H., …, Kyba C.C.M.
+Nature Reviews Earth and Environment • Volume 5 • 2024
+High Minimum Inter-Execution Time Sigmoid Event-Triggered Control for Spacecraft Attitude Tracking with Actuator Saturation
+Xie H., …, Bernelli-Zazzera F.
+IEEE Transactions on Automation Science and Engineering • Volume 20 • 2023
+Aggregate effects of proliferating low-Earth-orbit objects and implications for astronomical data lost in the noise
+Barentine J.C., …, Bará S.
+Nature Astronomy • Volume 7 • 2023
+View all citing articles on Scopus
+Metrics
+Citations
+Citation Indexes
+35
+Captures
+Mendeley Readers
+52
+Mentions
+News Mentions
+6
+View details
+© 2020 International Association for the Advancement of Space Safety. Published by Elsevier Ltd. All rights reserved.
+About ScienceDirect
+Remote access
+Contact and support
+Terms and conditions
+Privacy policy
+Cookie settings
+
+All content on this site: Copyright © 2026 Elsevier B.V., its licensors, and contributors. All rights are reserved, including those for text and data mining, AI training, and similar technologies. For all open access content, the relevant licensing terms apply.
+
+We use cookies that are necessary to make our site work. We may also use additional cookies to analyze, improve, and personalize our content and your digital experience. You can manage your cookie preferences using theCookie settings link. For more information, see ourCookie Policy
+Cookie settings
+Accept all cookies

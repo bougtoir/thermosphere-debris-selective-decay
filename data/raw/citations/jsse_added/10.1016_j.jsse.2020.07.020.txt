@@ -1,0 +1,204 @@
+Skip to main content
+Skip to article
+LeapSpace
+Journals & Books
+Help
+Search
+My account
+Sign in
+Journal of Space Safety Engineering
+Date: September 2020
+Pages: 206-212
+Volume: Volume 7, Issue 3
+View accessibility information
+Part of special issue
+Space Debris: The State of Art
+Edited by Jack Bacon, Christopher L. Ostrom, Daniel Moomey
+View special issue
+Published by
+Research article
+Get rights and content
+DRAMA 3.0 - Upgrade of ESA’s debris risk assessment and mitigation analysis tool suite
+Vitali Braun a
+, 
+Quirin Funke a
+, Stijn Lemmens b, 
+Silvia Sanvido b
+Show more
+Cite
+Add to Mendeley
+Share
+10.1016/j.jsse.2020.07.020
+Access through your organization
+Purchase PDF
+Article preview
+Special issue articles
+Recommended articles
+Cited by (29)
+Metrics
+Article preview
+Abstract
+Introduction
+Section snippets
+References (9)
+Abstract
+In recent years some countries have established national regulation related to space debris mitigation, while many others are currently considering to follow similar steps. In general, this involves the adoption of already existing and widely accepted standards and international guidelines, such as ISO 24113 or the UN Space Debris Mitigation Guidelines. In order to support the verification of the compliance with existing recommendations, guidelines or even national laws, ESA has been developing the Debris Risk Assessment and Mitigation Analysis (DRAMA) software tool suite. Since 2014, when an ESA instruction came into force rendering space debris mitigation requirements applicable for any ESA satellite mission, DRAMA is being an essential part in mission design and subsequent compliance verification by the Agency. Today more than 1000 users world-wide from industry, academia and agencies are working with the software to address issues such as the remaining orbital lifetime of the spacecraft after disposal or the associated on-ground risk for an uncontrolled re-entry. The recent upgrade to DRAMA 3.0 entails the incorporation of the latest Meteoroid And Space debris Terrestrial Environment Reference (MASTER) model, evolving from MASTER-2009 to MASTER-8; an extensive analysis of Conjunction Data Messages(CDM) which serve as the crucial input to estimate annual collision avoidance manoeuvre rates; a dedicated Python framework to run parametric analyses; and a significant extension of SARA, the tool used for the assessment of on-ground risk upon atmospheric re-entry. The latter includes improvements in the materials database, the aerothermodynamics and aerodynamics as well as an update of the world’s population model. In this paper, the improvements in DRAMA 3.0 are introduced with a focus on showing instructive examples of how the new DRAMA software is being used in the context of verifying compliance with space debris mitigation requirements.
+Keywords
+Debris; Mitigation; Risk assessment; DRAMA; Standardisation
+Previous article in this issue
+Next article in this issue
+Introduction
+With the endorsement of the UN Space Debris Mitigation Guidelines by the global community in 2007 [1], many countries and organisations continued to incorporate those recommendations into standards and national laws, significantly reinforcing space debris mitigation as an essential part in satellite mission design.
+The DRAMA software saw its first release in 2004 with the objective to enable satellite programmes to assess their compliance with the recommendations contained in the European Code of Conduct for Space Debris Mitigation (CoC) [2], [3]. The various aspects of the mitigation guidelines have been addressed by four different tools:
+The Assessment of Risk Event Statistics (ARES) tool allows to assess the annual rates of close approaches between an operational spacecraft and tracked objects in Earth orbits along with statistics on the required number of collision avoidance manoeuvres and associated Δv and propellant mass.
+The MASTER-based Impact flux and Damage Assessment Software (MIDAS) facilitates the evaluation of debris and meteoroid impact rates during a satellite’s lifetime based on input coming from ESA’s MASTER model and, by applying single and multiple wall damage equations, the probability of penetration for a given wall design.
+The Orbital SpaceCraft Active Removal (OSCAR) tool allows for the computation of the orbital lifetime and the evaluation of different disposal options after the End-of-Life (EOL).
+The re-entry Survival And Risk Analysis (SARA) tool assesses which and how many components of a spacecraft would survive a re-entry and computes the combined on-ground casualty risk given a world population model and the impact footprint of all surviving fragments.
+With the evolution of the space debris mitigation standards in Europe, seeing the French Space Operations Act [4] come into force and the parallel development of the International Standardization Organisation (ISO) space debris mitigation standard [5], the DRAMA software was upgraded in 2014 to DRAMA-2 [6]. A new tool called CROC was added to the existing four, to compute the cross-sectional areas for complex spacecraft and different possible attitude laws after the end of mission. With ESA’s adoption of ISO 24113:2011 into its Space Debris Mitigation Policy via the European Cooperation for Space Standardization (ECSS) [7] and coming into force in 2014, space debris mitigation requirements have become applicable to any Agency project. The DRAMA software has been identified as the main tool to support the verification of those requirements.
+In 2019 another major upgrade was released with DRAMA-3. The latest version, which is available as a free download from https://sdup.esoc.esa.int, reflects on knowledge gained in different areas over the last few years and includes additional features requested by the user community.
+The background population, which is used by both ARES and MIDAS was updated to MASTER-8. The new MASTER model comes with a recalibration of the two major breakups of Fengyun-1C (2007) and Cosmos-Iridium (2009). The new reference epoch is No. 1, 2016. Moreover, the Grün meteoroid model is now supported.
+MIDAS makes use of MASTER-8’s new target orbit propagation feature to integrate flux along an evolving orbit.
+The analysis of more than a million CDMs made an update of ARES’ catalogue uncertainty tables possible, which were mainly based on Two-Line Elements (TLE) before. Also, the radar equation saw an update to improve the filtering of objects at lower altitudes.
+The SARA tool saw a major upgrade, introducing many new functionalities:
+•
+Improved modelling of objects and components, including connected-to and nested-in relations;
+•
+Release and explosion triggers as a function of different parameters, such as the altitude or the dynamic pressure;
+•
+Aerodynamic and aerothermodynamic coefficient database for primitive shapes;
+•
+Shadowing effects for connected objects;
+•
+Simulation of the ablation of metals and CFRP materials;
+•
+Update of the on-ground population model according to the latest Gridded Population of the World (GWP) and UN World Population Prospects (UNWPP) models.
+•
+A dedicated Monte Carlo module to run parameter variations;
+•
+Improved Graphical User Interface (GUI) providing visual feedback on the object tree and a three-dimensional view of the designed satellite;
+In order to support the integration into other tools, a dedicated DRAMA Python package has been developed. Many users were already looking forward to this feature in order to run parametric analyses using the different DRAMA tools.
+In this paper, an example of a DRAMA project is presented in Section 2, highlighting the major steps usually encountered during the satellite mission design for space debris mitigation related aspects. Widely accepted and standardised techniques and algorithms are referenced while discussing the individual tools. Finally, the current DRAMA roadmap and an outlook are provided in Section 3.
+Organizational access
+Get full-text access by signing in with your organisation
+Access through your organization
+Other access options
+Purchase PDF
+Need help with access?
+Section snippets
+Working with DRAMA-3.0
+For any ESA mission, the Space Debris Mitigation Plan (SDMP) has to be provided already at a very early stage in the project. The DRAMA software would be used to perform a first assessment and derive the required estimates that feed into the SDMP. The mission discussed in this paper is a fictitious Earth observation satellite called Melpomene (a tutorial, which contains the DRAMA project files, can be downloaded from https://sdup.esoc.esa.int). The basic set of parameters required to get
+Conclusion and outlook
+The DRAMA-3 release in 2019 was reflecting on the knowledge and experience gained over the past few years. The ARES tool was upgraded after an extensive analysis of more than one million CDMs. An aerodynamic and aerothermodynamic coefficient database has been established for SARA, taking also shadowing effects into account. Moreover, CFRP-like material can now be studies as well as effects due to metal oxidation or ablation.
+The DRAMA software today is being continuously developed, based on
+Declaration of Competing Interest
+The authors declare that they have no known competing financial interests or personal relationships that could have appeared to influence the work reported in this paper.
+References (9)
+United Nations Office for Outer Space Affairs, Space Debris Mitigation Guidelines of the Committee on the Peaceful Uses…
+Anon., European Code of Conduct for Space Debris Mitigation, 2004, Issue…
+C. Martin, J. Cheese, N. Sánchez-Ortiz, K.-H. Bunte, H. Klinkrad, T. Lips, B. Fritsche, Debris risk assessment and…
+Anon., French Space Operations Act, 2008,.…
+There are more references available in the full text version of this article.
+View full text
+Special issue articles
+Articles part of:
+Space Debris: The State of Art
+Edited by Jack Bacon, Christopher L. Ostrom, Daniel Moomey
+View special issue
+Download full issue
+Research article
+Understanding long-term orbital debris population dynamics
+Hugh G. Lewis
+September 2020
+Research article
+Parameterizing large constellation post-mission disposal success to predict the impact to future space environment
+G.A. Henning, …, J.P. McVey
+September 2020
+Research article
+Impact on collision probability by post mission disposal and active debris removal
+Satomi Kawamoto, …, Toshiya Hanada
+September 2020
+Recommended articles
+Based on reading popularity
+Research article
+Modeling meteoroid densities for spacecraft risk assessment
+Steven Ehlert
+Journal of Space Safety Engineering • Volume 7, Issue 3 • 2020 • Pages 249-254
+Research article
+Quick coverage analysis of mega Walker Constellation based on 2D map
+Yupeng Gong, …, Xuan Peng
+Acta Astronautica • Volume 188 • 2021 • Pages 99-109
+Research article
+Observation of vertical eddy diffusivity and mixing length during landfalling Super Typhoons
+J.Y. He, …, H.L. Yang
+Journal of Wind Engineering and Industrial Aerodynamics • Volume 219 • 2021 • Article 104816
+Research article
+Absorption cross-sections of ozone in the ultraviolet and visible spectral regions: Status report 2015
+Johannes Orphal, …, Claus Zehner
+Journal of Molecular Spectroscopy • Volume 327 • 2016 • Pages 105-121
+Research article
+Open access
+The Ginninderra CH4 and CO2 release experiment: An evaluation of gas detection and quantification techniques
+Andrew Feitz, …, David Griffith
+International Journal of Greenhouse Gas Control • Volume 70 • 2018 • Pages 202-224
+Research article
+Open archive
+The observation of the South Atlantic Anomaly with the particle monitors onboard Insight-HXMT
+The 𝐼⁢𝑛⁢𝑠⁢𝑖⁢𝑔⁡ℎ⁡𝑡
+-HXMT Collaboration
+Journal of High Energy Astrophysics • Volume 26 • 2020 • Pages 95-101
+Cited by (29)
+Research article
+Open access
+Collision risk assessment for constellation satellites based on a space debris environment topological network model
+Yuan Y., …, Wu H.
+Chinese Journal of Aeronautics • Volume 39 • 2026 • Article 103762
+Show abstract
+Research article
+Open access
+Unveiling the resource potential of space debris: A forecast of valuable metals to 2050
+Hayashi F., …, Nakamura T.
+Waste Management • Volume 193 • 2025
+Show abstract
+Research article
+Telecommunications and Space Debris: Adaptive Regulation Beyond Earth
+Keles O.F.
+Telecommunications Policy • Volume 47 • 2023 • Article 102517
+Citation Excerpt:
+
+On top of this, the ESA also has a mechanism with a similar functionality to NASA's LEGEND in the form of the Debris Risk Assessment and Mitigation Analysis (DRAMA) tool. DRAMA is capable of providing risk assessment of space debris, which include statistics of close encounters between debris objects and man-made spacecraft; furthermore, it is also equipped with various software modules that can implement space debris mitigation strategies for the operational and disposal phases of a space mission (Gelhaus et al., 2013; Braun, Funke, Lemmens, & Sanvido, 2020). For direct and convenient access by the public, the ESA's Space Debris Office (SDO) also provides updated figures on the quantity of cataloged space debris objects within the Earth's atmosphere in the Space Environment Report, which has been released on an annual basis since 2016.
+
+Show abstract
+Research article
+Open access
+Tracking an untracked space debris after an inelastic collision using physics informed neural network
+Harsha M., …, Biswas S.K.
+Scientific Reports • Volume 14 • 2024 • Article 3350
+Show abstract
+Integrated Macroscopic Model of Debris Environment Evolution and Collision Risk Assessment
+Yuan Y., …, Li L.
+Journal of Guidance, Control, and Dynamics • Volume 48 • 2025
+Satellite In-Orbit Secondary Collision Risk Assessment
+Tao H., …, Li X.
+International Journal of Aerospace Engineering • Volume 2022 • 2022 • Article 6358188
+View all citing articles on Scopus
+Metrics
+Citations
+Citation Indexes
+29
+Captures
+Mendeley Readers
+32
+View details
+© 2020 International Association for the Advancement of Space Safety. Published by Elsevier Ltd. All rights reserved.
+About ScienceDirect
+Remote access
+Contact and support
+Terms and conditions
+Privacy policy
+Cookie settings
+
+All content on this site: Copyright © 2026 Elsevier B.V., its licensors, and contributors. All rights are reserved, including those for text and data mining, AI training, and similar technologies. For all open access content, the relevant licensing terms apply.
+
+We use cookies that are necessary to make our site work. We may also use additional cookies to analyze, improve, and personalize our content and your digital experience. You can manage your cookie preferences using theCookie settings link. For more information, see ourCookie Policy
+Cookie settings
+Accept all cookies
