@@ -1,0 +1,171 @@
+Skip to main content
+Skip to article
+LeapSpace
+Journals & Books
+Help
+Search
+My account
+Sign in
+Journal of Space Safety Engineering
+Date: December 2016
+Pages: 111-113
+Volume: Volume 3, Issue 3
+View accessibility information
+Published by
+Research article
+Get rights and content
+Fast and Flexible Space Debris Risk Assessment for Satellites
+Max Gulde
+, 
+Scott Kempf
+, Frank Schäfer
+Show more
+Cite
+Add to Mendeley
+Share
+10.1016/S2468-8967(17)30003-4
+Access through your organization
+Purchase PDF
+Article preview
+Recommended articles
+Cited by (4)
+Metrics
+Article preview
+Abstract
+Section snippets
+References (12)
+ABSTRACT
+The rapid increase in uncontrolled high velocity objects orbiting earth poses a continuously growing failure potential for ongoing and future space missions. Despite increasing efforts to mitigate collisional risks, e.g. via active debris removal, potential solutions are currently only emerging at the horizon, emphasizing the importance of space debris related risk assessment.
+However, traditional impact shielding requirements for manned mission cannot directly be transferred to unmanned missions. Instead of restricting the analysis to the outer hull, it is necessary to directly assess the failure risk on the level of individual, internal components.
+Here, we outline a newly developed deterministic methodology to enable the evaluation of system level effects on the spacecraft. In particular, we employ a computational model based on available probabilistic debris models and component-specific ballistic limit equations. The methodology has been implemented into the easily accessible software tool PIRAT (Particle Impact Risk and Vulnerability Assessment Tool).
+Previous article in this issue
+Next article in this issue
+Organizational access
+Get full-text access by signing in with your organisation
+Access through your organization
+Other access options
+Purchase PDF
+Need help with access?
+Section snippets
+INTRODUCTION
+The continuing accumulation of space debris in heavily used orbits such as the LEO presents an increasing threat for civil and military satellite infrastructure 1., 2.. Until effective debris removal strategies are designed and set into motion, space missions will have to rely on a combination of collision avoidance maneuvers for large, traceable objects and damage mitigation by appropriate shielding of the spacecraft for smaller, untraceable debris [3].
+Several computational tools, including
+METHODOLOGY
+The PIRAT methodology is schematically depicted in Fig. 1 (for a detailed description, see 6., 10.): it requires a 3D satellite geometry as well as space debris flux data for a given set of mission parameters. PIRAT combines this data to compute and display impact-related information, including the total impact flux, the cratering area, as well as the failure probability for every component integrated over the mission duration. The results can be used, e.g., in conjunction with knowledge about
+CONCLUSION
+Until effective measures are taken to mitigate collisional risks, impact shielding against untraceable space debris will stay indispensable for spacecraft. While traditional risk assessment is well suited for manned missions, unmanned missions exhibit inherently different requirements. However, prohibitive costs and limited time do often not allow for thorough risk assessment. Here, we provide a flexible, performance-oriented methodology particularly designed for the risk assessment of unmanned 
+4. REFERENCES (12)
+J.-C. Liou et al.
+Instability of the present LEO satellite populations
+Advances in Space Research
+(2008)
+Minghe Shan et al.
+Review and comparison of active space debris capturing and removal methods
+Progress in Aerospace Sciences
+(2016)
+L. Grassi
+Satellite vulnerability to space debris–an improved 3D risk assessment methodology
+Acta Astronautica
+(2014)
+T. Lang
+Short and long term efficiencies of debris risk reduction measures: Application to a European LEO mission
+Advances in Space Research
+(2015)
+N. Welty
+Computational methodology to predict satellite system-level effects from impacts of untrackable space debris
+Acta Astronautica
+(2013)
+F.K. Schäfer
+Ballistic limit equation for equipment placed behind satellite structure walls
+International Journal of Impact Engineering
+(2008)
+There are more references available in the full text version of this article.
+View full text
+Recommended articles
+Based on reading popularity
+Research article
+Modelling of thin wall perforation limit in debris particles impact on space structures
+N.N. Smirnov, …, M.N. Smirnova
+Acta Astronautica • Volume 204 • 2023 • Pages 831-839
+Research article
+Insight into wave propagation in polyimide films and resistive grid sandwich structures towards a hybrid monitoring of hypervelocity impact
+Shun Lu, …, Menglong Liu
+Ultrasonics • Volume 145 • 2025 • Article 107471
+Research article
+Open access
+Hypervelocity impact induced light flash experiments on single and dual layer Kapton targets to develop a time of flight space dust and debris detector
+L.S. Alesbrook, …, P.J. Wozniakiewicz
+International Journal of Impact Engineering • Volume 187 • 2024 • Article 104897
+Research article
+Shape of fragments cloud behind heterogeneous screen by a space debris particle impact
+A.E. Buzyurkin, …, I.I. Shabalin
+Acta Astronautica • Volume 226, Part 1 • 2025 • Pages 169-177
+Research article
+Characterization of multiple debris cloud impacts-induced pitting damage evolution in spacecraft structures using temperature-dependent ultrasonic nonlinearity
+Runqiang Chi, …, Wuxiong Cao
+Thin-Walled Structures • Volume 194, Part B • 2024 • Article 111322
+Research article
+Open access
+SPRISS: Scalable and precise resistive impact sensor for smallsats, architecture description and tests
+Samuele Enzo, …, Alessandro Francesconi
+Acta Astronautica • Volume 223 • 2024 • Pages 25-35
+Cited by (4)
+Research article
+Open access
+An impact sensitivity assessment method of spacecraft based on virtual exterior wall
+Chi R., …, Pang B.
+Defence Technology • Volume 31 • 2024
+Citation Excerpt:
+
+ESABASE adopts Monte Carlo method to pick random points on the spacecraft geometric surface and performs weighting according to the flux input from the OD/M engineering model, sequentially, the impact expectation number of each component encountering OD/M is further determined. EMI's PIRAT [12] (Particle Impact Risk and vulnerability Analysis Tool) combines a debris ﬂux model with the Schäfer–Ryan–Lambert ballistic limit equation [13] (SRL-BLE), which accounts for the inherent shielding of components positioned behind the spacecraft structure wall. The failure probabilities as a function of mission time of individual satellite components are calculated.
+
+Show abstract
+Research article
+Open access
+Sensitivity analysis of spacecraft in micrometeoroids and orbital debris environment based on panel method
+Hu D.-Q., …, Pang B.-J.
+Defence Technology • Volume 19 • 2023
+Citation Excerpt:
+
+In ESABASE2/DEBRIS, this problem is solved through the use of a debris cloud model. EMI's PIRAT [6] tool replaces internal components by aluminum plates and uses SRL-BLE to solve the shielding problems between components. In addition, Di-qi HU [7] et al. from Harbin Institute of Technology use a virtual exterior wall method to generate rays to simulate the impact of space debris on spacecraft in all directions.
+
+Show abstract
+Research article
+Predicting the vulnerability of spacecraft components: Modelling debris impact effects through vulnerable-zones
+Trisolini M., …, Colombo C.
+Advances in Space Research • Volume 65 • 2020
+Citation Excerpt:
+
+Few software packages are currently available to perform the vulnerability assessment of a mission. Examples are ESABASE2/DEBRIS (Gäde and Miller, 2013), NASA BUMPER (Bjorkman et al., 2014), the European Space Agency (ESA) Debris Risk Assessment and Mitigation Analysis (DRAMA) (Gelhaus et al., 2014; Gelhaus et al., 2013; Martin et al., 2005b; Martin et al., 2005a), SHIELD (Stokes et al., 2000; Stokes and Swinerd, 2005; Stokes et al., 2012), and the Particle Impact Risk and Vulnerability Analysis Tool (PIRAT) (Gulde et al., 2016; Kempf et al., 2013; Kempf et al., 2016). These codes have a common structure, where the satellite is modelled through a geometric representation (which can be more or less detailed).
+
+Show abstract
+Research article
+Characterizing space debris longitude-dependent distribution based on RAAN perturbation rate
+Pang B.-J., …, Lu B.-B.
+Advances in Space Research • Volume 65 • 2020
+Citation Excerpt:
+
+The rapid increase of space debris in Earth orbit poses a continuously growing collision potential for space missions (Cooke et al., 2017; Virgili et al., 2016). In order to secure the safety of space missions, risk assessment against space debris is necessary (Gulde et al., 2016; Liou, 2016). Various space debris environment models provide basic input data for space debris risk assessments (Matney, 2016; Liou, 2016; Martin et al., 2005).
+
+Show abstract
+Metrics
+Citations
+Citation Indexes
+4
+Captures
+Mendeley Readers
+11
+View details
+Copyright © 2016 IAASS. Published by Elsevier Ltd. All rights reserved.
+About ScienceDirect
+Remote access
+Contact and support
+Terms and conditions
+Privacy policy
+Cookie settings
+
+All content on this site: Copyright © 2026 Elsevier B.V., its licensors, and contributors. All rights are reserved, including those for text and data mining, AI training, and similar technologies. For all open access content, the relevant licensing terms apply.
+
+We use cookies that are necessary to make our site work. We may also use additional cookies to analyze, improve, and personalize our content and your digital experience. You can manage your cookie preferences using theCookie settings link. For more information, see ourCookie Policy
+Cookie settings
+Accept all cookies

@@ -1,0 +1,191 @@
+Skip to main content
+Skip to article
+LeapSpace
+Journals & Books
+Help
+Search
+My account
+Sign in
+Progress in Aerospace Sciences
+Date: January 2016
+Pages: 18-32
+Volume: Volume 80
+View accessibility information
+Published by
+Review article
+Get rights and content
+Review and comparison of active space debris capturing and removal methods
+Minghe Shan
+, Jian Guo
+, Eberhard Gill
+Show more
+Cite
+Add to Mendeley
+Share
+10.1016/j.paerosci.2015.11.001
+Access through your organization
+Purchase PDF
+Article preview
+Recommended articles
+Cited by (866)
+Metrics
+Article preview
+Abstract
+Introduction
+Section snippets
+References (127)
+Abstract
+Space debris is considered as a serious problem for operational space missions. Many enabling space debris capturing and removal methods have been proposed in the past decade and several methods have been tested on ground and/or in parabolic flight experiments. However, not a single space debris has been removed yet. A space debris object is usually non-cooperative and thus different with targets of on-orbit servicing missions. Thus, capturing and removal of space debris is significantly more challenging. One of the greatest challenges is how to reliably capture and remove a non-cooperative target avoiding to generate even more space debris. To motivate this research area and facilitate the development of active space debris removal, this paper provides review and comparison of the existing technologies on active space debris capturing and removal. It also reviews research areas worth investigating under each capturing and removal method. Frameworks of methods for capturing and removing space debris are developed. The advantages and drawbacks of the most relevant capturing and removal methods are addressed as well. In addition, examples and existing projects related to these methods are discussed.
+Keywords
+Space debris; Capturing and removal; Non-cooperativeness
+Previous article in this issue
+Next article in this issue
+Introduction
+The Earth orbit is in a serious predicament caused by millions of space debris. Operational satellite vital for mankind infrastructure are threatened to be destroyed by space debris. The Kessler Syndrome states that more and more debris might be produced due to the continuous collision even if all launches into space would be stopped immediately [1]. Thus, active debris removal is of great relevance. In this context, all space companies and organizations are suggested to follow the 25-year safety standard which means a satellite should either lower its orbit and re-enter, or raise itself to a graveyard orbit within 25 years after the mission ends [2]. Since this rule is not enforced up to now, 5–10 space debris objects still need to be removed each year to stabilize the space environment according to a prediction model from NASA [3].
+Space debris can be produced in different ways, such as hypervelocity impact with spacecraft wall, high-intensity explosion or low-intensity explosion, dysfunctional satellites and rocket upper stages. As early as 1975, NASA has already investigated the mass distribution of space debris and performed several experiments on ground. Power and exponential function models are applied to estimate the mass distribution of the space debris [4]. Till 2013, the mass of space debris in space is over 3 million kilograms and there is no sign of slowing down [5]. By the day of January 8, 2015, the number of space objects with sizes larger than 10 cm is beyond 17,000, with 77% of them being space debris (Table 1).
+Spatial and mass distributions of the space debris have been introduced by Liou, from whose point of view, in Low Earth Orbit (LEO), the altitude close to 800 km is the most crowded orbit, and altitudes close to 600 km, 800 km, and 1000 km are the massiest orbit since most of space debris with mass over 50 kg are located in those regions [6]. The debris objects in inclination region of 82.5–83.5° and altitudes between 900 km and 1050 km are considered as typical Active Debris Removal (ADR) targets. Bonnal also indicated that space debris whose inclination ranging from 82.83 to 82.991°, and altitudes close to 1000 km should be a given priority [7]. A list of 22 most critical ADR targets has been presented by Wiedemann [8], with Envisat being the most threatening target. Other threatening debris are often rocket upper stages from Zenith-2. The Zenith-2 upper stage is cylindrical with a diameter of 3.9 m, a length of 10.4 m and a mass of 8226 kg. Since five of them are at a similar inclination, similar Right Ascension of the Ascending Node (RAAN) and similar altitude, they could be removed by a single ADR mission with several kits to save cost [9]. Among these threatening targets, most of them are tumbling due to their residual angular momentum. Therefore, research on how to treat these tumbling targets is crucial as well.
+To motivate this research area and facilitate the development of space debris removal, this paper provides the existing active space debris capturing and removal methods and associated research areas. It is organized as follows: in Section 2, framework of methods for capturing space debris is developed. Advantages and drawbacks of the most relevant capturing methods are addressed. Examples and existing techniques related to these methods are introduced in detail. Section 3 presents various space debris removal methods and their advantages and drawbacks. The state-of-the-art related to each removal method is discussed. It also provides some worldwide removal projects. In Section 4, space debris objects are categorized into four groups by their non-cooperativeness and examples under each category are provided. To facilitate decision-making through these existing capturing and removal methods, Section 4 provides tailored associated capturing and removal methods for each category. Finally, a conclusion is drawn in Section 5.
+Organizational access
+Get full-text access by signing in with your organisation
+Access through your organization
+Other access options
+Purchase PDF
+Need help with access?
+Section snippets
+Capturing methods
+A space mission for active space debris capturing and removal consists of the following phases: Launch and Early Orbit Phase (LEOP), far-range rendezvous phase, close-range rendezvous phase, capturing phase and removal phase. These phases can be performed either autonomously or remotely controlled by ground-based mission operations. Capturing phase plays a crucial role in the entire mission process. Conceptually, many methods for space debris capturing have been proposed. According to their
+Removal methods
+Removal methods are fundamentally different from the capturing methods. In some cases, removal is performed after capturing. However, in most cases, removal methods avoid capturing at all. The concept diagram of the existing removal methods is shown in Fig. 11.
+The most relevant and promising removal methods are drag augmentation system (DAS), electro-dynamic tether (EDT), contactless removal methods and contact removal methods. To clarify their characteristics and draw a comparison between
+Non-cooperativeness analysis
+Space debris removal missions have some similarities with on-orbit servicing missions. However, in most on-orbit servicing missions, the target to be served is always cooperative, i.e., some physical fixtures on the target help the rendezvous and/or docking process. The geometry information, such as the Center of Mass (CM) or the inertia of the target, is prior known as well. On the contrary, space debris can vary widely in characteristics, e.g., rocket upper stages, non-operational satellites
+Conclusion
+Many enabling techniques for ADR have been developed in the past two decades. To provide a clear impression of the existing techniques for ADR, in this paper, frameworks of methods for space debris capturing and removal have been developed. The advantages and drawbacks of the most relevant capturing and removal methods have been addressed as well. Moreover, a comparison between the existing technologies on ADR is drawn. The state-of-the-art related to these methods are discussed in detail.
+To
+References (127)
+J.-C. Liou
+An active debris removal parametric study for leo environment remediation
+Adv. Space Res.
+(2011)
+J.-C. Liou et al.
+Controlling the growth of future leo debris populations with active debris removal
+Acta Astronaut.
+(2010)
+C. Bonnal et al.
+Active debris removalrecent progress and current trends
+Acta Astronaut.
+(2013)
+N. Van der Pas et al.
+Target selection and comparison of mission design for space debris removal by dlr's advanced study group
+Acta Astronaut.
+(2014)
+A. Flores-Abad et al.
+A review of space robotics technologies for on-orbit servicing
+Prog. Aerosp. Sci.
+(2014)
+S.-I. Nishida et al.
+Strategy for capturing of a tumbling space debris
+Acta Astronaut.
+(2011)
+C. Koh et al.
+Dynamic analysis of large displacement cable motion with experimental verification
+J. Sound Vib.
+(2004)
+J. Bessonneau et al.
+Study of the dynamics of submerged supple nets (applications to trawls)
+Ocean Eng.
+(1998)
+B.C. Edwards
+Design and deployment of a space elevator
+Acta Astronaut.
+(2000)
+D. Wang et al.
+Coordinated control of tethered space robot using mobile tether attachment point in approaching phase
+Adv. Space Res.
+(2014)
+View more references
+View full text
+Recommended articles
+Based on reading popularity
+Research article
+Experiments and simulation of a net closing mechanism for tether-net capture of space debris
+Inna Sharf, …, Arun K. Misra
+Acta Astronautica • Volume 139 • 2017 • Pages 332-343
+Review article
+Just in time collision avoidance – A review
+Christophe Bonnal, …, Simon Rommelaere
+Acta Astronautica • Volume 170 • 2020 • Pages 637-651
+Research article
+Open access
+Orbital debris and the market for satellites
+Anelí Bongers, José L. Torres
+Ecological Economics • Volume 209 • 2023 • Article 107831
+Research article
+Short-term space safety analysis of LEO constellations and clusters
+A. Rossi, …, D. McKnight
+Acta Astronautica • Volume 175 • 2020 • Pages 476-483
+Research article
+Assessment of active methods for removal of LEO debris
+Houman Hakima, M. Reza Emami
+Acta Astronautica • Volume 144 • 2018 • Pages 225-243
+Research article
+Probabilistic motion planning for non-Euclidean and multi-vehicle problems
+Anton Lukyanenko, Damoon Soudbakhsh
+Robotics and Autonomous Systems • Volume 168 • 2023 • Article 104487
+Cited by (866)
+Review article
+On the guidance, navigation and control of in-orbit space robotic missions: A survey and prospective vision
+Moghaddam B.M., Chhabra R.
+Acta Astronautica • Volume 184 • 2021
+Show abstract
+Research article
+The active space debris removal mission RemoveDebris. Part 2: In orbit operations
+Aglietti G.S., …, Steyn W.H.
+Acta Astronautica • Volume 168 • 2020
+Show abstract
+Review article
+Review of Active Space Debris Removal Methods
+Mark C.P., Kamath S.
+Space Policy • Volume 47 • 2019
+Show abstract
+Research article
+Deployment dynamics of tethered-net for space debris removal
+Shan M., …, Gill E.
+Acta Astronautica • Volume 132 • 2017
+Show abstract
+Review article
+Open access
+Robotic Manipulation and Capture in Space: A Survey
+Papadopoulos E., …, Lampariello R.
+Frontiers in Robotics and AI • Volume 8 • 2021 • Article 686723
+Show abstract
+LEO mega constellations: Review of development, impact, surveillance, and governance
+Zhang J., …, Cai H.
+Space: Science and Technology (United States) • Volume 2022 • 2022 • Article 9865174
+View all citing articles on Scopus
+Metrics
+Citations
+Citation Indexes
+864
+Policy Citations
+1
+Captures
+Mendeley Readers
+458
+Mentions
+News Mentions
+1
+View details
+Copyright © 2015 Elsevier Ltd. All rights reserved.
+About ScienceDirect
+Remote access
+Contact and support
+Terms and conditions
+Privacy policy
+Cookie settings
+
+All content on this site: Copyright © 2026 Elsevier B.V., its licensors, and contributors. All rights are reserved, including those for text and data mining, AI training, and similar technologies. For all open access content, the relevant licensing terms apply.
+
+We use cookies that are necessary to make our site work. We may also use additional cookies to analyze, improve, and personalize our content and your digital experience. You can manage your cookie preferences using theCookie settings link. For more information, see ourCookie Policy
+Cookie settings
+Accept all cookies
