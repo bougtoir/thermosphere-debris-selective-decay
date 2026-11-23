@@ -90,4 +90,5 @@ PPTX: every picture and caption lies inside the slide,PASS,[]
 "Fig3.tif >= 600 dpi, RGB, opaque white corner",PASS,"(600.0, 600.0) RGB (255, 255, 255)"
 "Fig4.tif >= 600 dpi, RGB, opaque white corner",PASS,"(600.0, 600.0) RGB (255, 255, 255)"
 "Fig5.tif >= 600 dpi, RGB, opaque white corner",PASS,"(600.0, 600.0) RGB (255, 255, 255)"
+standalone tables.docx carries every manuscript table caption and note,PASS,[]
 tables: no vertical rules or shading (JSSE guide),PASS,[]

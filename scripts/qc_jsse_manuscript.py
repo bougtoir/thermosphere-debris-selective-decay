@@ -140,6 +140,12 @@ def main():
         chk(f"Fig{n}.tif >= 600 dpi, RGB, opaque white corner", min(dpi) >= 599 and im.mode == "RGB" and bg ==
             (255, 255, 255), f"{dpi} {im.mode} {bg}")
 
+    mp = Document(os.path.join(M, "manuscript.docx")).paragraphs
+    tp = Document(os.path.join(M, "tables.docx")).paragraphs
+    mnotes = [mp[i + 1].text for i, x in enumerate(mp) if re.match(r"Table \d+\. ", x.text)]
+    tt = "\n".join(x.text for x in tp)
+    chk("standalone tables.docx carries every manuscript table caption and note",
+        len(mnotes) == 4 and all(x in tt for x in mnotes), [x[:40] for x in mnotes if x not in tt])
     vr = []
     for n in ("manuscript.docx", "manuscript_review_inline.docx", "tables.docx"):
         for i, t in enumerate(Document(os.path.join(M, n)).tables, 1):

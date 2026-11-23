@@ -19,7 +19,6 @@ import shutil
 import sys
 
 import pandas as pd
-from docx import Document
 from docx.enum.text import WD_ALIGN_PARAGRAPH
 from docx.oxml import OxmlElement
 from docx.oxml.ns import qn
@@ -553,9 +552,39 @@ def horizontal_rules_only(doc):
     return doc
 
 
+class JDoc(Doc):
+    """Doc that also records each table (number, caption, data, note) for the standalone tables file."""
+    def __init__(self, refs, inline_figs):
+        super().__init__(refs, inline_figs)
+        self.tables = []
+
+    def table(self, n, caption, df, note=None):
+        self.tables.append((n, self.refs.render(caption), df, self.refs.render(note) if note else None))
+        return super().table(n, caption, df, note)
+
+
+def tables_doc(D):
+    """Standalone editable tables with the same captions and notes as the manuscript."""
+    d = new_doc()
+    for n, cap, df, note in D.tables:
+        small(runs(d.add_paragraph(), f"Table {n}. {cap}", bold=True))
+        t = d.add_table(rows=1, cols=len(df.columns))
+        t.style = "Table Grid"
+        for i, c in enumerate(df.columns):
+            runs(t.rows[0].cells[i].paragraphs[0], str(c), size=9, bold=True)
+        for _, r in df.iterrows():
+            cells = t.add_row().cells
+            for i, c in enumerate(df.columns):
+                runs(cells[i].paragraphs[0], str(r[c]), size=9)
+        if note:
+            small(runs(d.add_paragraph(), note))
+        d.add_paragraph()
+    horizontal_rules_only(d).save(os.path.join(OUT, "tables.docx"))
+
+
 def build(inline, v):
     refs = Refs()
-    D = Doc(refs, inline)
+    D = JDoc(refs, inline)
     body(D, v)
     if not inline:
         D.h("Figure captions")
@@ -652,10 +681,8 @@ def main():
     words = D.words
     assert words <= WORD_LIMIT, words
     build(True, v).d.save(os.path.join(OUT, "manuscript_review_inline.docx"))
-    bpm.OUT = OUT
-    bpm.tables_doc(v)
-    tp = os.path.join(OUT, "tables.docx")
-    horizontal_rules_only(Document(tp)).save(tp)
+    assert [t[0] for t in D.tables] == [1, 2, 3, 4]
+    tables_doc(D)
     figures_pptx()
     hl = new_doc()
     hl.add_heading("Highlights", 1)
