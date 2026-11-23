@@ -64,8 +64,10 @@ def main():
 
     jv = pd.read_csv(os.path.join(ROOT, "results/manuscript_jsse_values.csv"))
     pv = pd.read_csv(os.path.join(ROOT, "results/manuscript_physical_values.csv"))
-    chk("JSSE value ledger identical to physical (Acta-final) value ledger",
-        jv[["name", "formatted"]].equals(pv[["name", "formatted"]]), f"{len(jv)} vs {len(pv)} values")
+    same = (open(os.path.join(ROOT, "results/manuscript_jsse_values.csv"), "rb").read()
+            == open(os.path.join(ROOT, "results/manuscript_physical_values.csv"), "rb").read())
+    chk("JSSE value ledger byte-identical to physical (Acta-final) ledger (name, value, formatted, source)", same,
+        f"{len(jv)} vs {len(pv)} values")
     vals = jv.drop_duplicates("name").set_index("name").formatted.astype(str)
     for k, (lo, hi) in FROZEN.items():
         x = float(vals[k].replace("−", "-").replace("+", ""))

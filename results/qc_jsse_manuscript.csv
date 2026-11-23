@@ -33,7 +33,7 @@ generic: no document-grid snapping,PASS,
 generic: no tracked changes or comments,PASS,
 generic: only author-side placeholder is the affiliation detail,PASS,
 generic: data statement does not claim processed fields are on GitHub,PASS,"The analysis code, GITM case configurations, the heating hook and the figure- and manuscript-generation scripts are publ"
-JSSE value ledger identical to physical (Acta-final) value ledger,PASS,164 vs 164 values
+"JSSE value ledger byte-identical to physical (Acta-final) ledger (name, value, formatted, source)",PASS,164 vs 164 values
 "frozen value S12_p11_z300_36x36_400 in [1.45, 1.55]",PASS,1.51
 "frozen value S12_p11_z300_36x36_500 in [1.95, 2.05]",PASS,2.03
 "frozen value S12_p11_z300_36x36_300 in [0.9, 1.1]",PASS,1.02
