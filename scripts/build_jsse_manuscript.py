@@ -14,6 +14,7 @@ results/manuscript_jsse_citations.csv.
 from __future__ import annotations
 
 import os
+import re
 import shutil
 import sys
 
@@ -566,6 +567,31 @@ def build(inline, v):
     return D
 
 
+def figures_pptx():
+    """Editable PPTX, one figure per slide, scaled to fit inside the slide margins (wide figures fit by width)."""
+    from PIL import Image
+    from pptx import Presentation
+    from pptx.util import Inches as PInches
+    from pptx.util import Pt as PPt
+    prs = Presentation()
+    prs.slide_width, prs.slide_height = PInches(13.333), PInches(7.5)
+    max_w, max_h = 12.5, 5.6
+    for n in sorted(CAPTIONS):
+        png = os.path.join(FIG, CAPTIONS[n][0] + ".png")
+        w_px, h_px = Image.open(png).size
+        w = min(max_w, max_h * w_px / h_px)
+        h = w * h_px / w_px
+        s = prs.slides.add_slide(prs.slide_layouts[6])
+        s.shapes.add_picture(png, PInches((13.333 - w) / 2), PInches(0.3), width=PInches(w), height=PInches(h))
+        tb = s.shapes.add_textbox(PInches(0.4), PInches(0.4 + h), PInches(12.5), PInches(7.1 - h)).text_frame
+        tb.word_wrap = True
+        tb.text = f"Fig. {n}. " + re.sub(r"[\^_]\{([^}]*)\}", r"\1", CAPTIONS[n][1])
+        for par in tb.paragraphs:
+            for r in par.runs:
+                r.font.size = PPt(11)
+    prs.save(os.path.join(OUT, "figures.pptx"))
+
+
 def cover_letter(v, words):
     d = new_doc()
     d.styles["Normal"].font.name = "Times New Roman"
@@ -630,7 +656,7 @@ def main():
     bpm.tables_doc(v)
     tp = os.path.join(OUT, "tables.docx")
     horizontal_rules_only(Document(tp)).save(tp)
-    bpm.figures_pptx()
+    figures_pptx()
     hl = new_doc()
     hl.add_heading("Highlights", 1)
     for x in highlights(v):

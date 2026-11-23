@@ -84,6 +84,7 @@ cover letter single-author voice (no we/our/us),PASS,[]
 cover letter addressed to JSSE,PASS,
 main manuscript has no embedded figures; inline review copy has all five,PASS,0/5
 editable PPTX: five slides with one figure each,PASS,"[1, 1, 1, 1, 1]"
+PPTX: every picture and caption lies inside the slide,PASS,[]
 "Fig1.tif >= 600 dpi, RGB, opaque white corner",PASS,"(600.0, 600.0) RGB (255, 255, 255)"
 "Fig2.tif >= 600 dpi, RGB, opaque white corner",PASS,"(600.0, 600.0) RGB (255, 255, 255)"
 "Fig3.tif >= 600 dpi, RGB, opaque white corner",PASS,"(600.0, 600.0) RGB (255, 255, 255)"

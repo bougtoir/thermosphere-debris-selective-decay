@@ -129,6 +129,9 @@ def main():
     prs = Presentation(os.path.join(M, "figures.pptx"))
     pics = [sum(sh.shape_type == 13 for sh in s.shapes) for s in prs.slides]
     chk("editable PPTX: five slides with one figure each", pics == [1] * 5, pics)
+    off = [i + 1 for i, sl in enumerate(prs.slides) for sh in sl.shapes
+           if sh.left < 0 or sh.top < 0 or sh.left + sh.width > prs.slide_width or sh.top + sh.height > prs.slide_height]
+    chk("PPTX: every picture and caption lies inside the slide", not off, off)
     for n in range(1, 6):
         f = os.path.join(M, "figures", f"Fig{n}.tif")
         im = Image.open(f)
